@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ti:app xmlns:ti="http://ti.appcelerator.org">
+    <property name="acs-oauth-secret-production" type="string">3CdAP2SxKZrkJEKbcglohqYw3Athb1CZ</property>
+    <property name="acs-oauth-key-production" type="string">mDzius3maeKUI3RTJmWSu9heNk9Pej4J</property>
+    <property name="acs-api-key-production" type="string">Na8qwVq1rwBYn0IJWitpIoAF8tYk48EE</property>
+    <property name="acs-oauth-secret-development" type="string">wGFFYeOZMa5yvi9DV1rIABjSfhxOLzw9</property>
+    <property name="acs-oauth-key-development" type="string">XkJ324IpFzv4NjppQGZSGK59iSYBP81b</property>
+    <property name="acs-api-key-development" type="string">dqOaDoAlKXrBGNnRRehHewwcc7qmH44J</property>
+    <id>br.com.fatoz</id>
+    <name>Fatoz</name>
+    <version>1.0</version>
+    <publisher>rafaelcosta</publisher>
+    <url>http://www.fatoz.com.br</url>
+    <description>not specified</description>
+    <copyright>2014 by rafaelcosta</copyright>
+    <icon>appicon.png</icon>
+    <fullscreen>false</fullscreen>
+    <navbar-hidden>false</navbar-hidden>
+    <analytics>true</analytics>
+    <guid>558777c7-d8a6-4707-a453-dabd33ca7cf2</guid>
+    <property name="ti.ui.defaultunit" type="string">dp</property>
+    <ios>
+        <plist>
+            <dict>
+                <key>UISupportedInterfaceOrientations~iphone</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                </array>
+                <key>UISupportedInterfaceOrientations~ipad</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                    <string>UIInterfaceOrientationPortraitUpsideDown</string>
+                    <string>UIInterfaceOrientationLandscapeLeft</string>
+                    <string>UIInterfaceOrientationLandscapeRight</string>
+                </array>
+                <key>UIRequiresPersistentWiFi</key>
+                <false/>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+                <key>UIStatusBarHidden</key>
+                <false/>
+                <key>UIStatusBarStyle</key>
+                <string>UIStatusBarStyleLightContent</string>
+            </dict>
+        </plist>
+    </ios>
+    <android xmlns:android="http://schemas.android.com/apk/res/android"/>
+    <mobileweb>
+        <precache/>
+        <splash>
+            <enabled>true</enabled>
+            <inline-css-images>true</inline-css-images>
+        </splash>
+        <theme>default</theme>
+    </mobileweb>
+    <modules>
+        <module platform="commonjs" version="3.2.2">ti.cloud</module>
+        <module platform="android">facebook</module>
+        <module platform="iphone">facebook</module>
+        <module platform="android" version="3.2.1">ti.cloudpush</module>
+    </modules>
+    <deployment-targets>
+        <target device="android">true</target>
+        <target device="blackberry">false</target>
+        <target device="ipad">false</target>
+        <target device="iphone">true</target>
+        <target device="mobileweb">false</target>
+        <target device="tizen">false</target>
+    </deployment-targets>
+    <sdk-version>3.2.2.GA</sdk-version>
+    <plugins>
+        <plugin version="1.0">ti.alloy</plugin>
+    </plugins>
+</ti:app>

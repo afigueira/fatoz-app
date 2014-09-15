@@ -1,0 +1,30 @@
+<Alloy>
+	<TabGroup>
+		<Tab titleid="signup">
+			<Window class="container">
+				<LeftNavButton>
+					<Button image="/images/button-back.png" id="back"/>
+				</LeftNavButton>
+				<TitleControl>
+					<Label textid="signup" class="fontWhite proximaNovaRegular"/>
+				</TitleControl>
+				<ScrollView>
+					<ImageView image="/images/logo-signup.png" id="logo"></ImageView>
+					
+					<TextField id="username" hintText="L('username')" class="radius input fontGray" />
+					<TextField id="email" hintText="L('email')" class="radius input fontGray" />
+					<TextField id="password" passwordMask="true" hintText="L('password')" class="radius input fontGray" />
+					<Label id="terms" textid="terms_signup" class="fontWhite proximaNovaRegular"/>
+					<Button id="submit" titleid="finish_signup" class="radius white fontRed"/>
+					
+					<View id="footer">
+						<View id="btnFacebook" class="radius">
+							<ImageView image="/images/logo-button-facebook.jpg" id="logoBtnFacebook"/>
+							<Label textid="button_facebook_signup" id="labelBtnFacebook" class="fontWhite proximaNovaRegular"/>
+						</View>
+					</View>
+				</ScrollView>
+			</Window>
+		</Tab>		
+	</TabGroup>
+</Alloy>

@@ -1,0 +1,74 @@
+"#labelHighlight": {
+	"top": 30,
+	font: {fontSize: 18, fontWeight: 'bold'}
+},
+"#labelSeeCategories": {
+	top: 60,
+	font: {fontSize: 12, fontWeight: 'bold'}
+},
+"#arrowSeeCategories": {
+	top: 30,
+	right: 30
+},
+"#categories": {
+	top: 95,
+	width: 280,
+	height: 390,
+	backgroundColor: "white"
+},
+"#tabs": {
+	top: 0,
+	left: 10,
+	height: 46,
+	width: Titanium.UI.FILL,
+	layout: "horizontal"
+},
+".tab": {
+	height: 46,
+	width: 87
+},
+".scrollable": {
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL,
+	top: 46,
+	left: 0,
+	showPagingControl: true,
+	pagingControlColor: "transparent",
+	pagingControlHeight: 40,
+	overlayEnabled: true
+},
+"#soccer": {
+	backgroundImage: "/images/background-home-categories-soccer.jpg"
+},
+".iconCategory": {
+	top: 64
+},
+".titleCategory": {
+	top: 108,
+	font: {fontSize: 24, fontWeight: 'bold'}
+},
+".descriptionCategory": {
+	top: 139,
+	font: {fontSize: 12, fontWeight: 'bold'}
+},
+".btnNewMatch": {
+	top: 213,
+	width: 230,
+	height: 33,
+	font: {fontSize: 12, fontWeight: 'bold'}
+},
+".btnChallenge": {
+	top: 255,
+	left: 25,
+	width: 110,
+	font: {fontSize: 12, fontWeight: 'bold'}
+},
+".btnRanking": {
+	top: 255,
+	right: 25,
+	width: 110,
+	font: {fontSize: 12, fontWeight: 'bold'}
+},
+".margin": {
+	top: 485
+}

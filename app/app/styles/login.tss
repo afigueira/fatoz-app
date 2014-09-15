@@ -1,0 +1,47 @@
+".container": {
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL
+},
+"#logo": {
+	top: 55
+},
+"#form": {
+	height: Titanium.UI.SIZE,
+	top: 237,
+	left: 28,
+	right: 28
+},
+".input": {
+	top: 0,
+	left: 0,
+	height: 40,
+	width: Titanium.UI.FILL,
+	right: 40
+},
+"#password": {
+	top: 48
+},
+"#forgotPassword": {
+	left: 0,
+	top: 100
+},
+"#submit": {
+	backgroundColor: "white",
+	height: 88,
+	right: 0,
+	width: 32,
+	top: 0
+},
+"#btnFacebook": {
+	bottom: 95
+},
+"#footer": {
+	backgroundColor: Alloy.Globals.constants.NAV_BAR_COLOR,
+	height: 75,
+	bottom: 0,
+	width: Titanium.UI.FILL
+},
+"#signup": {
+	height: 35,
+	width: 200
+}

@@ -1,0 +1,89 @@
+".inside": {
+	layout: "vertical"
+},
+"#containerTabs": {
+	height: 46,
+	left: 0,
+	top: 0,
+	width: Titanium.UI.FILL
+}
+"#tabs": {
+	top: 0,
+	left: 15,
+	height: 46,
+	width: Titanium.UI.FILL,
+	layout: "horizontal"
+},
+".tab": {
+	height: 46,
+	width: 72
+},
+"#containerSearch": {
+	height: 60,
+	width: Titanium.UI.FILL	
+},
+"#search": {
+	height: 30,
+	width: 280
+},
+".category": {
+	//height: 90
+	height: 220
+},
+".backgroundCategory": {
+	left: 0,
+	top: 0,
+	zIndex: 0
+},
+".containerTitleCategory": {
+	height: Titanium.UI.SIZE,
+	layout: "horizontal",
+	top: 25
+},
+".titleCategory": {
+	font: {fontSize: 16},
+	left: 15,
+	top: 3
+},
+".arrowCategory": {
+	right: 20,
+	top: 40
+},
+".descriptionCategory": {
+	font: {fontSize: 12},
+	top: 50
+},
+".actionsCategory": {
+	backgroundColor: "rgba(0, 0, 0, 0.7)",
+	height: 130,
+	top: 90
+},
+"ScrollableView": {
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL,
+	top: 0,
+	left: 0,
+	showPagingControl: true,
+	pagingControlColor: "transparent",
+	pagingControlHeight: 40,
+	overlayEnabled: true
+},
+".btnNewMatch": {
+	top: 15,
+	width: 240,
+	height: 33,
+	font: {fontSize: 12, fontWeight: 'bold'}
+},
+".btnChallenge": {
+	top: 58,
+	left: 40,
+	width: 110,
+	font: {fontSize: 12, fontWeight: 'bold'}
+},
+".btnRanking": {
+	top: 58,
+	right: 40,
+	width: 110,
+	font: {fontSize: 12, fontWeight: 'bold'}
+}
+

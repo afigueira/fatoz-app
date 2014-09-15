@@ -1,0 +1,40 @@
+"ScrollView": {
+	layout: "vertical"
+},
+"#logo": {
+	top: 33
+},
+"TextField": {
+	width: Titanium.UI.FILL,
+	height: 40,
+	left: 28,
+	right: 28
+},
+"#username": {
+	top: 33
+},
+"#email": {
+	top: 15
+},
+"#password": {
+	top: 15
+},
+"#terms": {
+	top: 15
+},
+"#submit": {
+	top: 30,
+	width: Titanium.UI.FILL,
+	height: 40,
+	left: 28,
+	right: 28
+},
+"#footer": {
+	backgroundColor: Alloy.Globals.constants.NAV_BAR_COLOR,
+	height: 75,
+	top: 40,
+	width: Titanium.UI.FILL
+},
+"#btnFacebook": {
+	top: 20
+}

@@ -1,0 +1,86 @@
+".container": {
+	backgroundColor: Alloy.Globals.constants.BASE_COLOR,
+	barColor: Alloy.Globals.constants.NAV_BAR_COLOR,
+	navTintColor: "white",
+	tabBarHidden: true,
+	translucent: false
+},
+".container[platform=ios]": {
+	statusBarStyle: Titanium.UI.iPhone.StatusBar.LIGHT_CONTENT
+},
+".inside": {
+	backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR
+},
+"#btnFacebook": {
+	backgroundColor: Alloy.Globals.constants.FACEBOOK_BUTTON_COLOR,
+	height: 35,
+	width: 265
+},
+"#logoBtnFacebook": {
+	top: 0,
+	left: 0
+},
+"#labelBtnFacebook": {
+	width: Titanium.UI.FILL,
+	textAlign: "center",
+	left: 35
+},
+".radius": {
+	borderRadius: 4
+},
+".radiusLarge": {
+	borderRadius: 14
+},
+".input": {
+	backgroundColor: "white"
+},
+".fontWhite": {
+	color: "white",
+	tintColor: "white"
+},
+".fontGray": {
+	color: "#888888",
+	tintColor: "#888888"
+},
+".fontRed": {
+	color: "red",
+	tintColor: "red"
+},
+".fontOrange": {
+	color: "#ff7026",
+	tintColor: "#ff7026"
+},
+".orange": {
+	backgroundColor: "#ff7026"	
+},
+".white": {
+	backgroundColor: "white"
+},
+".green": {
+	backgroundColor: "#08ad4d"
+},
+".black": {
+	backgroundColor: "#2e2e2e"
+},
+".borderWhite": {
+	borderColor: "white",
+	borderWidth: 1
+},
+".transparentWhite50": {
+	backgroundColor: "rgba(255, 255, 255, 0.3)"
+},
+".proximaNovaRegular": {
+	font: {fontFamily: "ProximaNova-Regular"}
+},
+".margin": {
+	width: Titanium.UI.FILL,
+	height: 20
+},
+".labelTab": {
+	font: {fontSize: 10, fontWeight: 'bold'}
+},
+".tabSelected": {
+	bottom: 0,
+	height: 3,
+	width: Titanium.UI.FILL
+}

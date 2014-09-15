@@ -1,0 +1,33 @@
+<resources>
+    
+    <!-- Texts -->
+    <string name="email">E-mail</string>
+    <string name="password">Senha</string>
+    <string name="username">Username</string>
+    <string name="forgotpassword">Esqueceu sua senha ?</string>
+    <string name="signup">Cadastro</string>
+    <string name="terms_signup">Ao concluir estará aceitando os Termos de Uso</string>
+    <string name="finish_signup">Concluir Cadastro</string>
+    <string name="home">Início</string>
+    <string name="highlights">DESTAQUES</string>
+    <string name="see_categories">Ver Categorias</string>
+    <string name="popular">POPULAR</string>
+    <string name="text_new">NOVO</string>
+    <string name="recent">RECENTE</string>
+    <string name="sport">ESPORTE</string>
+    <string name="sport_description">Futebol, esportes radicais e outros</string>
+    <string name="new_match">NOVA PARTIDA</string>
+    <string name="challenge">DESAFIAR</string>
+    <string name="ranking">RANKING</string>
+    <string name="categories">Categorias</string>
+    <string name="all">TODOS</string>
+    <string name="suggested">SUGERIDO</string>
+    <string name="category_title">TÍTULO</string>
+    <string name="category_description">Aqui vai entrar a descrição da categoria</string>
+    
+    
+    <!-- Buttons -->
+    <string name="button_facebook_login">Ou entre com o Facebook</string>
+    <string name="button_signup">Cadastre-se</string>
+    <string name="button_facebook_signup">Cadastre-se com Facebook</string>
+</resources>
