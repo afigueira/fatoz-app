@@ -1,0 +1,159 @@
+<Alloy>	
+	<Window class="container">
+		<ScrollView class="inside">
+			<View class="topProfile" backgroundImage="http://pixabay.com/static/uploads/photo/2014/06/01/11/35/landscape-359541_640.jpg">				
+				<View class="profile">
+					<ImageView class="imageProfile" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+					<Label class="proximaNovaRegular fontWhite profileTitle" textid="user_name"/>
+					<Label class="proximaNovaRegular fontWhite profileCityState" textid="city_state"/>			
+				</View>
+				
+				<View class="profileButtons">
+					<Button class="fontWhite proximaNovaRegular btnFollow" titleid="btn_follow" />
+					<Button class="borderWhite fontWhite proximaNovaRegular btnMore" />
+				</View>						
+			</View>
+			
+			<View id="containerTabs" class="white">
+				<View id="tabs">
+					<View class="tab">
+						<Label textid="statistics" class="fontOrange proximaNovaRegular labelTab"/>
+						<View class="tabSelected orange" />								
+					</View>
+					<View class="tab">
+						<Label textid="friends" class="fontOrange proximaNovaRegular labelTab"/>
+						<View class="tabSelected orange" visible="false" />
+					</View>
+					<View class="tab">
+						<Label textid="rank" class="fontOrange proximaNovaRegular labelTab"/>
+						<View class="tabSelected orange" visible="false" />
+					</View>
+					<View class="tab">
+						<Label textid="conquer" class="fontOrange proximaNovaRegular labelTab"/>
+						<View class="tabSelected orange" visible="false" />
+					</View>
+				</View>
+			</View>
+			
+			<ScrollableView>
+				<View class="profileStatistics">
+					<View class="graphic1"><Label text="Grafico 1"/></View>
+					
+					<View class="borderBottom borderGray"/>
+					
+					<View class="graphic2"><Label text="Grafico 2"/></View>
+					
+					<View class="borderBottom borderGray"/>
+					
+					<View class="statisticsResults">
+						<View class="resultsRow">
+							<View class="resultsCell">
+								<View layout="vertical" top="25">
+									<Label class="proximaNovaRegular resultsNumber" text="684"/>
+									<Label class="resultsTitle" textid="opponents"/>
+								</View>
+							</View>
+							
+							<View class="resultsCell">
+								<View layout="vertical" top="25">
+									<View class="withSub">
+										<Label class="proximaNovaRegular widthUiSize resultsNumber" text="684"/>
+										<Label class="resultsSub" textid="abbreviation_points"/>
+									</View> 
+									<Label class="resultsTitle" textid="average_score"/>
+								</View>
+							</View>
+						</View>
+						
+						<View class="resultsRow">
+							<View class="resultsCell">
+								<View layout="vertical" top="25">
+									<View class="withSub">
+										<Label class="resultsNumber" text="0,8"/>
+										<Label class="resultsSub" textid="abbreviation_monday"/>
+									</View>
+									<Label class="resultsTitle" textid="average_response_time"/>
+								</View>
+							</View>
+							
+							<View class="resultsCell">
+								<View layout="vertical" top="25">
+									<View class="withSub">
+										<View class="withSub">
+											<Label class="resultsNumber" text="8"/>
+											<Label class="resultsSub" textid="abbreviation_hour"/>
+										</View>
+										<View class="withSub">										
+											<Label class="resultsNumber" text="32"/>
+											<Label class="resultsSub" textid="abbreviation_minute"/> 
+										</View>
+									</View>
+									<Label class="resultsTitle" textid="total_play_time"/>
+								</View>
+							</View>
+						</View>
+					</View>		            
+				</View>
+				
+				<View class="profileFriends">
+					<View id="containerSearch" class="black">
+						<TextField id="search" class="white fontGray radiusLarge proximaNovaRegular" hintText="Pesquisar" />
+					</View>
+					
+					<TableView id="friends">
+						<TableViewRow>
+							<ImageView class="imageProfile imageProfileFriends" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+							<Label class="friendName" text="Rafael Costa"/>						
+					    </TableViewRow>
+					    <TableViewRow>
+							<ImageView class="imageProfile imageProfileFriends" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+							<Label class="friendName" text="Rafael Costa"/>						
+					    </TableViewRow>
+					    <TableViewRow>
+							<ImageView class="imageProfile imageProfileFriends" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+							<Label class="friendName" text="Rafael Costa"/>						
+					    </TableViewRow>					    
+					</TableView>				            
+				</View>
+				
+				<View class="profileRank">							
+	               <TableView id="rank">
+						<TableViewRow>
+							<Label class="rankNumber" text="1."/>
+							<ImageView class="imageProfile imageProfileRank" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+							<Label class="rankName" text="Rafael Costa"/>
+							<View class="rankPoint">
+								<Label class="rankPt" textid="abbreviation_points"/>
+								<Label class="rankTotal" text="12.156"/>							
+							</View>
+					    </TableViewRow>					    
+					</TableView>				            
+				</View>
+				
+				<View class="profileConquer">							
+	               <TableView id="conquer">
+						<TableViewRow>						
+							<ImageView class="imageProfile imageProfileConquer" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+							
+							<View class="rightContentConquer">
+								<Label class="conquerTitle" text="Mestre da Quimica"/>
+								<View class="layoutHorizontal left0">
+										<Label class="numberConquer" text="182"/>
+										<Label class="ptConquer" text="Pontos em Ciência"/>									
+								</View>																	
+								
+								<View class="percentConquer">
+									<Label class="percentNumber" text="100%"/>
+									
+									<View class="percentBorder">
+										<View class="percentBar"/>
+									</View>
+								</View>
+							</View>
+					    </TableViewRow>
+					</TableView>				            
+				</View>
+			</ScrollableView>					
+		</ScrollView>
+	</Window>
+</Alloy>

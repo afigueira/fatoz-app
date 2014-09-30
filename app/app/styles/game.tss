@@ -1,0 +1,97 @@
+".inside": {
+	layout: "vertical",
+	backgroundColor: "#383738"
+},
+"View": {
+	height: Titanium.UI.SIZE
+},
+".score": {
+	width: Titanium.UI.FILL,
+	height: 70,
+	backgroundColor: "#222222",
+	layout: "horizontal"
+},
+".pointsScore": {
+	font: {fontSize: 30, fontWeight: 'bold'},
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	color: "#ffffff"
+},
+".nameScore": {
+	font: {fontSize: 14, fontWeight: 'bold'},
+	color: "#ff7026",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+},
+".containerScore": {
+	width: 125,
+	layout: "vertical"
+},
+".questionGame": {
+	font: {fontSize: 24, fontWeight: 'bold'},
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	top: 42, 
+	bottom: 42,
+	color: "#ffffff"
+},
+".containerGame": {
+	width: Titanium.UI.FILL,
+	layout: "horizontal"
+},
+".progressGame": {	
+	width: Titanium.UI.SIZE,
+	top: 0,
+	left: 10,
+	right: 10
+},
+".imageProfile": {	
+	borderWidth: 2,
+	borderColor: "#ffffff"
+},
+".progressBar": {
+	width: 34,
+	height: 325,
+	borderRadius: 163,
+	borderWidth: 4,
+	borderColor: "#1e1e1e",
+	backgroundColor: "#1e1e1e",
+},
+".percentBar": {
+	width: Titanium.UI.FILL,
+	backgroundColor: "#41b6da",
+	height: 200,
+	bottom: 0
+},
+".imageProfileProgess": {
+	width: 50,
+	height: 50,
+	borderRadius: 25,
+	bottom: 175,	
+	zIndex: 1
+},
+".contentGame": {	
+	width: Titanium.UI.SIZE,
+	height: Titanium.UI.FILL,
+	layout: "vertical"
+},
+".imageGame": {
+	borderRadius: 3,
+	bottom: 30
+},
+".optionGame": {
+	width: Titanium.UI.SIZE,
+	layout: "vertical"
+},
+".chosenOptionGame": {
+	width: 107,
+	height: 70,
+	font: {fontSize: 14, fontWeight: 'bold'},
+	color: "#383838",
+	backgroundColor: "#ffffff",
+	borderRadius: 3,
+	bottom: 10
+},
+".optionRedGame": {
+	backgroundColor: "#e42e24"
+},
+".marginRightOption": {
+	right: 10
+}

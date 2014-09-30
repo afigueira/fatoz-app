@@ -1,0 +1,199 @@
+".inside": {
+	layout: "vertical",
+	
+},
+"#containerTabs": {
+	height: 46,
+	left: 0,
+	top: 0,
+	width: Titanium.UI.FILL
+}
+"#tabs": {
+	top: 0,
+	left: 15,
+	height: 46,
+	width: Titanium.UI.FILL,
+	layout: "horizontal"
+},
+".tab": {
+	height: 46,
+	width: 72
+},
+"View": {
+	height: Titanium.UI.SIZE
+},
+".topProfile": {
+	height: 231
+},
+".imageProfile": {
+	width: 64,
+	height: 64,
+	borderRadius: 324,
+	borderWidth: 2,
+	borderColor: "#ffffff",
+	left: 0
+},
+".profileTitle": {
+	height: Titanium.UI.SIZE,	
+	font: {fontSize: 24, fontWeight: 'bold'},
+	left: 74,
+	top: 10
+},
+".profileCityState": {
+	height: Titanium.UI.SIZE,	
+	font: {fontSize: 14},
+	left: 74,
+	top: 35
+},
+".profile": {	
+	width: 250	
+},
+".profileButtons": {
+	width: 250,
+	top: 160,	
+	height: 30
+},
+".btnFollow": {
+	left: 74
+},
+".btnMore": {
+	right: 10
+},
+".profileStatistics": {
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL,
+	layout: "vertical"
+},
+".graphic1": {	
+	height: 184	
+},
+".graphic2": {	
+	height: 157	
+},
+".statisticsResults": {
+	backgroundColor: "#f0f0f0",	
+	width: Titanium.UI.FILL,
+	height: 200,
+	layout: "vertical"
+},
+".resultsRow": {
+	width: Titanium.UI.FILL,
+	height: "50%",
+	layout: "horizontal"
+},
+".resultsCell": {	
+	width: "50%",
+	height: Titanium.UI.FILL,
+	layout: "vertical"
+},
+".resultsNumber": {	
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.SIZE,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	color: "#383838",
+    font: {        
+        fontSize: 30,        
+        fontWeight: 'bold'
+    }
+},
+".resultsSub": {
+	width: Titanium.UI.SIZE,
+	height: Titanium.UI.SIZE,
+	bottom: 5
+},
+".resultsTitle": {	
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.SIZE,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	color: "#666666",
+	font: {fontSize: 14}	
+},
+".withSub": {
+	layout: "horizontal",
+	width: Titanium.UI.SIZE	
+},
+".widthUiSize": {
+	width: Titanium.UI.SIZE
+},
+
+
+".profileFriends": {
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL,
+	layout: "vertical"
+},
+".imageProfileFriends": {
+	top: 10,
+	left: 10,
+	bottom: 10	
+},
+".friendName": {
+	left: 94
+},
+
+
+".profileRank": {
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL,
+	layout: "vertical"
+},
+".rankNumber": {
+	width: 50,
+	left: 0,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+},
+".imageProfileRank": {
+	left: 50
+},
+".rankName": {
+	left: 124
+},
+".rankPoint": {
+	right: 10,
+	width: Titanium.UI.SIZE,
+	layout: "horizontal"
+},
+
+".profileConquer": {
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL,
+	layout: "vertical"
+},
+".imageProfileConquer": {
+	top: 10,
+	left: 10,
+	bottom: 10
+},
+".rightContentConquer": {
+	left: 84,
+	layout: "vertical"
+},
+".conquerTitle": {	
+	left: 0
+},
+".percentConquer": {
+	layout: "horizontal"	
+},
+".numberConquer": {
+	
+},
+".ptConquer": {
+	
+},
+".percentBorder":{
+	width: 100,
+	height: 5,
+	backgroundColor: "red"
+},
+".percentBar": {
+	width: 60,
+	height: Titanium.UI.FILL,
+	backgrounColor: "green"
+}
+
+
+
+
+
+
+

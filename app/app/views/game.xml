@@ -1,0 +1,68 @@
+<Alloy>	
+	<Window class="container">
+		<ScrollView class="inside">
+			<View class="layoutHorizontal">
+				<View class="score">
+					<View class="layoutAbsolute">
+						<View class="layoutHorizontal">
+							<View class="containerScore">
+								<Label class="pointsScore proximaNovaRegular" text="290" />
+								<Label class="nameScore proximaNovaRegular" textid="you" />
+							</View>
+								
+							<View width="69" height="Titanium.UI.FILL" backgroundColor="lime"></View>
+															
+							<View class="containerScore">
+								<Label class="pointsScore proximaNovaRegular" text="290" />
+								<Label class="nameScore proximaNovaRegular" text="Tomas" />
+							</View>
+						</View>
+					</View>
+				</View>
+				
+				<View class="borderGrayDark" />
+				
+				<!-- string.toUpperCase(); -->
+				<Label class="questionGame proximaNovaRegular" text="A Qual das seguintes marcas pertence a logo abaixo?" />
+								
+				<View class="containerGame">
+					<View class="layoutAbsolute">
+						<View class="layoutHorizontal">
+							<View class="progressGame">
+								<ImageView class="imageProfile imageProfileProgess" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+								
+								<View class="progressBar">
+									<View class="percentBar"></View>
+								</View>
+							</View>
+							
+							<View class="contentGame">
+								<ImageView class="imageGame" width="228" height="150" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+								
+								<View class="optionGame">
+									<View class="layoutHorizontal">
+										<Button class="chosenOptionGame marginRightOption" title="Apple" />
+										<Button class="chosenOptionGame optionRedGame" title="Apple Computer inc." />
+									</View>
+									
+									<View class="layoutHorizontal">
+										<Button class="chosenOptionGame marginRightOption" title="Apple" />
+										<Button class="chosenOptionGame" title="Apple Computer inc." />
+									</View>			
+								</View>
+							</View>
+							
+							<View class="progressGame">
+						<ImageView class="imageProfile imageProfileProgess" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+						
+						<View class="progressBar">
+							<View class="percentBar"></View>
+						</View>
+					</View>
+						</View>
+					</View>
+				</View>
+			</View>			
+		</ScrollView>
+	</Window>
+</Alloy>
