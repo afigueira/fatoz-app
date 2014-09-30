@@ -66,6 +66,17 @@
 	borderColor: "white",
 	borderWidth: 1
 },
+".borderGray": {
+	borderColor: "#c2c2c2",
+	borderWidth: 1
+},
+".borderGrayDark": {
+	borderColor: "#0e0e0e",
+	borderWidth: 1
+},
+".borderBottom": {
+	height: 1
+},
 ".transparentWhite50": {
 	backgroundColor: "rgba(255, 255, 255, 0.3)"
 },
@@ -76,6 +87,20 @@
 	width: Titanium.UI.FILL,
 	height: 20
 },
+".layoutHorizontal": {
+	layout: "horizontal",
+	width: Titanium.UI.SIZE	
+},
+".layoutAbsolute": {
+	layout: "absolute",
+	width: Titanium.UI.FILL	
+},
+".widthUiSize": {
+	width: Titanium.UI.SIZE
+},
+".left0":{
+	left: 0
+},
 ".labelTab": {
 	font: {fontSize: 10, fontWeight: 'bold'}
 },
@@ -83,4 +108,25 @@
 	bottom: 0,
 	height: 3,
 	width: Titanium.UI.FILL
+},
+".btnFollow": {
+	width: 100,
+	height: 30,
+	borderRadius: 15,
+	backgroundGradient: {
+        type: "linear",        
+        colors: [ "#49b2d3", "#3ca5c6"],
+        startRadius: '90%',
+        endRadius: 0,
+        backfillStart: true
+ 	},
+ 	image: "/images/icon-follow.png",
+    font: {fontSize: 12, fontWeight: 'bold'}
+},
+".btnMore": {
+	width: 50,
+	height: 30,	
+	borderRadius: 15,
+	image: "/images/icon-more.png",
+	backgroundImage: "/images/background-btn-more.png"
 }

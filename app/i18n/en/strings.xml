@@ -26,6 +26,30 @@
     <string name="category_description">Aqui vai entrar a descrição da categoria</string>
     
     
+    <string name="statistics">Estatísticas</string>
+    <string name="friends">Amigos</string>
+    <string name="rank">Rank</string>
+    <string name="conquer">Conquistas</string>
+    <string name="user_name">René Stalder</string>
+    <string name="city_state">São Paulo, Brasil</string>
+    <string name="opponents">Oponentes</string>
+    <string name="average_score">Pontuação\n Média</string>
+    <string name="average_response_time">Tempo Médio de Resposta</string>
+    <string name="total_play_time">Tempo Total de Jogo</string>
+	
+	<string name="abbreviation_points">Pts.</string>
+	<string name="abbreviation_monday">Seg.</string>
+	<string name="abbreviation_hour">h</string>
+	<string name="abbreviation_minute">m</string>
+	
+	<string name="btn_follow">SEGUIR</string>
+	
+	<string name="you">Você</string>
+	
+	
+	
+            
+    
     <!-- Buttons -->
     <string name="button_facebook_login">Ou entre com o Facebook</string>
     <string name="button_signup">Cadastre-se</string>
