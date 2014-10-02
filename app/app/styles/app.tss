@@ -129,4 +129,36 @@
 	borderRadius: 15,
 	image: "/images/icon-more.png",
 	backgroundImage: "/images/background-btn-more.png"
+},
+".btnWhite": {
+	backgroundImage: "/images/background-btn-more.png",
+	height: 30,	
+	borderRadius: 15,
+	font: {fontFamily: "ProximaNova-Regular"},
+	borderColor: "white",
+	borderWidth: 1,
+	color: "#ffffff"
+},
+".btnWhite": {
+	backgroundImage: "/images/background-btn-more.png",
+	height: 30,	
+	borderRadius: 15,
+	font: {fontFamily: "ProximaNova-Regular"},
+	borderColor: "white",
+	borderWidth: 1,
+	color: "#ffffff",
+	font: {fontSize: 12, fontWeight: 'bold'}
+},
+".btnBlue": {
+	backgroundImage: "/images/background-blue-transparent.png",
+	height: 30,	
+	borderRadius: 15,
+	font: {fontFamily: "ProximaNova-Regular"},
+	borderColor: "#37538e",
+	borderWidth: 1,
+	color: "#ffffff",
+	font: {fontSize: 12, fontWeight: 'bold'}
+},
+".btnFacebook": {
+	image: "/images/icon-facebook.png",
 }

@@ -17,30 +17,30 @@ function Controller() {
     }
     var $ = this;
     var exports = {};
-    var __alloyId208 = [];
-    $.__views.__alloyId210 = Ti.UI.createWindow({
+    var __alloyId119 = [];
+    $.__views.__alloyId121 = Ti.UI.createWindow({
         backgroundColor: Alloy.Globals.constants.BASE_COLOR,
         barColor: Alloy.Globals.constants.NAV_BAR_COLOR,
         navTintColor: "white",
         tabBarHidden: true,
         translucent: false,
-        id: "__alloyId210"
+        id: "__alloyId121"
     });
-    $.__views.__alloyId212 = Ti.UI.createLabel({
+    $.__views.__alloyId123 = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
         font: {
             fontFamily: "ProximaNova-Regular"
         },
         textid: "home",
-        id: "__alloyId212"
+        id: "__alloyId123"
     });
-    $.__views.__alloyId210.titleControl = $.__views.__alloyId212;
-    $.__views.__alloyId213 = Ti.UI.createScrollView({
+    $.__views.__alloyId121.titleControl = $.__views.__alloyId123;
+    $.__views.__alloyId124 = Ti.UI.createScrollView({
         backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
-        id: "__alloyId213"
+        id: "__alloyId124"
     });
-    $.__views.__alloyId210.add($.__views.__alloyId213);
+    $.__views.__alloyId121.add($.__views.__alloyId124);
     $.__views.labelHighlight = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -53,7 +53,7 @@ function Controller() {
         textid: "highlights",
         id: "labelHighlight"
     });
-    $.__views.__alloyId213.add($.__views.labelHighlight);
+    $.__views.__alloyId124.add($.__views.labelHighlight);
     $.__views.labelSeeCategories = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -66,14 +66,14 @@ function Controller() {
         textid: "see_categories",
         id: "labelSeeCategories"
     });
-    $.__views.__alloyId213.add($.__views.labelSeeCategories);
+    $.__views.__alloyId124.add($.__views.labelSeeCategories);
     $.__views.arrowSeeCategories = Ti.UI.createImageView({
         top: 30,
         right: 30,
         image: "/images/arrow-see-more-categories-home.png",
         id: "arrowSeeCategories"
     });
-    $.__views.__alloyId213.add($.__views.arrowSeeCategories);
+    $.__views.__alloyId124.add($.__views.arrowSeeCategories);
     $.__views.categories = Ti.UI.createView({
         borderRadius: 4,
         top: 95,
@@ -82,7 +82,7 @@ function Controller() {
         backgroundColor: "white",
         id: "categories"
     });
-    $.__views.__alloyId213.add($.__views.categories);
+    $.__views.__alloyId124.add($.__views.categories);
     $.__views.tabs = Ti.UI.createView({
         top: 0,
         left: 10,
@@ -92,13 +92,13 @@ function Controller() {
         id: "tabs"
     });
     $.__views.categories.add($.__views.tabs);
-    $.__views.__alloyId214 = Ti.UI.createView({
+    $.__views.__alloyId125 = Ti.UI.createView({
         height: 46,
         width: 87,
-        id: "__alloyId214"
+        id: "__alloyId125"
     });
-    $.__views.tabs.add($.__views.__alloyId214);
-    $.__views.__alloyId215 = Ti.UI.createLabel({
+    $.__views.tabs.add($.__views.__alloyId125);
+    $.__views.__alloyId126 = Ti.UI.createLabel({
         color: "#ff7026",
         tintColor: "#ff7026",
         font: {
@@ -107,24 +107,24 @@ function Controller() {
             fontWeight: "bold"
         },
         textid: "popular",
-        id: "__alloyId215"
+        id: "__alloyId126"
     });
-    $.__views.__alloyId214.add($.__views.__alloyId215);
-    $.__views.__alloyId216 = Ti.UI.createView({
+    $.__views.__alloyId125.add($.__views.__alloyId126);
+    $.__views.__alloyId127 = Ti.UI.createView({
         backgroundColor: "#ff7026",
         bottom: 0,
         height: 3,
         width: Titanium.UI.FILL,
-        id: "__alloyId216"
+        id: "__alloyId127"
     });
-    $.__views.__alloyId214.add($.__views.__alloyId216);
-    $.__views.__alloyId217 = Ti.UI.createView({
+    $.__views.__alloyId125.add($.__views.__alloyId127);
+    $.__views.__alloyId128 = Ti.UI.createView({
         height: 46,
         width: 87,
-        id: "__alloyId217"
+        id: "__alloyId128"
     });
-    $.__views.tabs.add($.__views.__alloyId217);
-    $.__views.__alloyId218 = Ti.UI.createLabel({
+    $.__views.tabs.add($.__views.__alloyId128);
+    $.__views.__alloyId129 = Ti.UI.createLabel({
         color: "#ff7026",
         tintColor: "#ff7026",
         font: {
@@ -133,25 +133,25 @@ function Controller() {
             fontWeight: "bold"
         },
         textid: "text_new",
-        id: "__alloyId218"
+        id: "__alloyId129"
     });
-    $.__views.__alloyId217.add($.__views.__alloyId218);
-    $.__views.__alloyId219 = Ti.UI.createView({
+    $.__views.__alloyId128.add($.__views.__alloyId129);
+    $.__views.__alloyId130 = Ti.UI.createView({
         backgroundColor: "#ff7026",
         bottom: 0,
         height: 3,
         width: Titanium.UI.FILL,
         visible: "false",
-        id: "__alloyId219"
+        id: "__alloyId130"
     });
-    $.__views.__alloyId217.add($.__views.__alloyId219);
-    $.__views.__alloyId220 = Ti.UI.createView({
+    $.__views.__alloyId128.add($.__views.__alloyId130);
+    $.__views.__alloyId131 = Ti.UI.createView({
         height: 46,
         width: 87,
-        id: "__alloyId220"
+        id: "__alloyId131"
     });
-    $.__views.tabs.add($.__views.__alloyId220);
-    $.__views.__alloyId221 = Ti.UI.createLabel({
+    $.__views.tabs.add($.__views.__alloyId131);
+    $.__views.__alloyId132 = Ti.UI.createLabel({
         color: "#ff7026",
         tintColor: "#ff7026",
         font: {
@@ -160,31 +160,31 @@ function Controller() {
             fontWeight: "bold"
         },
         textid: "recent",
-        id: "__alloyId221"
+        id: "__alloyId132"
     });
-    $.__views.__alloyId220.add($.__views.__alloyId221);
-    $.__views.__alloyId222 = Ti.UI.createView({
+    $.__views.__alloyId131.add($.__views.__alloyId132);
+    $.__views.__alloyId133 = Ti.UI.createView({
         backgroundColor: "#ff7026",
         bottom: 0,
         height: 3,
         width: Titanium.UI.FILL,
         visible: "false",
-        id: "__alloyId222"
+        id: "__alloyId133"
     });
-    $.__views.__alloyId220.add($.__views.__alloyId222);
-    var __alloyId223 = [];
+    $.__views.__alloyId131.add($.__views.__alloyId133);
+    var __alloyId134 = [];
     $.__views.soccer = Ti.UI.createView({
         backgroundImage: "/images/background-home-categories-soccer.jpg",
         id: "soccer"
     });
-    __alloyId223.push($.__views.soccer);
-    $.__views.__alloyId224 = Ti.UI.createImageView({
+    __alloyId134.push($.__views.soccer);
+    $.__views.__alloyId135 = Ti.UI.createImageView({
         top: 64,
         image: "/images/icon-home-category-football.png",
-        id: "__alloyId224"
+        id: "__alloyId135"
     });
-    $.__views.soccer.add($.__views.__alloyId224);
-    $.__views.__alloyId225 = Ti.UI.createLabel({
+    $.__views.soccer.add($.__views.__alloyId135);
+    $.__views.__alloyId136 = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
         font: {
@@ -194,10 +194,10 @@ function Controller() {
         },
         top: 108,
         textid: "sport",
-        id: "__alloyId225"
+        id: "__alloyId136"
     });
-    $.__views.soccer.add($.__views.__alloyId225);
-    $.__views.__alloyId226 = Ti.UI.createLabel({
+    $.__views.soccer.add($.__views.__alloyId136);
+    $.__views.__alloyId137 = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
         font: {
@@ -207,10 +207,10 @@ function Controller() {
         },
         top: 139,
         textid: "sport_description",
-        id: "__alloyId226"
+        id: "__alloyId137"
     });
-    $.__views.soccer.add($.__views.__alloyId226);
-    $.__views.__alloyId227 = Ti.UI.createButton({
+    $.__views.soccer.add($.__views.__alloyId137);
+    $.__views.__alloyId138 = Ti.UI.createButton({
         borderRadius: 14,
         color: "white",
         tintColor: "white",
@@ -224,10 +224,10 @@ function Controller() {
         width: 230,
         height: 33,
         titleid: "new_match",
-        id: "__alloyId227"
+        id: "__alloyId138"
     });
-    $.__views.soccer.add($.__views.__alloyId227);
-    $.__views.__alloyId228 = Ti.UI.createButton({
+    $.__views.soccer.add($.__views.__alloyId138);
+    $.__views.__alloyId139 = Ti.UI.createButton({
         borderRadius: 14,
         color: "white",
         tintColor: "white",
@@ -243,10 +243,10 @@ function Controller() {
         left: 25,
         width: 110,
         titleid: "challenge",
-        id: "__alloyId228"
+        id: "__alloyId139"
     });
-    $.__views.soccer.add($.__views.__alloyId228);
-    $.__views.__alloyId229 = Ti.UI.createButton({
+    $.__views.soccer.add($.__views.__alloyId139);
+    $.__views.__alloyId140 = Ti.UI.createButton({
         borderRadius: 14,
         color: "white",
         tintColor: "white",
@@ -262,9 +262,9 @@ function Controller() {
         right: 25,
         width: 110,
         titleid: "ranking",
-        id: "__alloyId229"
+        id: "__alloyId140"
     });
-    $.__views.soccer.add($.__views.__alloyId229);
+    $.__views.soccer.add($.__views.__alloyId140);
     $.__views.popular = Ti.UI.createScrollableView({
         width: Titanium.UI.FILL,
         height: Titanium.UI.FILL,
@@ -274,25 +274,25 @@ function Controller() {
         pagingControlColor: "transparent",
         pagingControlHeight: 40,
         overlayEnabled: true,
-        views: __alloyId223,
+        views: __alloyId134,
         id: "popular"
     });
     $.__views.categories.add($.__views.popular);
-    $.__views.__alloyId230 = Ti.UI.createView({
+    $.__views.__alloyId141 = Ti.UI.createView({
         width: Titanium.UI.FILL,
         height: 20,
         top: 485,
-        id: "__alloyId230"
+        id: "__alloyId141"
     });
-    $.__views.__alloyId213.add($.__views.__alloyId230);
-    $.__views.__alloyId209 = Ti.UI.createTab({
-        window: $.__views.__alloyId210,
+    $.__views.__alloyId124.add($.__views.__alloyId141);
+    $.__views.__alloyId120 = Ti.UI.createTab({
+        window: $.__views.__alloyId121,
         titleid: "home",
-        id: "__alloyId209"
+        id: "__alloyId120"
     });
-    __alloyId208.push($.__views.__alloyId209);
+    __alloyId119.push($.__views.__alloyId120);
     $.__views.home = Ti.UI.createTabGroup({
-        tabs: __alloyId208,
+        tabs: __alloyId119,
         id: "home"
     });
     $.__views.home && $.addTopLevelView($.__views.home);

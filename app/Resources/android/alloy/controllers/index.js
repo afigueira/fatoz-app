@@ -24,7 +24,7 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.index.open();
-    Alloy.createController("game");
+    Alloy.createController("signup");
     _.extend($, exports);
 }
 

@@ -1,3 +1,3 @@
 $.index.open();
 
-Alloy.createController('game');
+Alloy.createController('signup');

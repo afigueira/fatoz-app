@@ -86,6 +86,10 @@
 	height: Titanium.UI.FILL,
 	layout: "vertical"
 },
+".resultsMarginTop": {
+	layout: "vertical",
+	top: 20
+},
 ".resultsNumber": {	
 	width: Titanium.UI.FILL,
 	height: Titanium.UI.SIZE,

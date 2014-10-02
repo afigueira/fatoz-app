@@ -48,14 +48,14 @@
 					<View class="statisticsResults">
 						<View class="resultsRow">
 							<View class="resultsCell">
-								<View layout="vertical" top="25">
+								<View class="resultsMarginTop">
 									<Label class="proximaNovaRegular resultsNumber" text="684"/>
 									<Label class="resultsTitle" textid="opponents"/>
 								</View>
 							</View>
 							
 							<View class="resultsCell">
-								<View layout="vertical" top="25">
+								<View class="resultsMarginTop">
 									<View class="withSub">
 										<Label class="proximaNovaRegular widthUiSize resultsNumber" text="684"/>
 										<Label class="resultsSub" textid="abbreviation_points"/>
@@ -67,7 +67,7 @@
 						
 						<View class="resultsRow">
 							<View class="resultsCell">
-								<View layout="vertical" top="25">
+								<View class="resultsMarginTop">
 									<View class="withSub">
 										<Label class="resultsNumber" text="0,8"/>
 										<Label class="resultsSub" textid="abbreviation_monday"/>
@@ -77,7 +77,7 @@
 							</View>
 							
 							<View class="resultsCell">
-								<View layout="vertical" top="25">
+								<View class="resultsMarginTop">
 									<View class="withSub">
 										<View class="withSub">
 											<Label class="resultsNumber" text="8"/>
