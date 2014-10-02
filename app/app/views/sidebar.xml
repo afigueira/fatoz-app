@@ -1,7 +1,47 @@
 <Alloy>	
 	<Window class="container">
 		<ScrollView class="inside">
-			
+			<View class="sidebar">
+				<View class="rowSidebar firstRowSidebar">
+					<ImageView class="imageSidebar" image="/images/icon-home.png" />
+					<Label class="labelSidebar" textid="button_home" />
+				</View>
+				
+				<View class="rowSidebar">
+					<ImageView class="imageSidebar" image="/images/icon-profile.png" />
+					<Label class="labelSidebar" textid="button_profile" />
+				</View>
+				
+				<View class="rowSidebar">
+					<ImageView class="imageSidebar" image="/images/icon-categories.png" />
+					<Label class="labelSidebar" textid="button_categories" />
+				</View>
+				
+				<View class="rowSidebar">
+					<ImageView class="imageSidebar" image="/images/icon-challenges.png" />
+					<Label class="labelSidebar" textid="button_challenges" />
+				</View>
+				
+				<View class="rowSidebar">
+					<ImageView class="imageSidebar" image="/images/icon-statistics.png" />
+					<Label class="labelSidebar" textid="button_statistics" />
+				</View>
+				
+				<View class="rowSidebar">
+					<ImageView class="imageSidebar" image="/images/icon-achievements.png" />
+					<Label class="labelSidebar" textid="button_achievements" />
+				</View>
+				
+				<View class="rowSidebar">
+					<ImageView class="imageSidebar" image="/images/icon-settings.png" />
+					<Label class="labelSidebar" textid="button_settings" />
+				</View>		
+				
+				<View class="rowSidebar lastRowSidebar">
+					<ImageView class="imageSidebar" image="/images/icon-exit.png" />
+					<Label class="labelSidebar"  textid="button_exit" />
+				</View>		
+			</View>
 			
 		</ScrollView>
 	</Window>

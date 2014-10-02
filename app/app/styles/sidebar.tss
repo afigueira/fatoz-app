@@ -1,4 +1,31 @@
+".inside": {
+	layout: "vertical"	
+},
+"View": {
+	height: Titanium.UI.SIZE
+},
 
-".container" : {
-  
+".sidebar": {
+	width: Titanium.UI.SIZE,
+	layout: "vertical",	
+	backgroundColor: "#c42e24"
+},
+".rowSidebar": {
+	layout: "horizontal",
+	bottom: 34
+},
+".firstRowSidebar": {
+	top: 57
+},
+".lastRowSidebar": {
+	top: 33,
+	bottom: 57
+},
+".imageSidebar": {
+	left: 25
+},
+".labelSidebar": {
+	font: {fontFamily: "ProximaNova-Regular", fontSize: 14, fontWeight: 'bold'},	
+	color: "#ffffff",
+	left: 25
 }

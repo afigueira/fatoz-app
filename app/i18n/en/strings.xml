@@ -65,5 +65,14 @@
     <string name="button_rematch">Revanche</string>
     <string name="button_play_again">Jogar Novamente</string>
     <string name="button_challenge">Desafiar</string>
-    <string name="button_ranking">Ranking</string>    
+    <string name="button_ranking">Ranking</string>  
+    
+    <string name="button_home">Home</string>
+    <string name="button_profile">Perfil</string>
+    <string name="button_categories">Categorias</string>
+    <string name="button_challenges">Desafios</string>
+    <string name="button_statistics">Estatísticas</string>
+    <string name="button_achievements">Conquistas</string>
+    <string name="button_settings">Definições</string>
+    <string name="button_exit">Sair</string>    
 </resources>
