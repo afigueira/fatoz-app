@@ -9,7 +9,7 @@ function __processArg(obj, key) {
 
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
-    this.__controllerPath = "index";
+    this.__controllerPath = "sidebar";
     if (arguments[0]) {
         __processArg(arguments[0], "__parentSymbol");
         __processArg(arguments[0], "$model");
@@ -17,14 +17,23 @@ function Controller() {
     }
     var $ = this;
     var exports = {};
-    $.__views.index = Ti.UI.createWindow({
-        id: "index"
+    $.__views.sidebar = Ti.UI.createWindow({
+        backgroundColor: Alloy.Globals.constants.BASE_COLOR,
+        barColor: Alloy.Globals.constants.NAV_BAR_COLOR,
+        navTintColor: "white",
+        tabBarHidden: true,
+        translucent: false,
+        id: "sidebar"
     });
-    $.__views.index && $.addTopLevelView($.__views.index);
+    $.__views.sidebar && $.addTopLevelView($.__views.sidebar);
+    $.__views.__alloyId234 = Ti.UI.createScrollView({
+        backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
+        id: "__alloyId234"
+    });
+    $.__views.sidebar.add($.__views.__alloyId234);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.index.open();
-    Alloy.createController("sidebar");
+    $.sidebar.open();
     _.extend($, exports);
 }
 
