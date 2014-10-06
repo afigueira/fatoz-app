@@ -91,6 +91,10 @@
 	layout: "horizontal",
 	width: Titanium.UI.SIZE	
 },
+".layoutVertical": {
+	layout: "vertical",
+	width: Titanium.UI.SIZE	
+},
 ".layoutAbsolute": {
 	layout: "absolute",
 	width: Titanium.UI.FILL	

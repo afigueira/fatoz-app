@@ -30,7 +30,9 @@
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
 	top: 42, 
 	bottom: 42,
-	color: "#ffffff"
+	color: "#ffffff",
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.SIZE
 },
 ".containerGame": {
 	width: Titanium.UI.FILL,

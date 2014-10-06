@@ -34,7 +34,7 @@ function Controller() {
     $.__views.game.add($.__views.__alloyId82);
     $.__views.__alloyId83 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
-        layout: "horizontal",
+        layout: "vertical",
         width: Titanium.UI.SIZE,
         id: "__alloyId83"
     });
@@ -147,6 +147,8 @@ function Controller() {
         top: 42,
         bottom: 42,
         color: "#ffffff",
+        width: Titanium.UI.FILL,
+        height: Titanium.UI.SIZE,
         text: "A Qual das seguintes marcas pertence a logo abaixo?",
         id: "__alloyId95"
     });

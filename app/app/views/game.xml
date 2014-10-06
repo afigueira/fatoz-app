@@ -1,7 +1,7 @@
 <Alloy>	
 	<Window class="container">
 		<ScrollView class="inside">
-			<View class="layoutHorizontal">
+			<View class="layoutVertical">
 				<View class="score">
 					<View class="layoutAbsolute">
 						<View class="layoutHorizontal">
