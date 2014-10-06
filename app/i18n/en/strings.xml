@@ -34,12 +34,12 @@
     <string name="city_state">São Paulo, Brasil</string>
     <string name="opponents">Oponentes</string>
     <string name="average_score">Pontuação\n Média</string>
-    <string name="average_response_time">Tempo Médio de Resposta</string>
-    <string name="total_play_time">Tempo Total de Jogo</string>
+    <string name="average_response_time">Tempo Médio \nde Resposta</string>
+    <string name="total_play_time">Tempo Total \nde Jogo</string>
 	
-	<string name="abbreviation_points">Pts.</string>
-	<string name="abbreviation_monday">Seg.</string>
-	<string name="abbreviation_hour">h</string>
+	<string name="abbreviation_points"> Pts.</string>
+	<string name="abbreviation_monday"> Seg.</string>
+	<string name="abbreviation_hour">h </string>
 	<string name="abbreviation_minute">m</string>
 	
 	<string name="btn_follow">SEGUIR</string>

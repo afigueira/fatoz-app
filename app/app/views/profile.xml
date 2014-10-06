@@ -100,33 +100,52 @@
 						<TextField id="search" class="white fontGray radiusLarge proximaNovaRegular" hintText="Pesquisar" />
 					</View>
 					
-					<TableView id="friends">
-						<TableViewRow>
+					<TableView class="listFriends">
+						<TableViewRow class="rowFriends">
 							<ImageView class="imageProfile imageProfileFriends" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
-							<Label class="friendName" text="Rafael Costa"/>						
+							<Label class="friendName proximaNovaRegular" text="Tomas Lau"/>
+							
+							<View class="borderGray borderGrayProfile" />						
 					    </TableViewRow>
-					    <TableViewRow>
+					    <TableViewRow class="rowFriends">
 							<ImageView class="imageProfile imageProfileFriends" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
-							<Label class="friendName" text="Rafael Costa"/>						
+							<Label class="friendName proximaNovaRegular" text="Rafael Costa"/>
+							
+							<View class="borderGray borderGrayProfile" />						
 					    </TableViewRow>
-					    <TableViewRow>
+					    <TableViewRow class="rowFriends">
 							<ImageView class="imageProfile imageProfileFriends" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
-							<Label class="friendName" text="Rafael Costa"/>						
+							<Label class="friendName proximaNovaRegular" text="Rafael Costas"/>	
+							
+							<View class="borderGray borderGrayProfile" />
 					    </TableViewRow>					    
 					</TableView>				            
 				</View>
 				
 				<View class="profileRank">							
-	               <TableView id="rank">
-						<TableViewRow>
+	               <TableView class="listRank">
+						<TableViewRow class="rowRank">
 							<Label class="rankNumber" text="1."/>
 							<ImageView class="imageProfile imageProfileRank" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
-							<Label class="rankName" text="Rafael Costa"/>
+							<Label class="rankName" text="Rafael Costas"/>
 							<View class="rankPoint">
 								<Label class="rankPt" textid="abbreviation_points"/>
 								<Label class="rankTotal" text="12.156"/>							
 							</View>
-					    </TableViewRow>					    
+							
+							<View class="borderGray borderGrayProfile" />
+					    </TableViewRow>	
+					    <TableViewRow class="rowRank">
+							<Label class="rankNumber" text="1."/>
+							<ImageView class="imageProfile imageProfileRank" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+							<Label class="rankName" text="Rafael Costas"/>
+							<View class="rankPoint">
+								<Label class="rankPt" textid="abbreviation_points"/>
+								<Label class="rankTotal" text="12.156"/>							
+							</View>
+							
+							<View class="borderGray borderGrayProfile" />
+					    </TableViewRow>					   			    
 					</TableView>				            
 				</View>
 				

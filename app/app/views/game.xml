@@ -1,7 +1,7 @@
 <Alloy>	
 	<Window class="container">
 		<ScrollView class="inside">
-			<!--<View class="layoutHorizontal">
+			<View class="layoutHorizontal">
 				<View class="score">
 					<View class="layoutAbsolute">
 						<View class="layoutHorizontal">
@@ -69,7 +69,7 @@
 						</View>
 					</View>
 				</View>
-			</View>-->
+			</View>
 			
 			<!--<View class="layoutVertical">			
 				<View class="youWinGame">
@@ -83,6 +83,7 @@
 				</View>
 			</View> -->
 			
+			<!--
 			<View class="resultsGame">
 				<View class="playersResultGame">
 					<View class="containerImageProfileResult">
@@ -147,6 +148,7 @@
 				</View>
 			</View>
 			
+		-->
 		</ScrollView>
 	</Window>
 </Alloy>

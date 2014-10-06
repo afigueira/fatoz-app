@@ -124,40 +124,88 @@
 ".profileFriends": {
 	width: Titanium.UI.FILL,
 	height: Titanium.UI.FILL,
-	layout: "vertical"
+	layout: "vertical",
+	backgroundColor: "#f0f0f0"
+},
+"#containerSearch": {
+	height: 60,
+	width: Titanium.UI.FILL,
+	backgroundColor: "#888888"
+},
+"#search": {
+	height: 30,
+	width: Titanium.UI.FILL,
+	left: 10,
+	right: 10
+},
+".listFriends":{
+	
+},
+".rowFriends": {
+	width: Titanium.UI.FILL,
+	height: 75
 },
 ".imageProfileFriends": {
 	top: 10,
 	left: 10,
-	bottom: 10	
+	bottom: 10,
+	width: 45,
+	height: 45,
+	borderRadius: 23	
 },
 ".friendName": {
-	left: 94
+	left: 65,
+	font: {fontSize: 20},
+	color: "#383838"
 },
+".borderGrayProfile": {
+	width: Titanium.UI.FILL,
+	height: 1,
+	bottom: 0
+}
 
 
 ".profileRank": {
 	width: Titanium.UI.FILL,
 	height: Titanium.UI.FILL,
-	layout: "vertical"
+	layout: "vertical",
+	backgroundColor: "#f0f0f0"
+},
+".listRank": {
+},
+".rowRank": {
+	width: Titanium.UI.FILL,
+	height: 75
 },
 ".rankNumber": {
 	width: 50,
 	left: 0,
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	font: {fontSize: 20},
+	color: "#888888"
 },
 ".imageProfileRank": {
-	left: 50
+	left: 50,
+	width: 45,
+	height: 45,
+	borderRadius: 23
 },
 ".rankName": {
-	left: 124
+	left: 105,
+	font: {fontSize: 20},
+	color: "#383838"
 },
 ".rankPoint": {
 	right: 10,
 	width: Titanium.UI.SIZE,
 	layout: "horizontal"
 },
-
+".rankPt": {
+	
+},
+".rankTotal": {
+	
+},
 ".profileConquer": {
 	width: Titanium.UI.FILL,
 	height: Titanium.UI.FILL,
