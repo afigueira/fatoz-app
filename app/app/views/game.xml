@@ -37,7 +37,10 @@
 							
 							<View class="contentGame">
 														
-								<ImageView class="imageGame" width="228" height="150" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+								<View class="imageGame">
+									<ImageView image="/images/trophy.png" />
+									<Label class="labelImageGame" text="No céu tem pão?" />
+								</View>
 								
 								<View class="optionGame">
 									<View class="layoutHorizontal">

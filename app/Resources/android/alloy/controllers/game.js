@@ -186,9 +186,9 @@ function Controller() {
     $.__views.__alloyId100 = Ti.UI.createImageView({
         borderWidth: 2,
         borderColor: "#ffffff",
-        width: 50,
-        height: 50,
-        borderRadius: 25,
+        width: 29,
+        height: 29,
+        borderRadius: 15,
         bottom: 175,
         zIndex: 1,
         backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg",
@@ -197,9 +197,9 @@ function Controller() {
     $.__views.__alloyId99.add($.__views.__alloyId100);
     $.__views.__alloyId101 = Ti.UI.createView({
         height: 325,
-        width: 34,
+        width: 21,
         borderRadius: 20,
-        borderWidth: 4,
+        borderWidth: 2,
         borderColor: "#1e1e1e",
         backgroundColor: "#1e1e1e",
         id: "__alloyId101"
@@ -220,30 +220,45 @@ function Controller() {
         id: "__alloyId103"
     });
     $.__views.__alloyId98.add($.__views.__alloyId103);
-    $.__views.__alloyId104 = Ti.UI.createImageView({
+    $.__views.__alloyId104 = Ti.UI.createView({
+        height: 150,
         borderRadius: 3,
         bottom: 30,
-        width: "228",
-        height: "150",
-        backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg",
+        width: 228,
+        backgroundColor: "#ffffff",
         id: "__alloyId104"
     });
     $.__views.__alloyId103.add($.__views.__alloyId104);
-    $.__views.__alloyId105 = Ti.UI.createView({
+    $.__views.__alloyId105 = Ti.UI.createImageView({
+        image: "/images/trophy.png",
+        id: "__alloyId105"
+    });
+    $.__views.__alloyId104.add($.__views.__alloyId105);
+    $.__views.__alloyId106 = Ti.UI.createLabel({
+        font: {
+            fontSize: 14,
+            fontWeight: "bold"
+        },
+        color: "#383838",
+        text: "No céu tem pão?",
+        id: "__alloyId106"
+    });
+    $.__views.__alloyId104.add($.__views.__alloyId106);
+    $.__views.__alloyId107 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         width: Titanium.UI.SIZE,
         layout: "vertical",
-        id: "__alloyId105"
+        id: "__alloyId107"
     });
-    $.__views.__alloyId103.add($.__views.__alloyId105);
-    $.__views.__alloyId106 = Ti.UI.createView({
+    $.__views.__alloyId103.add($.__views.__alloyId107);
+    $.__views.__alloyId108 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         layout: "horizontal",
         width: Titanium.UI.SIZE,
-        id: "__alloyId106"
+        id: "__alloyId108"
     });
-    $.__views.__alloyId105.add($.__views.__alloyId106);
-    $.__views.__alloyId107 = Ti.UI.createButton({
+    $.__views.__alloyId107.add($.__views.__alloyId108);
+    $.__views.__alloyId109 = Ti.UI.createButton({
         width: 107,
         height: 70,
         font: {
@@ -256,10 +271,10 @@ function Controller() {
         bottom: 10,
         right: 10,
         title: "Apple",
-        id: "__alloyId107"
+        id: "__alloyId109"
     });
-    $.__views.__alloyId106.add($.__views.__alloyId107);
-    $.__views.__alloyId108 = Ti.UI.createButton({
+    $.__views.__alloyId108.add($.__views.__alloyId109);
+    $.__views.__alloyId110 = Ti.UI.createButton({
         width: 107,
         height: 70,
         font: {
@@ -271,17 +286,17 @@ function Controller() {
         borderRadius: 3,
         bottom: 10,
         title: "Apple Computer inc.",
-        id: "__alloyId108"
+        id: "__alloyId110"
     });
-    $.__views.__alloyId106.add($.__views.__alloyId108);
-    $.__views.__alloyId109 = Ti.UI.createView({
+    $.__views.__alloyId108.add($.__views.__alloyId110);
+    $.__views.__alloyId111 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         layout: "horizontal",
         width: Titanium.UI.SIZE,
-        id: "__alloyId109"
+        id: "__alloyId111"
     });
-    $.__views.__alloyId105.add($.__views.__alloyId109);
-    $.__views.__alloyId110 = Ti.UI.createButton({
+    $.__views.__alloyId107.add($.__views.__alloyId111);
+    $.__views.__alloyId112 = Ti.UI.createButton({
         width: 107,
         height: 70,
         font: {
@@ -294,10 +309,10 @@ function Controller() {
         bottom: 10,
         right: 10,
         title: "Apple",
-        id: "__alloyId110"
+        id: "__alloyId112"
     });
-    $.__views.__alloyId109.add($.__views.__alloyId110);
-    $.__views.__alloyId111 = Ti.UI.createButton({
+    $.__views.__alloyId111.add($.__views.__alloyId112);
+    $.__views.__alloyId113 = Ti.UI.createButton({
         width: 107,
         height: 70,
         font: {
@@ -309,10 +324,10 @@ function Controller() {
         borderRadius: 3,
         bottom: 10,
         title: "Apple Computer inc.",
-        id: "__alloyId111"
+        id: "__alloyId113"
     });
-    $.__views.__alloyId109.add($.__views.__alloyId111);
-    $.__views.__alloyId112 = Ti.UI.createLabel({
+    $.__views.__alloyId111.add($.__views.__alloyId113);
+    $.__views.__alloyId114 = Ti.UI.createLabel({
         font: {
             fontFamily: "ProximaNova-Regular",
             fontSize: 14
@@ -324,17 +339,17 @@ function Controller() {
         top: 70,
         bottom: 15,
         textid: "last_round",
-        id: "__alloyId112"
+        id: "__alloyId114"
     });
-    $.__views.__alloyId103.add($.__views.__alloyId112);
-    $.__views.__alloyId113 = Ti.UI.createView({
+    $.__views.__alloyId103.add($.__views.__alloyId114);
+    $.__views.__alloyId115 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         layout: "horizontal",
         width: Titanium.UI.SIZE,
-        id: "__alloyId113"
+        id: "__alloyId115"
     });
-    $.__views.__alloyId103.add($.__views.__alloyId113);
-    $.__views.__alloyId114 = Ti.UI.createLabel({
+    $.__views.__alloyId103.add($.__views.__alloyId115);
+    $.__views.__alloyId116 = Ti.UI.createLabel({
         font: {
             fontFamily: "ProximaNova-Regular",
             fontSize: 40
@@ -342,10 +357,10 @@ function Controller() {
         color: "#ffffff",
         height: Titanium.UI.SIZE,
         textid: "round",
-        id: "__alloyId114"
+        id: "__alloyId116"
     });
-    $.__views.__alloyId113.add($.__views.__alloyId114);
-    $.__views.__alloyId115 = Ti.UI.createLabel({
+    $.__views.__alloyId115.add($.__views.__alloyId116);
+    $.__views.__alloyId117 = Ti.UI.createLabel({
         font: {
             fontFamily: "ProximaNova-Regular",
             fontSize: 40
@@ -353,48 +368,48 @@ function Controller() {
         color: "#ffffff",
         height: Titanium.UI.SIZE,
         text: " 5",
-        id: "__alloyId115"
+        id: "__alloyId117"
     });
-    $.__views.__alloyId113.add($.__views.__alloyId115);
-    $.__views.__alloyId116 = Ti.UI.createView({
+    $.__views.__alloyId115.add($.__views.__alloyId117);
+    $.__views.__alloyId118 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         width: Titanium.UI.SIZE,
         top: 0,
         left: 10,
         right: 10,
-        id: "__alloyId116"
+        id: "__alloyId118"
     });
-    $.__views.__alloyId98.add($.__views.__alloyId116);
-    $.__views.__alloyId117 = Ti.UI.createImageView({
+    $.__views.__alloyId98.add($.__views.__alloyId118);
+    $.__views.__alloyId119 = Ti.UI.createImageView({
         borderWidth: 2,
         borderColor: "#ffffff",
-        width: 50,
-        height: 50,
-        borderRadius: 25,
+        width: 29,
+        height: 29,
+        borderRadius: 15,
         bottom: 175,
         zIndex: 1,
         backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg",
-        id: "__alloyId117"
+        id: "__alloyId119"
     });
-    $.__views.__alloyId116.add($.__views.__alloyId117);
-    $.__views.__alloyId118 = Ti.UI.createView({
+    $.__views.__alloyId118.add($.__views.__alloyId119);
+    $.__views.__alloyId120 = Ti.UI.createView({
         height: 325,
-        width: 34,
+        width: 21,
         borderRadius: 20,
-        borderWidth: 4,
+        borderWidth: 2,
         borderColor: "#1e1e1e",
         backgroundColor: "#1e1e1e",
-        id: "__alloyId118"
+        id: "__alloyId120"
     });
-    $.__views.__alloyId116.add($.__views.__alloyId118);
-    $.__views.__alloyId119 = Ti.UI.createView({
+    $.__views.__alloyId118.add($.__views.__alloyId120);
+    $.__views.__alloyId121 = Ti.UI.createView({
         height: 200,
         width: Titanium.UI.FILL,
         backgroundColor: "#41b6da",
         bottom: 0,
-        id: "__alloyId119"
+        id: "__alloyId121"
     });
-    $.__views.__alloyId118.add($.__views.__alloyId119);
+    $.__views.__alloyId120.add($.__views.__alloyId121);
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.game.open();
