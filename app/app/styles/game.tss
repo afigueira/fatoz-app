@@ -41,8 +41,8 @@
 ".progressGame": {	
 	width: Titanium.UI.SIZE,
 	top: 0,
-	left: 10,
-	right: 10
+	left: 4,
+	right: 4
 },
 ".imageProfile": {	
 	borderWidth: 2,
@@ -51,7 +51,7 @@
 ".progressBar": {
 	width: 21,
 	height: 325,
-	borderRadius: 20,
+	borderRadius: 10,
 	borderWidth: 2,
 	borderColor: "#1e1e1e",
 	backgroundColor: "#1e1e1e",
@@ -72,7 +72,9 @@
 ".contentGame": {	
 	width: Titanium.UI.SIZE,
 	height: Titanium.UI.FILL,
-	layout: "vertical"
+	layout: "vertical",
+	left: 5,
+	right: 5
 },
 ".imageGame": {
 	borderRadius: 3,

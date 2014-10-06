@@ -201,10 +201,11 @@
 	layout: "horizontal"
 },
 ".rankPt": {
-	
+	font: {fontSize: 20},
+	color: "#666666"
 },
 ".rankTotal": {
-	
+	color: "#e33124"
 },
 ".profileConquer": {
 	width: Titanium.UI.FILL,

@@ -55,11 +55,11 @@
 								</View>
 							
 							
-								<Label textid="last_round" class="proximaNovaRegular lastRoundGame" />
+								<!--<Label textid="last_round" class="proximaNovaRegular lastRoundGame" />
 								<View class="layoutHorizontal">
 									<Label textid="round" class="proximaNovaRegular roundGame" />
 									<Label text=" 5" class="proximaNovaRegular roundGame" />		
-								</View>
+								</View>-->
 							</View>
 							
 							<View class="progressGame">
