@@ -278,6 +278,7 @@ function Controller() {
     $.__views.__alloyId167 = Ti.UI.createView({
         height: 1,
         borderColor: "#c2c2c2",
+        backgroundColor: "#c2c2c2",
         borderWidth: 1,
         id: "__alloyId167"
     });
@@ -295,6 +296,7 @@ function Controller() {
     $.__views.__alloyId170 = Ti.UI.createView({
         height: 1,
         borderColor: "#c2c2c2",
+        backgroundColor: "#c2c2c2",
         borderWidth: 1,
         id: "__alloyId170"
     });
@@ -604,8 +606,6 @@ function Controller() {
         borderWidth: 2,
         borderColor: "#ffffff",
         left: 10,
-        top: 10,
-        bottom: 10,
         backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg",
         id: "__alloyId204"
     });
@@ -624,6 +624,7 @@ function Controller() {
     $.__views.__alloyId206 = Ti.UI.createView({
         height: 1,
         borderColor: "#c2c2c2",
+        backgroundColor: "#c2c2c2",
         borderWidth: 1,
         width: Titanium.UI.FILL,
         bottom: 0,
@@ -643,8 +644,6 @@ function Controller() {
         borderWidth: 2,
         borderColor: "#ffffff",
         left: 10,
-        top: 10,
-        bottom: 10,
         backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg",
         id: "__alloyId208"
     });
@@ -663,6 +662,7 @@ function Controller() {
     $.__views.__alloyId210 = Ti.UI.createView({
         height: 1,
         borderColor: "#c2c2c2",
+        backgroundColor: "#c2c2c2",
         borderWidth: 1,
         width: Titanium.UI.FILL,
         bottom: 0,
@@ -682,8 +682,6 @@ function Controller() {
         borderWidth: 2,
         borderColor: "#ffffff",
         left: 10,
-        top: 10,
-        bottom: 10,
         backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg",
         id: "__alloyId212"
     });
@@ -702,6 +700,7 @@ function Controller() {
     $.__views.__alloyId214 = Ti.UI.createView({
         height: 1,
         borderColor: "#c2c2c2",
+        backgroundColor: "#c2c2c2",
         borderWidth: 1,
         width: Titanium.UI.FILL,
         bottom: 0,
@@ -729,21 +728,22 @@ function Controller() {
     });
     __alloyId217.push($.__views.__alloyId218);
     $.__views.__alloyId219 = Ti.UI.createLabel({
+        font: {
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 12
+        },
         width: 50,
         left: 0,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-        font: {
-            fontSize: 20
-        },
         color: "#888888",
         text: "1.",
         id: "__alloyId219"
     });
     $.__views.__alloyId218.add($.__views.__alloyId219);
     $.__views.__alloyId220 = Ti.UI.createImageView({
-        width: 45,
-        height: 45,
-        borderRadius: 23,
+        width: 29,
+        height: 29,
+        borderRadius: 15,
         borderWidth: 2,
         borderColor: "#ffffff",
         left: 50,
@@ -752,10 +752,12 @@ function Controller() {
     });
     $.__views.__alloyId218.add($.__views.__alloyId220);
     $.__views.__alloyId221 = Ti.UI.createLabel({
-        left: 105,
         font: {
-            fontSize: 20
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 12,
+            fontWeight: "bold"
         },
+        left: 94,
         color: "#383838",
         text: "Rafael Costas",
         id: "__alloyId221"
@@ -763,7 +765,7 @@ function Controller() {
     $.__views.__alloyId218.add($.__views.__alloyId221);
     $.__views.__alloyId222 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
-        right: 10,
+        right: 20,
         width: Titanium.UI.SIZE,
         layout: "horizontal",
         id: "__alloyId222"
@@ -771,7 +773,8 @@ function Controller() {
     $.__views.__alloyId218.add($.__views.__alloyId222);
     $.__views.__alloyId223 = Ti.UI.createLabel({
         font: {
-            fontSize: 20
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 12
         },
         color: "#666666",
         textid: "abbreviation_points",
@@ -779,6 +782,11 @@ function Controller() {
     });
     $.__views.__alloyId222.add($.__views.__alloyId223);
     $.__views.__alloyId224 = Ti.UI.createLabel({
+        font: {
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 15,
+            fontWeight: "bold"
+        },
         color: "#e33124",
         text: "12.156",
         id: "__alloyId224"
@@ -787,6 +795,7 @@ function Controller() {
     $.__views.__alloyId225 = Ti.UI.createView({
         height: 1,
         borderColor: "#c2c2c2",
+        backgroundColor: "#c2c2c2",
         borderWidth: 1,
         width: Titanium.UI.FILL,
         bottom: 0,
@@ -800,21 +809,22 @@ function Controller() {
     });
     __alloyId217.push($.__views.__alloyId226);
     $.__views.__alloyId227 = Ti.UI.createLabel({
+        font: {
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 12
+        },
         width: 50,
         left: 0,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-        font: {
-            fontSize: 20
-        },
         color: "#888888",
         text: "1.",
         id: "__alloyId227"
     });
     $.__views.__alloyId226.add($.__views.__alloyId227);
     $.__views.__alloyId228 = Ti.UI.createImageView({
-        width: 45,
-        height: 45,
-        borderRadius: 23,
+        width: 29,
+        height: 29,
+        borderRadius: 15,
         borderWidth: 2,
         borderColor: "#ffffff",
         left: 50,
@@ -823,10 +833,12 @@ function Controller() {
     });
     $.__views.__alloyId226.add($.__views.__alloyId228);
     $.__views.__alloyId229 = Ti.UI.createLabel({
-        left: 105,
         font: {
-            fontSize: 20
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 12,
+            fontWeight: "bold"
         },
+        left: 94,
         color: "#383838",
         text: "Rafael Costas",
         id: "__alloyId229"
@@ -834,7 +846,7 @@ function Controller() {
     $.__views.__alloyId226.add($.__views.__alloyId229);
     $.__views.__alloyId230 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
-        right: 10,
+        right: 20,
         width: Titanium.UI.SIZE,
         layout: "horizontal",
         id: "__alloyId230"
@@ -842,7 +854,8 @@ function Controller() {
     $.__views.__alloyId226.add($.__views.__alloyId230);
     $.__views.__alloyId231 = Ti.UI.createLabel({
         font: {
-            fontSize: 20
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 12
         },
         color: "#666666",
         textid: "abbreviation_points",
@@ -850,6 +863,11 @@ function Controller() {
     });
     $.__views.__alloyId230.add($.__views.__alloyId231);
     $.__views.__alloyId232 = Ti.UI.createLabel({
+        font: {
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 15,
+            fontWeight: "bold"
+        },
         color: "#e33124",
         text: "12.156",
         id: "__alloyId232"
@@ -858,6 +876,7 @@ function Controller() {
     $.__views.__alloyId233 = Ti.UI.createView({
         height: 1,
         borderColor: "#c2c2c2",
+        backgroundColor: "#c2c2c2",
         borderWidth: 1,
         width: Titanium.UI.FILL,
         bottom: 0,
@@ -873,6 +892,7 @@ function Controller() {
         height: Titanium.UI.FILL,
         width: Titanium.UI.FILL,
         layout: "vertical",
+        backgroundColor: "#f0f0f0",
         id: "__alloyId234"
     });
     __alloyId163.push($.__views.__alloyId234);
@@ -882,27 +902,30 @@ function Controller() {
     });
     __alloyId235.push($.__views.__alloyId236);
     $.__views.__alloyId237 = Ti.UI.createImageView({
-        width: 64,
-        height: 64,
-        borderRadius: 324,
-        borderWidth: 2,
-        borderColor: "#ffffff",
-        left: 10,
-        top: 10,
-        bottom: 10,
-        backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg",
+        top: 20,
+        left: 20,
+        bottom: 20,
+        width: 75,
+        height: 75,
+        image: "/images/conquer-master-of-chemistry.png",
         id: "__alloyId237"
     });
     $.__views.__alloyId236.add($.__views.__alloyId237);
     $.__views.__alloyId238 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
-        left: 84,
+        left: 115,
         layout: "vertical",
         id: "__alloyId238"
     });
     $.__views.__alloyId236.add($.__views.__alloyId238);
     $.__views.__alloyId239 = Ti.UI.createLabel({
+        font: {
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 15,
+            fontWeight: "bold"
+        },
         left: 0,
+        color: "#383838",
         text: "Mestre da Quimica",
         id: "__alloyId239"
     });
@@ -916,40 +939,180 @@ function Controller() {
     });
     $.__views.__alloyId238.add($.__views.__alloyId240);
     $.__views.__alloyId241 = Ti.UI.createLabel({
+        font: {
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 12
+        },
+        right: 5,
+        color: "#ff7026",
         text: "182",
         id: "__alloyId241"
     });
     $.__views.__alloyId240.add($.__views.__alloyId241);
     $.__views.__alloyId242 = Ti.UI.createLabel({
+        font: {
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 12
+        },
+        color: "#666666",
         text: "Pontos em Ciência",
         id: "__alloyId242"
     });
     $.__views.__alloyId240.add($.__views.__alloyId242);
     $.__views.__alloyId243 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
+        top: 19,
         layout: "horizontal",
         id: "__alloyId243"
     });
     $.__views.__alloyId238.add($.__views.__alloyId243);
     $.__views.__alloyId244 = Ti.UI.createLabel({
+        font: {
+            fontSize: 8,
+            fontWeight: "bold"
+        },
+        color: "#8bc100",
+        right: 6,
         text: "100%",
         id: "__alloyId244"
     });
     $.__views.__alloyId243.add($.__views.__alloyId244);
     $.__views.__alloyId245 = Ti.UI.createView({
-        height: 5,
-        width: 100,
-        backgroundColor: "red",
+        height: 8,
+        width: 158,
+        borderRadius: 4,
+        borderWidth: 2,
+        borderColor: "#383838",
+        backgroundColor: "#383838",
         id: "__alloyId245"
     });
     $.__views.__alloyId243.add($.__views.__alloyId245);
     $.__views.__alloyId246 = Ti.UI.createView({
-        height: Titanium.UI.FILL,
-        width: 60,
-        backgrounColor: "green",
+        height: 8,
+        width: 140,
+        backgroundColor: "#8dc400",
+        left: 0,
         id: "__alloyId246"
     });
     $.__views.__alloyId245.add($.__views.__alloyId246);
+    $.__views.__alloyId247 = Ti.UI.createView({
+        height: 1,
+        borderColor: "#c2c2c2",
+        backgroundColor: "#c2c2c2",
+        borderWidth: 1,
+        width: Titanium.UI.FILL,
+        bottom: 0,
+        id: "__alloyId247"
+    });
+    $.__views.__alloyId236.add($.__views.__alloyId247);
+    $.__views.__alloyId248 = Ti.UI.createTableViewRow({
+        id: "__alloyId248"
+    });
+    __alloyId235.push($.__views.__alloyId248);
+    $.__views.__alloyId249 = Ti.UI.createImageView({
+        top: 20,
+        left: 20,
+        bottom: 20,
+        width: 75,
+        height: 75,
+        image: "/images/conquer-master-of-chemistry.png",
+        id: "__alloyId249"
+    });
+    $.__views.__alloyId248.add($.__views.__alloyId249);
+    $.__views.__alloyId250 = Ti.UI.createView({
+        height: Titanium.UI.SIZE,
+        left: 115,
+        layout: "vertical",
+        id: "__alloyId250"
+    });
+    $.__views.__alloyId248.add($.__views.__alloyId250);
+    $.__views.__alloyId251 = Ti.UI.createLabel({
+        font: {
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 15,
+            fontWeight: "bold"
+        },
+        left: 0,
+        color: "#383838",
+        text: "Mestre da Quimica",
+        id: "__alloyId251"
+    });
+    $.__views.__alloyId250.add($.__views.__alloyId251);
+    $.__views.__alloyId252 = Ti.UI.createView({
+        height: Titanium.UI.SIZE,
+        layout: "horizontal",
+        width: Titanium.UI.SIZE,
+        left: 0,
+        id: "__alloyId252"
+    });
+    $.__views.__alloyId250.add($.__views.__alloyId252);
+    $.__views.__alloyId253 = Ti.UI.createLabel({
+        font: {
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 12
+        },
+        right: 5,
+        color: "#ff7026",
+        text: "182",
+        id: "__alloyId253"
+    });
+    $.__views.__alloyId252.add($.__views.__alloyId253);
+    $.__views.__alloyId254 = Ti.UI.createLabel({
+        font: {
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 12
+        },
+        color: "#666666",
+        text: "Pontos em Ciência",
+        id: "__alloyId254"
+    });
+    $.__views.__alloyId252.add($.__views.__alloyId254);
+    $.__views.__alloyId255 = Ti.UI.createView({
+        height: Titanium.UI.SIZE,
+        top: 19,
+        layout: "horizontal",
+        id: "__alloyId255"
+    });
+    $.__views.__alloyId250.add($.__views.__alloyId255);
+    $.__views.__alloyId256 = Ti.UI.createLabel({
+        font: {
+            fontSize: 8,
+            fontWeight: "bold"
+        },
+        color: "#8bc100",
+        right: 6,
+        text: "100%",
+        id: "__alloyId256"
+    });
+    $.__views.__alloyId255.add($.__views.__alloyId256);
+    $.__views.__alloyId257 = Ti.UI.createView({
+        height: 8,
+        width: 158,
+        borderRadius: 4,
+        borderWidth: 2,
+        borderColor: "#383838",
+        backgroundColor: "#383838",
+        id: "__alloyId257"
+    });
+    $.__views.__alloyId255.add($.__views.__alloyId257);
+    $.__views.__alloyId258 = Ti.UI.createView({
+        height: 8,
+        width: 140,
+        backgroundColor: "#8dc400",
+        left: 0,
+        id: "__alloyId258"
+    });
+    $.__views.__alloyId257.add($.__views.__alloyId258);
+    $.__views.__alloyId259 = Ti.UI.createView({
+        height: 1,
+        borderColor: "#c2c2c2",
+        backgroundColor: "#c2c2c2",
+        borderWidth: 1,
+        width: Titanium.UI.FILL,
+        bottom: 0,
+        id: "__alloyId259"
+    });
+    $.__views.__alloyId248.add($.__views.__alloyId259);
     $.__views.conquer = Ti.UI.createTableView({
         data: __alloyId235,
         id: "conquer"

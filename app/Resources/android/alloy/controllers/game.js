@@ -133,6 +133,7 @@ function Controller() {
     $.__views.__alloyId94 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         borderColor: "#0e0e0e",
+        backgroundColor: "#0e0e0e",
         borderWidth: 1,
         id: "__alloyId94"
     });

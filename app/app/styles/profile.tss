@@ -146,9 +146,7 @@
 	height: 75
 },
 ".imageProfileFriends": {
-	top: 10,
 	left: 10,
-	bottom: 10,
 	width: 45,
 	height: 45,
 	borderRadius: 23	
@@ -181,68 +179,94 @@
 	width: 50,
 	left: 0,
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-	font: {fontSize: 20},
+	font: {fontSize: 12},
 	color: "#888888"
 },
 ".imageProfileRank": {
 	left: 50,
-	width: 45,
-	height: 45,
-	borderRadius: 23
+	width: 29,
+	height: 29,
+	borderRadius: 15
 },
 ".rankName": {
-	left: 105,
-	font: {fontSize: 20},
+	left: 94,
+	font: {fontSize: 12, fontWeight: 'bold'},
 	color: "#383838"
 },
 ".rankPoint": {
-	right: 10,
+	right: 20,
 	width: Titanium.UI.SIZE,
 	layout: "horizontal"
 },
 ".rankPt": {
-	font: {fontSize: 20},
+	font: {fontSize: 12},
 	color: "#666666"
 },
 ".rankTotal": {
-	color: "#e33124"
+	color: "#e33124",
+	font: {fontSize: 15, fontWeight: 'bold'}
 },
 ".profileConquer": {
 	width: Titanium.UI.FILL,
 	height: Titanium.UI.FILL,
-	layout: "vertical"
+	layout: "vertical",
+	backgroundColor: "#f0f0f0"
 },
-".imageProfileConquer": {
-	top: 10,
-	left: 10,
-	bottom: 10
+".imageConquer": {
+	top: 20,
+	left: 20,
+	bottom: 20,
+	width: 75,
+	height: 75
 },
 ".rightContentConquer": {
-	left: 84,
+	left: 115,
 	layout: "vertical"
 },
 ".conquerTitle": {	
-	left: 0
+	left: 0,
+	font: {fontSize: 15, fontWeight: 'bold'},
+	color: "#383838"
 },
 ".percentConquer": {
+	top: 19,
 	layout: "horizontal"	
 },
+".percentNumber": {
+	font: {fontSize: 8, fontWeight: 'bold'},
+	color: "#8bc100",
+	right: 6
+},
 ".numberConquer": {
-	
+	right: 5,
+	font: {fontSize: 12},
+	color: "#ff7026"
 },
 ".ptConquer": {
-	
+	font: {fontSize: 12},
+	color: "#666666"
 },
-".percentBorder":{
-	width: 100,
-	height: 5,
-	backgroundColor: "red"
+".progressBar": {
+	width: 158,
+	height: 8,
+	borderRadius: 4,
+	borderWidth: 2,
+	borderColor: "#383838",
+	backgroundColor: "#383838",
 },
 ".percentBar": {
-	width: 60,
-	height: Titanium.UI.FILL,
-	backgrounColor: "green"
+	width: 140,
+	backgroundColor: "#8dc400",
+	height: 8,	
+	left: 0
+},
+".borderGrayConquer": {
+	width: Titanium.UI.FILL,
+	height: 1,
+	bottom: 0 
 }
+
+
 
 
 

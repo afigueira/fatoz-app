@@ -68,10 +68,12 @@
 },
 ".borderGray": {
 	borderColor: "#c2c2c2",
+	backgroundColor: "#c2c2c2",
 	borderWidth: 1
 },
 ".borderGrayDark": {
 	borderColor: "#0e0e0e",
+	backgroundColor: "#0e0e0e",
 	borderWidth: 1
 },
 ".borderBottom": {

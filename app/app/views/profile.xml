@@ -125,50 +125,74 @@
 				<View class="profileRank">							
 	               <TableView class="listRank">
 						<TableViewRow class="rowRank">
-							<Label class="rankNumber" text="1."/>
+							<Label class="rankNumber proximaNovaRegular" text="1."/>
 							<ImageView class="imageProfile imageProfileRank" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
-							<Label class="rankName" text="Rafael Costas"/>
+							<Label class="rankName proximaNovaRegular" text="Rafael Costas"/>
 							<View class="rankPoint">
-								<Label class="rankPt" textid="abbreviation_points"/>
-								<Label class="rankTotal" text="12.156"/>							
+								<Label class="rankPt proximaNovaRegular" textid="abbreviation_points"/>
+								<Label class="rankTotal proximaNovaRegular" text="12.156"/>							
 							</View>
 							
 							<View class="borderGray borderGrayProfile" />
-					    </TableViewRow>	
+					    </TableViewRow>
 					    <TableViewRow class="rowRank">
-							<Label class="rankNumber" text="1."/>
+							<Label class="rankNumber proximaNovaRegular" text="1."/>
 							<ImageView class="imageProfile imageProfileRank" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
-							<Label class="rankName" text="Rafael Costas"/>
+							<Label class="rankName proximaNovaRegular" text="Rafael Costas"/>
 							<View class="rankPoint">
-								<Label class="rankPt" textid="abbreviation_points"/>
-								<Label class="rankTotal" text="12.156"/>							
+								<Label class="rankPt proximaNovaRegular" textid="abbreviation_points"/>
+								<Label class="rankTotal proximaNovaRegular" text="12.156"/>							
 							</View>
 							
 							<View class="borderGray borderGrayProfile" />
-					    </TableViewRow>					   			    
+					    </TableViewRow>						   				   			    
 					</TableView>				            
 				</View>
 				
 				<View class="profileConquer">							
 	               <TableView id="conquer">
 						<TableViewRow>						
-							<ImageView class="imageProfile imageProfileConquer" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+							<ImageView class="imageConquer" image="/images/conquer-master-of-chemistry.png" />
 							
 							<View class="rightContentConquer">
-								<Label class="conquerTitle" text="Mestre da Quimica"/>
+								<Label class="conquerTitle proximaNovaRegular" text="Mestre da Quimica"/>
 								<View class="layoutHorizontal left0">
-										<Label class="numberConquer" text="182"/>
-										<Label class="ptConquer" text="Pontos em Ciência"/>									
+										<Label class="numberConquer proximaNovaRegular" text="182"/>
+										<Label class="ptConquer proximaNovaRegular" text="Pontos em Ciência"/>									
 								</View>																	
 								
 								<View class="percentConquer">
 									<Label class="percentNumber" text="100%"/>
 									
-									<View class="percentBorder">
+									<View class="progressBar">
 										<View class="percentBar"/>
 									</View>
 								</View>
 							</View>
+							
+							<View class="borderGray borderGrayConquer" />
+					    </TableViewRow>
+					    
+					    <TableViewRow>						
+							<ImageView class="imageConquer" image="/images/conquer-master-of-chemistry.png" />
+							
+							<View class="rightContentConquer">
+								<Label class="conquerTitle proximaNovaRegular" text="Mestre da Quimica"/>
+								<View class="layoutHorizontal left0">
+										<Label class="numberConquer proximaNovaRegular" text="182"/>
+										<Label class="ptConquer proximaNovaRegular" text="Pontos em Ciência"/>									
+								</View>																	
+								
+								<View class="percentConquer">
+									<Label class="percentNumber" text="100%"/>
+									
+									<View class="progressBar">
+										<View class="percentBar"/>
+									</View>
+								</View>
+							</View>
+							
+							<View class="borderGray borderGrayConquer" />
 					    </TableViewRow>
 					</TableView>				            
 				</View>
