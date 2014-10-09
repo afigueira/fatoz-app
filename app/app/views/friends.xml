@@ -1,0 +1,32 @@
+<Alloy>	
+	<Window class="container">
+		<ScrollView class="inside">
+			<View class="profileFriends">
+					<View id="containerSearch" class="black">
+						<TextField id="search" class="white fontGray radiusLarge proximaNovaRegular" hintText="Pesquisar" />
+					</View>
+					
+					<TableView class="listFriends">
+						<TableViewRow class="rowFriends">
+							<ImageView class="imageProfile imageProfileFriends" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+							<Label class="friendName proximaNovaRegular" text="Tomas Lau"/>
+							
+							<Button class="btnOrange btnAccept" title="ACEITAR" />							
+							
+							<View class="borderGray borderGrayProfile" />						
+					    </TableViewRow>
+					    
+					    <TableViewRow class="rowFriends">
+							<ImageView class="imageProfile imageProfileFriends" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+							<Label class="friendName proximaNovaRegular" text="Tomas Lau"/>
+							
+							
+							<Button class="btnBlue btnPlay" title="JOGAR" />
+							
+							<View class="borderGray borderGrayProfile" />						
+					    </TableViewRow>					  		    
+					</TableView>				            
+				</View>
+		</ScrollView>
+	</Window>
+</Alloy>

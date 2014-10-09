@@ -17,41 +17,41 @@ function Controller() {
     }
     var $ = this;
     var exports = {};
-    var __alloyId286 = [];
-    $.__views.__alloyId288 = Ti.UI.createWindow({
+    var __alloyId299 = [];
+    $.__views.__alloyId301 = Ti.UI.createWindow({
         backgroundColor: Alloy.Globals.constants.BASE_COLOR,
         barColor: Alloy.Globals.constants.NAV_BAR_COLOR,
         navTintColor: "white",
         tabBarHidden: true,
         translucent: false,
-        id: "__alloyId288"
+        id: "__alloyId301"
     });
     $.__views.back = Ti.UI.createButton({
         image: "/images/button-back.png",
         id: "back"
     });
-    $.__views.__alloyId288.leftNavButton = $.__views.back;
-    $.__views.__alloyId291 = Ti.UI.createLabel({
+    $.__views.__alloyId301.leftNavButton = $.__views.back;
+    $.__views.__alloyId304 = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
         font: {
             fontFamily: "ProximaNova-Regular"
         },
         textid: "signup",
-        id: "__alloyId291"
+        id: "__alloyId304"
     });
-    $.__views.__alloyId288.titleControl = $.__views.__alloyId291;
-    $.__views.__alloyId292 = Ti.UI.createScrollView({
+    $.__views.__alloyId301.titleControl = $.__views.__alloyId304;
+    $.__views.__alloyId305 = Ti.UI.createScrollView({
         layout: "vertical",
-        id: "__alloyId292"
+        id: "__alloyId305"
     });
-    $.__views.__alloyId288.add($.__views.__alloyId292);
+    $.__views.__alloyId301.add($.__views.__alloyId305);
     $.__views.logo = Ti.UI.createImageView({
         top: 33,
         image: "/images/logo-signup.png",
         id: "logo"
     });
-    $.__views.__alloyId292.add($.__views.logo);
+    $.__views.__alloyId305.add($.__views.logo);
     $.__views.username = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -65,7 +65,7 @@ function Controller() {
         id: "username",
         hintText: L("username")
     });
-    $.__views.__alloyId292.add($.__views.username);
+    $.__views.__alloyId305.add($.__views.username);
     $.__views.email = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -79,7 +79,7 @@ function Controller() {
         id: "email",
         hintText: L("email")
     });
-    $.__views.__alloyId292.add($.__views.email);
+    $.__views.__alloyId305.add($.__views.email);
     $.__views.password = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -94,7 +94,7 @@ function Controller() {
         passwordMask: "true",
         hintText: L("password")
     });
-    $.__views.__alloyId292.add($.__views.password);
+    $.__views.__alloyId305.add($.__views.password);
     $.__views.terms = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -105,7 +105,7 @@ function Controller() {
         id: "terms",
         textid: "terms_signup"
     });
-    $.__views.__alloyId292.add($.__views.terms);
+    $.__views.__alloyId305.add($.__views.terms);
     $.__views.submit = Ti.UI.createButton({
         borderRadius: 4,
         color: "red",
@@ -119,7 +119,7 @@ function Controller() {
         id: "submit",
         titleid: "finish_signup"
     });
-    $.__views.__alloyId292.add($.__views.submit);
+    $.__views.__alloyId305.add($.__views.submit);
     $.__views.footer = Ti.UI.createView({
         backgroundColor: Alloy.Globals.constants.NAV_BAR_COLOR,
         height: 75,
@@ -127,7 +127,7 @@ function Controller() {
         width: Titanium.UI.FILL,
         id: "footer"
     });
-    $.__views.__alloyId292.add($.__views.footer);
+    $.__views.__alloyId305.add($.__views.footer);
     $.__views.btnFacebook = Ti.UI.createView({
         borderRadius: 4,
         backgroundColor: Alloy.Globals.constants.FACEBOOK_BUTTON_COLOR,
@@ -157,14 +157,14 @@ function Controller() {
         id: "labelBtnFacebook"
     });
     $.__views.btnFacebook.add($.__views.labelBtnFacebook);
-    $.__views.__alloyId287 = Ti.UI.createTab({
-        window: $.__views.__alloyId288,
+    $.__views.__alloyId300 = Ti.UI.createTab({
+        window: $.__views.__alloyId301,
         titleid: "signup",
-        id: "__alloyId287"
+        id: "__alloyId300"
     });
-    __alloyId286.push($.__views.__alloyId287);
+    __alloyId299.push($.__views.__alloyId300);
     $.__views.signup = Ti.UI.createTabGroup({
-        tabs: __alloyId286,
+        tabs: __alloyId299,
         id: "signup"
     });
     $.__views.signup && $.addTopLevelView($.__views.signup);

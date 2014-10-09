@@ -1,17 +1,26 @@
-"#labelHighlight": {
-	"top": 30,
+"#containerLabelHighlight": {
+	top: 30,
+	layout: "horizontal",
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE
+},
+"#labelHighlight": {	
+	left: 0,	
 	font: {fontSize: 18, fontWeight: 'bold'}
 },
 "#labelSeeCategories": {
-	top: 60,
-	font: {fontSize: 12, fontWeight: 'bold'}
+	top: 15,	
+	font: {fontSize: 12, fontWeight: 'bold'},
+	width: Titanium.UI.FILL,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
 },
 "#arrowSeeCategories": {
 	top: 30,
-	right: 30
+	right: 0,
+	layout: "absolute"
 },
 "#categories": {
-	top: 95,
+	top: 20,
 	width: 280,
 	height: 390,
 	backgroundColor: "white"
@@ -36,6 +45,9 @@
 	pagingControlColor: "transparent",
 	pagingControlHeight: 40,
 	overlayEnabled: true
+},
+".icon-highlights":{
+	image: "/images/icon-highlights.png"
 },
 "#soccer": {
 	backgroundImage: "/images/background-home-categories-soccer.jpg"

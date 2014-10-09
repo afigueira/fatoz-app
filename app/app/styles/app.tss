@@ -104,6 +104,9 @@
 ".widthUiSize": {
 	width: Titanium.UI.SIZE
 },
+".heightUiSize": {
+	height: Titanium.UI.SIZE
+},
 ".left0":{
 	left: 0
 },
@@ -155,7 +158,58 @@
 	color: "#ffffff",
 	font: {fontSize: 12, fontWeight: 'bold'}
 },
-".btnBlue": {
+".btnBlue": {	
+	height: 30,
+	borderRadius: 15,
+	backgroundGradient: {
+        type: "linear",        
+        colors: [ "#49b2d3", "#3ca5c6"],
+        startRadius: '90%',
+        endRadius: 0,
+        backfillStart: true
+ 	}, 	
+    font: {
+    	fontSize: 12, 
+    	fontWeight: 'bold', 
+    	fontFamily: "ProximaNova-Regular"
+    },
+    color: "#ffffff"
+},
+".btnOrange": {	
+	height: 30,
+	borderRadius: 15,
+	backgroundGradient: {
+        type: "linear",        
+        colors: [ "#e67235", "#d96528"],
+        startRadius: '90%',
+        endRadius: 0,
+        backfillStart: true
+ 	}, 	
+    font: {
+    	fontSize: 12, 
+    	fontWeight: 'bold', 
+    	fontFamily: "ProximaNova-Regular"
+    },
+    color: "#ffffff"
+},
+".btnRed": {	
+	height: 30,
+	borderRadius: 15,
+	backgroundGradient: {
+        type: "linear",        
+        colors: [ "#da3c30", "#cd3023"],
+        startRadius: '90%',
+        endRadius: 0,
+        backfillStart: true
+ 	}, 	
+    font: {
+    	fontSize: 12, 
+    	fontWeight: 'bold', 
+    	fontFamily: "ProximaNova-Regular"
+    },
+    color: "#ffffff"
+},
+".btnFacebook": {
 	backgroundImage: "/images/background-blue-transparent.png",
 	height: 30,	
 	borderRadius: 15,
@@ -163,8 +217,6 @@
 	borderColor: "#37538e",
 	borderWidth: 1,
 	color: "#ffffff",
-	font: {fontSize: 12, fontWeight: 'bold'}
-},
-".btnFacebook": {
+	font: {fontSize: 12, fontWeight: 'bold'},
 	image: "/images/icon-facebook.png",
 }

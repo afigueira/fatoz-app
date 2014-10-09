@@ -1,0 +1,50 @@
+".inside": {
+	layout: "vertical",
+	
+},
+".profileFriends": {
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL,
+	layout: "vertical",
+	backgroundColor: "#f0f0f0"
+},
+"#containerSearch": {
+	height: 60,
+	width: Titanium.UI.FILL,
+	backgroundColor: "#888888"
+},
+"#search": {
+	height: 30,
+	width: Titanium.UI.FILL,
+	left: 10,
+	right: 10
+},
+".listFriends":{
+	
+},
+".rowFriends": {
+	width: Titanium.UI.FILL,
+	height: 75
+},
+".imageProfileFriends": {
+	left: 10,
+	width: 45,
+	height: 45,
+	borderRadius: 23	
+},
+".friendName": {
+	left: 65,
+	font: {fontSize: 20},
+	color: "#383838"
+},
+".borderGrayProfile": {
+	width: Titanium.UI.FILL,
+	height: 1,
+	bottom: 0
+},
+".btnAccept": {
+	right: 15
+},
+".btnPlay": {
+	right: 15
+}

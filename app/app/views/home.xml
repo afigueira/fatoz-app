@@ -6,44 +6,55 @@
 					<Label textid="home" class="fontWhite proximaNovaRegular"/>
 				</TitleControl>
 				<ScrollView class="inside">
-					<Label textid="highlights" class="fontWhite proximaNovaRegular" id="labelHighlight"/>
-					<Label textid="see_categories" class="fontWhite proximaNovaRegular" id="labelSeeCategories"/>
-					<ImageView image="/images/arrow-see-more-categories-home.png" id="arrowSeeCategories"/>
-					
-					<View id="categories" class="radius">
-					
-						<View id="tabs">
-							<View class="tab">
-								<Label textid="popular" class="fontOrange proximaNovaRegular labelTab"/>
-								<View class="tabSelected orange" />
+					<View class="layoutVertical">
+						<View class="layoutAbsolute heightUiSize" width="280">
+							<View class="layoutVertical heightUiSize" height="Titanium.UI.SIZE">																
+								<View id="containerLabelHighlight">
+									<ImageView image="/images/icon-highlights.png" />
+									<Label textid="highlights" class="fontWhite proximaNovaRegular" id="labelHighlight"/>
+								</View>
+								
+								<Label textid="see_categories" class="fontWhite proximaNovaRegular" id="labelSeeCategories"/>								
 							</View>
-							<View class="tab">
-								<Label textid="text_new" class="fontOrange proximaNovaRegular labelTab"/>
-								<View class="tabSelected orange" visible="false" />
-							</View>
-							<View class="tab">
-								<Label textid="recent" class="fontOrange proximaNovaRegular labelTab"/>
-								<View class="tabSelected orange" visible="false" />
-							</View>
+							
+							
+							<ImageView image="/images/arrow-see-more-categories-home.png" id="arrowSeeCategories"/>														
 						</View>
 						
-						<ScrollableView id="popular" class="scrollable">
-							
-							<View class="category" id="soccer">
-								<ImageView image="/images/icon-home-category-football.png" class="iconCategory"/>
-								<Label textid="sport" class="fontWhite proximaNovaRegular titleCategory" />
-								<Label textid="sport_description" class="fontWhite proximaNovaRegular descriptionCategory" />
-								
-								<Button titleid="new_match" class="radiusLarge green fontWhite proximaNovaRegular btnNewMatch" />
-								<Button titleid="challenge" class="radiusLarge borderWhite transparentWhite50 fontWhite proximaNovaRegular btnChallenge" />
-								<Button titleid="ranking" class="radiusLarge borderWhite transparentWhite50 fontWhite proximaNovaRegular btnRanking" />	
+						<View id="categories" class="radius">						
+							<View id="tabs">
+								<View class="tab">
+									<Label textid="popular" class="fontOrange proximaNovaRegular labelTab"/>
+									<View class="tabSelected orange" />
+								</View>
+								<View class="tab">
+									<Label textid="text_new" class="fontOrange proximaNovaRegular labelTab"/>
+									<View class="tabSelected orange" visible="false" />
+								</View>
+								<View class="tab">
+									<Label textid="recent" class="fontOrange proximaNovaRegular labelTab"/>
+									<View class="tabSelected orange" visible="false" />
+								</View>
 							</View>
 							
-						</ScrollableView>
+							<ScrollableView id="popular" class="scrollable">
+								
+								<View class="category" id="soccer">
+									<ImageView image="/images/icon-home-category-football.png" class="iconCategory"/>
+									<Label textid="sport" class="fontWhite proximaNovaRegular titleCategory" />
+									<Label textid="sport_description" class="fontWhite proximaNovaRegular descriptionCategory" />
+									
+									<Button titleid="new_match" class="radiusLarge green fontWhite proximaNovaRegular btnNewMatch" />
+									<Button titleid="challenge" class="btnWhite btnChallenge" />
+									<Button titleid="ranking" class="btnWhite btnRanking" />	
+								</View>
+								
+							</ScrollableView>
+							
+						</View>
 						
-					</View>
-					
-					<View class="margin"/>
+						<View class="margin"/>
+					</View>					
 					
 				</ScrollView>
 				

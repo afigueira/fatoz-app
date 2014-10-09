@@ -1,6 +1,6 @@
 $.index.open();
 
-Alloy.createController('game');
+Alloy.createController('categories');
 
 date = new Date();
 

@@ -42,74 +42,8 @@
 							<ScrollableView>
 								<View class="insideScrollable">
 									<Button titleid="new_match" class="radiusLarge green fontWhite proximaNovaRegular btnNewMatch" />
-									<Button titleid="challenge" class="radiusLarge borderWhite transparentWhite50 fontWhite proximaNovaRegular btnChallenge" />
-									<Button titleid="ranking" class="radiusLarge borderWhite transparentWhite50 fontWhite proximaNovaRegular btnRanking" />
-								</View>
-								<View class="insideScrollable">
-									<Label text="Statistics" class="fontWhite" />
-								</View>
-							</ScrollableView>
-						</View>
-					</View>
-					<View class="category">
-						<ImageView width="320" height="220" image="/images/background-categories-soccer.jpg" class="backgroundCategory"/>
-						<!-- align in js -->
-						<View class="containerTitleCategory">
-							<ImageView image="/images/icon-category.png"/>
-							<Label textid="category_title" class="titleCategory fontWhite proximaNovaRegular" />
-						</View>
-						<ImageView image="/images/arrow-down.png" class="arrowCategory"/>
-						<Label textid="category_description" class="descriptionCategory fontWhite proximaNovaRegular" />
-						<View class="actionsCategory">
-							<ScrollableView>
-								<View class="insideScrollable">
-									<Button titleid="new_match" class="radiusLarge green fontWhite proximaNovaRegular btnNewMatch" />
-									<Button titleid="challenge" class="radiusLarge borderWhite transparentWhite50 fontWhite proximaNovaRegular btnChallenge" />
-									<Button titleid="ranking" class="radiusLarge borderWhite transparentWhite50 fontWhite proximaNovaRegular btnRanking" />
-								</View>
-								<View class="insideScrollable">
-									<Label text="Statistics" class="fontWhite" />
-								</View>
-							</ScrollableView>
-						</View>
-					</View>
-					<View class="category">
-						<ImageView width="320" height="220" image="/images/background-categories-soccer.jpg" class="backgroundCategory"/>
-						<!-- align in js -->
-						<View class="containerTitleCategory">
-							<ImageView image="/images/icon-category.png"/>
-							<Label textid="category_title" class="titleCategory fontWhite proximaNovaRegular" />
-						</View>
-						<ImageView image="/images/arrow-down.png" class="arrowCategory"/>
-						<Label textid="category_description" class="descriptionCategory fontWhite proximaNovaRegular" />
-						<View class="actionsCategory">
-							<ScrollableView>
-								<View class="insideScrollable">
-									<Button titleid="new_match" class="radiusLarge green fontWhite proximaNovaRegular btnNewMatch" />
-									<Button titleid="challenge" class="radiusLarge borderWhite transparentWhite50 fontWhite proximaNovaRegular btnChallenge" />
-									<Button titleid="ranking" class="radiusLarge borderWhite transparentWhite50 fontWhite proximaNovaRegular btnRanking" />
-								</View>
-								<View class="insideScrollable">
-									<Label text="Statistics" class="fontWhite" />
-								</View>
-							</ScrollableView>
-						</View>
-					</View>
-					<View class="category">
-						<ImageView width="320" height="220" image="/images/background-categories-soccer.jpg" class="backgroundCategory"/>
-						<!-- align in js -->
-						<View class="containerTitleCategory">
-							<ImageView image="/images/icon-category.png"/>
-							<Label textid="category_title" class="titleCategory fontWhite proximaNovaRegular" />
-						</View>
-						<ImageView image="/images/arrow-down.png" class="arrowCategory"/>
-						<Label textid="category_description" class="descriptionCategory fontWhite proximaNovaRegular" />
-						<View class="actionsCategory">
-							<ScrollableView>
-								<View class="insideScrollable">
-									<Button titleid="new_match" class="radiusLarge green fontWhite proximaNovaRegular btnNewMatch" />
-									<Button titleid="challenge" class="radiusLarge borderWhite transparentWhite50 fontWhite proximaNovaRegular btnChallenge" />
-									<Button titleid="ranking" class="radiusLarge borderWhite transparentWhite50 fontWhite proximaNovaRegular btnRanking" />
+									<Button titleid="challenge" class="btnWhite btnChallenge" />
+									<Button titleid="ranking" class="btnWhite btnRanking" />
 								</View>
 								<View class="insideScrollable">
 									<Label text="Statistics" class="fontWhite" />

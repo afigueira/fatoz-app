@@ -84,74 +84,7 @@
 					
 					<View class="trophyGame"></View>
 				</View>
-			</View> -->
-			
-			<!--
-			<View class="resultsGame">
-				<View class="playersResultGame">
-					<View class="containerImageProfileResult">
-						<ImageView class="imageProfile imageProfileYouResult borderGreenGame" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
-						<View class="trophyGame trophyResultGame" />
-					</View>
-					
-					<View class="vsResult">
-						<Label class="nameUserResult proximaNovaRegular" textid="you" />
-						<Label class="vsLabelResult proximaNovaRegular" text="vs" />
-						<Label class="nameUserResult proximaNovaRegular" text="Tomas" />
-					</View>
-					
-					<View class="containerImageProfileResult">
-						<ImageView class="imageProfile imageProfileYouResult" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />						
-					</View>				
-				</View>
-				
-				<View class="statisticsResultGame">
-					<View class="statisticsItemGame">
-						<Label class="numberStatisticsItemGame proximaNovaRegular" text="320" />
-						<Label class="labelStatisticsItemGame proximaNovaRegular" textid="match_points" />
-					</View>
-					
-					<View class="statisticsBorderGame" />
-					
-					<View class="statisticsItemGame">
-						<Label class="numberStatisticsItemGame proximaNovaRegular" text="620" />
-						<Label class="labelStatisticsItemGame proximaNovaRegular" textid="final_bonus" />
-					</View>
-					
-					<View class="statisticsBorderGame" />
-					
-					<View class="statisticsItemGame">
-						<Label class="numberStatisticsItemGame proximaNovaRegular" text="720" />
-						<Label class="labelStatisticsItemGame proximaNovaRegular" textid="bonus_victory" />
-					</View>
-					
-					<View class="statisticsBorderGame" />
-					
-					<View class="statisticsItemGame">
-						<Label class="numberStatisticsItemGame labelOrangeGame proximaNovaRegular" text="820" />
-						<Label class="labelStatisticsItemGame labelOrangeGame proximaNovaRegular" textid="total_points" />
-					</View>
-				</View>
-			
-				<View class="graphic1">
-				</View>
-				
-				<View class="buttonsResultGame">
-					<Button class="btnBlue btnFacebook btnFacebookResultGame" title="Compartilhar Resultado" />
-					
-					<View class="layoutHorizontal">
-						<Button class="btnWhite btnWhiteResultGame marginRightBtnWhite" titleid="button_rematch" />
-						<Button class="btnWhite btnWhiteResultGame" titleid="button_play_again" />
-					</View>
-					
-					<View class="layoutHorizontal">
-						<Button class="btnWhite btnWhiteResultGame marginRightBtnWhite" titleid="button_challenge" />
-						<Button class="btnWhite btnWhiteResultGame" titleid="button_ranking" />
-					</View>			
-				</View>
-			</View>
-			
-		-->
+			</View> -->			
 		</ScrollView>
 	</Window>
 </Alloy>
