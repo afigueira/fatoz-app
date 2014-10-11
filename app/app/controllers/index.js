@@ -1,6 +1,6 @@
 $.index.open();
 
-Alloy.createController('categories');
+Alloy.createController('login');
 
 date = new Date();
 

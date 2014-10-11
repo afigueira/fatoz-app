@@ -52,7 +52,7 @@ function Controller() {
         id: "logo"
     });
     $.__views.__alloyId305.add($.__views.logo);
-    $.__views.username = Ti.UI.createTextField({
+    $.__views.firstName = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
         left: 28,
@@ -61,11 +61,25 @@ function Controller() {
         backgroundColor: "white",
         color: "#888888",
         tintColor: "#888888",
-        top: 33,
-        id: "username",
-        hintText: L("username")
+        top: 15,
+        id: "firstName",
+        hintText: L("first_name")
     });
-    $.__views.__alloyId305.add($.__views.username);
+    $.__views.__alloyId305.add($.__views.firstName);
+    $.__views.lastName = Ti.UI.createTextField({
+        width: Titanium.UI.FILL,
+        height: 40,
+        left: 28,
+        right: 28,
+        borderRadius: 4,
+        backgroundColor: "white",
+        color: "#888888",
+        tintColor: "#888888",
+        top: 15,
+        id: "lastName",
+        hintText: L("last_name")
+    });
+    $.__views.__alloyId305.add($.__views.lastName);
     $.__views.email = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -170,6 +184,21 @@ function Controller() {
     $.__views.signup && $.addTopLevelView($.__views.signup);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var Cloud = require("ti.cloud");
+    $.submit.addEventListener("click", function() {
+        Cloud.Users.create({
+            email: $.email.value,
+            first_name: $.firstName.value,
+            last_name: $.lastName.value,
+            password: $.password.value,
+            password_confirmation: $.password.value
+        }, function(e) {
+            if (e.success) {
+                var user = e.users[0];
+                alert("Success:\nid: " + user.id + "\n" + "sessionId: " + Cloud.sessionId + "\n" + "first name: " + user.first_name + "\n" + "last name: " + user.last_name);
+            } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+        });
+    });
     $.signup.open();
     _.extend($, exports);
 }

@@ -349,7 +349,20 @@ function Controller() {
     $.__views.categories && $.addTopLevelView($.__views.categories);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    Cloud = require("ti.cloud");
     $.categories.open();
+    Cloud.Objects.query({
+        classname: "categories",
+        page: 1,
+        per_page: 10
+    }, function(e) {
+        if (e.success) {
+            console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            console.log(e);
+            alert(":D");
+        } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+    });
+    console.log(":D");
     _.extend($, exports);
 }
 

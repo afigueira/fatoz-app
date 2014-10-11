@@ -11,7 +11,8 @@
 				<ScrollView>
 					<ImageView image="/images/logo-signup.png" id="logo"></ImageView>
 					
-					<TextField id="username" hintText="L('username')" class="radius input fontGray" />
+					<TextField id="firstName" hintText="L('first_name')" class="radius input fontGray" />
+					<TextField id="lastName" hintText="L('last_name')" class="radius input fontGray" />
 					<TextField id="email" hintText="L('email')" class="radius input fontGray" />
 					<TextField id="password" passwordMask="true" hintText="L('password')" class="radius input fontGray" />
 					<Label id="terms" textid="terms_signup" class="fontWhite proximaNovaRegular"/>

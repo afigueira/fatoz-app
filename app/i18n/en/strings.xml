@@ -4,6 +4,8 @@
     <string name="email">E-mail</string>
     <string name="password">Senha</string>
     <string name="username">Username</string>
+    <string name="first_name">Nome</string>
+    <string name="last_name">Sobrenome</string>
     <string name="forgotpassword">Esqueceu sua senha ?</string>
     <string name="signup">Cadastro</string>
     <string name="terms_signup">Ao concluir estará aceitando os Termos de Uso</string>

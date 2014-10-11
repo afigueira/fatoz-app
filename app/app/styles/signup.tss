@@ -10,6 +10,12 @@
 	left: 28,
 	right: 28
 },
+"#firstName": {
+	top: 15
+},
+"#lastName": {
+	top: 15
+},
 "#username": {
 	top: 33
 },
