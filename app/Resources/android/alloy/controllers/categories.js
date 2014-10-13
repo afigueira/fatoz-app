@@ -188,34 +188,39 @@ function Controller() {
         hintText: "Pesquisar"
     });
     $.__views.containerSearch.add($.__views.search);
-    $.__views.__alloyId18 = Ti.UI.createView({
-        height: 220,
-        id: "__alloyId18"
+    var __alloyId18 = [];
+    $.__views.__alloyId19 = Ti.UI.createTableViewRow({
+        id: "__alloyId19"
     });
-    $.__views.__alloyId5.add($.__views.__alloyId18);
-    $.__views.__alloyId19 = Ti.UI.createImageView({
+    __alloyId18.push($.__views.__alloyId19);
+    $.__views.__alloyId20 = Ti.UI.createView({
+        height: 220,
+        id: "__alloyId20"
+    });
+    $.__views.__alloyId19.add($.__views.__alloyId20);
+    $.__views.__alloyId21 = Ti.UI.createImageView({
         left: 0,
         top: 0,
         zIndex: 0,
         width: "320",
         height: "220",
         image: "/images/background-categories-soccer.jpg",
-        id: "__alloyId19"
-    });
-    $.__views.__alloyId18.add($.__views.__alloyId19);
-    $.__views.__alloyId20 = Ti.UI.createView({
-        height: Titanium.UI.SIZE,
-        layout: "horizontal",
-        top: 25,
-        id: "__alloyId20"
-    });
-    $.__views.__alloyId18.add($.__views.__alloyId20);
-    $.__views.__alloyId21 = Ti.UI.createImageView({
-        image: "/images/icon-category.png",
         id: "__alloyId21"
     });
     $.__views.__alloyId20.add($.__views.__alloyId21);
-    $.__views.__alloyId22 = Ti.UI.createLabel({
+    $.__views.__alloyId22 = Ti.UI.createView({
+        height: Titanium.UI.SIZE,
+        layout: "horizontal",
+        top: 25,
+        id: "__alloyId22"
+    });
+    $.__views.__alloyId20.add($.__views.__alloyId22);
+    $.__views.__alloyId23 = Ti.UI.createImageView({
+        image: "/images/icon-category.png",
+        id: "__alloyId23"
+    });
+    $.__views.__alloyId22.add($.__views.__alloyId23);
+    $.__views.__alloyId24 = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
         font: {
@@ -225,17 +230,17 @@ function Controller() {
         left: 15,
         top: 3,
         textid: "category_title",
-        id: "__alloyId22"
+        id: "__alloyId24"
     });
-    $.__views.__alloyId20.add($.__views.__alloyId22);
-    $.__views.__alloyId23 = Ti.UI.createImageView({
+    $.__views.__alloyId22.add($.__views.__alloyId24);
+    $.__views.__alloyId25 = Ti.UI.createImageView({
         right: 20,
         top: 40,
         image: "/images/arrow-down.png",
-        id: "__alloyId23"
+        id: "__alloyId25"
     });
-    $.__views.__alloyId18.add($.__views.__alloyId23);
-    $.__views.__alloyId24 = Ti.UI.createLabel({
+    $.__views.__alloyId20.add($.__views.__alloyId25);
+    $.__views.__alloyId26 = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
         font: {
@@ -244,22 +249,22 @@ function Controller() {
         },
         top: 50,
         textid: "category_description",
-        id: "__alloyId24"
+        id: "__alloyId26"
     });
-    $.__views.__alloyId18.add($.__views.__alloyId24);
-    $.__views.__alloyId25 = Ti.UI.createView({
+    $.__views.__alloyId20.add($.__views.__alloyId26);
+    $.__views.__alloyId27 = Ti.UI.createView({
         backgroundImage: "/images/background-black-transparent.png",
         height: 130,
         top: 90,
-        id: "__alloyId25"
+        id: "__alloyId27"
     });
-    $.__views.__alloyId18.add($.__views.__alloyId25);
-    var __alloyId27 = [];
-    $.__views.__alloyId28 = Ti.UI.createView({
-        id: "__alloyId28"
+    $.__views.__alloyId20.add($.__views.__alloyId27);
+    var __alloyId29 = [];
+    $.__views.__alloyId30 = Ti.UI.createView({
+        id: "__alloyId30"
     });
-    __alloyId27.push($.__views.__alloyId28);
-    $.__views.__alloyId29 = Ti.UI.createButton({
+    __alloyId29.push($.__views.__alloyId30);
+    $.__views.__alloyId31 = Ti.UI.createButton({
         borderRadius: 14,
         color: "white",
         tintColor: "white",
@@ -273,10 +278,10 @@ function Controller() {
             fontFamily: "ProximaNova-Regular"
         },
         titleid: "new_match",
-        id: "__alloyId29"
+        id: "__alloyId31"
     });
-    $.__views.__alloyId28.add($.__views.__alloyId29);
-    $.__views.__alloyId30 = Ti.UI.createButton({
+    $.__views.__alloyId30.add($.__views.__alloyId31);
+    $.__views.__alloyId32 = Ti.UI.createButton({
         top: 58,
         left: 40,
         width: 110,
@@ -291,10 +296,10 @@ function Controller() {
         borderWidth: 1,
         color: "#ffffff",
         titleid: "challenge",
-        id: "__alloyId30"
+        id: "__alloyId32"
     });
-    $.__views.__alloyId28.add($.__views.__alloyId30);
-    $.__views.__alloyId31 = Ti.UI.createButton({
+    $.__views.__alloyId30.add($.__views.__alloyId32);
+    $.__views.__alloyId33 = Ti.UI.createButton({
         top: 58,
         right: 40,
         width: 110,
@@ -309,21 +314,21 @@ function Controller() {
         borderWidth: 1,
         color: "#ffffff",
         titleid: "ranking",
-        id: "__alloyId31"
+        id: "__alloyId33"
     });
-    $.__views.__alloyId28.add($.__views.__alloyId31);
-    $.__views.__alloyId32 = Ti.UI.createView({
-        id: "__alloyId32"
+    $.__views.__alloyId30.add($.__views.__alloyId33);
+    $.__views.__alloyId34 = Ti.UI.createView({
+        id: "__alloyId34"
     });
-    __alloyId27.push($.__views.__alloyId32);
-    $.__views.__alloyId33 = Ti.UI.createLabel({
+    __alloyId29.push($.__views.__alloyId34);
+    $.__views.__alloyId35 = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
         text: "Statistics",
-        id: "__alloyId33"
+        id: "__alloyId35"
     });
-    $.__views.__alloyId32.add($.__views.__alloyId33);
-    $.__views.__alloyId26 = Ti.UI.createScrollableView({
+    $.__views.__alloyId34.add($.__views.__alloyId35);
+    $.__views.__alloyId28 = Ti.UI.createScrollableView({
         width: Titanium.UI.FILL,
         height: Titanium.UI.FILL,
         top: 0,
@@ -332,10 +337,15 @@ function Controller() {
         pagingControlColor: "transparent",
         pagingControlHeight: 40,
         overlayEnabled: true,
-        views: __alloyId27,
-        id: "__alloyId26"
+        views: __alloyId29,
+        id: "__alloyId28"
     });
-    $.__views.__alloyId25.add($.__views.__alloyId26);
+    $.__views.__alloyId27.add($.__views.__alloyId28);
+    $.__views.listCategories = Ti.UI.createTableView({
+        data: __alloyId18,
+        id: "listCategories"
+    });
+    $.__views.__alloyId5.add($.__views.listCategories);
     $.__views.__alloyId1 = Ti.UI.createTab({
         window: $.__views.__alloyId2,
         titleid: "categories",
@@ -357,12 +367,68 @@ function Controller() {
         per_page: 10
     }, function(e) {
         if (e.success) {
-            console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            console.log(e);
-            alert(":D");
+            var total = e.categories.length;
+            for (var i = 0; total > i; i++) {
+                console.log(e.categories[i].title);
+                var row = Titanium.UI.createTableViewRow();
+                var category = Titanium.UI.createView();
+                $.addClass(category, "category");
+                var backgroundCategory = Titanium.UI.createImageView({
+                    width: 320,
+                    height: 220,
+                    image: "/images/background-categories-soccer.jpg"
+                });
+                $.addClass(backgroundCategory, "backgroundCategory");
+                var containerTitleCategory = Titanium.UI.createImageView();
+                $.addClass(containerTitleCategory, "containerTitleCategory");
+                var iconCategory = Titanium.UI.createImageView({
+                    image: "/images/icon-category.png"
+                });
+                var titleCategory = Titanium.UI.createLabel({
+                    textid: "category_title"
+                });
+                $.addClass(titleCategory, "titleCategory fontWhite proximaNovaRegular");
+                var arrowDown = Titanium.UI.createImageView({
+                    image: "/images/arrow-down.png"
+                });
+                $.addClass(arrowDown, "arrowCategory");
+                var descriptionCategory = Titanium.UI.createLabel({
+                    textid: "category_description"
+                });
+                $.addClass(descriptionCategory, "descriptionCategory fontWhite proximaNovaRegular");
+                var actionsCategory = Titanium.UI.createView();
+                $.addClass(actionsCategory, "actionsCategory");
+                var ScrollableView = Titanium.UI.createScrollableView();
+                var insideScrollable = Titanium.UI.createView();
+                $.addClass(insideScrollable, "insideScrollable");
+                var btnNewMatch = Titanium.UI.createButton({
+                    titleid: "new_match"
+                });
+                $.addClass(btnNewMatch, "radiusLarge green fontWhite proximaNovaRegular btnNewMatch");
+                var btnChallenge = Titanium.UI.createButton({
+                    titleid: "challenge"
+                });
+                $.addClass(btnChallenge, "btnWhite btnChallenge");
+                var btnRanking = Titanium.UI.createButton({
+                    titleid: "ranking"
+                });
+                $.addClass(btnRanking, "btnWhite btnRanking");
+                insideScrollable.add(btnNewMatch);
+                insideScrollable.add(btnChallenge);
+                insideScrollable.add(btnRanking);
+                ScrollableView.add(insideScrollable);
+                actionsCategory.add(ScrollableView);
+                containerTitleCategory.add(iconCategory);
+                containerTitleCategory.add(titleCategory);
+                category.add(backgroundCategory);
+                category.add(containerTitleCategory);
+                category.add(arrowDown);
+                category.add(actionsCategory);
+                row.add(category);
+                $.listCategories.appendRow(row);
+            }
         } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
     });
-    console.log(":D");
     _.extend($, exports);
 }
 

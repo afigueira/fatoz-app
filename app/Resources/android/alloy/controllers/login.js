@@ -144,6 +144,7 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     Cloud = require("ti.cloud");
+    console.log("---------------->", Ti.App.Properties.getString("sessionId"));
     Cloud.Users.showMe(function(e) {
         if (e.success) {
             var user = e.users[0];
@@ -159,7 +160,10 @@ function Controller() {
             login: $.email.value,
             password: $.password.value
         }, function(e) {
-            e.success ? Alloy.createController("categories") : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+            if (e.success) {
+                Ti.App.Properties.setString("sessionId", Cloud.sessionId);
+                Alloy.createController("categories");
+            } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });
     });
     $.signup.addEventListener("click", function() {

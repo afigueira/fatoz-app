@@ -26,27 +26,27 @@ function Controller() {
         id: "friends"
     });
     $.__views.friends && $.addTopLevelView($.__views.friends);
-    $.__views.__alloyId34 = Ti.UI.createScrollView({
+    $.__views.__alloyId36 = Ti.UI.createScrollView({
         backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
         layout: "vertical",
-        id: "__alloyId34"
+        id: "__alloyId36"
     });
-    $.__views.friends.add($.__views.__alloyId34);
-    $.__views.__alloyId35 = Ti.UI.createView({
+    $.__views.friends.add($.__views.__alloyId36);
+    $.__views.__alloyId37 = Ti.UI.createView({
         width: Titanium.UI.FILL,
         height: Titanium.UI.FILL,
         layout: "vertical",
         backgroundColor: "#f0f0f0",
-        id: "__alloyId35"
+        id: "__alloyId37"
     });
-    $.__views.__alloyId34.add($.__views.__alloyId35);
+    $.__views.__alloyId36.add($.__views.__alloyId37);
     $.__views.containerSearch = Ti.UI.createView({
         backgroundColor: "#888888",
         height: 60,
         width: Titanium.UI.FILL,
         id: "containerSearch"
     });
-    $.__views.__alloyId35.add($.__views.containerSearch);
+    $.__views.__alloyId37.add($.__views.containerSearch);
     $.__views.search = Ti.UI.createTextField({
         borderRadius: 14,
         color: "#888888",
@@ -63,23 +63,23 @@ function Controller() {
         hintText: "Pesquisar"
     });
     $.__views.containerSearch.add($.__views.search);
-    var __alloyId37 = [];
-    $.__views.__alloyId38 = Ti.UI.createTableViewRow({
+    var __alloyId39 = [];
+    $.__views.__alloyId40 = Ti.UI.createTableViewRow({
         width: Titanium.UI.FILL,
         height: 75,
-        id: "__alloyId38"
+        id: "__alloyId40"
     });
-    __alloyId37.push($.__views.__alloyId38);
-    $.__views.__alloyId39 = Ti.UI.createImageView({
+    __alloyId39.push($.__views.__alloyId40);
+    $.__views.__alloyId41 = Ti.UI.createImageView({
         left: 10,
         width: 45,
         height: 45,
         borderRadius: 23,
         backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg",
-        id: "__alloyId39"
+        id: "__alloyId41"
     });
-    $.__views.__alloyId38.add($.__views.__alloyId39);
-    $.__views.__alloyId40 = Ti.UI.createLabel({
+    $.__views.__alloyId40.add($.__views.__alloyId41);
+    $.__views.__alloyId42 = Ti.UI.createLabel({
         font: {
             fontFamily: "ProximaNova-Regular",
             fontSize: 20
@@ -87,10 +87,10 @@ function Controller() {
         left: 65,
         color: "#383838",
         text: "Tomas Lau",
-        id: "__alloyId40"
+        id: "__alloyId42"
     });
-    $.__views.__alloyId38.add($.__views.__alloyId40);
-    $.__views.__alloyId41 = Ti.UI.createButton({
+    $.__views.__alloyId40.add($.__views.__alloyId42);
+    $.__views.__alloyId43 = Ti.UI.createButton({
         right: 15,
         height: 30,
         borderRadius: 15,
@@ -108,35 +108,35 @@ function Controller() {
         },
         color: "#ffffff",
         title: "ACEITAR",
-        id: "__alloyId41"
+        id: "__alloyId43"
     });
-    $.__views.__alloyId38.add($.__views.__alloyId41);
-    $.__views.__alloyId42 = Ti.UI.createView({
+    $.__views.__alloyId40.add($.__views.__alloyId43);
+    $.__views.__alloyId44 = Ti.UI.createView({
         borderColor: "#c2c2c2",
         backgroundColor: "#c2c2c2",
         borderWidth: 1,
         width: Titanium.UI.FILL,
         height: 1,
         bottom: 0,
-        id: "__alloyId42"
+        id: "__alloyId44"
     });
-    $.__views.__alloyId38.add($.__views.__alloyId42);
-    $.__views.__alloyId43 = Ti.UI.createTableViewRow({
+    $.__views.__alloyId40.add($.__views.__alloyId44);
+    $.__views.__alloyId45 = Ti.UI.createTableViewRow({
         width: Titanium.UI.FILL,
         height: 75,
-        id: "__alloyId43"
+        id: "__alloyId45"
     });
-    __alloyId37.push($.__views.__alloyId43);
-    $.__views.__alloyId44 = Ti.UI.createImageView({
+    __alloyId39.push($.__views.__alloyId45);
+    $.__views.__alloyId46 = Ti.UI.createImageView({
         left: 10,
         width: 45,
         height: 45,
         borderRadius: 23,
         backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg",
-        id: "__alloyId44"
+        id: "__alloyId46"
     });
-    $.__views.__alloyId43.add($.__views.__alloyId44);
-    $.__views.__alloyId45 = Ti.UI.createLabel({
+    $.__views.__alloyId45.add($.__views.__alloyId46);
+    $.__views.__alloyId47 = Ti.UI.createLabel({
         font: {
             fontFamily: "ProximaNova-Regular",
             fontSize: 20
@@ -144,10 +144,10 @@ function Controller() {
         left: 65,
         color: "#383838",
         text: "Tomas Lau",
-        id: "__alloyId45"
+        id: "__alloyId47"
     });
-    $.__views.__alloyId43.add($.__views.__alloyId45);
-    $.__views.__alloyId46 = Ti.UI.createButton({
+    $.__views.__alloyId45.add($.__views.__alloyId47);
+    $.__views.__alloyId48 = Ti.UI.createButton({
         right: 15,
         height: 30,
         borderRadius: 15,
@@ -165,24 +165,24 @@ function Controller() {
         },
         color: "#ffffff",
         title: "JOGAR",
-        id: "__alloyId46"
+        id: "__alloyId48"
     });
-    $.__views.__alloyId43.add($.__views.__alloyId46);
-    $.__views.__alloyId47 = Ti.UI.createView({
+    $.__views.__alloyId45.add($.__views.__alloyId48);
+    $.__views.__alloyId49 = Ti.UI.createView({
         borderColor: "#c2c2c2",
         backgroundColor: "#c2c2c2",
         borderWidth: 1,
         width: Titanium.UI.FILL,
         height: 1,
         bottom: 0,
-        id: "__alloyId47"
+        id: "__alloyId49"
     });
-    $.__views.__alloyId43.add($.__views.__alloyId47);
-    $.__views.__alloyId36 = Ti.UI.createTableView({
-        data: __alloyId37,
-        id: "__alloyId36"
+    $.__views.__alloyId45.add($.__views.__alloyId49);
+    $.__views.__alloyId38 = Ti.UI.createTableView({
+        data: __alloyId39,
+        id: "__alloyId38"
     });
-    $.__views.__alloyId35.add($.__views.__alloyId36);
+    $.__views.__alloyId37.add($.__views.__alloyId38);
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.friends.open();

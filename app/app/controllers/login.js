@@ -1,5 +1,7 @@
 Cloud = require("ti.cloud");
 
+console.log('---------------->', Ti.App.Properties.getString('sessionId'));
+
 Cloud.Users.showMe(function (e) {
     if (e.success) {
         var user = e.users[0];
@@ -24,6 +26,7 @@ $.submit.addEventListener('click', function(event){
 	    password: $.password.value
 	}, function (e) {
 	    if (e.success) {
+	    	Ti.App.Properties.setString('sessionId', Cloud.sessionId);
 			Alloy.createController('categories');
 	    } else {
 	        alert('Error:\n' +
