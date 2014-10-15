@@ -7,13 +7,34 @@ $.categories.open();
 
 
 
+/*Cloud.Objects.update({
+    classname: 'categories',
+    id: '543bcebf1011a4086f024e69',
+    fields: {
+        title: 'purple',
+        description: '10000',
+        image: 'image',
+        icon: 'image'        
+    }
+}, function (e) {
+    if (e.success) {
+        var car = e.cars[0];
+        alert('Success');
+    } else {
+        alert('Error:\n' +
+            ((e.error && e.message) || JSON.stringify(e)));
+    }
+});*/
+
+
 
 /*Cloud.Objects.create({
     classname: 'categories',
     fields: {
-        title: 'Ciência',
-        description: 'Essa é a descrição de ciência',
-        image: 'image-category-cience.jpg'
+        title: 'Esporte',
+        description: 'Futebol, esportes radicais e outros.',
+        image: 'image-category-soccer.jpg',
+        icon: 'icon-category-soccer.png'
     }
 }, function (e) {
     if (e.success) {
@@ -29,32 +50,7 @@ $.categories.open();
 });*/
 
 
-/*
-<TableViewRow>
-	<View class="category">
-		<ImageView width="320" height="220" image="/images/background-categories-soccer.jpg" class="backgroundCategory"/>
-		<!-- align in js -->
-		<View class="containerTitleCategory">
-			<ImageView image="/images/icon-category.png"/>
-			<Label textid="category_title" class="titleCategory fontWhite proximaNovaRegular" />
-		</View>
-		<ImageView image="/images/arrow-down.png" class="arrowCategory"/>
-		<Label textid="category_description" class="descriptionCategory fontWhite proximaNovaRegular" />
-		<View class="actionsCategory">
-			<ScrollableView>
-				<View class="insideScrollable">
-					<Button titleid="new_match" class="radiusLarge green fontWhite proximaNovaRegular btnNewMatch" />
-					<Button titleid="challenge" class="btnWhite btnChallenge" />
-					<Button titleid="ranking" class="btnWhite btnRanking" />
-				</View>
-				<View class="insideScrollable">
-					<Label text="Statistics" class="fontWhite" />
-				</View>
-			</ScrollableView>
-		</View>
-	</View>
-</TableViewRow>
-*/
+
 
 Cloud.Objects.query({
     classname: 'categories',
@@ -64,12 +60,9 @@ Cloud.Objects.query({
 	
     if (e.success) {    	
     	var total = e.categories.length;
-        
-                
+              
         for (var i = 0; i < total; i++){
-			console.log(e.categories[i].title);
-			
-			var row = Titanium.UI.createTableViewRow();
+        	var row = Titanium.UI.createTableViewRow();
 			
 			var category = Titanium.UI.createView();			
 			$.addClass(category, "category");
@@ -81,16 +74,14 @@ Cloud.Objects.query({
 			});
 			$.addClass(backgroundCategory, "backgroundCategory");
 									
-			var containerTitleCategory = Titanium.UI.createImageView();
+			var containerTitleCategory = Titanium.UI.createView();
 			$.addClass(containerTitleCategory, "containerTitleCategory");
-			
+						
 			var iconCategory = Titanium.UI.createImageView({
 			  image: "/images/icon-category.png" 
 			});
 			
-			var titleCategory = Titanium.UI.createLabel({
-			  textid: "category_title"			   
-			});
+			var titleCategory = Titanium.UI.createLabel();
 			$.addClass(titleCategory, "titleCategory fontWhite proximaNovaRegular");
 			
 			var arrowDown = Titanium.UI.createImageView({
@@ -98,9 +89,7 @@ Cloud.Objects.query({
 			});
 			$.addClass(arrowDown, "arrowCategory");
 			
-			var descriptionCategory = Titanium.UI.createLabel({
-				textid: "category_description"				
-			});
+			var descriptionCategory = Titanium.UI.createLabel();
 			$.addClass(descriptionCategory, "descriptionCategory fontWhite proximaNovaRegular");
 			
 			var actionsCategory = Titanium.UI.createView();
@@ -126,7 +115,8 @@ Cloud.Objects.query({
 			});
 			$.addClass(btnRanking, "btnWhite btnRanking");
 			
-			
+			console.log(e.categories[i].title, e.categories[i].id);
+						
 			insideScrollable.add(btnNewMatch);
 			insideScrollable.add(btnChallenge);
 			insideScrollable.add(btnRanking);
@@ -134,12 +124,23 @@ Cloud.Objects.query({
 			ScrollableView.add(insideScrollable);			
 			actionsCategory.add(ScrollableView);
 			
-			containerTitleCategory.add(iconCategory);
-			containerTitleCategory.add(titleCategory);
+			var layoutAbsolute = Titanium.UI.createView();			
+			$.addClass(layoutAbsolute, "layoutAbsolute");			
+			var layoutHorizontal = Titanium.UI.createView();			
+			$.addClass(layoutHorizontal, "layoutHorizontal");
+
+			layoutHorizontal.add(iconCategory);
+			titleCategory.text = e.categories[i].title;		
+			layoutHorizontal.add(titleCategory);
+			
+			layoutAbsolute.add(layoutHorizontal);
+			containerTitleCategory.add(layoutAbsolute);
 			
 			category.add(backgroundCategory);
 			category.add(containerTitleCategory);
 			category.add(arrowDown);
+			descriptionCategory.text = e.categories[i].description;
+			category.add(descriptionCategory);
 			category.add(actionsCategory);
 			
 			

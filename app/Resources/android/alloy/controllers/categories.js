@@ -215,12 +215,24 @@ function Controller() {
         id: "__alloyId22"
     });
     $.__views.__alloyId20.add($.__views.__alloyId22);
-    $.__views.__alloyId23 = Ti.UI.createImageView({
-        image: "/images/icon-category.png",
+    $.__views.__alloyId23 = Ti.UI.createView({
+        layout: "absolute",
+        width: Titanium.UI.FILL,
         id: "__alloyId23"
     });
     $.__views.__alloyId22.add($.__views.__alloyId23);
-    $.__views.__alloyId24 = Ti.UI.createLabel({
+    $.__views.__alloyId24 = Ti.UI.createView({
+        layout: "horizontal",
+        width: Titanium.UI.SIZE,
+        id: "__alloyId24"
+    });
+    $.__views.__alloyId23.add($.__views.__alloyId24);
+    $.__views.__alloyId25 = Ti.UI.createImageView({
+        image: "/images/icon-category.png",
+        id: "__alloyId25"
+    });
+    $.__views.__alloyId24.add($.__views.__alloyId25);
+    $.__views.__alloyId26 = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
         font: {
@@ -230,17 +242,17 @@ function Controller() {
         left: 15,
         top: 3,
         textid: "category_title",
-        id: "__alloyId24"
+        id: "__alloyId26"
     });
-    $.__views.__alloyId22.add($.__views.__alloyId24);
-    $.__views.__alloyId25 = Ti.UI.createImageView({
+    $.__views.__alloyId24.add($.__views.__alloyId26);
+    $.__views.__alloyId27 = Ti.UI.createImageView({
         right: 20,
         top: 40,
         image: "/images/arrow-down.png",
-        id: "__alloyId25"
+        id: "__alloyId27"
     });
-    $.__views.__alloyId20.add($.__views.__alloyId25);
-    $.__views.__alloyId26 = Ti.UI.createLabel({
+    $.__views.__alloyId20.add($.__views.__alloyId27);
+    $.__views.__alloyId28 = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
         font: {
@@ -249,22 +261,22 @@ function Controller() {
         },
         top: 50,
         textid: "category_description",
-        id: "__alloyId26"
+        id: "__alloyId28"
     });
-    $.__views.__alloyId20.add($.__views.__alloyId26);
-    $.__views.__alloyId27 = Ti.UI.createView({
+    $.__views.__alloyId20.add($.__views.__alloyId28);
+    $.__views.__alloyId29 = Ti.UI.createView({
         backgroundImage: "/images/background-black-transparent.png",
         height: 130,
         top: 90,
-        id: "__alloyId27"
+        id: "__alloyId29"
     });
-    $.__views.__alloyId20.add($.__views.__alloyId27);
-    var __alloyId29 = [];
-    $.__views.__alloyId30 = Ti.UI.createView({
-        id: "__alloyId30"
+    $.__views.__alloyId20.add($.__views.__alloyId29);
+    var __alloyId31 = [];
+    $.__views.__alloyId32 = Ti.UI.createView({
+        id: "__alloyId32"
     });
-    __alloyId29.push($.__views.__alloyId30);
-    $.__views.__alloyId31 = Ti.UI.createButton({
+    __alloyId31.push($.__views.__alloyId32);
+    $.__views.__alloyId33 = Ti.UI.createButton({
         borderRadius: 14,
         color: "white",
         tintColor: "white",
@@ -278,10 +290,10 @@ function Controller() {
             fontFamily: "ProximaNova-Regular"
         },
         titleid: "new_match",
-        id: "__alloyId31"
+        id: "__alloyId33"
     });
-    $.__views.__alloyId30.add($.__views.__alloyId31);
-    $.__views.__alloyId32 = Ti.UI.createButton({
+    $.__views.__alloyId32.add($.__views.__alloyId33);
+    $.__views.__alloyId34 = Ti.UI.createButton({
         top: 58,
         left: 40,
         width: 110,
@@ -296,10 +308,10 @@ function Controller() {
         borderWidth: 1,
         color: "#ffffff",
         titleid: "challenge",
-        id: "__alloyId32"
+        id: "__alloyId34"
     });
-    $.__views.__alloyId30.add($.__views.__alloyId32);
-    $.__views.__alloyId33 = Ti.UI.createButton({
+    $.__views.__alloyId32.add($.__views.__alloyId34);
+    $.__views.__alloyId35 = Ti.UI.createButton({
         top: 58,
         right: 40,
         width: 110,
@@ -314,21 +326,21 @@ function Controller() {
         borderWidth: 1,
         color: "#ffffff",
         titleid: "ranking",
-        id: "__alloyId33"
+        id: "__alloyId35"
     });
-    $.__views.__alloyId30.add($.__views.__alloyId33);
-    $.__views.__alloyId34 = Ti.UI.createView({
-        id: "__alloyId34"
+    $.__views.__alloyId32.add($.__views.__alloyId35);
+    $.__views.__alloyId36 = Ti.UI.createView({
+        id: "__alloyId36"
     });
-    __alloyId29.push($.__views.__alloyId34);
-    $.__views.__alloyId35 = Ti.UI.createLabel({
+    __alloyId31.push($.__views.__alloyId36);
+    $.__views.__alloyId37 = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
         text: "Statistics",
-        id: "__alloyId35"
+        id: "__alloyId37"
     });
-    $.__views.__alloyId34.add($.__views.__alloyId35);
-    $.__views.__alloyId28 = Ti.UI.createScrollableView({
+    $.__views.__alloyId36.add($.__views.__alloyId37);
+    $.__views.__alloyId30 = Ti.UI.createScrollableView({
         width: Titanium.UI.FILL,
         height: Titanium.UI.FILL,
         top: 0,
@@ -337,10 +349,10 @@ function Controller() {
         pagingControlColor: "transparent",
         pagingControlHeight: 40,
         overlayEnabled: true,
-        views: __alloyId29,
-        id: "__alloyId28"
+        views: __alloyId31,
+        id: "__alloyId30"
     });
-    $.__views.__alloyId27.add($.__views.__alloyId28);
+    $.__views.__alloyId29.add($.__views.__alloyId30);
     $.__views.listCategories = Ti.UI.createTableView({
         data: __alloyId18,
         id: "listCategories"
@@ -369,7 +381,6 @@ function Controller() {
         if (e.success) {
             var total = e.categories.length;
             for (var i = 0; total > i; i++) {
-                console.log(e.categories[i].title);
                 var row = Titanium.UI.createTableViewRow();
                 var category = Titanium.UI.createView();
                 $.addClass(category, "category");
@@ -379,22 +390,18 @@ function Controller() {
                     image: "/images/background-categories-soccer.jpg"
                 });
                 $.addClass(backgroundCategory, "backgroundCategory");
-                var containerTitleCategory = Titanium.UI.createImageView();
+                var containerTitleCategory = Titanium.UI.createView();
                 $.addClass(containerTitleCategory, "containerTitleCategory");
                 var iconCategory = Titanium.UI.createImageView({
                     image: "/images/icon-category.png"
                 });
-                var titleCategory = Titanium.UI.createLabel({
-                    textid: "category_title"
-                });
+                var titleCategory = Titanium.UI.createLabel();
                 $.addClass(titleCategory, "titleCategory fontWhite proximaNovaRegular");
                 var arrowDown = Titanium.UI.createImageView({
                     image: "/images/arrow-down.png"
                 });
                 $.addClass(arrowDown, "arrowCategory");
-                var descriptionCategory = Titanium.UI.createLabel({
-                    textid: "category_description"
-                });
+                var descriptionCategory = Titanium.UI.createLabel();
                 $.addClass(descriptionCategory, "descriptionCategory fontWhite proximaNovaRegular");
                 var actionsCategory = Titanium.UI.createView();
                 $.addClass(actionsCategory, "actionsCategory");
@@ -413,16 +420,26 @@ function Controller() {
                     titleid: "ranking"
                 });
                 $.addClass(btnRanking, "btnWhite btnRanking");
+                console.log(e.categories[i].title, e.categories[i].id);
                 insideScrollable.add(btnNewMatch);
                 insideScrollable.add(btnChallenge);
                 insideScrollable.add(btnRanking);
                 ScrollableView.add(insideScrollable);
                 actionsCategory.add(ScrollableView);
-                containerTitleCategory.add(iconCategory);
-                containerTitleCategory.add(titleCategory);
+                var layoutAbsolute = Titanium.UI.createView();
+                $.addClass(layoutAbsolute, "layoutAbsolute");
+                var layoutHorizontal = Titanium.UI.createView();
+                $.addClass(layoutHorizontal, "layoutHorizontal");
+                layoutHorizontal.add(iconCategory);
+                titleCategory.text = e.categories[i].title;
+                layoutHorizontal.add(titleCategory);
+                layoutAbsolute.add(layoutHorizontal);
+                containerTitleCategory.add(layoutAbsolute);
                 category.add(backgroundCategory);
                 category.add(containerTitleCategory);
                 category.add(arrowDown);
+                descriptionCategory.text = e.categories[i].description;
+                category.add(descriptionCategory);
                 category.add(actionsCategory);
                 row.add(category);
                 $.listCategories.appendRow(row);

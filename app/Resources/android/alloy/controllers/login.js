@@ -149,7 +149,7 @@ function Controller() {
         if (e.success) {
             var user = e.users[0];
             alert("Success:\nid: " + user.id + "\n" + "first name: " + user.first_name + "\n" + "last name: " + user.last_name);
-            Alloy.createController("categories");
+            Alloy.createController("profile");
         } else {
             alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
             $.login.open();
@@ -162,7 +162,7 @@ function Controller() {
         }, function(e) {
             if (e.success) {
                 Ti.App.Properties.setString("sessionId", Cloud.sessionId);
-                Alloy.createController("categories");
+                Alloy.createController("profile");
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });
     });

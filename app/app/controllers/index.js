@@ -1,3 +1,4 @@
+
 $.index.open();
 
 Alloy.createController('login');
@@ -15,3 +16,8 @@ console.log('=>>>>>>>>>>>>>>>>>>>>>>>>>>>> FIM '+ date.getHours() + ':' + date.g
 console.log('=>>>>>>>>>>>>>>>>>>>>>>>>>>>> FIM '+ date.getHours() + ':' + date.getMinutes() +' <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<=');
 console.log('=>>>>>>>>>>>>>>>>>>>>>>>>>>>> FIM '+ date.getHours() + ':' + date.getMinutes() +' <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<=');
 console.log('=>>>>>>>>>>>>>>>>>>>>>>>>>>>> FIM '+ date.getHours() + ':' + date.getMinutes() +' <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<=');
+
+
+
+
+

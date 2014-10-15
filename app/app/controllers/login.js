@@ -10,7 +10,7 @@ Cloud.Users.showMe(function (e) {
             'first name: ' + user.first_name + '\n' +
             'last name: ' + user.last_name);
 		
-		Alloy.createController('categories');
+		Alloy.createController('profile');
 		
     } else {
         alert('Error:\n' +
@@ -27,7 +27,7 @@ $.submit.addEventListener('click', function(event){
 	}, function (e) {
 	    if (e.success) {
 	    	Ti.App.Properties.setString('sessionId', Cloud.sessionId);
-			Alloy.createController('categories');
+			Alloy.createController('profile');
 	    } else {
 	        alert('Error:\n' +
 	            ((e.error && e.message) || JSON.stringify(e)));

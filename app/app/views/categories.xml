@@ -30,14 +30,18 @@
 						<TextField id="search" class="white fontGray radiusLarge proximaNovaRegular" hintText="Pesquisar" />
 					</View>
 					
-					<TableView id="listCategories">
+					<TableView id="listCategories">						
 						<TableViewRow>
 							<View class="category">
 								<ImageView width="320" height="220" image="/images/background-categories-soccer.jpg" class="backgroundCategory"/>
-								<!-- align in js -->
+								
 								<View class="containerTitleCategory">
-									<ImageView image="/images/icon-category.png"/>
-									<Label textid="category_title" class="titleCategory fontWhite proximaNovaRegular" />
+									<View class="layoutAbsolute">
+										<View class="layoutHorizontal">
+											<ImageView image="/images/icon-category.png"/>
+											<Label textid="category_title" class="titleCategory fontWhite proximaNovaRegular" />
+										</View>
+									</View>
 								</View>
 								<ImageView image="/images/arrow-down.png" class="arrowCategory"/>
 								<Label textid="category_description" class="descriptionCategory fontWhite proximaNovaRegular" />
