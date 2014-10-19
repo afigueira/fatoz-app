@@ -25,4 +25,27 @@ Alloy.Globals.drawer = function(sidebar, element, titleActionBar) {
     element.open();
 };
 
+var io = require("socket.io");
+
+var socket = io.connect("https://1f0b6fd33fa8afdb54e5479c5a17447732b25d68.cloudapp.appcelerator.com");
+
+socket.on("connect", function() {
+    Titanium.App.fireEvent("websocket.onConnect");
+});
+
+socket.on("onJoinedRoom", function() {
+    alert("joined!");
+});
+
+socket.on("startMatch", function(data) {
+    Titanium.App.fireEvent("websocket.startMatch", data);
+});
+
+Titanium.App.addEventListener("websocket.dispatchEvent", function(data) {
+    if (data.event) {
+        data.userId = Ti.App.Properties.getString("userId");
+        socket.emit(data.event, data);
+    }
+});
+
 Alloy.createController("index");

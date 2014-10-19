@@ -53,6 +53,7 @@ socket.on('startMatch', function(data) {
 // app events
 Titanium.App.addEventListener('websocket.dispatchEvent', function(data) {
 	if (data.event) {
+		data.userId = Ti.App.Properties.getString('userId');
 		socket.emit(data.event, data);	
 	}	
 });

@@ -8,7 +8,10 @@ require('alloy').Globals.drawer($.sidebar, $.drawer, 'Início');
 Cloud.Objects.query({
     classname: 'categories',
     page: 1,
-    per_page: 10
+    per_page: 10,
+    where: {
+    	is_popular: 1
+    }
 }, function (e) {	
     if (e.success) {   
 
@@ -34,7 +37,8 @@ Cloud.Objects.query({
 			$.addClass(descriptionCategory, "fontWhite proximaNovaRegular descriptionCategory");
 			
 			var btnNewMatch = Titanium.UI.createButton({
-				titleid: 'new_match'
+				titleid: 'new_match',
+				id: e.categories[i].id
 			});
 			$.addClass(btnNewMatch, "radiusLarge green fontWhite proximaNovaRegular btnNewMatch");
 			
@@ -67,7 +71,11 @@ Cloud.Objects.query({
 });
 
 
-
+$.categories.addEventListener('click', function(e){
+	if (e.source.classes.indexOf('btnNewMatch') > -1){				
+		Alloy.createController('roomQueue', {categoryId: e.source.id});
+	}
+});
 
 /*$.home.addEventListener("open", function() {
 	alert(":D");

@@ -36,8 +36,8 @@
 							</View>
 							
 							<View class="contentGame">
-														
-								<View class="imageGame">
+								<!-- opcao 1 -->					
+								<!--<View class="imageGame">
 									<ImageView image="/images/trophy.png" />
 									<Label class="labelImageGame" text="No céu tem pão?" />
 								</View>
@@ -52,6 +52,18 @@
 										<Button class="chosenOptionGame marginRightOption" title="Apple" />
 										<Button class="chosenOptionGame" title="Apple Computer inc." />
 									</View>			
+								</View>-->
+								
+								
+								<!-- opcao 2 -->					
+																
+								<View class="optionGame">
+									<View class="layoutVertical">
+										<Button class="chosenOptionGame fillChosenOptionGame" title="Apple" />
+										<Button class="chosenOptionGame fillChosenOptionGameoption RedGame" title="Apple Computer inc." />
+										<Button class="chosenOptionGame fillChosenOptionGame" title="Apple Computer inc." />
+										<Button class="chosenOptionGame fillChosenOptionGame" title="Apple Computer inc." />
+									</View>	
 								</View>
 							
 							

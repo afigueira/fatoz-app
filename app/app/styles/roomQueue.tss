@@ -1,0 +1,37 @@
+".topProfile": {
+	height: 231
+},
+".imageProfile": {
+	width: 64,
+	height: 64,
+	borderRadius: 324,
+	borderWidth: 2,
+	borderColor: "#ffffff",
+	left: 0
+},
+".profileTitle": {
+	height: Titanium.UI.SIZE,	
+	font: {fontSize: 24, fontWeight: 'bold'},
+	left: 74,
+	top: 10
+},
+".profileCityState": {
+	height: Titanium.UI.SIZE,	
+	font: {fontSize: 14},
+	left: 74,
+	top: 35
+},
+".profile": {	
+	width: 250,
+	height: Titanium.UI.SIZE
+},
+".searchPlayer": {
+	height: Titanium.UI.SIZE
+},
+".labelSearchPlayer": {
+	top: 50
+},
+".cancelSearchPlayer": {
+	bottom: 50,
+	top: 20
+}

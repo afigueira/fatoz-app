@@ -2,14 +2,14 @@ Cloud = require("ti.cloud");
 
 var createController = 'home';
 
-$.submit.addEventListener('click', function(event){
-	Titanium.App.fireEvent('websocket.dispatchEvent', {event: 'joinRoom', roomId: '543c3ff6c7b8a708700277fc'});
+$.submit.addEventListener('click', function(event){	
 	Cloud.Users.login({
 	    login: $.email.value,
 	    password: $.password.value
 	}, function (e) {
 	    if (e.success) {
 	    	Ti.App.Properties.setString('sessionId', Cloud.sessionId);
+	    	Ti.App.Properties.setString('userId', e.users[0].id);
 			Alloy.createController(createController);
 	    } else {
 	        alert('Error:\n' +
