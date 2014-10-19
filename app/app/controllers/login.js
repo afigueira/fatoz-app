@@ -6,10 +6,11 @@ $.submit.addEventListener('click', function(event){
 	Cloud.Users.login({
 	    login: $.email.value,
 	    password: $.password.value
-	}, function (e) {
-	    if (e.success) {
+	}, function (e){
+	    if (e.success) {	    	
 	    	Ti.App.Properties.setString('sessionId', Cloud.sessionId);
 	    	Ti.App.Properties.setString('userId', e.users[0].id);
+	    	Ti.App.Properties.setString('userName', e.users[0].first_name + " " + e.users[0].last_name);	    	
 			Alloy.createController(createController);
 	    } else {
 	        alert('Error:\n' +

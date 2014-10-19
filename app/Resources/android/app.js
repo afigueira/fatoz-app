@@ -41,9 +41,18 @@ socket.on("startMatch", function(data) {
     Titanium.App.fireEvent("websocket.startMatch", data);
 });
 
+socket.on("creatingMatch", function(data) {
+    Titanium.App.fireEvent("websocket.creatingMatch", data);
+});
+
+socket.on("mountMatch", function(data) {
+    Titanium.App.fireEvent("websocket.mountMatch", data);
+});
+
 Titanium.App.addEventListener("websocket.dispatchEvent", function(data) {
     if (data.event) {
         data.userId = Ti.App.Properties.getString("userId");
+        console.log("Data events: ", data);
         socket.emit(data.event, data);
     }
 });
