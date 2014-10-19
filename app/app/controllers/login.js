@@ -3,6 +3,7 @@ Cloud = require("ti.cloud");
 var createController = 'home';
 
 $.submit.addEventListener('click', function(event){
+	Titanium.App.fireEvent('websocket.dispatchEvent', {event: 'joinRoom', roomId: '543c3ff6c7b8a708700277fc'});
 	Cloud.Users.login({
 	    login: $.email.value,
 	    password: $.password.value

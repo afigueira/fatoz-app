@@ -58,7 +58,10 @@
         <module platform="android">facebook</module>
         <module platform="iphone">facebook</module>
         <module platform="android" version="3.2.1">ti.cloudpush</module>
+        <module platform="iphone">dk.napp.drawer</module>
         <module platform="android">dk.napp.drawer</module>
+        <module platform="iphone">net.iamyellow.tiws</module>
+        <module platform="android">net.iamyellow.tiws</module>
     </modules>
     <deployment-targets>
         <target device="android">true</target>
