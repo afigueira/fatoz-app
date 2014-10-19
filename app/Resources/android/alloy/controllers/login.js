@@ -8,6 +8,13 @@ function __processArg(obj, key) {
 }
 
 function Controller() {
+    function login(e) {
+        if (e.success) {
+            Ti.App.Properties.setString("sessionId", Cloud.sessionId);
+            Ti.App.Properties.setString("userId", e.users[0].id);
+            Alloy.createController(createController);
+        } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "login";
     if (arguments[0]) {
@@ -146,23 +153,26 @@ function Controller() {
     Cloud = require("ti.cloud");
     var createController = "home";
     $.submit.addEventListener("click", function() {
-        Titanium.App.fireEvent("websocket.dispatchEvent", {
-            event: "joinRoom",
-            roomId: "543c3ff6c7b8a708700277fc"
-        });
         Cloud.Users.login({
             login: $.email.value,
             password: $.password.value
         }, function(e) {
-            if (e.success) {
-                Ti.App.Properties.setString("sessionId", Cloud.sessionId);
-                Ti.App.Properties.setString("userId", e.users[0].id);
-                Alloy.createController(createController);
-            } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+            login(e);
         });
+    });
+    $.btnFacebook.addEventListener("click", function() {
+        Alloy.Globals.Facebook.authorize();
     });
     $.signup.addEventListener("click", function() {
         Alloy.createController("signup");
+    });
+    Titanium.App.addEventListener("facebook.login", function(e) {
+        e.success ? Cloud.SocialIntegrations.externalAccountLogin({
+            type: "facebook",
+            token: Alloy.Globals.Facebook.accessToken
+        }, function(e) {
+            login(e);
+        }) : alert(e.error);
     });
     $.login.open();
     _.extend($, exports);

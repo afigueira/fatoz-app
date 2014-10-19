@@ -25,6 +25,16 @@ Alloy.Globals.drawer = function(sidebar, element, titleActionBar) {
     element.open();
 };
 
+Alloy.Globals.Facebook = require("facebook");
+
+Alloy.Globals.Facebook.appid = "1480203828923788";
+
+Alloy.Globals.Facebook.permissions = [ "email" ];
+
+Alloy.Globals.Facebook.addEventListener("login", function(e) {
+    Titanium.App.fireEvent("facebook.login", e);
+});
+
 var io = require("socket.io");
 
 var socket = io.connect("https://1f0b6fd33fa8afdb54e5479c5a17447732b25d68.cloudapp.appcelerator.com");

@@ -258,7 +258,8 @@ function Controller() {
                 });
                 $.addClass(descriptionCategory, "fontWhite proximaNovaRegular descriptionCategory");
                 var btnNewMatch = Titanium.UI.createButton({
-                    titleid: "new_match"
+                    titleid: "new_match",
+                    id: e.categories[i].id
                 });
                 $.addClass(btnNewMatch, "radiusLarge green fontWhite proximaNovaRegular btnNewMatch");
                 var btnChallenge = Titanium.UI.createButton({
@@ -281,7 +282,9 @@ function Controller() {
         } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
     });
     $.categories.addEventListener("click", function(e) {
-        e.source.classes.indexOf("btnNewMatch") > -1 ? alert(":D") : alert(":()");
+        e.source.classes.indexOf("btnNewMatch") > -1 && Alloy.createController("roomQueue", {
+            categoryId: e.source.id
+        });
     });
     _.extend($, exports);
 }

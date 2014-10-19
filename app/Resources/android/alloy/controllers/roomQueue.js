@@ -172,6 +172,12 @@ function Controller() {
     $.__views.__alloyId268.add($.__views.__alloyId271);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var args = arguments[0] || {};
+    categoryId = args.categoryId || "";
+    categoryId && Titanium.App.fireEvent("websocket.dispatchEvent", {
+        event: "joinRoom",
+        roomId: categoryId
+    });
     $.roomQueue.open();
     _.extend($, exports);
 }
