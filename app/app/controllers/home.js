@@ -75,6 +75,11 @@ $.categories.addEventListener('click', function(e){
 	if (e.source.classes.indexOf('btnNewMatch') > -1){				
 		Alloy.createController('roomQueue', {categoryId: e.source.id});
 	}
+	
+	
+	if (e.source.classes.id == 'popularTab'){				
+		$.popular.visible = true;
+	}
 });
 
 /*$.home.addEventListener("open", function() {

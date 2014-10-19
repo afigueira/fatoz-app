@@ -101,7 +101,7 @@
 	bottom: 10
 },
 ".fillChosenOptionGame": {
-	width: Titanium.UI.FILL
+	width: 228
 },
 ".optionRedGame": {
 	backgroundColor: "#e42e24",

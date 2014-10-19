@@ -33,14 +33,15 @@ Titanium.App.addEventListener('facebook.login', function(e) {
 });
 
 function login(e) {
-	if (e.success) {
-    	Ti.App.Properties.setString('sessionId', Cloud.sessionId);
-    	Ti.App.Properties.setString('userId', e.users[0].id);
-		Alloy.createController(createController);
-    } else {
-        alert('Error:\n' +
-            ((e.error && e.message) || JSON.stringify(e)));
-    }
+	if (e.success) {	    	
+	    	Ti.App.Properties.setString('sessionId', Cloud.sessionId);
+	    	Ti.App.Properties.setString('userId', e.users[0].id);
+	    	Ti.App.Properties.setString('userName', e.users[0].first_name + " " + e.users[0].last_name);	    	
+			Alloy.createController(createController);
+	    } else {
+	        alert('Error:\n' +
+	            ((e.error && e.message) || JSON.stringify(e)));
+	    }
 }
 
 $.login.open();

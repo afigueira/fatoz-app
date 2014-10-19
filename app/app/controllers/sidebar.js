@@ -25,6 +25,10 @@ $.exit.addEventListener('click', function(){
 	      Cloud.Users.logout(function (e) {
 			    if (e.success) {
 			        Alloy.createController('login');
+			        
+			        Ti.App.Properties.removeProperty('sessionId');
+	    			Ti.App.Properties.removeProperty('userId');
+	    			Ti.App.Properties.removeProperty('userName');
 			    }
 			});
 	      break;	        
