@@ -5,7 +5,7 @@ categoryId = args.categoryId || '';
 if(categoryId){
 	Titanium.App.fireEvent('websocket.dispatchEvent', { 
 		event:'joinRoom', 
-		categoryId: categoryId
+		roomId: categoryId
 		}
 	);	
 }
