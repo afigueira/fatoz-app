@@ -49,7 +49,7 @@
 ".icon-highlights":{
 	image: "/images/icon-highlights.png"
 },
-"#soccer": {
+".soccer": {
 	backgroundImage: "/images/background-home-categories-soccer.jpg"
 },
 ".iconCategory": {
@@ -83,4 +83,14 @@
 },
 ".margin": {
 	top: 485
+},
+
+
+"#drawer": {
+    openDrawerGestureMode: "OPEN_MODE_NONE",
+    closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
+    leftDrawerWidth: 250
+}
+"Window": {
+    backgroundColor: 'white'
 }

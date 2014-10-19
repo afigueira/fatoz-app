@@ -6,7 +6,8 @@
 },
 
 ".sidebar": {
-	width: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL,
 	layout: "vertical",	
 	backgroundColor: "#c42e24"
 },

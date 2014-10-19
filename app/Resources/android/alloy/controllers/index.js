@@ -23,8 +23,11 @@ function Controller() {
     $.__views.index && $.addTopLevelView($.__views.index);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.index.open();
-    Alloy.createController("login");
+    Cloud = require("ti.cloud");
+    Cloud.sessionId = Ti.App.Properties.getString("sessionId");
+    Cloud.Users.showMe(function(e) {
+        e.success ? Alloy.createController("home") : Alloy.createController("login");
+    });
     date = new Date();
     console.log("=>>>>>>>>>>>>>>>>>>>>>>>>>>>> FIM " + date.getHours() + ":" + date.getMinutes() + " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<=");
     console.log("=>>>>>>>>>>>>>>>>>>>>>>>>>>>> FIM " + date.getHours() + ":" + date.getMinutes() + " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<=");

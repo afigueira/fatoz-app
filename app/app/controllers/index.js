@@ -1,7 +1,15 @@
+Cloud = require("ti.cloud");
 
-$.index.open();
+Cloud.sessionId = Ti.App.Properties.getString('sessionId');
 
-Alloy.createController('login');
+Cloud.Users.showMe(function (e) {
+    if (e.success) {    	
+        Alloy.createController('home');
+        
+    } else {
+    	Alloy.createController('login');    	        
+    }
+});
 
 date = new Date();
 

@@ -1,9 +1,7 @@
 Cloud = require("ti.cloud");
 
-$.categories.open();
 
-
-
+require('alloy').Globals.drawer($.sidebar, $.drawer, 'Categorias');
 
 
 
