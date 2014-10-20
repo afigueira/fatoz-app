@@ -1,7 +1,6 @@
 /*$.profile.open();*/
 require('alloy').Globals.drawer($.sidebar, $.drawer, 'Perfil');
 
-
 Cloud.Users.showMe(function (e) {
     if (e.success) {
         var user = e.users[0];
@@ -44,3 +43,6 @@ Cloud.Users.showMe(function (e) {
             ((e.error && e.message) || JSON.stringify(e)));
     }
 });
+
+
+

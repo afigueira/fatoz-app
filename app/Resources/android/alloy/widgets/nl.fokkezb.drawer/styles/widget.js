@@ -213,7 +213,8 @@ module.exports = [ {
         font: {
             fontSize: 10,
             fontWeight: "bold"
-        }
+        },
+        touchEnabled: false
     }
 }, {
     isClass: true,
@@ -222,11 +223,19 @@ module.exports = [ {
     style: {
         bottom: 0,
         height: 3,
-        width: Titanium.UI.FILL
+        width: Titanium.UI.FILL,
+        touchEnabled: false
     }
 }, {
     isClass: true,
     priority: 10000.0033,
+    key: "tab",
+    style: {
+        touchEnabled: true
+    }
+}, {
+    isClass: true,
+    priority: 10000.0034,
     key: "btnFollow",
     style: {
         width: 100,
@@ -247,7 +256,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0034,
+    priority: 10000.0035,
     key: "btnMore",
     style: {
         width: 50,
@@ -258,7 +267,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0035,
+    priority: 10000.0036,
     key: "btnWhite",
     style: {
         backgroundImage: "/images/background-btn-more.png",
@@ -274,7 +283,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0036,
+    priority: 10000.0037,
     key: "btnBlue",
     style: {
         height: 30,
@@ -295,7 +304,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0037,
+    priority: 10000.0038,
     key: "btnOrange",
     style: {
         height: 30,
@@ -316,7 +325,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0038,
+    priority: 10000.0039,
     key: "btnRed",
     style: {
         height: 30,
@@ -337,7 +346,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0039,
+    priority: 10000.004,
     key: "btnFacebook",
     style: {
         backgroundImage: "/images/background-blue-transparent.png",

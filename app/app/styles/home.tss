@@ -39,7 +39,6 @@
 ".scrollable": {
 	width: Titanium.UI.FILL,
 	height: Titanium.UI.FILL,
-	top: 46,
 	left: 0,
 	showPagingControl: true,
 	pagingControlColor: "transparent",

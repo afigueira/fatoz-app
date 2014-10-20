@@ -11,7 +11,7 @@
 			<View id="searchPlayer" class="layoutVertical searchPlayer">
 				<Label text="Procurando jogador..." class="labelSearchPlayer" />
 				
-				<Button class="btnRed cancelSearchPlayer" title="Cancelar" />
+				<Button id="cancelMatch" class="btnRed cancelSearchPlayer" title="Cancelar" />
 			</View>
 			
 			<View id="profileB" visible="false" class="topProfile layoutAbsolute" backgroundImage="http://pixabay.com/static/uploads/photo/2014/06/01/11/35/landscape-359541_640.jpg">				

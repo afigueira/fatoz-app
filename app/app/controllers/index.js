@@ -2,12 +2,19 @@ Cloud = require("ti.cloud");
 
 Cloud.sessionId = Ti.App.Properties.getString('sessionId');
 
-Cloud.Users.showMe(function (e) {
-    if (e.success) {    	    	
-        Alloy.createController('home');
-        
+
+Cloud.Objects.query({
+    classname: 'achievements',
+    order: 'points',
+    where: {
+    	categories_id: '544410126bbf3fcc86094f59'
+    }
+}, function (e) {
+    if (e.success) {
+        console.log(e);
     } else {
-    	Alloy.createController('login');    	        
+        alert('Error:\n' +
+            ((e.error && e.message) || JSON.stringify(e)));
     }
 });
 

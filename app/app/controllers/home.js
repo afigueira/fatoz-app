@@ -72,15 +72,53 @@ Cloud.Objects.query({
 
 
 $.categories.addEventListener('click', function(e){
-	if (e.source.classes.indexOf('btnNewMatch') > -1){				
-		Alloy.createController('roomQueue', {categoryId: e.source.id});
+	if (e.source.classes){		
+		if (e.source.classes.indexOf('btnNewMatch') > -1){			
+			Alloy.createController('roomQueue', {categoryId: e.source.id});
+		}
 	}
 	
 	
-	if (e.source.classes.id == 'popularTab'){				
+	
+	/*if (e.source.classes.id == 'popularTab'){				
+		$.popular.visible = true;
+	}*/
+});
+
+$.containerLabelHighlight.addEventListener('click', function(e){
+	alert("containerLabelHighlight");
+});
+
+
+for(var i=0,j=$.contentTabs.children.length; i<j; i++){
+	var children = $.contentTabs.children[i];	
+	children.visible = false;	
+};
+
+$.tabs.addEventListener('click', function(e){
+	for(var i=0,j=$.contentTabs.children.length; i<j; i++){
+		var children = $.contentTabs.children[i];	
+		children.visible = false;	
+	};
+
+	if(e.source.id == 'popularTab'){
 		$.popular.visible = true;
 	}
+	
+	if(e.source.id == 'recentTab'){
+		$.recent.visible = true;
+	}
 });
+
+/*$.categories.children
+contem eles
+aí faz
+for (var i = 0; i < $.categories.children.length; i++) {
+var scrollable = $.categories.children[i
+scrollable.visible = false;*/
+
+
+
 
 /*$.home.addEventListener("open", function() {
 	alert(":D");

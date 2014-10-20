@@ -52,6 +52,7 @@ function Controller() {
     $.__views.__alloyId2 = Ti.UI.createView({
         height: 46,
         width: 72,
+        touchEnabled: true,
         id: "__alloyId2"
     });
     $.__views.tabs.add($.__views.__alloyId2);
@@ -63,6 +64,7 @@ function Controller() {
             fontSize: 10,
             fontWeight: "bold"
         },
+        touchEnabled: false,
         textid: "all",
         id: "__alloyId3"
     });
@@ -72,12 +74,14 @@ function Controller() {
         bottom: 0,
         height: 3,
         width: Titanium.UI.FILL,
+        touchEnabled: false,
         id: "__alloyId4"
     });
     $.__views.__alloyId2.add($.__views.__alloyId4);
     $.__views.__alloyId5 = Ti.UI.createView({
         height: 46,
         width: 72,
+        touchEnabled: true,
         id: "__alloyId5"
     });
     $.__views.tabs.add($.__views.__alloyId5);
@@ -89,6 +93,7 @@ function Controller() {
             fontSize: 10,
             fontWeight: "bold"
         },
+        touchEnabled: false,
         textid: "popular",
         id: "__alloyId6"
     });
@@ -98,6 +103,7 @@ function Controller() {
         bottom: 0,
         height: 3,
         width: Titanium.UI.FILL,
+        touchEnabled: false,
         visible: "false",
         id: "__alloyId7"
     });
@@ -105,6 +111,7 @@ function Controller() {
     $.__views.__alloyId8 = Ti.UI.createView({
         height: 46,
         width: 72,
+        touchEnabled: true,
         id: "__alloyId8"
     });
     $.__views.tabs.add($.__views.__alloyId8);
@@ -116,6 +123,7 @@ function Controller() {
             fontSize: 10,
             fontWeight: "bold"
         },
+        touchEnabled: false,
         textid: "text_new",
         id: "__alloyId9"
     });
@@ -125,6 +133,7 @@ function Controller() {
         bottom: 0,
         height: 3,
         width: Titanium.UI.FILL,
+        touchEnabled: false,
         visible: "false",
         id: "__alloyId10"
     });
@@ -132,6 +141,7 @@ function Controller() {
     $.__views.__alloyId11 = Ti.UI.createView({
         height: 46,
         width: 72,
+        touchEnabled: true,
         id: "__alloyId11"
     });
     $.__views.tabs.add($.__views.__alloyId11);
@@ -143,6 +153,7 @@ function Controller() {
             fontSize: 10,
             fontWeight: "bold"
         },
+        touchEnabled: false,
         textid: "suggested",
         id: "__alloyId12"
     });
@@ -152,6 +163,7 @@ function Controller() {
         bottom: 0,
         height: 3,
         width: Titanium.UI.FILL,
+        touchEnabled: false,
         visible: "false",
         id: "__alloyId13"
     });
@@ -393,7 +405,8 @@ function Controller() {
                 var insideScrollable = Titanium.UI.createView();
                 $.addClass(insideScrollable, "insideScrollable");
                 var btnNewMatch = Titanium.UI.createButton({
-                    titleid: "new_match"
+                    titleid: "new_match",
+                    id: e.categories[i].id
                 });
                 $.addClass(btnNewMatch, "radiusLarge green fontWhite proximaNovaRegular btnNewMatch");
                 var btnChallenge = Titanium.UI.createButton({
@@ -429,6 +442,11 @@ function Controller() {
                 $.listCategories.appendRow(row);
             }
         } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+    });
+    $.listCategories.addEventListener("click", function(e) {
+        e.source.classes && e.source.classes.indexOf("btnNewMatch") > -1 && Alloy.createController("roomQueue", {
+            categoryId: e.source.id
+        });
     });
     _.extend($, exports);
 }

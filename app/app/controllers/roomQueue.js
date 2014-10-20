@@ -11,8 +11,7 @@ if(categoryId){
 	Titanium.App.fireEvent('websocket.dispatchEvent', { 
 		event:'joinRoom', 
 		roomId: categoryId
-		}
-	);	
+	});	
 	
 	Titanium.App.addEventListener('websocket.creatingMatch', function(e){
 		
@@ -53,6 +52,17 @@ if(categoryId){
 function mountMatch(){
 	Alloy.createController('game', {matchId: matchId});
 }
+
+
+$.cancelMatch.addEventListener('click', function(e){
+	Titanium.App.fireEvent('websocket.dispatchEvent', { 
+		event:'leaveRoom', 
+		roomId: categoryId
+	});
+	
+	Alloy.createController('home');
+});
+
 
 
 

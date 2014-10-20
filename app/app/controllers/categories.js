@@ -99,7 +99,8 @@ Cloud.Objects.query({
 			$.addClass(insideScrollable, "insideScrollable");
 			
 			var btnNewMatch = Titanium.UI.createButton({
-				titleid: "new_match"
+				titleid: "new_match",
+				id: e.categories[i].id
 			});
 			$.addClass(btnNewMatch, "radiusLarge green fontWhite proximaNovaRegular btnNewMatch");
 			
@@ -151,4 +152,12 @@ Cloud.Objects.query({
         alert('Error:\n' +
             ((e.error && e.message) || JSON.stringify(e)));
     }
+});
+
+$.listCategories.addEventListener('click', function(e){
+	if (e.source.classes){
+		if (e.source.classes.indexOf('btnNewMatch') > -1){			
+			Alloy.createController('roomQueue', {categoryId: e.source.id});
+		}
+	}
 });

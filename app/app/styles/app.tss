@@ -111,12 +111,17 @@
 	left: 0
 },
 ".labelTab": {
-	font: {fontSize: 10, fontWeight: 'bold'}
+	font: {fontSize: 10, fontWeight: 'bold'},
+	touchEnabled: false
 },
 ".tabSelected": {
 	bottom: 0,
 	height: 3,
-	width: Titanium.UI.FILL
+	width: Titanium.UI.FILL,
+	touchEnabled: false
+},
+".tab": {
+	touchEnabled: true
 },
 ".btnFollow": {
 	width: 100,
