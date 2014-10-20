@@ -6,6 +6,7 @@
     <property name="acs-oauth-secret-development" type="string">wGFFYeOZMa5yvi9DV1rIABjSfhxOLzw9</property>
     <property name="acs-oauth-key-development" type="string">XkJ324IpFzv4NjppQGZSGK59iSYBP81b</property>
     <property name="acs-api-key-development" type="string">dqOaDoAlKXrBGNnRRehHewwcc7qmH44J</property>
+    <property name="ti.facebook.appid">1480203828923788</property>
     <id>br.com.fatoz</id>
     <name>Fatoz</name>
     <version>1.0</version>
