@@ -163,7 +163,7 @@ $.optionsQuestion.addEventListener('click', function(e){
 
 Titanium.App.addEventListener('websocket.showQuestion', showQuestion);
 Titanium.App.addEventListener('websocket.startQuestion', startQuestion);
-Titanium.App.addEventListener('websocket.fighterAnswered', figtherAnswered);
+Titanium.App.addEventListener('websocket.fighterAnswered', fighterAnswered);
 Titanium.App.addEventListener('websocket.finishGame', finishGame);
 
 $.game.open();
