@@ -70,7 +70,7 @@
 	zIndex: 1
 },
 ".contentGame": {	
-	width: Titanium.UI.SIZE,
+	width: 100,
 	height: Titanium.UI.FILL,
 	layout: "vertical",
 	left: 5,
@@ -105,6 +105,14 @@
 },
 ".optionRedGame": {
 	backgroundColor: "#e42e24",
+	color: "#ffffff"
+},
+".optionBlueGame": {
+	backgroundColor: "#49b2d3",
+	color: "#ffffff"	
+},
+".optionGreenGame": {
+	backgroundColor: "#08ad4d",
 	color: "#ffffff"
 },
 ".marginRightOption": {

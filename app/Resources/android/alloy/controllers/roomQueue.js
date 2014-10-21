@@ -26,27 +26,27 @@ function Controller() {
         id: "roomQueue"
     });
     $.__views.roomQueue && $.addTopLevelView($.__views.roomQueue);
-    $.__views.__alloyId260 = Ti.UI.createView({
+    $.__views.__alloyId257 = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.SIZE,
-        id: "__alloyId260"
+        id: "__alloyId257"
     });
-    $.__views.roomQueue.add($.__views.__alloyId260);
-    $.__views.__alloyId261 = Ti.UI.createView({
+    $.__views.roomQueue.add($.__views.__alloyId257);
+    $.__views.__alloyId258 = Ti.UI.createView({
         layout: "absolute",
         width: Titanium.UI.FILL,
         height: 231,
         backgroundImage: "http://pixabay.com/static/uploads/photo/2014/06/01/11/35/landscape-359541_640.jpg",
-        id: "__alloyId261"
+        id: "__alloyId258"
     });
-    $.__views.__alloyId260.add($.__views.__alloyId261);
-    $.__views.__alloyId262 = Ti.UI.createView({
+    $.__views.__alloyId257.add($.__views.__alloyId258);
+    $.__views.__alloyId259 = Ti.UI.createView({
         width: 250,
         height: Titanium.UI.SIZE,
-        id: "__alloyId262"
+        id: "__alloyId259"
     });
-    $.__views.__alloyId261.add($.__views.__alloyId262);
-    $.__views.__alloyId263 = Ti.UI.createImageView({
+    $.__views.__alloyId258.add($.__views.__alloyId259);
+    $.__views.__alloyId260 = Ti.UI.createImageView({
         width: 64,
         height: 64,
         borderRadius: 324,
@@ -54,9 +54,9 @@ function Controller() {
         borderColor: "#ffffff",
         left: 0,
         backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg",
-        id: "__alloyId263"
+        id: "__alloyId260"
     });
-    $.__views.__alloyId262.add($.__views.__alloyId263);
+    $.__views.__alloyId259.add($.__views.__alloyId260);
     $.__views.profileTitleA = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -70,20 +70,20 @@ function Controller() {
         top: 10,
         id: "profileTitleA"
     });
-    $.__views.__alloyId262.add($.__views.profileTitleA);
+    $.__views.__alloyId259.add($.__views.profileTitleA);
     $.__views.searchPlayer = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.SIZE,
         height: Titanium.UI.SIZE,
         id: "searchPlayer"
     });
-    $.__views.__alloyId260.add($.__views.searchPlayer);
-    $.__views.__alloyId264 = Ti.UI.createLabel({
+    $.__views.__alloyId257.add($.__views.searchPlayer);
+    $.__views.__alloyId261 = Ti.UI.createLabel({
         top: 50,
         text: "Procurando jogador...",
-        id: "__alloyId264"
+        id: "__alloyId261"
     });
-    $.__views.searchPlayer.add($.__views.__alloyId264);
+    $.__views.searchPlayer.add($.__views.__alloyId261);
     $.__views.cancelMatch = Ti.UI.createButton({
         height: 30,
         borderRadius: 15,
@@ -114,14 +114,14 @@ function Controller() {
         visible: "false",
         backgroundImage: "http://pixabay.com/static/uploads/photo/2014/06/01/11/35/landscape-359541_640.jpg"
     });
-    $.__views.__alloyId260.add($.__views.profileB);
-    $.__views.__alloyId265 = Ti.UI.createView({
+    $.__views.__alloyId257.add($.__views.profileB);
+    $.__views.__alloyId262 = Ti.UI.createView({
         width: 250,
         height: Titanium.UI.SIZE,
-        id: "__alloyId265"
+        id: "__alloyId262"
     });
-    $.__views.profileB.add($.__views.__alloyId265);
-    $.__views.__alloyId266 = Ti.UI.createImageView({
+    $.__views.profileB.add($.__views.__alloyId262);
+    $.__views.__alloyId263 = Ti.UI.createImageView({
         width: 64,
         height: 64,
         borderRadius: 324,
@@ -129,9 +129,9 @@ function Controller() {
         borderColor: "#ffffff",
         left: 0,
         backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg",
-        id: "__alloyId266"
+        id: "__alloyId263"
     });
-    $.__views.__alloyId265.add($.__views.__alloyId266);
+    $.__views.__alloyId262.add($.__views.__alloyId263);
     $.__views.profileTitleB = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -146,7 +146,7 @@ function Controller() {
         id: "profileTitleB",
         text: "Raul Claudino"
     });
-    $.__views.__alloyId265.add($.__views.profileTitleB);
+    $.__views.__alloyId262.add($.__views.profileTitleB);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};

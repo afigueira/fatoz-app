@@ -59,6 +59,22 @@ socket.on("mountMatch", function(data) {
     Titanium.App.fireEvent("websocket.mountMatch", data);
 });
 
+socket.on("showQuestion", function(data) {
+    Titanium.App.fireEvent("websocket.showQuestion", data);
+});
+
+socket.on("startQuestion", function(data) {
+    Titanium.App.fireEvent("websocket.startQuestion", data);
+});
+
+socket.on("fighterAnswered", function(data) {
+    Titanium.App.fireEvent("websocket.fighterAnswered", data);
+});
+
+socket.on("finishGame", function(data) {
+    Titanium.App.fireEvent("websocket.finishGame", data);
+});
+
 Titanium.App.addEventListener("websocket.dispatchEvent", function(data) {
     if (data.event) {
         data.userId = Ti.App.Properties.getString("userId");

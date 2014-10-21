@@ -93,11 +93,14 @@ function startQuestion(e) {
 	$.currentRound.visible = false;
 	
 	$.titleQuestion.text = currentQuestion.title;
-	$.option1.text = currentQuestion.option_1;
-	$.option2.text = currentQuestion.option_2;
-	$.option3.text = currentQuestion.option_3;
-	$.option4.text = currentQuestion.option_4;
+	$.option1.title = currentQuestion.option_1;
+	$.option2.title = currentQuestion.option_2;
+	$.option3.title = currentQuestion.option_3;
+	$.option4.title = currentQuestion.option_4;	
 	//correct_option
+	
+	$.titleQuestion.visible = true;
+	$.optionsQuestion.visible = true;
 }
 
 function fighterAnswered(e) {
@@ -134,7 +137,7 @@ function questionAnswered(clickedOption) {
 
 function setQuestionResult(userSide, clickedOption, isCorrect) {
 	// aplicar se tá correto ou não
-	var classColor = userSide == myUserSide ? (isCorrect ? 'green' : 'red') : 'blue';
+	var classColor = userSide == myUserSide ? (isCorrect ? 'optionGreenGame' : 'optionRedGame') : 'optionBlueGame';
 	var option = $['option' + clickedOption];
 	
 	$.addClass(option, classColor);
