@@ -25,6 +25,9 @@ function Controller() {
     _.extend($, $.__views);
     Cloud = require("ti.cloud");
     Cloud.sessionId = Ti.App.Properties.getString("sessionId");
+    Cloud.Users.showMe(function(e) {
+        e.success ? Alloy.createController("home") : Alloy.createController("login");
+    });
     date = new Date();
     console.log("=>>>>>>>>>>>>>>>>>>>>>>>>>>>> FIM " + date.getHours() + ":" + date.getMinutes() + " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<=");
     console.log("=>>>>>>>>>>>>>>>>>>>>>>>>>>>> FIM " + date.getHours() + ":" + date.getMinutes() + " <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<=");

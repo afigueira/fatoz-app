@@ -48,7 +48,8 @@ Cloud.Objects.query({
 			$.addClass(btnChallenge, "btnWhite btnChallenge");
 			
 			var btnRanking = Titanium.UI.createButton({
-				titleid: 'ranking'
+				titleid: 'ranking',
+				id: e.categories[i].id
 			});
 			$.addClass(btnRanking, "btnWhite btnRanking");
 			
@@ -75,6 +76,10 @@ $.categories.addEventListener('click', function(e){
 	if (e.source.classes){		
 		if (e.source.classes.indexOf('btnNewMatch') > -1){			
 			Alloy.createController('roomQueue', {categoryId: e.source.id});
+		}
+		
+		if (e.source.classes.indexOf('btnRanking') > -1){			
+			Alloy.createController('ranking', {categoryId: e.source.id});			
 		}
 	}
 	

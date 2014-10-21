@@ -381,7 +381,8 @@ function Controller() {
                 });
                 $.addClass(btnChallenge, "btnWhite btnChallenge");
                 var btnRanking = Titanium.UI.createButton({
-                    titleid: "ranking"
+                    titleid: "ranking",
+                    id: e.categories[i].id
                 });
                 $.addClass(btnRanking, "btnWhite btnRanking");
                 category.add(iconCategory);
@@ -396,9 +397,14 @@ function Controller() {
         } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
     });
     $.categories.addEventListener("click", function(e) {
-        e.source.classes && e.source.classes.indexOf("btnNewMatch") > -1 && Alloy.createController("roomQueue", {
-            categoryId: e.source.id
-        });
+        if (e.source.classes) {
+            e.source.classes.indexOf("btnNewMatch") > -1 && Alloy.createController("roomQueue", {
+                categoryId: e.source.id
+            });
+            e.source.classes.indexOf("btnRanking") > -1 && Alloy.createController("ranking", {
+                categoryId: e.source.id
+            });
+        }
     });
     $.containerLabelHighlight.addEventListener("click", function() {
         alert("containerLabelHighlight");

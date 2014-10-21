@@ -151,10 +151,6 @@ function Controller() {
     _.extend($, $.__views);
     var args = arguments[0] || {};
     categoryId = args.categoryId || "";
-    categoryId && Titanium.App.fireEvent("websocket.dispatchEvent", {
-        event: "joinRoom",
-        roomId: categoryId
-    });
     var matchId;
     var mountReceived = false;
     var fighterReceived = false;

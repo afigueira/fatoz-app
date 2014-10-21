@@ -1,0 +1,38 @@
+"View": {
+	height: Titanium.UI.SIZE
+},
+".rowRank": {
+	width: Titanium.UI.FILL,
+	height: 75
+},
+".rankNumber": {
+	width: 50,
+	left: 0,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	font: {fontSize: 12},
+	color: "#888888"
+},
+".imageProfileRank": {
+	left: 50,
+	width: 29,
+	height: 29,
+	borderRadius: 15
+},
+".rankName": {
+	left: 94,
+	font: {fontSize: 12, fontWeight: 'bold'},
+	color: "#383838"
+},
+".rankPoint": {
+	right: 20,
+	width: Titanium.UI.SIZE,
+	layout: "horizontal"
+},
+".rankPt": {
+	font: {fontSize: 12},
+	color: "#666666"
+},
+".rankTotal": {
+	color: "#e33124",
+	font: {fontSize: 15, fontWeight: 'bold'}
+}

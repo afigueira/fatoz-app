@@ -1170,15 +1170,6 @@ function Controller() {
             });
         } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
     });
-    Cloud.Objects.query({
-        classname: "achievements",
-        order: "points",
-        where: {
-            categories_id: "544410126bbf3fcc86094f59"
-        }
-    }, function(e) {
-        e.success ? console.log(e) : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
-    });
     _.extend($, exports);
 }
 

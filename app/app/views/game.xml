@@ -22,7 +22,7 @@
 				
 				<View class="borderGrayDark" />
 				
-				<Label class="questionGame proximaNovaRegular" text="A Qual das seguintes marcas pertence a logo abaixo?" />
+				<Label class="questionGame proximaNovaRegular" text="A Qual das seguintes marcas pertence a logo abaixo?" id="titleQuestion" visible="false" />
 								
 				<View class="containerGame">
 					<View class="layoutAbsolute">
@@ -57,21 +57,23 @@
 								
 								<!-- opcao 2 -->					
 																
-								<View class="optionGame">
+								<View class="optionGame" id="optionsQuestion" visible="false">
 									<View class="layoutVertical">
-										<Button class="chosenOptionGame fillChosenOptionGame" title="Apple" />
-										<Button class="chosenOptionGame fillChosenOptionGameoption RedGame" title="Apple Computer inc." />
-										<Button class="chosenOptionGame fillChosenOptionGame" title="Apple Computer inc." />
-										<Button class="chosenOptionGame fillChosenOptionGame" title="Apple Computer inc." />
+										<Button class="chosenOptionGame fillChosenOptionGame" id="option1" />
+										<Button class="chosenOptionGame fillChosenOptionGame" id="option2" />
+										<Button class="chosenOptionGame fillChosenOptionGame" id="option3" />
+										<Button class="chosenOptionGame fillChosenOptionGame" id="option4" />
 									</View>	
 								</View>
 							
 							
-								<!--<Label textid="last_round" class="proximaNovaRegular lastRoundGame" />
-								<View class="layoutHorizontal">
-									<Label textid="round" class="proximaNovaRegular roundGame" />
-									<Label text=" 5" class="proximaNovaRegular roundGame" />		
-								</View>-->
+								<View id="currentRound" visible="false">
+									<Label textid="last_round" class="proximaNovaRegular lastRoundGame" />
+									<View class="layoutHorizontal">
+										<Label textid="round" class="proximaNovaRegular roundGame" />
+										<Label text="5" class="proximaNovaRegular roundGame" id="roundNumber" />		
+									</View>
+								</View>
 							</View>
 							
 							<View class="progressGame">
