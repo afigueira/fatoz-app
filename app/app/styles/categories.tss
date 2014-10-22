@@ -76,13 +76,13 @@
 },
 ".btnChallenge": {
 	top: 58,
-	left: 40,
+	left: 0,
 	width: 110,
 	font: {fontSize: 12, fontWeight: 'bold'}
 },
 ".btnRanking": {
 	top: 58,
-	right: 40,
+	right: 0,
 	width: 110,
 	font: {fontSize: 12, fontWeight: 'bold'}
 }

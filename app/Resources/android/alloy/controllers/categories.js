@@ -26,8 +26,8 @@ function Controller() {
         id: "__alloyId0"
     });
     $.__views.__alloyId1 = Ti.UI.createScrollView({
-        backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
         layout: "vertical",
+        backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
         id: "__alloyId1"
     });
     $.__views.__alloyId0.add($.__views.__alloyId1);
@@ -50,9 +50,9 @@ function Controller() {
     });
     $.__views.containerTabs.add($.__views.tabs);
     $.__views.__alloyId2 = Ti.UI.createView({
-        touchEnabled: true,
         height: 46,
         width: 72,
+        touchEnabled: true,
         id: "__alloyId2"
     });
     $.__views.tabs.add($.__views.__alloyId2);
@@ -79,9 +79,9 @@ function Controller() {
     });
     $.__views.__alloyId2.add($.__views.__alloyId4);
     $.__views.__alloyId5 = Ti.UI.createView({
-        touchEnabled: true,
         height: 46,
         width: 72,
+        touchEnabled: true,
         id: "__alloyId5"
     });
     $.__views.tabs.add($.__views.__alloyId5);
@@ -109,9 +109,9 @@ function Controller() {
     });
     $.__views.__alloyId5.add($.__views.__alloyId7);
     $.__views.__alloyId8 = Ti.UI.createView({
-        touchEnabled: true,
         height: 46,
         width: 72,
+        touchEnabled: true,
         id: "__alloyId8"
     });
     $.__views.tabs.add($.__views.__alloyId8);
@@ -139,9 +139,9 @@ function Controller() {
     });
     $.__views.__alloyId8.add($.__views.__alloyId10);
     $.__views.__alloyId11 = Ti.UI.createView({
-        touchEnabled: true,
         height: 46,
         width: 72,
+        touchEnabled: true,
         id: "__alloyId11"
     });
     $.__views.tabs.add($.__views.__alloyId11);
@@ -203,7 +203,7 @@ function Controller() {
         left: 0,
         top: 0,
         zIndex: 0,
-        width: "320",
+        width: Titanium.UI.FILL,
         height: "220",
         image: "/images/background-categories-soccer.jpg",
         id: "__alloyId17"
@@ -237,8 +237,8 @@ function Controller() {
         color: "white",
         tintColor: "white",
         font: {
-            fontFamily: "ProximaNova-Regular",
-            fontSize: 16
+            fontSize: 16,
+            fontFamily: "ProximaNova-Regular"
         },
         left: 15,
         top: 3,
@@ -257,8 +257,8 @@ function Controller() {
         color: "white",
         tintColor: "white",
         font: {
-            fontFamily: "ProximaNova-Regular",
-            fontSize: 12
+            fontSize: 12,
+            fontFamily: "ProximaNova-Regular"
         },
         top: 50,
         textid: "category_description",
@@ -277,70 +277,75 @@ function Controller() {
         id: "__alloyId28"
     });
     __alloyId27.push($.__views.__alloyId28);
-    $.__views.__alloyId29 = Ti.UI.createButton({
-        borderRadius: 14,
-        color: "white",
-        tintColor: "white",
-        backgroundColor: "#08ad4d",
-        font: {
-            fontFamily: "ProximaNova-Regular",
-            fontSize: 12,
-            fontWeight: "bold"
-        },
-        top: 15,
-        width: 240,
-        height: 33,
-        titleid: "new_match",
+    $.__views.__alloyId29 = Ti.UI.createView({
+        width: Titanium.UI.SIZE,
         id: "__alloyId29"
     });
     $.__views.__alloyId28.add($.__views.__alloyId29);
     $.__views.__alloyId30 = Ti.UI.createButton({
-        backgroundImage: "/images/background-btn-more.png",
-        height: 30,
-        borderRadius: 15,
+        borderRadius: 14,
+        color: "white",
+        tintColor: "white",
+        top: 15,
+        width: 240,
+        height: 33,
         font: {
             fontSize: 12,
-            fontWeight: "bold"
+            fontWeight: "bold",
+            fontFamily: "ProximaNova-Regular"
         },
-        borderColor: "white",
-        borderWidth: 1,
-        color: "#ffffff",
-        top: 58,
-        left: 40,
-        width: 110,
-        titleid: "challenge",
+        backgroundColor: "#08ad4d",
+        titleid: "new_match",
         id: "__alloyId30"
     });
-    $.__views.__alloyId28.add($.__views.__alloyId30);
+    $.__views.__alloyId29.add($.__views.__alloyId30);
     $.__views.__alloyId31 = Ti.UI.createButton({
-        backgroundImage: "/images/background-btn-more.png",
-        height: 30,
-        borderRadius: 15,
+        top: 58,
+        left: 0,
+        width: 110,
         font: {
             fontSize: 12,
             fontWeight: "bold"
         },
+        backgroundImage: "/images/background-btn-more.png",
+        height: 30,
+        borderRadius: 15,
         borderColor: "white",
         borderWidth: 1,
         color: "#ffffff",
-        top: 58,
-        right: 40,
-        width: 110,
-        titleid: "ranking",
+        titleid: "challenge",
         id: "__alloyId31"
     });
-    $.__views.__alloyId28.add($.__views.__alloyId31);
-    $.__views.__alloyId32 = Ti.UI.createView({
+    $.__views.__alloyId29.add($.__views.__alloyId31);
+    $.__views.__alloyId32 = Ti.UI.createButton({
+        top: 58,
+        right: 0,
+        width: 110,
+        font: {
+            fontSize: 12,
+            fontWeight: "bold"
+        },
+        backgroundImage: "/images/background-btn-more.png",
+        height: 30,
+        borderRadius: 15,
+        borderColor: "white",
+        borderWidth: 1,
+        color: "#ffffff",
+        titleid: "ranking",
         id: "__alloyId32"
     });
-    __alloyId27.push($.__views.__alloyId32);
-    $.__views.__alloyId33 = Ti.UI.createLabel({
+    $.__views.__alloyId29.add($.__views.__alloyId32);
+    $.__views.__alloyId33 = Ti.UI.createView({
+        id: "__alloyId33"
+    });
+    __alloyId27.push($.__views.__alloyId33);
+    $.__views.__alloyId34 = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
         text: "Statistics",
-        id: "__alloyId33"
+        id: "__alloyId34"
     });
-    $.__views.__alloyId32.add($.__views.__alloyId33);
+    $.__views.__alloyId33.add($.__views.__alloyId34);
     $.__views.__alloyId26 = Ti.UI.createScrollableView({
         width: Titanium.UI.FILL,
         height: Titanium.UI.FILL,

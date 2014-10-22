@@ -100,7 +100,7 @@
 				<TableView id="listCategories">						
 					<TableViewRow>
 						<View class="category">
-							<ImageView width="320" height="220" image="/images/background-categories-soccer.jpg" class="backgroundCategory"/>
+							<ImageView width="Titanium.UI.FILL" height="220" image="/images/background-categories-soccer.jpg" class="backgroundCategory"/>
 							
 							<View class="containerTitleCategory">
 								<View class="layoutAbsolute">
@@ -115,9 +115,11 @@
 							<View class="actionsCategory">
 								<ScrollableView>
 									<View class="insideScrollable">
-										<Button titleid="new_match" class="radiusLarge green fontWhite proximaNovaRegular btnNewMatch" />
-										<Button titleid="challenge" class="btnWhite btnChallenge" />
-										<Button titleid="ranking" class="btnWhite btnRanking" />
+										<View class="widthUiSize">
+											<Button titleid="new_match" class="radiusLarge green fontWhite proximaNovaRegular btnNewMatch" />
+											<Button titleid="challenge" class="btnWhite btnChallenge" />
+											<Button titleid="ranking" class="btnWhite btnRanking" />	
+										</View>
 									</View>
 									<View class="insideScrollable">
 										<Label text="Statistics" class="fontWhite" />

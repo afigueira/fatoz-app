@@ -62,9 +62,9 @@ function showQuestion(e) {
 	
 	// esconder atual
 	//$.titleQuestion.visible = false;
-	$.addClass($.titleQuestion, "visibleFalse");
+	$.addClass($.titleQuestion, "questionGame proximaNovaRegular visibleFalse");
 	//$.optionsQuestion.visible = false;
-	$.addClass($.optionsQuestion, "visibleFalse");
+	$.addClass($.optionsQuestion, "optionGame visibleFalse");
 	
 	// animar o round1
 	$.roundNumber.text = ' ' + questionIndex;
@@ -88,6 +88,22 @@ function showQuestion(e) {
 }
 
 function startQuestion(e) {
+	$.removeClass($.option1, 'optionRedGame');
+	$.removeClass($.option1, 'optionGreenGame');
+	$.removeClass($.option1, 'optionBlueGame');
+	
+	$.removeClass($.option2, 'optionRedGame');
+	$.removeClass($.option2, 'optionGreenGame');
+	$.removeClass($.option2, 'optionBlueGame');
+	
+	$.removeClass($.option3, 'optionRedGame');
+	$.removeClass($.option3, 'optionGreenGame');
+	$.removeClass($.option3, 'optionBlueGame');
+	
+	$.removeClass($.option4, 'optionRedGame');
+	$.removeClass($.option4, 'optionGreenGame');
+	$.removeClass($.option4, 'optionBlueGame');
+
 	var questionIndex = e.questionIndex;
 	
 	currentQuestionIndex = questionIndex;
@@ -145,7 +161,7 @@ function questionAnswered(clickedOption) {
 
 function setQuestionResult(userSide, clickedOption, isCorrect) {
 	// aplicar se tá correto ou não
-	var classColor = userSide == myUserSide ? (isCorrect ? 'optionGreenGame' : 'optionRedGame') : 'optionBlueGame';
+	var classColor = userSide == myUserSide ? (isCorrect ? 'chosenOptionGame fillChosenOptionGame optionGreenGame' : 'chosenOptionGame fillChosenOptionGame optionRedGame') : 'chosenOptionGame fillChosenOptionGame optionBlueGame';
 	var option = $['option' + clickedOption];
 	
 	$.addClass(option, classColor);
