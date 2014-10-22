@@ -158,7 +158,7 @@ function Controller() {
     $.__views.__alloyId52.add($.__views.__alloyId53);
     $.__views.__alloyId54 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
-        width: 125,
+        width: 110,
         layout: "vertical",
         id: "__alloyId54"
     });
@@ -195,35 +195,35 @@ function Controller() {
     $.__views.__alloyId53.add($.__views.timer);
     $.__views.leftNumber = Ti.UI.createLabel({
         font: {
-            fontSize: 34,
+            fontSize: 40,
             fontWeight: "bold"
         },
         color: "#000000",
-        width: 50,
+        width: 45,
         height: Titanium.UI.FILL,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-        left: 0,
+        left: 5,
         id: "leftNumber",
         text: "0"
     });
     $.__views.timer.add($.__views.leftNumber);
     $.__views.rightNumber = Ti.UI.createLabel({
         font: {
-            fontSize: 34,
+            fontSize: 40,
             fontWeight: "bold"
         },
         color: "#000000",
-        width: 50,
+        width: 45,
         height: Titanium.UI.FILL,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-        right: 0,
+        right: 5,
         id: "rightNumber",
         text: "9"
     });
     $.__views.timer.add($.__views.rightNumber);
     $.__views.__alloyId56 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
-        width: 125,
+        width: 110,
         layout: "vertical",
         id: "__alloyId56"
     });
