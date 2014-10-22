@@ -281,7 +281,6 @@ function Controller() {
         borderRadius: 14,
         color: "white",
         tintColor: "white",
-        backgroundColor: "#08ad4d",
         top: 15,
         width: 240,
         height: 33,
@@ -290,6 +289,7 @@ function Controller() {
             fontWeight: "bold",
             fontFamily: "ProximaNova-Regular"
         },
+        backgroundColor: "#08ad4d",
         titleid: "new_match",
         id: "__alloyId29"
     });
@@ -360,6 +360,9 @@ function Controller() {
     });
     $.__views.__alloyId1.add($.__views.listCategories);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
+        openDrawerGestureMode: "OPEN_MODE_NONE",
+        closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
+        leftDrawerWidth: 250,
         id: "drawer",
         children: [ $.__views.sidebar, $.__views.__alloyId0 ],
         __parentSymbol: __parentSymbol

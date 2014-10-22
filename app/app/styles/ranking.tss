@@ -1,6 +1,9 @@
 "View": {
 	height: Titanium.UI.SIZE
 },
+".listRank": {
+	backgroundColor: "#ffffff"
+}
 ".rowRank": {
 	width: Titanium.UI.FILL,
 	height: 75
@@ -35,4 +38,9 @@
 ".rankTotal": {
 	color: "#e33124",
 	font: {fontSize: 15, fontWeight: 'bold'}
+},
+".borderGrayProfile": {
+	width: Titanium.UI.FILL,
+	height: 1,
+	bottom: 0
 }

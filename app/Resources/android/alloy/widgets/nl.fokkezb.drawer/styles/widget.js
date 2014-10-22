@@ -24,28 +24,28 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0007,
+    priority: 10000.0008,
     key: "radius",
     style: {
         borderRadius: 4
     }
 }, {
     isClass: true,
-    priority: 10000.0008,
+    priority: 10000.0009,
     key: "radiusLarge",
     style: {
         borderRadius: 14
     }
 }, {
     isClass: true,
-    priority: 10000.0009,
+    priority: 10000.001,
     key: "input",
     style: {
         backgroundColor: "white"
     }
 }, {
     isClass: true,
-    priority: 10000.001,
+    priority: 10000.0011,
     key: "fontWhite",
     style: {
         color: "white",
@@ -53,7 +53,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0011,
+    priority: 10000.0012,
     key: "fontGray",
     style: {
         color: "#888888",
@@ -61,7 +61,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0012,
+    priority: 10000.0013,
     key: "fontRed",
     style: {
         color: "red",
@@ -69,7 +69,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0013,
+    priority: 10000.0014,
     key: "fontOrange",
     style: {
         color: "#ff7026",
@@ -77,35 +77,35 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0014,
+    priority: 10000.0015,
     key: "orange",
     style: {
         backgroundColor: "#ff7026"
     }
 }, {
     isClass: true,
-    priority: 10000.0015,
+    priority: 10000.0016,
     key: "white",
     style: {
         backgroundColor: "white"
     }
 }, {
     isClass: true,
-    priority: 10000.0016,
+    priority: 10000.0017,
     key: "green",
     style: {
         backgroundColor: "#08ad4d"
     }
 }, {
     isClass: true,
-    priority: 10000.0017,
+    priority: 10000.0018,
     key: "black",
     style: {
         backgroundColor: "#2e2e2e"
     }
 }, {
     isClass: true,
-    priority: 10000.0018,
+    priority: 10000.0019,
     key: "borderWhite",
     style: {
         borderColor: "white",
@@ -113,7 +113,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0019,
+    priority: 10000.002,
     key: "borderGray",
     style: {
         borderColor: "#c2c2c2",
@@ -122,7 +122,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.002,
+    priority: 10000.0021,
     key: "borderGrayDark",
     style: {
         borderColor: "#0e0e0e",
@@ -131,21 +131,21 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0021,
+    priority: 10000.0022,
     key: "borderBottom",
     style: {
         height: 1
     }
 }, {
     isClass: true,
-    priority: 10000.0022,
+    priority: 10000.0023,
     key: "transparentWhite50",
     style: {
         backgroundColor: "rgba(255, 255, 255, 0.3)"
     }
 }, {
     isClass: true,
-    priority: 10000.0023,
+    priority: 10000.0024,
     key: "proximaNovaRegular",
     style: {
         font: {
@@ -154,7 +154,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0024,
+    priority: 10000.0025,
     key: "margin",
     style: {
         width: Titanium.UI.FILL,
@@ -162,7 +162,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0025,
+    priority: 10000.0026,
     key: "layoutHorizontal",
     style: {
         layout: "horizontal",
@@ -170,7 +170,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0026,
+    priority: 10000.0027,
     key: "layoutVertical",
     style: {
         layout: "vertical",
@@ -178,7 +178,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0027,
+    priority: 10000.0028,
     key: "layoutAbsolute",
     style: {
         layout: "absolute",
@@ -186,28 +186,28 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0028,
+    priority: 10000.0029,
     key: "widthUiSize",
     style: {
         width: Titanium.UI.SIZE
     }
 }, {
     isClass: true,
-    priority: 10000.0029,
+    priority: 10000.003,
     key: "heightUiSize",
     style: {
         height: Titanium.UI.SIZE
     }
 }, {
     isClass: true,
-    priority: 10000.003,
+    priority: 10000.0031,
     key: "left0",
     style: {
         left: 0
     }
 }, {
     isClass: true,
-    priority: 10000.0031,
+    priority: 10000.0032,
     key: "labelTab",
     style: {
         font: {
@@ -218,7 +218,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0032,
+    priority: 10000.0033,
     key: "tabSelected",
     style: {
         bottom: 0,
@@ -228,14 +228,14 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0033,
+    priority: 10000.0034,
     key: "tab",
     style: {
         touchEnabled: true
     }
 }, {
     isClass: true,
-    priority: 10000.0034,
+    priority: 10000.0035,
     key: "btnFollow",
     style: {
         width: 100,
@@ -256,7 +256,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0035,
+    priority: 10000.0036,
     key: "btnMore",
     style: {
         width: 50,
@@ -267,7 +267,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0036,
+    priority: 10000.0037,
     key: "btnWhite",
     style: {
         backgroundImage: "/images/background-btn-more.png",
@@ -283,7 +283,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0037,
+    priority: 10000.0038,
     key: "btnBlue",
     style: {
         height: 30,
@@ -304,7 +304,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0038,
+    priority: 10000.0039,
     key: "btnOrange",
     style: {
         height: 30,
@@ -325,7 +325,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0039,
+    priority: 10000.004,
     key: "btnRed",
     style: {
         height: 30,
@@ -346,7 +346,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.004,
+    priority: 10000.0041,
     key: "btnFacebook",
     style: {
         backgroundImage: "/images/background-blue-transparent.png",
@@ -364,6 +364,15 @@ module.exports = [ {
 }, {
     isId: true,
     priority: 100000.0004,
+    key: "drawer",
+    style: {
+        openDrawerGestureMode: "OPEN_MODE_NONE",
+        closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
+        leftDrawerWidth: 250
+    }
+}, {
+    isId: true,
+    priority: 100000.0005,
     key: "btnFacebook",
     style: {
         backgroundColor: Alloy.Globals.constants.FACEBOOK_BUTTON_COLOR,
@@ -372,7 +381,7 @@ module.exports = [ {
     }
 }, {
     isId: true,
-    priority: 100000.0005,
+    priority: 100000.0006,
     key: "logoBtnFacebook",
     style: {
         top: 0,
@@ -380,7 +389,7 @@ module.exports = [ {
     }
 }, {
     isId: true,
-    priority: 100000.0006,
+    priority: 100000.0007,
     key: "labelBtnFacebook",
     style: {
         width: Titanium.UI.FILL,

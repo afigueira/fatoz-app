@@ -1,3 +1,6 @@
+"View": {
+	height: Titanium.UI.SIZE
+},
 "#containerLabelHighlight": {
 	top: 30,
 	layout: "horizontal",
@@ -38,7 +41,7 @@
 },
 ".scrollable": {
 	width: Titanium.UI.FILL,
-	height: Titanium.UI.FILL,
+	height: Titanium.UI.SIZE,
 	left: 0,
 	showPagingControl: true,
 	pagingControlColor: "transparent",
@@ -82,14 +85,4 @@
 },
 ".margin": {
 	top: 485
-},
-
-
-"#drawer": {
-    openDrawerGestureMode: "OPEN_MODE_NONE",
-    closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
-    leftDrawerWidth: 250
-}
-"Window": {
-    backgroundColor: 'white'
 }

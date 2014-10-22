@@ -49,7 +49,7 @@ function Controller() {
                     });
                     $.addClass(rankTotal, "rankTotal proximaNovaRegular");
                     var borderGray = Titanium.UI.createView();
-                    $.addClass(borderGray, "borderGray");
+                    $.addClass(borderGray, "borderGray borderGrayProfile");
                     rowRank.add(rankNumber);
                     rowRank.add(imageProfile);
                     rowRank.add(rankName);
@@ -104,6 +104,7 @@ function Controller() {
     });
     $.__views.ranking && $.addTopLevelView($.__views.ranking);
     $.__views.listRank = Ti.UI.createTableView({
+        backgroundColor: "#ffffff",
         id: "listRank"
     });
     $.__views.ranking.add($.__views.listRank);

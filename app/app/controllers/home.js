@@ -95,10 +95,12 @@ $.containerLabelHighlight.addEventListener('click', function(e){
 });
 
 
-for(var i=0,j=$.contentTabs.children.length; i<j; i++){
+for(var i=1,j=$.contentTabs.children.length; i<j; i++){
 	var children = $.contentTabs.children[i];	
 	children.visible = false;	
 };
+
+$.contentTabs.children[0].visible = true;
 
 $.tabs.addEventListener('click', function(e){
 	for(var i=0,j=$.contentTabs.children.length; i<j; i++){
@@ -113,6 +115,11 @@ $.tabs.addEventListener('click', function(e){
 	if(e.source.id == 'recentTab'){
 		$.recent.visible = true;
 	}
+});
+
+
+$.goToCategories.addEventListener('click', function(e){
+	Alloy.createController('categories');
 });
 
 /*$.categories.children
@@ -184,6 +191,5 @@ function onNavDrawerWinOpen(evt) {
 }
 
 $.drawer.open();*/
-
 
 

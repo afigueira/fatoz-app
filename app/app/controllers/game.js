@@ -115,7 +115,7 @@ function fighterAnswered(e) {
 }
 
 function finishGame(e) {
-	//
+	Alloy.createController('gameResult');
 }
 
 function questionAnswered(clickedOption) {
@@ -133,6 +133,8 @@ function questionAnswered(clickedOption) {
 	});
 	
 	setQuestionResult(myUserSide, clickedOption, isCorrect);
+	
+	finishGame();
 }
 
 function setQuestionResult(userSide, clickedOption, isCorrect) {

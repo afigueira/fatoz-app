@@ -31,7 +31,7 @@ function init(){
 			    $.addClass(imageProfile, "imageProfile imageProfileRank");
 			    
 			    var rankName = Titanium.UI.createLabel({
-			    	id: 'user_' + e.achievements[i].user_id
+					id: 'user_' + e.achievements[i].user_id
 			    });
 			    $.addClass(rankName, "rankName proximaNovaRegular");
 
@@ -49,7 +49,7 @@ function init(){
 			    $.addClass(rankTotal, "rankTotal proximaNovaRegular");
 			    
 			    var borderGray = Titanium.UI.createView();
-			    $.addClass(borderGray, "borderGray");	
+			    $.addClass(borderGray, "borderGray borderGrayProfile");	
 			    
 			    
 			    rowRank.add(rankNumber);

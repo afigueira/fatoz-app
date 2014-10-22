@@ -1,3 +1,5 @@
+require('alloy').Globals.drawer($.sidebar, $.drawer, 'Procurando...');
+
 var args = arguments[0] || {};
 
 categoryId = args.categoryId || '';
@@ -62,9 +64,3 @@ $.cancelMatch.addEventListener('click', function(e){
 	
 	Alloy.createController('home');
 });
-
-
-
-
-$.roomQueue.open();
-

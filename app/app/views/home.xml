@@ -3,69 +3,65 @@
         <Window module="xp.ui" role="leftWindow" id="sidebar"></Window>
 
         <View platform="android" role="centerWindow">			
-			<ScrollView class="inside">
-				<View class="layoutVertical">
-					<View class="layoutAbsolute heightUiSize" width="280">
-						<View class="layoutVertical heightUiSize" height="Titanium.UI.SIZE">																
-							<View id="containerLabelHighlight">
-								<ImageView image="/images/icon-highlights.png" />
-								<Label textid="highlights" class="fontWhite proximaNovaRegular" id="labelHighlight"/>
-							</View>
-							
-							<Label textid="see_categories" class="fontWhite proximaNovaRegular" id="labelSeeCategories"/>								
-						</View>						
-						
-						<ImageView image="/images/arrow-see-more-categories-home.png" id="arrowSeeCategories"/>														
-					</View>
-					
-					
-					
-					<View id="categories" class="radius layoutVertical">
-						<View id="tabs">
-							<View class="tab" id="popularTab">
-								<Label textid="popular" class="fontOrange proximaNovaRegular labelTab" />
-								<View class="tabSelected orange" />
-							</View>
-							<View class="tab" id="recentTab">
-								<Label textid="text_new" class="fontOrange proximaNovaRegular labelTab"/>
-								<View class="tabSelected orange" visible="false" />
-							</View>
-							<View class="tab">
-								<Label textid="recent" class="fontOrange proximaNovaRegular labelTab"/>
-								<View class="tabSelected orange" visible="false" />
-							</View>
+			<View class="inside layoutVertical">				
+				<View class="layoutAbsolute heightUiSize" width="280" id="goToCategories">
+					<View class="layoutVertical heightUiSize" height="Titanium.UI.SIZE">																
+						<View id="containerLabelHighlight">
+							<ImageView image="/images/icon-highlights.png" />
+							<Label textid="highlights" class="fontWhite proximaNovaRegular" id="labelHighlight"/>
 						</View>
 						
-						<View id="contentTabs">
-							<ScrollableView id="popular" class="scrollable">							
-								<!--<View class="category soccer">
-									<ImageView image="/images/icon-home-category-football.png" class="iconCategory"/>
-									<Label class="fontWhite proximaNovaRegular titleCategory" id="titleCategory" />
-									<Label class="fontWhite proximaNovaRegular descriptionCategory" id="descriptionCategory" />
+						<Label textid="see_categories" class="fontWhite proximaNovaRegular" id="labelSeeCategories"/>								
+					</View>						
+					
+					<ImageView image="/images/arrow-see-more-categories-home.png" id="arrowSeeCategories"/>														
+				</View>
 									
-									<Button titleid="new_match" class="radiusLarge green fontWhite proximaNovaRegular btnNewMatch" />
-									<Button titleid="challenge" class="btnWhite btnChallenge" />
-									<Button titleid="ranking" class="btnWhite btnRanking" />	
-								</View>-->
-							</ScrollableView>
-							
-							<ScrollableView id="recent" class="scrollable">							
-								<View class="category soccer">
-									<ImageView image="/images/icon-home-category-football.png" class="iconCategory"/>
-									<Label class="fontWhite proximaNovaRegular titleCategory" id="titleCategory" />
-									<Label class="fontWhite proximaNovaRegular descriptionCategory" id="descriptionCategory" />
-									
-									<Button titleid="new_match" class="radiusLarge green fontWhite proximaNovaRegular btnNewMatch" />
-									<Button titleid="challenge" class="btnWhite btnChallenge" />
-									<Button titleid="ranking" class="btnWhite btnRanking" />	
-								</View>
-							</ScrollableView>	
-						</View>					
+				<View id="categories" class="radius layoutVertical">
+					<View id="tabs">
+						<View class="tab" id="popularTab">
+							<Label textid="popular" class="fontOrange proximaNovaRegular labelTab" />
+							<View class="tabSelected orange" />
+						</View>
+						<View class="tab" id="recentTab">
+							<Label textid="text_new" class="fontOrange proximaNovaRegular labelTab"/>
+							<View class="tabSelected orange" visible="false" />
+						</View>
+						<View class="tab">
+							<Label textid="recent" class="fontOrange proximaNovaRegular labelTab"/>
+							<View class="tabSelected orange" visible="false" />
+						</View>
 					</View>
 					
-					<View class="margin"/>
+					<View id="contentTabs">
+						<ScrollableView id="popular" class="scrollable">							
+							<View class="category soccer">
+								<ImageView image="/images/icon-home-category-football.png" class="iconCategory"/>
+								<Label class="fontWhite proximaNovaRegular titleCategory" id="titleCategory" />
+								<Label class="fontWhite proximaNovaRegular descriptionCategory" id="descriptionCategory" />
+								
+								<Button titleid="new_match" class="radiusLarge green fontWhite proximaNovaRegular btnNewMatch" />
+								<Button titleid="challenge" class="btnWhite btnChallenge" />
+								<Button titleid="ranking" class="btnWhite btnRanking" />	
+							</View>
+						</ScrollableView>
+						
+						<ScrollableView id="recent" class="scrollable">							
+							<View class="category soccer">
+								<ImageView image="/images/icon-home-category-football.png" class="iconCategory"/>
+								<Label class="fontWhite proximaNovaRegular titleCategory" id="titleCategory" />
+								<Label class="fontWhite proximaNovaRegular descriptionCategory" id="descriptionCategory" />
+								
+								<Button titleid="new_match" class="radiusLarge green fontWhite proximaNovaRegular btnNewMatch" />
+								<Button titleid="challenge" class="btnWhite btnChallenge" />
+								<Button titleid="ranking" class="btnWhite btnRanking" />	
+							</View>
+						</ScrollableView>	
+					</View>					
 				</View>
-			</ScrollView>
+				
+				<View class="margin"/>				
+			</View>
     	</View>
     </Widget>
 </Alloy>

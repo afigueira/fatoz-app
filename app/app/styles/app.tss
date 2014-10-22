@@ -11,6 +11,11 @@
 ".inside": {
 	backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR
 },
+"#drawer": {
+    openDrawerGestureMode: "OPEN_MODE_NONE",
+    closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
+    leftDrawerWidth: 250
+},
 "#btnFacebook": {
 	backgroundColor: Alloy.Globals.constants.FACEBOOK_BUTTON_COLOR,
 	height: 35,
@@ -224,4 +229,9 @@
 	color: "#ffffff",
 	font: {fontSize: 12, fontWeight: 'bold'},
 	image: "/images/icon-facebook.png",
+},
+".visibleFalse": {
+	visible: false,
+	width: 0,
+	height: 0
 }

@@ -68,7 +68,9 @@ function Controller() {
         var fighterSide = "a" == myUserSide ? "b" : "a";
         setQuestionResult(fighterSide, option, isCorrect);
     }
-    function finishGame() {}
+    function finishGame() {
+        Alloy.createController("gameResult");
+    }
     function questionAnswered(clickedOption) {
         var isCorrect = currentQuestion.correct_option == clickedOption;
         var time = Math.ceil(10 * Math.random());
@@ -82,6 +84,7 @@ function Controller() {
             option: clickedOption
         });
         setQuestionResult(myUserSide, clickedOption, isCorrect);
+        finishGame();
     }
     function setQuestionResult(userSide, clickedOption, isCorrect) {
         var classColor = userSide == myUserSide ? isCorrect ? "optionGreenGame" : "optionRedGame" : "optionBlueGame";
@@ -377,8 +380,7 @@ function Controller() {
     $.__views.currentRound = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         id: "currentRound",
-        visible: "false",
-        backgroundColor: "blue"
+        visible: "true"
     });
     $.__views.__alloyId66.add($.__views.currentRound);
     $.__views.__alloyId68 = Ti.UI.createLabel({

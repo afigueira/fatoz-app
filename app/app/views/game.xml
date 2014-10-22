@@ -36,6 +36,8 @@
 							</View>
 							
 							<View class="contentGame layoutVertical" width="228">
+								
+								
 								<!-- opcao 1 -->					
 								<!--<View class="imageGame">
 									<ImageView image="/images/trophy.png" />
@@ -65,15 +67,17 @@
 										<Button class="chosenOptionGame fillChosenOptionGame" id="option4" />
 									</View>	
 								</View>
-							
-							
-								<View id="currentRound" visible="false" backgroundColor="blue">
+								
+								<View id="currentRound" visible="true">
 									<Label textid="last_round" class="proximaNovaRegular lastRoundGame" />
 									<View class="layoutHorizontal">
 										<Label textid="round" class="proximaNovaRegular roundGame" />
 										<Label text="5" class="proximaNovaRegular roundGame" id="roundNumber" />		
 									</View>
 								</View>
+							
+							
+								
 							</View>
 							
 							<View class="progressGame">
