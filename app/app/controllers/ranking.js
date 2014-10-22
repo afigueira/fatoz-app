@@ -14,9 +14,7 @@ function init(){
 	    if (e.success) {        
 	        console.log(e);
 	        
-			for(var i=0,j=e.achievements.length; i<j; i++){
-				console.log(e.achievements[i].points, e.achievements[i].user_id);
-				
+			for(var i=0,j=e.achievements.length; i<j; i++){								
 				var rowRank = Titanium.UI.createTableViewRow();
 			    $.addClass(rowRank, "rowRank");
 			    

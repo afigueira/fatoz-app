@@ -23,7 +23,6 @@ function Controller() {
             if (e.success) {
                 console.log(e);
                 for (var i = 0, j = e.achievements.length; j > i; i++) {
-                    console.log(e.achievements[i].points, e.achievements[i].user_id);
                     var rowRank = Titanium.UI.createTableViewRow();
                     $.addClass(rowRank, "rowRank");
                     var rankNumber = Titanium.UI.createLabel({

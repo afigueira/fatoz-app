@@ -357,7 +357,7 @@
 					
 					<View class="profileConquer">							
 		               <TableView id="conquer">
-							<TableViewRow>						
+							<!--<TableViewRow>						
 								<ImageView class="imageConquer" image="/images/conquer-master-of-chemistry.png" />
 								
 								<View class="rightContentConquer">
@@ -377,29 +377,7 @@
 								</View>
 								
 								<View class="borderGray borderGrayConquer" />
-						    </TableViewRow>
-						    
-						    <TableViewRow>						
-								<ImageView class="imageConquer" image="/images/conquer-master-of-chemistry.png" />
-								
-								<View class="rightContentConquer">
-									<Label class="conquerTitle proximaNovaRegular" text="Mestre da Quimica"/>
-									<View class="layoutHorizontal left0">
-											<Label class="numberConquer proximaNovaRegular" text="182"/>
-											<Label class="ptConquer proximaNovaRegular" text="Pontos em Ciência"/>									
-									</View>																	
-									
-									<View class="percentConquer">
-										<Label class="percentNumber" text="100%"/>
-										
-										<View class="progressBar">
-											<View class="percentBar"/>
-										</View>
-									</View>
-								</View>
-								
-								<View class="borderGray borderGrayConquer" />
-						    </TableViewRow>
+						    </TableViewRow>-->
 						</TableView>				            
 					</View>
 				</ScrollableView>					

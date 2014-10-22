@@ -1,54 +1,6 @@
-Cloud = require("ti.cloud");
-
-
 require('alloy').Globals.drawer($.sidebar, $.drawer, 'Categorias');
 
-
-
-/*Cloud.Objects.update({
-    classname: 'categories',
-    id: '543bcebf1011a4086f024e69',
-    fields: {
-        title: 'purple',
-        description: '10000',
-        image: 'image',
-        icon: 'image'        
-    }
-}, function (e) {
-    if (e.success) {
-        var car = e.cars[0];
-        alert('Success');
-    } else {
-        alert('Error:\n' +
-            ((e.error && e.message) || JSON.stringify(e)));
-    }
-});*/
-
-
-
-/*Cloud.Objects.create({
-    classname: 'categories',
-    fields: {
-        title: 'Esporte',
-        description: 'Futebol, esportes radicais e outros.',
-        image: 'image-category-soccer.jpg',
-        icon: 'icon-category-soccer.png'
-    }
-}, function (e) {
-    if (e.success) {
-        var category = e.categories[0];
-        alert('Success:\n' +
-            'title: ' + category.title + '\n' +
-            'description: ' + category.description + '\n' +
-            'image: ' + category.image + '\n');             
-    } else {
-        alert('Error:\n' +
-            ((e.error && e.message) || JSON.stringify(e)));
-    }
-});*/
-
-
-
+Cloud = require("ti.cloud");
 
 Cloud.Objects.query({
     classname: 'categories',

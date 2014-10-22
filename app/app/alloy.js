@@ -1,3 +1,13 @@
+/*Android footer: ca-app-pub-1202817906596777/9714576843
+Android header: ca-app-pub-1202817906596777/5284377248
+iOS footer: ca-app-pub-1202817906596777/6621509640
+iOS header: ca-app-pub-1202817906596777/3528442443
+
+https://github.com/appcelerator/titanium_modules
+Precisa instalar o módulo do admob */
+
+
+
 Alloy.Globals.constants = {
 	
 	BASE_COLOR: "#e33124",
@@ -32,6 +42,18 @@ Alloy.Globals.drawer = function(sidebar, element, titleActionBar) {
 	
 	element.open();	
 };
+
+Alloy.Globals.calculateQuestionPoints = function(time, isCorrect){
+	var maxPoints = 20;
+
+	var maxTime = 10;
+
+
+	var points = Number(isCorrect) * (maxPoints * ((maxTime * 1000) - time) / (maxTime * 1000));
+
+	return Math.round(points);
+}
+
 
 Alloy.Globals.Facebook = require('facebook');
 Alloy.Globals.Facebook.appid = '1480203828923788';

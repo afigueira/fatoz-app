@@ -25,6 +25,13 @@ Alloy.Globals.drawer = function(sidebar, element, titleActionBar) {
     element.open();
 };
 
+Alloy.Globals.calculateQuestionPoints = function(time, isCorrect) {
+    var maxPoints = 20;
+    var maxTime = 10;
+    var points = Number(isCorrect) * (maxPoints * (1e3 * maxTime - time) / (1e3 * maxTime));
+    return Math.round(points);
+};
+
 Alloy.Globals.Facebook = require("facebook");
 
 Alloy.Globals.Facebook.appid = "1480203828923788";

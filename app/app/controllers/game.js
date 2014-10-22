@@ -5,6 +5,8 @@ var currentQuestion;
 var currentQuestionIndex;
 var myUserSide;
 var userReady = 0;
+var counterTimer;
+var timerInterval;
 
 Cloud.Objects.query({
     classname: 'matches',
@@ -57,8 +59,15 @@ function getUserInfo(userId, side){
 	});
 }
 
-function showQuestion(e) {
+function showQuestion(e) {	
 	var questionIndex = e.questionIndex;
+
+	if(timerInterval){
+		clearInterval(timerInterval);
+	}
+	
+	$.leftNumber.text = 1;
+	$.rightNumber.text = 0;
 	
 	// esconder atual
 	//$.titleQuestion.visible = false;
@@ -104,6 +113,9 @@ function startQuestion(e) {
 	$.removeClass($.option4, 'optionGreenGame');
 	$.removeClass($.option4, 'optionBlueGame');
 
+	counterTimer = new Date();
+	timerInterval = setInterval(updateTimer, 500);
+
 	var questionIndex = e.questionIndex;
 	
 	currentQuestionIndex = questionIndex;
@@ -134,6 +146,8 @@ function fighterAnswered(e) {
 	var fighterSide = myUserSide == 'a' ? 'b' : 'a';
 	
 	setQuestionResult(fighterSide, option, isCorrect);
+
+	setQuestionPoints(fighterSide, time, isCorrect);
 }
 
 function finishGame(e) {
@@ -141,8 +155,9 @@ function finishGame(e) {
 }
 
 function questionAnswered(clickedOption) {
+	var currentTimer = new Date();
 	var isCorrect = currentQuestion.correct_option == clickedOption;
-	var time = Math.ceil(Math.random() * 10);
+	var time = currentTimer.getMilliseconds() - counterTimer.getMilliseconds();
 	
 	Titanium.App.fireEvent('websocket.dispatchEvent', {
 		event: 'questionAnswered',
@@ -155,6 +170,8 @@ function questionAnswered(clickedOption) {
 	});
 	
 	setQuestionResult(myUserSide, clickedOption, isCorrect);
+
+	setQuestionPoints(myUserSide, time, isCorrect);
 	
 	//finishGame();
 }
@@ -173,8 +190,40 @@ function setQuestionResult(userSide, clickedOption, isCorrect) {
 	// to-do: marcar na fotinho quem foi que clicou
 }
 
+function setQuestionPoints(userSide, time, isCorrect){	
+	var points = Alloy.Globals.calculateQuestionPoints(time, isCorrect);
+
+	updateUserPoints(userSide, points);
+}
+
+function updateUserPoints(userSide, points){
+	var labelPoints = userSide == 'a' ? $.pointsScoreA : $.pointsScoreB;
+
+	var currentPoints = Number(labelPoints.text);
+
+	currentPoints += points;
+
+	labelPoints.text = currentPoints;
+}
+
 function calculatePontuation(time) {
 	//
+}
+
+function updateTimer(){
+	var currentTimer = new Date();
+	var time =  10 - (currentTimer.getSeconds() - counterTimer.getSeconds());
+	
+	$.leftNumber.text = 0;
+	$.rightNumber.text = time;
+
+	if(time == 0){
+		Titanium.App.fireEvent('websocket.dispatchEvent', {
+			event: 'timerEnd',
+			matchId: matchId,
+			questionIndex: currentQuestionIndex
+		});
+	}
 }
 
 $.optionsQuestion.addEventListener('click', function(e){

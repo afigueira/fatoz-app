@@ -375,8 +375,8 @@ function Controller() {
     $.__views.drawer && $.addTopLevelView($.__views.drawer);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Cloud = require("ti.cloud");
     require("alloy").Globals.drawer($.sidebar, $.drawer, "Categorias");
+    Cloud = require("ti.cloud");
     Cloud.Objects.query({
         classname: "categories",
         page: 1,
