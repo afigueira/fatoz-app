@@ -10,7 +10,10 @@
 								<Label class="nameScore proximaNovaRegular" id="nameScoreA" />
 							</View>
 								
-							<View width="69" height="Titanium.UI.FILL" backgroundColor="lime"></View>
+							<View id="timer">
+								<Label class="numberTimer" id="leftNumber" text="0" />
+								<Label class="numberTimer" id="rightNumber" text="9" />
+							</View>
 															
 							<View class="containerScore">
 								<Label class="pointsScore proximaNovaRegular" text="290" />

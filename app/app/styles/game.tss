@@ -11,6 +11,24 @@
 	backgroundColor: "#222222",
 	layout: "horizontal"
 },
+"#timer": {
+	width: 100,
+	height: Titanium.UI.FILL,
+	backgroundImage: "/images/background-timer.png"
+},
+".numberTimer": {
+	font: {fontSize: 34, fontWeight: 'bold'},
+	color: "#000000",
+	width: 50,
+	height: Titanium.UI.FILL,
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+},
+"#leftNumber": {
+	left: 0
+},
+"#rightNumber": {
+	right: 0
+}, 
 ".pointsScore": {
 	font: {fontSize: 30, fontWeight: 'bold'},
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
