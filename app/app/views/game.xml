@@ -6,17 +6,17 @@
 					<View class="layoutAbsolute">
 						<View class="layoutHorizontal">
 							<View class="containerScore">
-								<Label class="pointsScore proximaNovaRegular" text="290" />
+								<Label class="pointsScore proximaNovaRegular" text="0" />
 								<Label class="nameScore proximaNovaRegular" id="nameScoreA" />
 							</View>
 								
 							<View id="timer">
-								<Label class="numberTimer" id="leftNumber" text="0" />
-								<Label class="numberTimer" id="rightNumber" text="9" />
+								<Label class="numberTimer" id="leftNumber" text="1" />
+								<Label class="numberTimer" id="rightNumber" text="0" />
 							</View>
 															
 							<View class="containerScore">
-								<Label class="pointsScore proximaNovaRegular" text="290" />
+								<Label class="pointsScore proximaNovaRegular" text="0" />
 								<Label class="nameScore proximaNovaRegular" id="nameScoreB" />
 							</View>
 						</View>

@@ -171,7 +171,7 @@ function Controller() {
         },
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
         color: "#ffffff",
-        text: "290",
+        text: "0",
         id: "__alloyId55"
     });
     $.__views.__alloyId54.add($.__views.__alloyId55);
@@ -204,7 +204,7 @@ function Controller() {
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
         left: 5,
         id: "leftNumber",
-        text: "0"
+        text: "1"
     });
     $.__views.timer.add($.__views.leftNumber);
     $.__views.rightNumber = Ti.UI.createLabel({
@@ -218,7 +218,7 @@ function Controller() {
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
         right: 5,
         id: "rightNumber",
-        text: "9"
+        text: "0"
     });
     $.__views.timer.add($.__views.rightNumber);
     $.__views.__alloyId56 = Ti.UI.createView({
@@ -236,7 +236,7 @@ function Controller() {
         },
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
         color: "#ffffff",
-        text: "290",
+        text: "0",
         id: "__alloyId57"
     });
     $.__views.__alloyId56.add($.__views.__alloyId57);
