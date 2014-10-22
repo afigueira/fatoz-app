@@ -26,8 +26,8 @@ function Controller() {
         id: "__alloyId0"
     });
     $.__views.__alloyId1 = Ti.UI.createScrollView({
-        layout: "vertical",
         backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
+        layout: "vertical",
         id: "__alloyId1"
     });
     $.__views.__alloyId0.add($.__views.__alloyId1);
@@ -50,9 +50,9 @@ function Controller() {
     });
     $.__views.containerTabs.add($.__views.tabs);
     $.__views.__alloyId2 = Ti.UI.createView({
+        touchEnabled: true,
         height: 46,
         width: 72,
-        touchEnabled: true,
         id: "__alloyId2"
     });
     $.__views.tabs.add($.__views.__alloyId2);
@@ -79,9 +79,9 @@ function Controller() {
     });
     $.__views.__alloyId2.add($.__views.__alloyId4);
     $.__views.__alloyId5 = Ti.UI.createView({
+        touchEnabled: true,
         height: 46,
         width: 72,
-        touchEnabled: true,
         id: "__alloyId5"
     });
     $.__views.tabs.add($.__views.__alloyId5);
@@ -109,9 +109,9 @@ function Controller() {
     });
     $.__views.__alloyId5.add($.__views.__alloyId7);
     $.__views.__alloyId8 = Ti.UI.createView({
+        touchEnabled: true,
         height: 46,
         width: 72,
-        touchEnabled: true,
         id: "__alloyId8"
     });
     $.__views.tabs.add($.__views.__alloyId8);
@@ -139,9 +139,9 @@ function Controller() {
     });
     $.__views.__alloyId8.add($.__views.__alloyId10);
     $.__views.__alloyId11 = Ti.UI.createView({
+        touchEnabled: true,
         height: 46,
         width: 72,
-        touchEnabled: true,
         id: "__alloyId11"
     });
     $.__views.tabs.add($.__views.__alloyId11);
@@ -237,8 +237,8 @@ function Controller() {
         color: "white",
         tintColor: "white",
         font: {
-            fontSize: 16,
-            fontFamily: "ProximaNova-Regular"
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 16
         },
         left: 15,
         top: 3,
@@ -257,8 +257,8 @@ function Controller() {
         color: "white",
         tintColor: "white",
         font: {
-            fontSize: 12,
-            fontFamily: "ProximaNova-Regular"
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 12
         },
         top: 50,
         textid: "category_description",
@@ -281,51 +281,51 @@ function Controller() {
         borderRadius: 14,
         color: "white",
         tintColor: "white",
+        backgroundColor: "#08ad4d",
+        font: {
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 12,
+            fontWeight: "bold"
+        },
         top: 15,
         width: 240,
         height: 33,
-        font: {
-            fontSize: 12,
-            fontWeight: "bold",
-            fontFamily: "ProximaNova-Regular"
-        },
-        backgroundColor: "#08ad4d",
         titleid: "new_match",
         id: "__alloyId29"
     });
     $.__views.__alloyId28.add($.__views.__alloyId29);
     $.__views.__alloyId30 = Ti.UI.createButton({
-        top: 58,
-        left: 40,
-        width: 110,
+        backgroundImage: "/images/background-btn-more.png",
+        height: 30,
+        borderRadius: 15,
         font: {
             fontSize: 12,
             fontWeight: "bold"
         },
-        backgroundImage: "/images/background-btn-more.png",
-        height: 30,
-        borderRadius: 15,
         borderColor: "white",
         borderWidth: 1,
         color: "#ffffff",
+        top: 58,
+        left: 40,
+        width: 110,
         titleid: "challenge",
         id: "__alloyId30"
     });
     $.__views.__alloyId28.add($.__views.__alloyId30);
     $.__views.__alloyId31 = Ti.UI.createButton({
-        top: 58,
-        right: 40,
-        width: 110,
+        backgroundImage: "/images/background-btn-more.png",
+        height: 30,
+        borderRadius: 15,
         font: {
             fontSize: 12,
             fontWeight: "bold"
         },
-        backgroundImage: "/images/background-btn-more.png",
-        height: 30,
-        borderRadius: 15,
         borderColor: "white",
         borderWidth: 1,
         color: "#ffffff",
+        top: 58,
+        right: 40,
+        width: 110,
         titleid: "ranking",
         id: "__alloyId31"
     });

@@ -27,10 +27,10 @@ function Controller() {
     }
     function showQuestion(e) {
         var questionIndex = e.questionIndex;
-        $.titleQuestion.visible = false;
-        $.optionsQuestion.visible = false;
+        $.addClass($.titleQuestion, "visibleFalse");
+        $.addClass($.optionsQuestion, "visibleFalse");
         $.roundNumber.text = " " + questionIndex;
-        $.currentRound.visible = true;
+        $.removeClass($.currentRound, "visibleFalse");
         var questionId = match["question_" + questionIndex];
         Cloud.Objects.query({
             classname: "questions",
@@ -51,14 +51,14 @@ function Controller() {
     function startQuestion(e) {
         var questionIndex = e.questionIndex;
         currentQuestionIndex = questionIndex;
-        $.currentRound.visible = false;
+        $.addClass($.currentRound, "visibleFalse");
         $.titleQuestion.text = currentQuestion.title;
         $.option1.title = currentQuestion.option_1;
         $.option2.title = currentQuestion.option_2;
         $.option3.title = currentQuestion.option_3;
         $.option4.title = currentQuestion.option_4;
-        $.titleQuestion.visible = true;
-        $.optionsQuestion.visible = true;
+        $.removeClass($.titleQuestion, "visibleFalse");
+        $.removeClass($.optionsQuestion, "visibleFalse");
     }
     function fighterAnswered(e) {
         e.questionIndex;
@@ -226,15 +226,15 @@ function Controller() {
             fontSize: 24,
             fontWeight: "bold"
         },
+        visible: false,
+        width: Titanium.UI.FILL,
+        height: Titanium.UI.SIZE,
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
         top: 42,
         bottom: 42,
         color: "#ffffff",
-        width: Titanium.UI.FILL,
-        height: Titanium.UI.SIZE,
         text: "A Qual das seguintes marcas pertence a logo abaixo?",
-        id: "titleQuestion",
-        visible: "false"
+        id: "titleQuestion"
     });
     $.__views.__alloyId49.add($.__views.titleQuestion);
     $.__views.__alloyId59 = Ti.UI.createView({
@@ -307,11 +307,11 @@ function Controller() {
     });
     $.__views.__alloyId61.add($.__views.__alloyId66);
     $.__views.optionsQuestion = Ti.UI.createView({
-        height: Titanium.UI.SIZE,
+        height: 0,
+        visible: false,
         width: Titanium.UI.SIZE,
         layout: "vertical",
-        id: "optionsQuestion",
-        visible: "false"
+        id: "optionsQuestion"
     });
     $.__views.__alloyId66.add($.__views.optionsQuestion);
     $.__views.__alloyId67 = Ti.UI.createView({

@@ -22,7 +22,7 @@
 				
 				<View class="borderGrayDark" />
 				
-				<Label class="questionGame proximaNovaRegular" text="A Qual das seguintes marcas pertence a logo abaixo?" id="titleQuestion" visible="false" />
+				<Label class="questionGame proximaNovaRegular visibleFalse" text="A Qual das seguintes marcas pertence a logo abaixo?" id="titleQuestion" />
 								
 				<View class="containerGame">
 					<View class="layoutAbsolute">
@@ -59,7 +59,7 @@
 								
 								<!-- opcao 2 -->					
 																
-								<View class="optionGame" id="optionsQuestion" visible="false">
+								<View class="optionGame visibleFalse" id="optionsQuestion">
 									<View class="layoutVertical">
 										<Button class="chosenOptionGame fillChosenOptionGame" id="option1" />
 										<Button class="chosenOptionGame fillChosenOptionGame" id="option2" />

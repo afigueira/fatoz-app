@@ -61,12 +61,15 @@ function showQuestion(e) {
 	var questionIndex = e.questionIndex;
 	
 	// esconder atual
-	$.titleQuestion.visible = false;
-	$.optionsQuestion.visible = false;
+	//$.titleQuestion.visible = false;
+	$.addClass($.titleQuestion, "visibleFalse");
+	//$.optionsQuestion.visible = false;
+	$.addClass($.optionsQuestion, "visibleFalse");
 	
 	// animar o round1
 	$.roundNumber.text = ' ' + questionIndex;
-	$.currentRound.visible = true;
+	//$.currentRound.visible = true;
+	$.removeClass($.currentRound, "visibleFalse");
 	
 	// pegar a questão
 	var questionId = match['question_' + questionIndex];
@@ -90,7 +93,8 @@ function startQuestion(e) {
 	currentQuestionIndex = questionIndex;
 	
 	// esconder round atual
-	$.currentRound.visible = false;
+	/*$.currentRound.visible = false;*/
+	$.addClass($.currentRound, "visibleFalse");
 	
 	$.titleQuestion.text = currentQuestion.title;
 	$.option1.title = currentQuestion.option_1;
@@ -99,8 +103,10 @@ function startQuestion(e) {
 	$.option4.title = currentQuestion.option_4;	
 	//correct_option
 	
-	$.titleQuestion.visible = true;
-	$.optionsQuestion.visible = true;
+	//$.titleQuestion.visible = true;
+	$.removeClass($.titleQuestion, "visibleFalse");
+	//$.optionsQuestion.visible = true;
+	$.removeClass($.optionsQuestion, "visibleFalse");
 }
 
 function fighterAnswered(e) {
@@ -134,7 +140,7 @@ function questionAnswered(clickedOption) {
 	
 	setQuestionResult(myUserSide, clickedOption, isCorrect);
 	
-	finishGame();
+	//finishGame();
 }
 
 function setQuestionResult(userSide, clickedOption, isCorrect) {

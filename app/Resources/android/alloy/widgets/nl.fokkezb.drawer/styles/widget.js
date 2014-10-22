@@ -362,6 +362,15 @@ module.exports = [ {
         image: "/images/icon-facebook.png"
     }
 }, {
+    isClass: true,
+    priority: 10000.0042,
+    key: "visibleFalse",
+    style: {
+        visible: false,
+        width: 0,
+        height: 0
+    }
+}, {
     isId: true,
     priority: 100000.0004,
     key: "drawer",
