@@ -157,7 +157,7 @@ function finishGame(e) {
 function questionAnswered(clickedOption) {
 	var currentTimer = new Date();
 	var isCorrect = currentQuestion.correct_option == clickedOption;
-	var time = currentTimer.getMilliseconds() - counterTimer.getMilliseconds();
+	var time = currentTimer.getTime() - counterTimer.getTime();
 	
 	Titanium.App.fireEvent('websocket.dispatchEvent', {
 		event: 'questionAnswered',
@@ -212,7 +212,7 @@ function calculatePontuation(time) {
 
 function updateTimer(){
 	var currentTimer = new Date();
-	var time =  10 - (currentTimer.getSeconds() - counterTimer.getSeconds());
+	var time =  Math.ceil(10 - ((currentTimer.getTime() - counterTimer.getTime())/1000));
 	
 	$.leftNumber.text = 0;
 	$.rightNumber.text = time;
