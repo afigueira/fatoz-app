@@ -19,17 +19,17 @@
 									
 				<View id="categories" class="radius layoutVertical">
 					<View id="tabs">
-						<View class="tab" id="popularTab">
+						<View class="tab" id="popularTab" onClick="tabNavigation" contentTabsIndex="0">
 							<Label textid="popular" class="fontOrange proximaNovaRegular labelTab" />
 							<View class="tabSelected orange" />
 						</View>
-						<View class="tab" id="recentTab">
+						<View class="tab" id="recentTab" onClick="tabNavigation" contentTabsIndex="1">
 							<Label textid="text_new" class="fontOrange proximaNovaRegular labelTab"/>
-							<View class="tabSelected orange" visible="false" />
+							<View class="tabSelected orange" />
 						</View>
 						<View class="tab">
 							<Label textid="recent" class="fontOrange proximaNovaRegular labelTab"/>
-							<View class="tabSelected orange" visible="false" />
+							<View class="tabSelected orange" />
 						</View>
 					</View>
 					

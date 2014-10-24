@@ -257,6 +257,27 @@ module.exports = [ {
 }, {
     isClass: true,
     priority: 10000.0036,
+    key: "btnFollowing",
+    style: {
+        width: 100,
+        height: 30,
+        borderRadius: 15,
+        backgroundGradient: {
+            type: "linear",
+            colors: [ "#0db252", "#00a545" ],
+            startRadius: "90%",
+            endRadius: 0,
+            backfillStart: true
+        },
+        image: "/images/icon-following.png",
+        font: {
+            fontSize: 12,
+            fontWeight: "bold"
+        }
+    }
+}, {
+    isClass: true,
+    priority: 10000.0037,
     key: "btnMore",
     style: {
         width: 50,
@@ -267,7 +288,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0037,
+    priority: 10000.0038,
     key: "btnWhite",
     style: {
         backgroundImage: "/images/background-btn-more.png",
@@ -283,7 +304,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0038,
+    priority: 10000.0039,
     key: "btnBlue",
     style: {
         height: 30,
@@ -304,7 +325,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0039,
+    priority: 10000.004,
     key: "btnOrange",
     style: {
         height: 30,
@@ -325,7 +346,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.004,
+    priority: 10000.0041,
     key: "btnRed",
     style: {
         height: 30,
@@ -346,7 +367,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0041,
+    priority: 10000.0042,
     key: "btnFacebook",
     style: {
         backgroundImage: "/images/background-blue-transparent.png",
@@ -363,7 +384,7 @@ module.exports = [ {
     }
 }, {
     isClass: true,
-    priority: 10000.0042,
+    priority: 10000.0043,
     key: "visibleFalse",
     style: {
         visible: false,

@@ -7,7 +7,7 @@ Alloy.Globals.constants = {
     BACKGROUND_INSIDE_COLOR: "#323233"
 };
 
-Alloy.Globals.drawer = function(sidebar, element, titleActionBar) {
+Alloy.Globals.drawer = function(sidebar, element, titleActionBar, func) {
     function onNavDrawerWinOpen() {
         this.removeEventListener("open", onNavDrawerWinOpen);
         if (this.getActivity()) {
@@ -19,6 +19,7 @@ Alloy.Globals.drawer = function(sidebar, element, titleActionBar) {
                 });
             }
         }
+        "function" == typeof func && func.call();
     }
     sidebar.add(Alloy.createController("sidebar").getView());
     element.addEventListener("open", onNavDrawerWinOpen);

@@ -1,75 +1,116 @@
-Cloud = require("ti.cloud");
-
-require('alloy').Globals.drawer($.sidebar, $.drawer, 'Início');
+Alloy.Globals.drawer($.sidebar, $.drawer, 'Início', init());
 
 
+function init(){
+	Cloud = require("ti.cloud");
+
+	navigation();
+
+	is_popular();
+}
 
 
-Cloud.Objects.query({
-    classname: 'categories',
-    page: 1,
-    per_page: 10,
-    where: {
-    	is_popular: 1
-    }
-}, function (e) {	
-    if (e.success) {   
+function tabNavigation(e){
+	for(var i=0,j=$.tabs.children.length; i<j; i++){
+		$.tabs.children[i].children[1].visible = false;
+	};
 
-		var views = [];
-		
-		for(var i=0,j=e.categories.length; i<j; i++){
-			var category = Titanium.UI.createView();
-			$.addClass(category, "category soccer");
-			
-			var iconCategory = Titanium.UI.createImageView({
-				image: "/images/icon-home-category-football.png"
-			});
-			$.addClass(iconCategory, "iconCategory");
-			
-			var titleCategory = Titanium.UI.createLabel({
-				text: e.categories[i].title
-			});
-			$.addClass(titleCategory, "fontWhite proximaNovaRegular titleCategory");
-			
-			var descriptionCategory = Titanium.UI.createLabel({
-				text: e.categories[i].description
-			});
-			$.addClass(descriptionCategory, "fontWhite proximaNovaRegular descriptionCategory");
-			
-			var btnNewMatch = Titanium.UI.createButton({
-				titleid: 'new_match',
-				id: e.categories[i].id
-			});
-			$.addClass(btnNewMatch, "radiusLarge green fontWhite proximaNovaRegular btnNewMatch");
-			
-			var btnChallenge = Titanium.UI.createButton({
-				titleid: 'challenge'
-			});
-			$.addClass(btnChallenge, "btnWhite btnChallenge");
-			
-			var btnRanking = Titanium.UI.createButton({
-				titleid: 'ranking',
-				id: e.categories[i].id
-			});
-			$.addClass(btnRanking, "btnWhite btnRanking");
-			
-			category.add(iconCategory);
-			category.add(titleCategory);
-			category.add(descriptionCategory);
-			category.add(btnNewMatch);
-			category.add(btnChallenge);
-			category.add(btnRanking);
-			
-			views[i] = category;
-		};
-		
-		$.popular.views = views;		
-		
-    } else {
-        alert('Error:\n' +
-            ((e.error && e.message) || JSON.stringify(e)));
-    }
+	for(var i=0,j=$.contentTabs.children.length; i<j; i++){
+		$.contentTabs.children[i].visible = false;	
+	};
+	
+	var contentTabsIndex = e.source.contentTabsIndex;
+	
+	$.contentTabs.children[contentTabsIndex].visible = true;
+	$.tabs.children[contentTabsIndex].children[1].visible = true;
+}
+
+function navigation(){
+	for(var i=0,j=$.tabs.children.length; i<j; i++){
+		$.tabs.children[i].children[1].visible = false;
+	};
+
+	for(var i=0,j=$.contentTabs.children.length; i<j; i++){
+		$.contentTabs.children[i].visible = false;	
+	};
+
+	$.contentTabs.children[0].visible = true;
+	$.tabs.children[0].children[1].visible = true;
+}
+
+$.goToCategories.addEventListener('click', function(e){
+	Alloy.createController('categories');
 });
+
+
+function is_popular(){
+	Cloud.Objects.query({
+	    classname: 'categories',
+	    page: 1,
+	    per_page: 10,
+	    where: {
+	    	is_popular: 1
+	    }
+	}, function (e) {	
+	    if (e.success) {   
+
+			var views = [];
+			
+			for(var i=0,j=e.categories.length; i<j; i++){
+				var category = Titanium.UI.createView();
+				$.addClass(category, "category soccer");
+				
+				var iconCategory = Titanium.UI.createImageView({
+					image: "/images/icon-home-category-football.png"
+				});
+				$.addClass(iconCategory, "iconCategory");
+				
+				var titleCategory = Titanium.UI.createLabel({
+					text: e.categories[i].title
+				});
+				$.addClass(titleCategory, "fontWhite proximaNovaRegular titleCategory");
+				
+				var descriptionCategory = Titanium.UI.createLabel({
+					text: e.categories[i].description
+				});
+				$.addClass(descriptionCategory, "fontWhite proximaNovaRegular descriptionCategory");
+				
+				var btnNewMatch = Titanium.UI.createButton({
+					titleid: 'new_match',
+					id: e.categories[i].id
+				});
+				$.addClass(btnNewMatch, "radiusLarge green fontWhite proximaNovaRegular btnNewMatch");
+				
+				var btnChallenge = Titanium.UI.createButton({
+					titleid: 'challenge'
+				});
+				$.addClass(btnChallenge, "btnWhite btnChallenge");
+				
+				var btnRanking = Titanium.UI.createButton({
+					titleid: 'ranking',
+					id: e.categories[i].id
+				});
+				$.addClass(btnRanking, "btnWhite btnRanking");
+				
+				category.add(iconCategory);
+				category.add(titleCategory);
+				category.add(descriptionCategory);
+				category.add(btnNewMatch);
+				category.add(btnChallenge);
+				category.add(btnRanking);
+				
+				views[i] = category;
+			};
+			
+			$.popular.views = views;		
+			
+	    } else {
+	        alert('Error:\n' +
+	            ((e.error && e.message) || JSON.stringify(e)));
+	    }
+	});
+}
+
 
 
 $.categories.addEventListener('click', function(e){
@@ -81,25 +122,13 @@ $.categories.addEventListener('click', function(e){
 		if (e.source.classes.indexOf('btnRanking') > -1){			
 			Alloy.createController('ranking', {categoryId: e.source.id});			
 		}
-	}
-	
-	
-	
-	/*if (e.source.classes.id == 'popularTab'){				
-		$.popular.visible = true;
-	}*/
+	}	
 });
 
-$.containerLabelHighlight.addEventListener('click', function(e){
-	alert("containerLabelHighlight");
-});
-
-
-for(var i=1,j=$.contentTabs.children.length; i<j; i++){
+/*for(var i=1,j=$.contentTabs.children.length; i<j; i++){
 	var children = $.contentTabs.children[i];	
 	children.visible = false;	
 };
-
 $.contentTabs.children[0].visible = true;
 
 $.tabs.addEventListener('click', function(e){
@@ -115,12 +144,11 @@ $.tabs.addEventListener('click', function(e){
 	if(e.source.id == 'recentTab'){
 		$.recent.visible = true;
 	}
-});
+});*/
 
 
-$.goToCategories.addEventListener('click', function(e){
-	Alloy.createController('categories');
-});
+
+
 
 /*$.categories.children
 contem eles

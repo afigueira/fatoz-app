@@ -7,6 +7,8 @@ var myUserSide;
 var userReady = 0;
 var counterTimer;
 var timerInterval;
+var maxHeightProgressBar = 325;
+var maxImageProfileProgess = 310;
 
 Cloud.Objects.query({
     classname: 'matches',
@@ -194,6 +196,7 @@ function setQuestionPoints(userSide, time, isCorrect){
 	var points = Alloy.Globals.calculateQuestionPoints(time, isCorrect);
 
 	updateUserPoints(userSide, points);
+	updateProgressBar(userSide, points);
 }
 
 function updateUserPoints(userSide, points){
@@ -204,6 +207,19 @@ function updateUserPoints(userSide, points){
 	currentPoints += points;
 
 	labelPoints.text = currentPoints;
+}
+
+function updateProgressBar(userSide, points){
+	var labelPoints = userSide == 'a' ? $.pointsScoreA : $.pointsScoreB;
+	var currentPoints = Number(labelPoints.text);
+	currentPoints += points;
+
+	var percentBar = userSide == 'a' ? $.percentBarA : $.percentBarB;
+	var imageProfileProgess = userSide == 'a' ? $.imageProfileProgessA : $.imageProfileProgessB;
+
+	percentBar.height = currentPoints * maxHeightProgressBar / 100;
+	imageProfileProgess.bottom = currentPoints * maxImageProfileProgess / 100;
+	
 }
 
 function calculatePontuation(time) {

@@ -17,7 +17,7 @@ Alloy.Globals.constants = {
 	
 };
 
-Alloy.Globals.drawer = function(sidebar, element, titleActionBar) {	
+Alloy.Globals.drawer = function(sidebar, element, titleActionBar, func) {	
 	sidebar.add(Alloy.createController('sidebar').getView());
 
 	element.addEventListener('open', onNavDrawerWinOpen);
@@ -38,6 +38,10 @@ Alloy.Globals.drawer = function(sidebar, element, titleActionBar) {
 				});
 			}
 		}
+
+		if(typeof(func) == "function"){
+			func.call();
+		}
 	}
 	
 	element.open();	
@@ -52,7 +56,7 @@ Alloy.Globals.calculateQuestionPoints = function(time, isCorrect){
 	var points = Number(isCorrect) * (maxPoints * ((maxTime * 1000) - time) / (maxTime * 1000));
 
 	return Math.round(points);
-}
+};
 
 
 Alloy.Globals.Facebook = require('facebook');

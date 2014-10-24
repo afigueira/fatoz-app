@@ -99,8 +99,12 @@
 				
 				<TableView id="listCategories">						
 					<TableViewRow>
-						<View class="category">
-							<ImageView width="Titanium.UI.FILL" height="220" image="/images/background-categories-soccer.jpg" class="backgroundCategory"/>
+						<View class="category">							
+							<View class="layoutAbsolute">
+								<View class="layoutHorizontal">
+									<ImageView image="/images/background-categories-soccer.jpg" class="backgroundCategory"/>
+								</View>
+							</View>
 							
 							<View class="containerTitleCategory">
 								<View class="layoutAbsolute">

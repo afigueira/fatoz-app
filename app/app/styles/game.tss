@@ -77,14 +77,14 @@
 ".percentBar": {
 	width: Titanium.UI.FILL,
 	backgroundColor: "#41b6da",
-	height: 200,
+	height: 0,
 	bottom: 0
 },
 ".imageProfileProgess": {
 	width: 29,
 	height: 29,
 	borderRadius: 15,
-	bottom: 175,	
+	bottom: 0,	
 	zIndex: 1
 },
 ".contentGame": {	

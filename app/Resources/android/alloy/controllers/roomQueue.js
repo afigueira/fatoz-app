@@ -8,6 +8,40 @@ function __processArg(obj, key) {
 }
 
 function Controller() {
+    function init() {
+        joinRoom();
+    }
+    function joinRoom() {
+        $.profileTitleA.text = Ti.App.Properties.getString("userName");
+        if (categoryId) {
+            Titanium.App.fireEvent("websocket.dispatchEvent", {
+                event: "joinRoom",
+                roomId: categoryId
+            });
+            Titanium.App.addEventListener("websocket.creatingMatch", function(e) {
+                Cloud.Users.query({
+                    page: 1,
+                    per_page: 1,
+                    where: {
+                        id: e.fighterId
+                    }
+                }, function(e) {
+                    if (e.success) {
+                        $.searchPlayer.visible = false;
+                        $.profileB.visible = true;
+                        $.profileTitleB.text = e.users[0].first_name + " " + e.users[0].last_name;
+                        fighterReceived = true;
+                        mountReceived && mountMatch();
+                    } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+                });
+            });
+            Titanium.App.addEventListener("websocket.mountMatch", function(e) {
+                mountReceived = true;
+                matchId = e.matchId;
+                fighterReceived && mountMatch();
+            });
+        }
+    }
     function mountMatch() {
         Alloy.createController("game", {
             matchId: matchId
@@ -26,31 +60,31 @@ function Controller() {
         role: "leftWindow",
         id: "sidebar"
     });
-    $.__views.__alloyId233 = Ti.UI.createView({
+    $.__views.__alloyId230 = Ti.UI.createView({
         role: "centerWindow",
-        id: "__alloyId233"
+        id: "__alloyId230"
     });
-    $.__views.__alloyId234 = Ti.UI.createView({
+    $.__views.__alloyId231 = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.SIZE,
-        id: "__alloyId234"
+        id: "__alloyId231"
     });
-    $.__views.__alloyId233.add($.__views.__alloyId234);
-    $.__views.__alloyId235 = Ti.UI.createView({
+    $.__views.__alloyId230.add($.__views.__alloyId231);
+    $.__views.__alloyId232 = Ti.UI.createView({
         layout: "absolute",
         width: Titanium.UI.FILL,
         height: 231,
         backgroundImage: "http://pixabay.com/static/uploads/photo/2014/06/01/11/35/landscape-359541_640.jpg",
-        id: "__alloyId235"
+        id: "__alloyId232"
     });
-    $.__views.__alloyId234.add($.__views.__alloyId235);
-    $.__views.__alloyId236 = Ti.UI.createView({
+    $.__views.__alloyId231.add($.__views.__alloyId232);
+    $.__views.__alloyId233 = Ti.UI.createView({
         width: 250,
         height: Titanium.UI.SIZE,
-        id: "__alloyId236"
+        id: "__alloyId233"
     });
-    $.__views.__alloyId235.add($.__views.__alloyId236);
-    $.__views.__alloyId237 = Ti.UI.createImageView({
+    $.__views.__alloyId232.add($.__views.__alloyId233);
+    $.__views.__alloyId234 = Ti.UI.createImageView({
         width: 64,
         height: 64,
         borderRadius: 324,
@@ -58,9 +92,9 @@ function Controller() {
         borderColor: "#ffffff",
         left: 0,
         backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg",
-        id: "__alloyId237"
+        id: "__alloyId234"
     });
-    $.__views.__alloyId236.add($.__views.__alloyId237);
+    $.__views.__alloyId233.add($.__views.__alloyId234);
     $.__views.profileTitleA = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -74,20 +108,20 @@ function Controller() {
         top: 10,
         id: "profileTitleA"
     });
-    $.__views.__alloyId236.add($.__views.profileTitleA);
+    $.__views.__alloyId233.add($.__views.profileTitleA);
     $.__views.searchPlayer = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.SIZE,
         height: Titanium.UI.SIZE,
         id: "searchPlayer"
     });
-    $.__views.__alloyId234.add($.__views.searchPlayer);
-    $.__views.__alloyId238 = Ti.UI.createLabel({
+    $.__views.__alloyId231.add($.__views.searchPlayer);
+    $.__views.__alloyId235 = Ti.UI.createLabel({
         top: 50,
         text: "Procurando jogador...",
-        id: "__alloyId238"
+        id: "__alloyId235"
     });
-    $.__views.searchPlayer.add($.__views.__alloyId238);
+    $.__views.searchPlayer.add($.__views.__alloyId235);
     $.__views.cancelMatch = Ti.UI.createButton({
         height: 30,
         borderRadius: 15,
@@ -118,14 +152,14 @@ function Controller() {
         visible: "false",
         backgroundImage: "http://pixabay.com/static/uploads/photo/2014/06/01/11/35/landscape-359541_640.jpg"
     });
-    $.__views.__alloyId234.add($.__views.profileB);
-    $.__views.__alloyId239 = Ti.UI.createView({
+    $.__views.__alloyId231.add($.__views.profileB);
+    $.__views.__alloyId236 = Ti.UI.createView({
         width: 250,
         height: Titanium.UI.SIZE,
-        id: "__alloyId239"
+        id: "__alloyId236"
     });
-    $.__views.profileB.add($.__views.__alloyId239);
-    $.__views.__alloyId240 = Ti.UI.createImageView({
+    $.__views.profileB.add($.__views.__alloyId236);
+    $.__views.__alloyId237 = Ti.UI.createImageView({
         width: 64,
         height: 64,
         borderRadius: 324,
@@ -133,9 +167,9 @@ function Controller() {
         borderColor: "#ffffff",
         left: 0,
         backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg",
-        id: "__alloyId240"
+        id: "__alloyId237"
     });
-    $.__views.__alloyId239.add($.__views.__alloyId240);
+    $.__views.__alloyId236.add($.__views.__alloyId237);
     $.__views.profileTitleB = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -150,53 +184,24 @@ function Controller() {
         id: "profileTitleB",
         text: "Raul Claudino"
     });
-    $.__views.__alloyId239.add($.__views.profileTitleB);
+    $.__views.__alloyId236.add($.__views.profileTitleB);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_NONE",
         closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
         leftDrawerWidth: 250,
         id: "drawer",
-        children: [ $.__views.sidebar, $.__views.__alloyId233 ],
+        children: [ $.__views.sidebar, $.__views.__alloyId230 ],
         __parentSymbol: __parentSymbol
     });
     $.__views.drawer && $.addTopLevelView($.__views.drawer);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    require("alloy").Globals.drawer($.sidebar, $.drawer, "Procurando...");
     var args = arguments[0] || {};
     categoryId = args.categoryId || "";
     var matchId;
     var mountReceived = false;
     var fighterReceived = false;
-    $.profileTitleA.text = Ti.App.Properties.getString("userName");
-    if (categoryId) {
-        Titanium.App.fireEvent("websocket.dispatchEvent", {
-            event: "joinRoom",
-            roomId: categoryId
-        });
-        Titanium.App.addEventListener("websocket.creatingMatch", function(e) {
-            Cloud.Users.query({
-                page: 1,
-                per_page: 1,
-                where: {
-                    id: e.fighterId
-                }
-            }, function(e) {
-                if (e.success) {
-                    $.searchPlayer.visible = false;
-                    $.profileB.visible = true;
-                    $.profileTitleB.text = e.users[0].first_name + " " + e.users[0].last_name;
-                    fighterReceived = true;
-                    mountReceived && mountMatch();
-                } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
-            });
-        });
-        Titanium.App.addEventListener("websocket.mountMatch", function(e) {
-            mountReceived = true;
-            matchId = e.matchId;
-            fighterReceived && mountMatch();
-        });
-    }
+    require("alloy").Globals.drawer($.sidebar, $.drawer, "Procurando...", init());
     $.cancelMatch.addEventListener("click", function() {
         Titanium.App.fireEvent("websocket.dispatchEvent", {
             event: "leaveRoom",
