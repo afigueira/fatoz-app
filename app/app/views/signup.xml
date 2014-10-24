@@ -42,10 +42,12 @@
 			                <Row title="orange"/>
 			            </Column>
 			     </Picker>-->
+
+			     	<Button id="states" text="estados" />
 			     
-					<Picker id="states" width="Titanium.UI.FILL">
+					<!--<Picker id="states" width="Titanium.UI.FILL">
 					
-					</Picker>
+					</Picker>-->
 					
 					<Picker id="cities" width="Titanium.UI.FILL">
 						

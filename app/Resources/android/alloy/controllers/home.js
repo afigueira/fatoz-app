@@ -10,8 +10,8 @@ function __processArg(obj, key) {
 function Controller() {
     function init() {
         Cloud = require("ti.cloud");
-        navigation();
         is_popular();
+        navigation();
     }
     function tabNavigation(e) {
         for (var i = 0, j = $.tabs.children.length; j > i; i++) $.tabs.children[i].children[1].visible = false;
@@ -22,9 +22,27 @@ function Controller() {
     }
     function navigation() {
         for (var i = 0, j = $.tabs.children.length; j > i; i++) $.tabs.children[i].children[1].visible = false;
-        for (var i = 0, j = $.contentTabs.children.length; j > i; i++) $.contentTabs.children[i].visible = false;
+        for (var i = 0, j = $.contentTabs.children.length; j > i; i++) {
+            $.contentTabs.children[i].visible = false;
+            (function(element) {
+                element.addEventListener("scrollend", function(e) {
+                    for (var a = 0, k = $.paginationBall.children.length; k > a; a++) {
+                        $.removeClass($.paginationBall.children[a], "selectedBall");
+                        console.log("-------------------");
+                    }
+                    $.addClass($.paginationBall.children[e.currentPage], "itemBall selectedBall");
+                });
+            })($.contentTabs.children[i]);
+        }
         $.contentTabs.children[0].visible = true;
         $.tabs.children[0].children[1].visible = true;
+    }
+    function mountNavigationBoll(length) {
+        for (var a = 0; length > a; a++) {
+            var itemBall = Titanium.UI.createImageView();
+            $.addClass(itemBall, "itemBall");
+            $.paginationBall.add(itemBall);
+        }
     }
     function is_popular() {
         Cloud.Objects.query({
@@ -75,6 +93,7 @@ function Controller() {
                     views[i] = category;
                 }
                 $.popular.views = views;
+                mountNavigationBoll(views.length);
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });
     }
@@ -171,7 +190,7 @@ function Controller() {
     $.__views.categories = Ti.UI.createView({
         height: 390,
         borderRadius: 4,
-        layout: "vertical",
+        layout: "absolute",
         width: 280,
         top: 20,
         backgroundColor: "white",
@@ -280,99 +299,11 @@ function Controller() {
     $.__views.__alloyId122.add($.__views.__alloyId124);
     $.__views.contentTabs = Ti.UI.createView({
         height: Titanium.UI.SIZE,
-        id: "contentTabs"
+        id: "contentTabs",
+        top: "46"
     });
     $.__views.categories.add($.__views.contentTabs);
     var __alloyId125 = [];
-    $.__views.__alloyId126 = Ti.UI.createView({
-        height: Titanium.UI.SIZE,
-        backgroundImage: "/images/background-home-categories-soccer.jpg",
-        id: "__alloyId126"
-    });
-    __alloyId125.push($.__views.__alloyId126);
-    $.__views.__alloyId127 = Ti.UI.createImageView({
-        top: 64,
-        image: "/images/icon-home-category-football.png",
-        id: "__alloyId127"
-    });
-    $.__views.__alloyId126.add($.__views.__alloyId127);
-    $.__views.titleCategory = Ti.UI.createLabel({
-        color: "white",
-        tintColor: "white",
-        font: {
-            fontFamily: "ProximaNova-Regular",
-            fontSize: 24,
-            fontWeight: "bold"
-        },
-        top: 108,
-        id: "titleCategory"
-    });
-    $.__views.__alloyId126.add($.__views.titleCategory);
-    $.__views.descriptionCategory = Ti.UI.createLabel({
-        color: "white",
-        tintColor: "white",
-        font: {
-            fontFamily: "ProximaNova-Regular",
-            fontSize: 12,
-            fontWeight: "bold"
-        },
-        top: 139,
-        id: "descriptionCategory"
-    });
-    $.__views.__alloyId126.add($.__views.descriptionCategory);
-    $.__views.__alloyId128 = Ti.UI.createButton({
-        borderRadius: 14,
-        color: "white",
-        tintColor: "white",
-        backgroundColor: "#08ad4d",
-        font: {
-            fontFamily: "ProximaNova-Regular",
-            fontSize: 12,
-            fontWeight: "bold"
-        },
-        top: 213,
-        width: 230,
-        height: 33,
-        titleid: "new_match",
-        id: "__alloyId128"
-    });
-    $.__views.__alloyId126.add($.__views.__alloyId128);
-    $.__views.__alloyId129 = Ti.UI.createButton({
-        backgroundImage: "/images/background-btn-more.png",
-        height: 30,
-        borderRadius: 15,
-        font: {
-            fontSize: 12,
-            fontWeight: "bold"
-        },
-        borderColor: "white",
-        borderWidth: 1,
-        color: "#ffffff",
-        top: 255,
-        left: 25,
-        width: 110,
-        titleid: "challenge",
-        id: "__alloyId129"
-    });
-    $.__views.__alloyId126.add($.__views.__alloyId129);
-    $.__views.__alloyId130 = Ti.UI.createButton({
-        backgroundImage: "/images/background-btn-more.png",
-        height: 30,
-        borderRadius: 15,
-        font: {
-            fontSize: 12,
-            fontWeight: "bold"
-        },
-        borderColor: "white",
-        borderWidth: 1,
-        color: "#ffffff",
-        top: 255,
-        right: 25,
-        width: 110,
-        titleid: "ranking",
-        id: "__alloyId130"
-    });
-    $.__views.__alloyId126.add($.__views.__alloyId130);
     $.__views.popular = Ti.UI.createScrollableView({
         width: Titanium.UI.FILL,
         height: Titanium.UI.SIZE,
@@ -385,19 +316,19 @@ function Controller() {
         id: "popular"
     });
     $.__views.contentTabs.add($.__views.popular);
-    var __alloyId131 = [];
-    $.__views.__alloyId132 = Ti.UI.createView({
+    var __alloyId126 = [];
+    $.__views.__alloyId127 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         backgroundImage: "/images/background-home-categories-soccer.jpg",
-        id: "__alloyId132"
+        id: "__alloyId127"
     });
-    __alloyId131.push($.__views.__alloyId132);
-    $.__views.__alloyId133 = Ti.UI.createImageView({
+    __alloyId126.push($.__views.__alloyId127);
+    $.__views.__alloyId128 = Ti.UI.createImageView({
         top: 64,
         image: "/images/icon-home-category-football.png",
-        id: "__alloyId133"
+        id: "__alloyId128"
     });
-    $.__views.__alloyId132.add($.__views.__alloyId133);
+    $.__views.__alloyId127.add($.__views.__alloyId128);
     $.__views.titleCategory = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -409,7 +340,7 @@ function Controller() {
         top: 108,
         id: "titleCategory"
     });
-    $.__views.__alloyId132.add($.__views.titleCategory);
+    $.__views.__alloyId127.add($.__views.titleCategory);
     $.__views.descriptionCategory = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -421,8 +352,8 @@ function Controller() {
         top: 139,
         id: "descriptionCategory"
     });
-    $.__views.__alloyId132.add($.__views.descriptionCategory);
-    $.__views.__alloyId134 = Ti.UI.createButton({
+    $.__views.__alloyId127.add($.__views.descriptionCategory);
+    $.__views.__alloyId129 = Ti.UI.createButton({
         borderRadius: 14,
         color: "white",
         tintColor: "white",
@@ -436,10 +367,10 @@ function Controller() {
         width: 230,
         height: 33,
         titleid: "new_match",
-        id: "__alloyId134"
+        id: "__alloyId129"
     });
-    $.__views.__alloyId132.add($.__views.__alloyId134);
-    $.__views.__alloyId135 = Ti.UI.createButton({
+    $.__views.__alloyId127.add($.__views.__alloyId129);
+    $.__views.__alloyId130 = Ti.UI.createButton({
         backgroundImage: "/images/background-btn-more.png",
         height: 30,
         borderRadius: 15,
@@ -454,10 +385,10 @@ function Controller() {
         left: 25,
         width: 110,
         titleid: "challenge",
-        id: "__alloyId135"
+        id: "__alloyId130"
     });
-    $.__views.__alloyId132.add($.__views.__alloyId135);
-    $.__views.__alloyId136 = Ti.UI.createButton({
+    $.__views.__alloyId127.add($.__views.__alloyId130);
+    $.__views.__alloyId131 = Ti.UI.createButton({
         backgroundImage: "/images/background-btn-more.png",
         height: 30,
         borderRadius: 15,
@@ -472,9 +403,9 @@ function Controller() {
         right: 25,
         width: 110,
         titleid: "ranking",
-        id: "__alloyId136"
+        id: "__alloyId131"
     });
-    $.__views.__alloyId132.add($.__views.__alloyId136);
+    $.__views.__alloyId127.add($.__views.__alloyId131);
     $.__views.recent = Ti.UI.createScrollableView({
         width: Titanium.UI.FILL,
         height: Titanium.UI.SIZE,
@@ -483,17 +414,25 @@ function Controller() {
         pagingControlColor: "transparent",
         pagingControlHeight: 40,
         overlayEnabled: true,
-        views: __alloyId131,
+        views: __alloyId126,
         id: "recent"
     });
     $.__views.contentTabs.add($.__views.recent);
-    $.__views.__alloyId137 = Ti.UI.createView({
+    $.__views.paginationBall = Ti.UI.createView({
+        height: Titanium.UI.SIZE,
+        layout: "horizontal",
+        width: Titanium.UI.SIZE,
+        bottom: 15,
+        id: "paginationBall"
+    });
+    $.__views.categories.add($.__views.paginationBall);
+    $.__views.__alloyId132 = Ti.UI.createView({
         height: 20,
         width: Titanium.UI.FILL,
         top: 485,
-        id: "__alloyId137"
+        id: "__alloyId132"
     });
-    $.__views.__alloyId115.add($.__views.__alloyId137);
+    $.__views.__alloyId115.add($.__views.__alloyId132);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_NONE",
         closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
@@ -506,9 +445,6 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     Alloy.Globals.drawer($.sidebar, $.drawer, "Início", init());
-    $.goToCategories.addEventListener("click", function() {
-        Alloy.createController("categories");
-    });
     $.categories.addEventListener("click", function(e) {
         if (e.source.classes) {
             e.source.classes.indexOf("btnNewMatch") > -1 && Alloy.createController("roomQueue", {
@@ -518,6 +454,9 @@ function Controller() {
                 categoryId: e.source.id
             });
         }
+    });
+    $.goToCategories.addEventListener("click", function() {
+        Alloy.createController("categories");
     });
     __defers["$.__views.popularTab!click!tabNavigation"] && $.__views.popularTab.addEventListener("click", tabNavigation);
     __defers["$.__views.recentTab!click!tabNavigation"] && $.__views.recentTab.addEventListener("click", tabNavigation);

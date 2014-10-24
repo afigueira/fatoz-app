@@ -43,4 +43,11 @@
 },
 "#btnFacebook": {
 	top: 20
+},
+"Picker": {
+	left: 28,
+	right: 28,
+	top: 15,
+	backgroundColor: "#d32d21"
+	
 }

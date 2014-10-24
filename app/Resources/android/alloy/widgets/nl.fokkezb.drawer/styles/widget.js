@@ -392,6 +392,29 @@ module.exports = [ {
         height: 0
     }
 }, {
+    isClass: true,
+    priority: 10000.0044,
+    key: "paginationBall",
+    style: {
+        width: Titanium.UI.SIZE,
+        height: Titanium.UI.SIZE,
+        bottom: 15
+    }
+}, {
+    isClass: true,
+    priority: 10000.0045,
+    key: "itemBall",
+    style: {
+        image: "/images/background-item-dot.png"
+    }
+}, {
+    isClass: true,
+    priority: 10000.0046,
+    key: "selectedBall",
+    style: {
+        image: "/images/background-selected-item-dot.png"
+    }
+}, {
     isId: true,
     priority: 100000.0004,
     key: "drawer",

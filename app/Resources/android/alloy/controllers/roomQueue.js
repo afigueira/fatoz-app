@@ -60,31 +60,31 @@ function Controller() {
         role: "leftWindow",
         id: "sidebar"
     });
-    $.__views.__alloyId230 = Ti.UI.createView({
+    $.__views.__alloyId225 = Ti.UI.createView({
         role: "centerWindow",
-        id: "__alloyId230"
+        id: "__alloyId225"
     });
-    $.__views.__alloyId231 = Ti.UI.createView({
+    $.__views.__alloyId226 = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.SIZE,
-        id: "__alloyId231"
+        id: "__alloyId226"
     });
-    $.__views.__alloyId230.add($.__views.__alloyId231);
-    $.__views.__alloyId232 = Ti.UI.createView({
+    $.__views.__alloyId225.add($.__views.__alloyId226);
+    $.__views.__alloyId227 = Ti.UI.createView({
         layout: "absolute",
         width: Titanium.UI.FILL,
         height: 231,
         backgroundImage: "http://pixabay.com/static/uploads/photo/2014/06/01/11/35/landscape-359541_640.jpg",
-        id: "__alloyId232"
+        id: "__alloyId227"
     });
-    $.__views.__alloyId231.add($.__views.__alloyId232);
-    $.__views.__alloyId233 = Ti.UI.createView({
+    $.__views.__alloyId226.add($.__views.__alloyId227);
+    $.__views.__alloyId228 = Ti.UI.createView({
         width: 250,
         height: Titanium.UI.SIZE,
-        id: "__alloyId233"
+        id: "__alloyId228"
     });
-    $.__views.__alloyId232.add($.__views.__alloyId233);
-    $.__views.__alloyId234 = Ti.UI.createImageView({
+    $.__views.__alloyId227.add($.__views.__alloyId228);
+    $.__views.__alloyId229 = Ti.UI.createImageView({
         width: 64,
         height: 64,
         borderRadius: 324,
@@ -92,9 +92,9 @@ function Controller() {
         borderColor: "#ffffff",
         left: 0,
         backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg",
-        id: "__alloyId234"
+        id: "__alloyId229"
     });
-    $.__views.__alloyId233.add($.__views.__alloyId234);
+    $.__views.__alloyId228.add($.__views.__alloyId229);
     $.__views.profileTitleA = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -108,20 +108,20 @@ function Controller() {
         top: 10,
         id: "profileTitleA"
     });
-    $.__views.__alloyId233.add($.__views.profileTitleA);
+    $.__views.__alloyId228.add($.__views.profileTitleA);
     $.__views.searchPlayer = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.SIZE,
         height: Titanium.UI.SIZE,
         id: "searchPlayer"
     });
-    $.__views.__alloyId231.add($.__views.searchPlayer);
-    $.__views.__alloyId235 = Ti.UI.createLabel({
+    $.__views.__alloyId226.add($.__views.searchPlayer);
+    $.__views.__alloyId230 = Ti.UI.createLabel({
         top: 50,
         text: "Procurando jogador...",
-        id: "__alloyId235"
+        id: "__alloyId230"
     });
-    $.__views.searchPlayer.add($.__views.__alloyId235);
+    $.__views.searchPlayer.add($.__views.__alloyId230);
     $.__views.cancelMatch = Ti.UI.createButton({
         height: 30,
         borderRadius: 15,
@@ -152,14 +152,14 @@ function Controller() {
         visible: "false",
         backgroundImage: "http://pixabay.com/static/uploads/photo/2014/06/01/11/35/landscape-359541_640.jpg"
     });
-    $.__views.__alloyId231.add($.__views.profileB);
-    $.__views.__alloyId236 = Ti.UI.createView({
+    $.__views.__alloyId226.add($.__views.profileB);
+    $.__views.__alloyId231 = Ti.UI.createView({
         width: 250,
         height: Titanium.UI.SIZE,
-        id: "__alloyId236"
+        id: "__alloyId231"
     });
-    $.__views.profileB.add($.__views.__alloyId236);
-    $.__views.__alloyId237 = Ti.UI.createImageView({
+    $.__views.profileB.add($.__views.__alloyId231);
+    $.__views.__alloyId232 = Ti.UI.createImageView({
         width: 64,
         height: 64,
         borderRadius: 324,
@@ -167,9 +167,9 @@ function Controller() {
         borderColor: "#ffffff",
         left: 0,
         backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg",
-        id: "__alloyId237"
+        id: "__alloyId232"
     });
-    $.__views.__alloyId236.add($.__views.__alloyId237);
+    $.__views.__alloyId231.add($.__views.__alloyId232);
     $.__views.profileTitleB = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -184,13 +184,13 @@ function Controller() {
         id: "profileTitleB",
         text: "Raul Claudino"
     });
-    $.__views.__alloyId236.add($.__views.profileTitleB);
+    $.__views.__alloyId231.add($.__views.profileTitleB);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_NONE",
         closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
         leftDrawerWidth: 250,
         id: "drawer",
-        children: [ $.__views.sidebar, $.__views.__alloyId230 ],
+        children: [ $.__views.sidebar, $.__views.__alloyId225 ],
         __parentSymbol: __parentSymbol
     });
     $.__views.drawer && $.addTopLevelView($.__views.drawer);

@@ -79,13 +79,14 @@ function Controller() {
         hintText: L("password")
     });
     $.__views.form.add($.__views.password);
-    $.__views.submit = Ti.UI.createView({
+    $.__views.submit = Ti.UI.createButton({
         borderRadius: 4,
         backgroundColor: "white",
         height: 88,
         right: 0,
         width: 32,
         top: 0,
+        image: "/images/icon-lock.png",
         id: "submit"
     });
     $.__views.form.add($.__views.submit);

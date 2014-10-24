@@ -5,7 +5,7 @@
 		<View id="form">
 			<TextField id="email" hintText="L('email')" class="radius input fontGray" />
 			<TextField id="password" passwordMask="true" hintText="L('password')" class="radius input fontGray" />
-			<View id="submit" class="radius" />
+			<Button id="submit" class="radius" />
 			<Label id="forgotPassword" textid="forgotpassword" class="fontWhite proximaNovaRegular"/>
 		</View>
 		

@@ -4,9 +4,9 @@ Alloy.Globals.drawer($.sidebar, $.drawer, 'Início', init());
 function init(){
 	Cloud = require("ti.cloud");
 
-	navigation();
-
 	is_popular();
+
+	navigation();
 }
 
 
@@ -32,15 +32,37 @@ function navigation(){
 
 	for(var i=0,j=$.contentTabs.children.length; i<j; i++){
 		$.contentTabs.children[i].visible = false;	
+
+		(function(element) {
+	        element.addEventListener('scrollend', function(e){	        		
+	        	
+	        	for(var a=0,k=$.paginationBall.children.length; a<k; a++){	        	
+					$.removeClass($.paginationBall.children[a], 'selectedBall');	  					          	        		
+	        	};
+
+	            $.addClass($.paginationBall.children[e.currentPage], 'itemBall selectedBall');	            
+	        });
+	    }($.contentTabs.children[i]));
 	};
 
+	
 	$.contentTabs.children[0].visible = true;
 	$.tabs.children[0].children[1].visible = true;
 }
 
-$.goToCategories.addEventListener('click', function(e){
-	Alloy.createController('categories');
-});
+function mountNavigationBoll(length){	
+	for(var a=0; a<length; a++){
+		var itemBall = Titanium.UI.createImageView();
+		$.addClass(itemBall, 'itemBall');
+
+		$.paginationBall.add(itemBall);		
+	};
+}
+
+/*$.popular.addEventListener('scrollend', function (e) {
+    Ti.API.info(e.currentPage);
+});*/
+
 
 
 function is_popular(){
@@ -102,7 +124,9 @@ function is_popular(){
 				views[i] = category;
 			};
 			
-			$.popular.views = views;		
+			$.popular.views = views;	
+			
+			mountNavigationBoll(views.length);	
 			
 	    } else {
 	        alert('Error:\n' +
@@ -123,6 +147,10 @@ $.categories.addEventListener('click', function(e){
 			Alloy.createController('ranking', {categoryId: e.source.id});			
 		}
 	}	
+});
+
+$.goToCategories.addEventListener('click', function(e){
+	Alloy.createController('categories');
 });
 
 /*for(var i=1,j=$.contentTabs.children.length; i<j; i++){
