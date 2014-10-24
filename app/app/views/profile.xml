@@ -40,7 +40,9 @@
 				
 				<ScrollableView>
 					<View class="profileStatistics">
-						<View class="graphic1"><Label text="Grafico 1"/></View>
+						<View class="graphic1">
+							<WebView url="https://1f0b6fd33fa8afdb54e5479c5a17447732b25d68.cloudapp.appcelerator.com/piechart" scalesPageToFit="true"/>
+						</View>
 						
 						<View class="borderBottom borderGray"/>
 						
