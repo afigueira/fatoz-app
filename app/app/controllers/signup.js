@@ -6,7 +6,7 @@ Cloud.Objects.query({
     per_page: 27
 }, function (e) {
     if (e.success) {    	    	
-    	/*var states = Ti.UI.createPickerColumn();
+    	var states = Ti.UI.createPickerColumn();
 		
     	for(var i=0,j=e.states.length; i<j; i++){
     		var row = Ti.UI.createPickerRow({
@@ -19,7 +19,7 @@ Cloud.Objects.query({
 			console.log(row);
 		};
 		    	    			 
-		$.states.add([states]);		*/
+		$.states.add([states]);	
 
 
 
@@ -31,60 +31,11 @@ Cloud.Objects.query({
     }
 });
 
-$.states.addEventListener('click', function(e) {
-		
-	var win = Titanium.UI.createWindow();
-
-	var listView = Ti.UI.createListView({
-		id: 'listStates'
-	});
-
-	var listSection = Ti.UI.createListSection();
-	var sections = [];
-	var dataSet =  [];
-
-	Cloud.Objects.query({
-    classname: 'states'    
-	}, function (e) {
-	    if (e.success) {    	    	
-	    				
-    	for(var i=0,j=e.states.length; i<j; i++){
-    		console.log(e.states[i].name);
-		    
-		    dataSet.push({
-		    	properties: {
-		    		title: e.states[i].name,
-		    		states_id: e.states[i].states_id,
-		    		hasDetail: true,
-		    		onClick: 'teste'
-		    	}
-		    });
-			  
-		};    	    			 
-		
-		listSection.setItems(dataSet);
-		sections.push(listSection);
-
-		listView.sections = sections;
-
-		win.add(listView);
-
-	    } else {
-	        alert('Error:\n' +
-	            ((e.error && e.message) || JSON.stringify(e)));
-	    }
-	});
-
-	win.open();
-
-
-	/*$.listStates.addEventListener('click', function(e){
-		alert("!");
-	});*/
+$.states.addEventListener('change', function(e) {
 
 
 
-    /*var states_id = e.row.states_id;
+    var states_id = e.row.states_id;
  
     Cloud.Objects.query({
 	    classname: 'cities',
@@ -94,8 +45,7 @@ $.states.addEventListener('click', function(e) {
 	    	states_id: states_id
 	    }
 	}, function (e) {
-	    if (e.success) {
-	    	console.log(e);	    		    	    	    	
+	    if (e.success) {	    	
 	    	var cities = Ti.UI.createPickerColumn();
 			
 	    	for(var i=0,j=e.cities.length; i<j; i++){
@@ -109,18 +59,13 @@ $.states.addEventListener('click', function(e) {
 				console.log(row);
 			};
 			    	    			 
-			$.cities.add([cities]);	
+			$.cities.add(cities);	
 	    } else {
 	        alert('Error:\n' +
 	            ((e.error && e.message) || JSON.stringify(e)));
 	    }
-	});*/
+	});
 });
-
-
-function teste(e){
-	alert("!!!!!!!!");
-}
 
 $.submit.addEventListener('click', function(event){
 	

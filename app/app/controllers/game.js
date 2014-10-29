@@ -30,7 +30,6 @@ Cloud.Objects.query({
     }
 });
 
-
 function getUserInfo(userId, side){
 	Cloud.Users.show({
 		user_id: userId
@@ -153,7 +152,16 @@ function fighterAnswered(e) {
 }
 
 function finishGame(e) {
-	Alloy.createController('gameResult');
+	if(myUserSide == 'a' && Number($.pointsScoreA.text) > Number($.pointsScoreB.text) || myUserSide == 'b' && Number($.pointsScoreA.text) < Number($.pointsScoreB.text)){		
+		$.addClass($.playing,'visibleFalse');
+		$.removeClass($.containerYouWin, 'youWinGame');
+
+		setTimeout(function(){
+			Alloy.createController('gameResult', {matchId: matchId});
+		}, 100);
+	}else{
+		Alloy.createController('gameResult', {matchId: matchId});
+	}
 }
 
 function questionAnswered(clickedOption) {

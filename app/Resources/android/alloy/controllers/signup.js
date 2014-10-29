@@ -17,41 +17,41 @@ function Controller() {
     }
     var $ = this;
     var exports = {};
-    var __alloyId249 = [];
-    $.__views.__alloyId251 = Ti.UI.createWindow({
+    var __alloyId242 = [];
+    $.__views.__alloyId244 = Ti.UI.createWindow({
         backgroundColor: Alloy.Globals.constants.BASE_COLOR,
         barColor: Alloy.Globals.constants.NAV_BAR_COLOR,
         navTintColor: "white",
         tabBarHidden: true,
         translucent: false,
-        id: "__alloyId251"
+        id: "__alloyId244"
     });
     $.__views.back = Ti.UI.createButton({
         image: "/images/button-back.png",
         id: "back"
     });
-    $.__views.__alloyId251.leftNavButton = $.__views.back;
-    $.__views.__alloyId254 = Ti.UI.createLabel({
+    $.__views.__alloyId244.leftNavButton = $.__views.back;
+    $.__views.__alloyId247 = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
         font: {
             fontFamily: "ProximaNova-Regular"
         },
         textid: "signup",
-        id: "__alloyId254"
+        id: "__alloyId247"
     });
-    $.__views.__alloyId251.titleControl = $.__views.__alloyId254;
-    $.__views.__alloyId255 = Ti.UI.createScrollView({
+    $.__views.__alloyId244.titleControl = $.__views.__alloyId247;
+    $.__views.__alloyId248 = Ti.UI.createScrollView({
         layout: "vertical",
-        id: "__alloyId255"
+        id: "__alloyId248"
     });
-    $.__views.__alloyId251.add($.__views.__alloyId255);
+    $.__views.__alloyId244.add($.__views.__alloyId248);
     $.__views.logo = Ti.UI.createImageView({
         top: 33,
         image: "/images/logo-signup.png",
         id: "logo"
     });
-    $.__views.__alloyId255.add($.__views.logo);
+    $.__views.__alloyId248.add($.__views.logo);
     $.__views.firstName = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -65,7 +65,7 @@ function Controller() {
         id: "firstName",
         hintText: L("first_name")
     });
-    $.__views.__alloyId255.add($.__views.firstName);
+    $.__views.__alloyId248.add($.__views.firstName);
     $.__views.lastName = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -79,7 +79,7 @@ function Controller() {
         id: "lastName",
         hintText: L("last_name")
     });
-    $.__views.__alloyId255.add($.__views.lastName);
+    $.__views.__alloyId248.add($.__views.lastName);
     $.__views.email = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -93,7 +93,7 @@ function Controller() {
         id: "email",
         hintText: L("email")
     });
-    $.__views.__alloyId255.add($.__views.email);
+    $.__views.__alloyId248.add($.__views.email);
     $.__views.password = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -108,12 +108,16 @@ function Controller() {
         passwordMask: "true",
         hintText: L("password")
     });
-    $.__views.__alloyId255.add($.__views.password);
-    $.__views.states = Ti.UI.createButton({
+    $.__views.__alloyId248.add($.__views.password);
+    $.__views.states = Ti.UI.createPicker({
+        left: 28,
+        right: 28,
+        top: 15,
+        backgroundColor: "#d32d21",
         id: "states",
-        text: "estados"
+        width: Titanium.UI.FILL
     });
-    $.__views.__alloyId255.add($.__views.states);
+    $.__views.__alloyId248.add($.__views.states);
     $.__views.cities = Ti.UI.createPicker({
         left: 28,
         right: 28,
@@ -122,7 +126,7 @@ function Controller() {
         id: "cities",
         width: Titanium.UI.FILL
     });
-    $.__views.__alloyId255.add($.__views.cities);
+    $.__views.__alloyId248.add($.__views.cities);
     $.__views.terms = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -133,7 +137,7 @@ function Controller() {
         id: "terms",
         textid: "terms_signup"
     });
-    $.__views.__alloyId255.add($.__views.terms);
+    $.__views.__alloyId248.add($.__views.terms);
     $.__views.submit = Ti.UI.createButton({
         borderRadius: 4,
         color: "red",
@@ -147,7 +151,7 @@ function Controller() {
         id: "submit",
         titleid: "finish_signup"
     });
-    $.__views.__alloyId255.add($.__views.submit);
+    $.__views.__alloyId248.add($.__views.submit);
     $.__views.footer = Ti.UI.createView({
         backgroundColor: Alloy.Globals.constants.NAV_BAR_COLOR,
         height: 75,
@@ -155,7 +159,7 @@ function Controller() {
         width: Titanium.UI.FILL,
         id: "footer"
     });
-    $.__views.__alloyId255.add($.__views.footer);
+    $.__views.__alloyId248.add($.__views.footer);
     $.__views.btnFacebook = Ti.UI.createView({
         borderRadius: 4,
         backgroundColor: Alloy.Globals.constants.FACEBOOK_BUTTON_COLOR,
@@ -185,14 +189,14 @@ function Controller() {
         id: "labelBtnFacebook"
     });
     $.__views.btnFacebook.add($.__views.labelBtnFacebook);
-    $.__views.__alloyId250 = Ti.UI.createTab({
-        window: $.__views.__alloyId251,
+    $.__views.__alloyId243 = Ti.UI.createTab({
+        window: $.__views.__alloyId244,
         titleid: "signup",
-        id: "__alloyId250"
+        id: "__alloyId243"
     });
-    __alloyId249.push($.__views.__alloyId250);
+    __alloyId242.push($.__views.__alloyId243);
     $.__views.signup = Ti.UI.createTabGroup({
-        tabs: __alloyId249,
+        tabs: __alloyId242,
         id: "signup"
     });
     $.__views.signup && $.addTopLevelView($.__views.signup);
@@ -204,38 +208,44 @@ function Controller() {
         page: 1,
         per_page: 27
     }, function(e) {
-        e.success || alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+        if (e.success) {
+            var states = Ti.UI.createPickerColumn();
+            for (var i = 0, j = e.states.length; j > i; i++) {
+                var row = Ti.UI.createPickerRow({
+                    title: e.states[i].name,
+                    states_id: e.states[i].states_id
+                });
+                states.addRow(row);
+                console.log(e.states[i].name);
+                console.log(row);
+            }
+            $.states.add([ states ]);
+        } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
     });
-    $.states.addEventListener("click", function() {
-        var win = Titanium.UI.createWindow();
-        var listView = Ti.UI.createListView({
-            id: "listStates"
-        });
-        var listSection = Ti.UI.createListSection();
-        var sections = [];
-        var dataSet = [];
+    $.states.addEventListener("change", function(e) {
+        var states_id = e.row.states_id;
         Cloud.Objects.query({
-            classname: "states"
+            classname: "cities",
+            page: 1,
+            per_page: 100,
+            where: {
+                states_id: states_id
+            }
         }, function(e) {
             if (e.success) {
-                for (var i = 0, j = e.states.length; j > i; i++) {
-                    console.log(e.states[i].name);
-                    dataSet.push({
-                        properties: {
-                            title: e.states[i].name,
-                            states_id: e.states[i].states_id,
-                            hasDetail: true,
-                            onClick: "teste"
-                        }
+                var cities = Ti.UI.createPickerColumn();
+                for (var i = 0, j = e.cities.length; j > i; i++) {
+                    var row = Ti.UI.createPickerRow({
+                        title: e.cities[i].name,
+                        id: e.cities[i].id
                     });
+                    cities.addRow(row);
+                    console.log(e.cities[i].name);
+                    console.log(row);
                 }
-                listSection.setItems(dataSet);
-                sections.push(listSection);
-                listView.sections = sections;
-                win.add(listView);
+                $.cities.add(cities);
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });
-        win.open();
     });
     $.submit.addEventListener("click", function() {
         Cloud.Users.create({

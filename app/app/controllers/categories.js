@@ -3,10 +3,10 @@ require('alloy').Globals.drawer($.sidebar, $.drawer, 'Categorias', init());
 function init(){
 	Cloud = require("ti.cloud");
 
-	categories();
+	allCategories();
 }
 
-function categories(){
+function allCategories(){
 	Cloud.Objects.query({
 	    classname: 'categories',
 	    page: 1,
@@ -21,7 +21,9 @@ function categories(){
 	        		index: i
 	        	});
 				
-				var category = Titanium.UI.createView();			
+				var category = Titanium.UI.createView({
+					closed: true
+				});			
 				$.addClass(category, "category");
 				
 				var backgroundCategory = Titanium.UI.createImageView({
@@ -50,10 +52,8 @@ function categories(){
 				$.addClass(descriptionCategory, "descriptionCategory fontWhite proximaNovaRegular");
 				
 				var actionsCategory = Titanium.UI.createView();
-				$.addClass(actionsCategory, "actionsCategory visibleFalse");
-				
-				var ScrollableView = Titanium.UI.createScrollableView();
-				
+				$.addClass(actionsCategory, "actionsCategory");
+
 				var insideScrollable = Titanium.UI.createView();
 				$.addClass(insideScrollable, "insideScrollable");
 				
@@ -81,17 +81,20 @@ function categories(){
 				widthUiSize.add(btnRanking);
 				insideScrollable.add(widthUiSize);
 				
-				ScrollableView.add(insideScrollable);			
+				
 				
 				var insideScrollable2 = Titanium.UI.createView();
 				$.addClass(insideScrollable2, "insideScrollable");
 
 				var Statistics = Titanium.UI.createLabel({
-					/*text: "estatisticas"*/
+					text: "estatisticas"
 				});
 				$.addClass(Statistics, "fontWhite");
 				insideScrollable2.add(Statistics);	
-				ScrollableView.add(insideScrollable2);					
+				
+				var ScrollableView = Titanium.UI.createScrollableView({
+					views: [insideScrollable, insideScrollable2]
+				});
 
 				actionsCategory.add(ScrollableView);
 				
@@ -121,7 +124,8 @@ function categories(){
 				category.add(arrowDown);
 				descriptionCategory.text = e.categories[i].description;
 				category.add(descriptionCategory);
-				category.add(actionsCategory);
+
+				category.add(actionsCategory);				
 				
 				
 				row.add(category);
@@ -145,5 +149,9 @@ $.listCategories.addEventListener('click', function(e){
 		}
 	}
 
-	console.log('--->', e.source);
+	if(e.row.children[0].closed){
+		e.row.children[0].closed = false;		
+		e.row.height = 220;
+		e.row.children[0].height = 220;		
+	}
 });

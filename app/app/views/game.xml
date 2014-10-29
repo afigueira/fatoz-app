@@ -1,7 +1,7 @@
 <Alloy>	
 	<Window class="container">
 		<ScrollView class="inside">
-			<View class="layoutVertical">
+			<View class="layoutVertical" id="playing">
 				<View class="score">
 					<View class="layoutAbsolute">
 						<View class="layoutHorizontal">
@@ -29,7 +29,7 @@
 								
 				<View class="containerGame">
 					<View class="layoutAbsolute">
-						<View class="layoutHorizontal">
+						<View class="layoutHorizontal" height="335">
 							<View class="progressGame">
 								<ImageView class="imageProfile imageProfileProgess" id="imageProfileProgessA" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
 								
@@ -71,7 +71,7 @@
 									</View>	
 								</View>
 								
-								<View id="currentRound" visible="true">
+								<View id="currentRound layoutVertical" visible="true">
 									<Label textid="last_round" class="proximaNovaRegular lastRoundGame" />
 									<View class="layoutHorizontal">
 										<Label textid="round" class="proximaNovaRegular roundGame" />
@@ -94,9 +94,9 @@
 					</View>
 				</View>
 			</View>
-			
-			<!--<View class="layoutVertical">			
-				<View class="youWinGame">
+
+			<View class="layoutVertical">
+				<View class="youWinGame visibleFalse" id="containerYouWin">
 					<ImageView class="imageProfile imageProfileYouWin" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
 					
 					<View class="youWinBackground">
@@ -105,7 +105,7 @@
 					
 					<View class="trophyGame"></View>
 				</View>
-			</View> -->			
+			</View>
 		</ScrollView>
 	</Window>
 </Alloy>

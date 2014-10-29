@@ -24,6 +24,7 @@
 },
 "#categories": {
 	top: 20,
+	bottom: 20,
 	width: 280,
 	height: 390,
 	backgroundColor: "white"

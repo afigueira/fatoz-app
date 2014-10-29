@@ -13,7 +13,7 @@
 	height: Titanium.UI.SIZE,	
 	font: {fontSize: 24, fontWeight: 'bold'},
 	left: 74,
-	top: 10
+	top: 20
 },
 ".profileCityState": {
 	height: Titanium.UI.SIZE,	

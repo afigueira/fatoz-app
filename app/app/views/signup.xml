@@ -16,38 +16,10 @@
 					<TextField id="email" hintText="L('email')" class="radius input fontGray" />
 					<TextField id="password" passwordMask="true" hintText="L('password')" class="radius input fontGray" />
 					
-					<!--<Picker id="picker" width="Titanium.UI.FILL" selectionIndicator="true">
-			            <PickerColumn id="column1">
-			
-			                <!-- On iOS, views can be added to picker rows -->
-			               <!-- <PickerRow>
-			                    <Label color="red" textAlign="left" width="126">Bananas</Label>
-			                </PickerRow>
-			                <PickerRow>
-			                    <Label color="red" textAlign="left" width="126">Strawberries</Label>
-			                </PickerRow>
-			                <PickerRow>
-			                    <Label color="red" textAlign="left" width="126">Mangos</Label>
-			                </PickerRow>
-			                <PickerRow>
-			                    <Label color="red" textAlign="left" width="126">Grapes</Label>
-			                </PickerRow>
-			            </PickerColumn>
-			
-			            <!-- Picker shorthand notation -->
-			           <!-- <Column id="column2">
-			                <Row title="red"/>
-			                <Row title="green"/>
-			                <Row title="blue"/>
-			                <Row title="orange"/>
-			            </Column>
-			     </Picker>-->
-
-			     	<Button id="states" text="estados" />
-			     
-					<!--<Picker id="states" width="Titanium.UI.FILL">
+							     
+					<Picker id="states" width="Titanium.UI.FILL">
 					
-					</Picker>-->
+					</Picker>
 					
 					<Picker id="cities" width="Titanium.UI.FILL">
 						

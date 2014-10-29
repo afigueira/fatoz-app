@@ -5,6 +5,7 @@ function init(){
 	Cloud = require("ti.cloud");
 
 	is_popular();
+	is_recent();
 
 	navigation();
 }
@@ -23,6 +24,10 @@ function tabNavigation(e){
 	
 	$.contentTabs.children[contentTabsIndex].visible = true;
 	$.tabs.children[contentTabsIndex].children[1].visible = true;
+
+	mountNavigationBoll($.contentTabs.children[contentTabsIndex].totalChildren);
+
+	
 }
 
 function navigation(){
@@ -33,7 +38,8 @@ function navigation(){
 	for(var i=0,j=$.contentTabs.children.length; i<j; i++){
 		$.contentTabs.children[i].visible = false;	
 
-		(function(element) {
+		elementScrollend($.contentTabs.children[i]);
+		/*(function(element) {
 	        element.addEventListener('scrollend', function(e){	        		
 	        	
 	        	for(var a=0,k=$.paginationBall.children.length; a<k; a++){	        	
@@ -42,7 +48,7 @@ function navigation(){
 
 	            $.addClass($.paginationBall.children[e.currentPage], 'itemBall selectedBall');	            
 	        });
-	    }($.contentTabs.children[i]));
+	    }($.contentTabs.children[i]));*/
 	};
 
 	
@@ -50,20 +56,88 @@ function navigation(){
 	$.tabs.children[0].children[1].visible = true;
 }
 
+function elementScrollend(element){
+	element.addEventListener('scrollend', function(e){	        			        	
+    	for(var a=0,k=$.paginationBall.children.length; a<k; a++){	        	
+			$.removeClass($.paginationBall.children[a], 'selectedBall');	  					          	        		
+    	};
+
+        $.addClass($.paginationBall.children[e.currentPage], 'itemBall selectedBall');
+    });
+}
+
 function mountNavigationBoll(length){	
+	$.paginationBall.visible = false;
+	while($.paginationBall.children.length > 0){
+	    $.paginationBall.remove($.paginationBall.children[0]);
+	};
+
 	for(var a=0; a<length; a++){
 		var itemBall = Titanium.UI.createImageView();
 		$.addClass(itemBall, 'itemBall');
 
 		$.paginationBall.add(itemBall);		
 	};
+
+	$.addClass($.paginationBall.children[0], 'itemBall selectedBall');
+	$.paginationBall.visible = true;
 }
 
 /*$.popular.addEventListener('scrollend', function (e) {
     Ti.API.info(e.currentPage);
 });*/
 
+function createRowCategories(obj){
+	var views = [];
 
+	for(var i=0,j=obj.length; i<j; i++){
+		var category = Titanium.UI.createView();
+		$.addClass(category, "category soccer");
+		
+		var iconCategory = Titanium.UI.createImageView({
+			image: "/images/icon-home-category-football.png"
+		});
+		$.addClass(iconCategory, "iconCategory");
+		
+		var titleCategory = Titanium.UI.createLabel({
+			text: obj[i].title
+		});
+		$.addClass(titleCategory, "fontWhite proximaNovaRegular titleCategory");
+		
+		var descriptionCategory = Titanium.UI.createLabel({
+			text: obj[i].description
+		});
+		$.addClass(descriptionCategory, "fontWhite proximaNovaRegular descriptionCategory");
+		
+		var btnNewMatch = Titanium.UI.createButton({
+			titleid: 'new_match',
+			id: obj[i].id
+		});
+		$.addClass(btnNewMatch, "radiusLarge green fontWhite proximaNovaRegular btnNewMatch");
+		
+		var btnChallenge = Titanium.UI.createButton({
+			titleid: 'challenge'
+		});
+		$.addClass(btnChallenge, "btnWhite btnChallenge");
+		
+		var btnRanking = Titanium.UI.createButton({
+			titleid: 'ranking',
+			id: obj[i].id
+		});
+		$.addClass(btnRanking, "btnWhite btnRanking");
+		
+		category.add(iconCategory);
+		category.add(titleCategory);
+		category.add(descriptionCategory);
+		category.add(btnNewMatch);
+		category.add(btnChallenge);
+		category.add(btnRanking);
+		
+		views[i] = category;
+	};
+
+	return views;
+}
 
 function is_popular(){
 	Cloud.Objects.query({
@@ -74,60 +148,35 @@ function is_popular(){
 	    	is_popular: 1
 	    }
 	}, function (e) {	
-	    if (e.success) {   
+	    if (e.success) {			
+			var views = createRowCategories(e.categories);
 
-			var views = [];
-			
-			for(var i=0,j=e.categories.length; i<j; i++){
-				var category = Titanium.UI.createView();
-				$.addClass(category, "category soccer");
-				
-				var iconCategory = Titanium.UI.createImageView({
-					image: "/images/icon-home-category-football.png"
-				});
-				$.addClass(iconCategory, "iconCategory");
-				
-				var titleCategory = Titanium.UI.createLabel({
-					text: e.categories[i].title
-				});
-				$.addClass(titleCategory, "fontWhite proximaNovaRegular titleCategory");
-				
-				var descriptionCategory = Titanium.UI.createLabel({
-					text: e.categories[i].description
-				});
-				$.addClass(descriptionCategory, "fontWhite proximaNovaRegular descriptionCategory");
-				
-				var btnNewMatch = Titanium.UI.createButton({
-					titleid: 'new_match',
-					id: e.categories[i].id
-				});
-				$.addClass(btnNewMatch, "radiusLarge green fontWhite proximaNovaRegular btnNewMatch");
-				
-				var btnChallenge = Titanium.UI.createButton({
-					titleid: 'challenge'
-				});
-				$.addClass(btnChallenge, "btnWhite btnChallenge");
-				
-				var btnRanking = Titanium.UI.createButton({
-					titleid: 'ranking',
-					id: e.categories[i].id
-				});
-				$.addClass(btnRanking, "btnWhite btnRanking");
-				
-				category.add(iconCategory);
-				category.add(titleCategory);
-				category.add(descriptionCategory);
-				category.add(btnNewMatch);
-				category.add(btnChallenge);
-				category.add(btnRanking);
-				
-				views[i] = category;
-			};
-			
 			$.popular.views = views;	
+			$.popular.totalChildren = views.length;
 			
 			mountNavigationBoll(views.length);	
 			
+	    } else {
+	        alert('Error:\n' +
+	            ((e.error && e.message) || JSON.stringify(e)));
+	    }
+	});
+}
+
+function is_recent(){
+	Cloud.Objects.query({
+	    classname: 'categories',
+	    page: 1,
+	    per_page: 10,
+	    where: {
+	    	is_recent: 1
+	    }
+	}, function (e) {	
+	    if (e.success) {
+			var views = createRowCategories(e.categories);
+
+			$.recent.views = views;
+			$.recent.totalChildren = views.length;				
 	    } else {
 	        alert('Error:\n' +
 	            ((e.error && e.message) || JSON.stringify(e)));
@@ -247,5 +296,6 @@ function onNavDrawerWinOpen(evt) {
 }
 
 $.drawer.open();*/
+
 
 

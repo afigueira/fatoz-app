@@ -10,9 +10,9 @@ function __processArg(obj, key) {
 function Controller() {
     function init() {
         Cloud = require("ti.cloud");
-        categories();
+        allCategories();
     }
-    function categories() {
+    function allCategories() {
         Cloud.Objects.query({
             classname: "categories",
             page: 1,
@@ -24,7 +24,9 @@ function Controller() {
                     var row = Titanium.UI.createTableViewRow({
                         index: i
                     });
-                    var category = Titanium.UI.createView();
+                    var category = Titanium.UI.createView({
+                        closed: true
+                    });
                     $.addClass(category, "category");
                     var backgroundCategory = Titanium.UI.createImageView({
                         width: 320,
@@ -46,8 +48,7 @@ function Controller() {
                     var descriptionCategory = Titanium.UI.createLabel();
                     $.addClass(descriptionCategory, "descriptionCategory fontWhite proximaNovaRegular");
                     var actionsCategory = Titanium.UI.createView();
-                    $.addClass(actionsCategory, "actionsCategory visibleFalse");
-                    var ScrollableView = Titanium.UI.createScrollableView();
+                    $.addClass(actionsCategory, "actionsCategory");
                     var insideScrollable = Titanium.UI.createView();
                     $.addClass(insideScrollable, "insideScrollable");
                     var btnNewMatch = Titanium.UI.createButton({
@@ -69,13 +70,16 @@ function Controller() {
                     widthUiSize.add(btnChallenge);
                     widthUiSize.add(btnRanking);
                     insideScrollable.add(widthUiSize);
-                    ScrollableView.add(insideScrollable);
                     var insideScrollable2 = Titanium.UI.createView();
                     $.addClass(insideScrollable2, "insideScrollable");
-                    var Statistics = Titanium.UI.createLabel({});
+                    var Statistics = Titanium.UI.createLabel({
+                        text: "estatisticas"
+                    });
                     $.addClass(Statistics, "fontWhite");
                     insideScrollable2.add(Statistics);
-                    ScrollableView.add(insideScrollable2);
+                    var ScrollableView = Titanium.UI.createScrollableView({
+                        views: [ insideScrollable, insideScrollable2 ]
+                    });
                     actionsCategory.add(ScrollableView);
                     var layoutAbsolute = Titanium.UI.createView();
                     $.addClass(layoutAbsolute, "layoutAbsolute");
@@ -289,6 +293,7 @@ function Controller() {
     $.__views.containerSearch.add($.__views.search);
     var __alloyId14 = [];
     $.__views.__alloyId15 = Ti.UI.createTableViewRow({
+        teste: "foi",
         id: "__alloyId15"
     });
     __alloyId14.push($.__views.__alloyId15);
@@ -342,14 +347,14 @@ function Controller() {
     });
     $.__views.__alloyId22.add($.__views.__alloyId23);
     $.__views.__alloyId24 = Ti.UI.createLabel({
-        color: "white",
-        tintColor: "white",
         font: {
             fontSize: 16,
             fontFamily: "ProximaNova-Regular"
         },
         left: 15,
         top: 3,
+        color: "white",
+        tintColor: "white",
         textid: "category_title",
         id: "__alloyId24"
     });
@@ -488,7 +493,11 @@ function Controller() {
         e.source.classes && e.source.classes.indexOf("btnNewMatch") > -1 && Alloy.createController("roomQueue", {
             categoryId: e.source.id
         });
-        console.log("--->", e.source);
+        if (e.row.children[0].closed) {
+            e.row.children[0].closed = false;
+            e.row.height = 220;
+            e.row.children[0].height = 220;
+        }
     });
     _.extend($, exports);
 }
