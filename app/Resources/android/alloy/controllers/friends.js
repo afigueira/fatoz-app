@@ -91,7 +91,6 @@ function Controller() {
     });
     $.__views.__alloyId41.add($.__views.__alloyId43);
     $.__views.__alloyId44 = Ti.UI.createButton({
-        right: 15,
         height: 30,
         borderRadius: 15,
         backgroundGradient: {
@@ -107,6 +106,7 @@ function Controller() {
             fontFamily: "ProximaNova-Regular"
         },
         color: "#ffffff",
+        right: 15,
         title: "ACEITAR",
         id: "__alloyId44"
     });
@@ -148,7 +148,6 @@ function Controller() {
     });
     $.__views.__alloyId46.add($.__views.__alloyId48);
     $.__views.__alloyId49 = Ti.UI.createButton({
-        right: 15,
         height: 30,
         borderRadius: 15,
         backgroundGradient: {
@@ -164,6 +163,7 @@ function Controller() {
             fontFamily: "ProximaNova-Regular"
         },
         color: "#ffffff",
+        right: 15,
         title: "JOGAR",
         id: "__alloyId49"
     });
