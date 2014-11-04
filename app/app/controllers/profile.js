@@ -1,10 +1,28 @@
+var args = arguments[0] || {};
+
 require('alloy').Globals.drawer($.sidebar, $.drawer, 'Perfil', init());
 
 function init(){
-	Cloud = require("ti.cloud");
-
 	myInfos();
 	achievements();
+
+
+	if (typeof args.scrollToView != 'undefined') {
+		tabNavigation({source: {contentTabsIndex: args.scrollToView}});
+	}
+}
+
+
+function tabNavigation(e){	
+	var contentTabsIndex = e.source.contentTabsIndex;
+
+	$.contentTabs.scrollToView(Number(contentTabsIndex));
+
+	for(var i=0,j=$.tabs.children.length; i<j; i++){
+		$.tabs.children[i].children[1].visible = false;
+	};
+
+	$.tabs.children[contentTabsIndex].children[1].visible = true;
 }
 
 function myInfos(){
@@ -227,6 +245,6 @@ function achievements(){
 	}); */
 }
 
-$.btnFollow.addEventListener('click', function(e){			
-	$.addClass($.btnFollow, "fontWhite proximaNovaRegular btnFollowing");			
+$.settings.addEventListener('click', function(){
+	Alloy.createController('settings');
 });

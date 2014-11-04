@@ -26,8 +26,6 @@ function tabNavigation(e){
 	$.tabs.children[contentTabsIndex].children[1].visible = true;
 
 	mountNavigationBoll($.contentTabs.children[contentTabsIndex].totalChildren);
-
-	
 }
 
 function navigation(){
@@ -82,10 +80,6 @@ function mountNavigationBoll(length){
 	$.addClass($.paginationBall.children[0], 'itemBall selectedBall');
 	$.paginationBall.visible = true;
 }
-
-/*$.popular.addEventListener('scrollend', function (e) {
-    Ti.API.info(e.currentPage);
-});*/
 
 function createRowCategories(obj){
 	var views = [];
@@ -183,8 +177,6 @@ function is_recent(){
 	    }
 	});
 }
-
-
 
 $.categories.addEventListener('click', function(e){
 	if (e.source.classes){		

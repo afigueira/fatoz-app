@@ -4,10 +4,7 @@
 			<Window class="container">
 				<LeftNavButton>
 					<Button image="/images/button-back.png" id="back"/>
-				</LeftNavButton>
-				<TitleControl>
-					<Label textid="signup" class="fontWhite proximaNovaRegular"/>
-				</TitleControl>
+				</LeftNavButton>				
 				<ScrollView>
 					<ImageView image="/images/logo-signup.png" id="logo"></ImageView>
 					
@@ -18,11 +15,11 @@
 					
 							     
 					<Picker id="states" width="Titanium.UI.FILL">
-					
+						<PickerRow title="Selecione seu Estado"></PickerRow>
 					</Picker>
 					
 					<Picker id="cities" width="Titanium.UI.FILL">
-						
+						<PickerRow title="Selecione sua Cidade"></PickerRow>
 					</Picker>
 					
 					<Label id="terms" textid="terms_signup" class="fontWhite proximaNovaRegular"/>

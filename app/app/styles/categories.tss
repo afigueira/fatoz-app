@@ -20,7 +20,7 @@
 },
 "#containerSearch": {
 	height: 60,
-	width: Titanium.UI.FILL	
+	width: Titanium.UI.FILL
 },
 "#search": {
 	height: 30,

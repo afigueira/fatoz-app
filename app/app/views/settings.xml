@@ -1,0 +1,28 @@
+<Alloy>
+    <Widget id="drawer" src="nl.fokkezb.drawer">
+        <Window module="xp.ui" role="leftWindow" id="sidebar"></Window>
+
+        <View platform="android" role="centerWindow">			
+			<ScrollView class="inside">		
+				<View class="layoutVertical" bottom="30">
+					<View class="topProfile" backgroundImage="/images/background-categories-soccer.jpg">				
+						<View class="profile" id="editImageProfile">
+							<ImageView class="imageProfile" backgroundImage="/images/icon-user.png" />
+
+							<Label text="EDITAR" class="editImageProfile" />
+						</View>
+
+						<Label text="EDITAR PAPEL DE PAREDE" class="editBackground" />
+					</View>
+
+					<TextField id="firstName" hintText="L('first_name')" class="radius input fontGray" />
+					<TextField id="lastName" hintText="L('last_name')" class="radius input fontGray" />
+					<TextField id="email" hintText="L('email')" class="radius input fontGray" />
+					<TextField id="password" passwordMask="true" hintText="L('password')" class="radius input fontGray" />
+
+					<Button id="submit" title="Salvar" class="radius white fontRed"/>
+				</View>
+			</ScrollView>
+    	</View>
+    </Widget>
+</Alloy>

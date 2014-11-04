@@ -77,8 +77,22 @@ function showQuestion(e) {
 	$.addClass($.optionsQuestion, "optionGame visibleFalse");
 	
 	// animar o round1
+	if(questionIndex == 5){
+		$.lastRound.visible = true;
+	}
 	$.roundNumber.text = ' ' + questionIndex;
+	
 	//$.currentRound.visible = true;
+
+	var transformCurrentRound = Titanium.UI.create2DMatrix({
+		scale: 1
+	});
+	var AnimateCurrentRound = Titanium.UI.createAnimation({
+		transform: transformCurrentRound
+	});
+	
+	$.currentRound.animate(AnimateCurrentRound);
+
 	$.removeClass($.currentRound, "visibleFalse");
 	
 	// pegar a questão
@@ -123,6 +137,14 @@ function startQuestion(e) {
 	
 	// esconder round atual
 	/*$.currentRound.visible = false;*/
+	var transformCurrentRound = Titanium.UI.create2DMatrix({
+		scale: 0.5
+	});
+	var AnimateCurrentRound = Titanium.UI.createAnimation({
+		transform: transformCurrentRound,
+		duration: 1
+	});
+	$.currentRound.animate(AnimateCurrentRound);
 	$.addClass($.currentRound, "visibleFalse");
 	
 	$.titleQuestion.text = currentQuestion.title;
@@ -154,11 +176,11 @@ function fighterAnswered(e) {
 function finishGame(e) {
 	if(myUserSide == 'a' && Number($.pointsScoreA.text) > Number($.pointsScoreB.text) || myUserSide == 'b' && Number($.pointsScoreA.text) < Number($.pointsScoreB.text)){		
 		$.addClass($.playing,'visibleFalse');
-		$.removeClass($.containerYouWin, 'youWinGame');
+		$.containerYouWin.visible = true;
 
 		setTimeout(function(){
 			Alloy.createController('gameResult', {matchId: matchId});
-		}, 100);
+		}, 1000);
 	}else{
 		Alloy.createController('gameResult', {matchId: matchId});
 	}
@@ -188,11 +210,12 @@ function questionAnswered(clickedOption) {
 
 function setQuestionResult(userSide, clickedOption, isCorrect) {
 	// aplicar se tá correto ou não
-	var classColor = userSide == myUserSide ? (isCorrect ? 'chosenOptionGame fillChosenOptionGame optionGreenGame' : 'chosenOptionGame fillChosenOptionGame optionRedGame') : 'chosenOptionGame fillChosenOptionGame optionBlueGame';
+	var optionClassColor = userSide == myUserSide ? (isCorrect ? 'chosenOptionGame fillChosenOptionGame optionGreenGame' : 'chosenOptionGame fillChosenOptionGame optionRedGame') : 'chosenOptionGame fillChosenOptionGame optionBlueGame';
+		
 	var option = $['option' + clickedOption];
 	
-	$.addClass(option, classColor);
-	
+	$.addClass(option, optionClassColor);
+	 	
 	if (!isCorrect && userSide == myUserSide) {
 		setQuestionResult(myUserSide, currentQuestion.correct_option, true);	
 	}
@@ -204,7 +227,7 @@ function setQuestionPoints(userSide, time, isCorrect){
 	var points = Alloy.Globals.calculateQuestionPoints(time, isCorrect);
 
 	updateUserPoints(userSide, points);
-	updateProgressBar(userSide, points);
+	updateProgressBar(userSide, points, isCorrect);
 }
 
 function updateUserPoints(userSide, points){
@@ -214,10 +237,10 @@ function updateUserPoints(userSide, points){
 
 	currentPoints += points;
 
-	labelPoints.text = currentPoints;
+	labelPoints.text = (currentPoints > 0) ? currentPoints : 0;
 }
 
-function updateProgressBar(userSide, points){
+function updateProgressBar(userSide, points, isCorrect){
 	var labelPoints = userSide == 'a' ? $.pointsScoreA : $.pointsScoreB;
 	var currentPoints = Number(labelPoints.text);
 	currentPoints += points;
@@ -225,8 +248,33 @@ function updateProgressBar(userSide, points){
 	var percentBar = userSide == 'a' ? $.percentBarA : $.percentBarB;
 	var imageProfileProgess = userSide == 'a' ? $.imageProfileProgessA : $.imageProfileProgessB;
 
-	percentBar.height = currentPoints * maxHeightProgressBar / 100;
-	imageProfileProgess.bottom = currentPoints * maxImageProfileProgess / 100;
+	var animateImageProfileProgess = Titanium.UI.createAnimation({
+		duration: 500,
+		bottom: currentPoints * maxImageProfileProgess / 100
+	});
+	imageProfileProgess.animate(animateImageProfileProgess);
+
+	var animatePercentBar = Titanium.UI.createAnimation({
+		duration: 500,
+		height: currentPoints * maxHeightProgressBar / 100
+	});
+	percentBar.animate(animatePercentBar);
+
+	//percentBar.height = currentPoints * maxHeightProgressBar / 100;
+	//imageProfileProgess.bottom = currentPoints * maxImageProfileProgess / 100;
+
+	if(userSide == myUserSide){
+		if(isCorrect){
+			// green
+			percentBar.setBackgroundColor('#78a800');
+		}else{
+			// red
+			percentBar.setBackgroundColor('#e42e24');
+		}
+	}else{
+		// blue
+		percentBar.setBackgroundColor('#41b6da');
+	}
 	
 }
 
@@ -239,7 +287,7 @@ function updateTimer(){
 	var time =  Math.ceil(10 - ((currentTimer.getTime() - counterTimer.getTime())/1000));
 	
 	$.leftNumber.text = 0;
-	$.rightNumber.text = time;
+	$.rightNumber.text = (time > 0) ? time : 0;
 
 	if(time == 0){
 		Titanium.App.fireEvent('websocket.dispatchEvent', {

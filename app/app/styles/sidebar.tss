@@ -12,8 +12,8 @@
 	backgroundColor: "#c42e24"
 },
 ".rowSidebar": {
-	layout: "horizontal",
-	bottom: 34
+	height: 50,
+	backgroundSelectedColor: "#90241a"
 },
 ".firstRowSidebar": {
 	top: 57
@@ -29,4 +29,7 @@
 	font: {fontFamily: "ProximaNova-Regular", fontSize: 14, fontWeight: 'bold'},	
 	color: "#ffffff",
 	left: 25
+},
+".floatLeft": {
+	left: 0
 }

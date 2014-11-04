@@ -50,6 +50,20 @@ function Controller() {
         id: "form"
     });
     $.__views.login.add($.__views.form);
+    $.__views.__alloyId103 = Ti.UI.createView({
+        layout: "vertical",
+        width: Titanium.UI.SIZE,
+        height: Titanium.UI.SIZE,
+        id: "__alloyId103"
+    });
+    $.__views.form.add($.__views.__alloyId103);
+    $.__views.__alloyId104 = Ti.UI.createView({
+        layout: "absolute",
+        width: Titanium.UI.FILL,
+        height: Titanium.UI.SIZE,
+        id: "__alloyId104"
+    });
+    $.__views.__alloyId103.add($.__views.__alloyId104);
     $.__views.email = Ti.UI.createTextField({
         borderRadius: 4,
         backgroundColor: "white",
@@ -63,13 +77,27 @@ function Controller() {
         id: "email",
         hintText: L("email")
     });
-    $.__views.form.add($.__views.email);
+    $.__views.__alloyId104.add($.__views.email);
+    $.__views.__alloyId105 = Ti.UI.createImageView({
+        image: "/images/icon-key.png",
+        right: "52",
+        top: "15",
+        id: "__alloyId105"
+    });
+    $.__views.__alloyId104.add($.__views.__alloyId105);
+    $.__views.__alloyId106 = Ti.UI.createView({
+        layout: "absolute",
+        width: Titanium.UI.FILL,
+        height: Titanium.UI.SIZE,
+        id: "__alloyId106"
+    });
+    $.__views.__alloyId103.add($.__views.__alloyId106);
     $.__views.password = Ti.UI.createTextField({
         borderRadius: 4,
         backgroundColor: "white",
         color: "#888888",
         tintColor: "#888888",
-        top: 48,
+        top: 8,
         left: 0,
         height: 40,
         width: Titanium.UI.FILL,
@@ -78,14 +106,21 @@ function Controller() {
         passwordMask: "true",
         hintText: L("password")
     });
-    $.__views.form.add($.__views.password);
+    $.__views.__alloyId106.add($.__views.password);
+    $.__views.__alloyId107 = Ti.UI.createImageView({
+        image: "/images/icon-user.png",
+        right: "52",
+        top: "23",
+        id: "__alloyId107"
+    });
+    $.__views.__alloyId106.add($.__views.__alloyId107);
     $.__views.submit = Ti.UI.createButton({
         borderRadius: 4,
         backgroundColor: "white",
         height: 88,
         right: 0,
         width: 32,
-        top: 0,
+        top: 21,
         image: "/images/icon-lock.png",
         id: "submit"
     });
@@ -97,7 +132,7 @@ function Controller() {
             fontFamily: "ProximaNova-Regular"
         },
         left: 0,
-        top: 100,
+        top: 115,
         id: "forgotPassword",
         textid: "forgotpassword"
     });

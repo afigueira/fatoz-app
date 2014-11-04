@@ -4,44 +4,44 @@
 
         <View platform="android" role="centerWindow">
 			<ScrollView class="inside">
-				<View class="topProfile" backgroundImage="http://pixabay.com/static/uploads/photo/2014/06/01/11/35/landscape-359541_640.jpg">				
+				<View class="topProfile" backgroundImage="/images/background-categories-soccer.jpg">				
 					<View class="profile">
-						<ImageView class="imageProfile" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+						<ImageView class="imageProfile" backgroundImage="/images/icon-user.png" />
 						<Label class="proximaNovaRegular fontWhite profileTitle" id="userName"/>
 						<Label class="proximaNovaRegular fontWhite profileCityState" id="cityState"/>			
 					</View>
 					
 					<View class="profileButtons">
-						<Button class="fontWhite proximaNovaRegular btnFollow" id="btnFollow" titleid="btn_follow" />
-						<Button class="borderWhite fontWhite proximaNovaRegular btnMore" />
+						<!--<Button class="fontWhite proximaNovaRegular btnFollow" id="btnFollow" titleid="btn_follow" />-->
+						<Button id="settings" class="borderWhite fontWhite proximaNovaRegular btnMore" />
 					</View>						
 				</View>
 				
 				<View id="containerTabs" class="white">
 					<View id="tabs">
-						<View class="tab">
+						<View class="tab" onClick="tabNavigation" contentTabsIndex="0">
 							<Label textid="statistics" class="fontOrange proximaNovaRegular labelTab"/>
 							<View class="tabSelected orange" />								
 						</View>
-						<View class="tab">
+						<View class="tab" onClick="tabNavigation" contentTabsIndex="1">
 							<Label textid="friends" class="fontOrange proximaNovaRegular labelTab"/>
 							<View class="tabSelected orange" visible="false" />
 						</View>
-						<View class="tab">
+						<View class="tab" onClick="tabNavigation" contentTabsIndex="2">
 							<Label textid="rank" class="fontOrange proximaNovaRegular labelTab"/>
 							<View class="tabSelected orange" visible="false" />
 						</View>
-						<View class="tab">
+						<View class="tab" onClick="tabNavigation" contentTabsIndex="3">
 							<Label textid="conquer" class="fontOrange proximaNovaRegular labelTab"/>
 							<View class="tabSelected orange" visible="false" />
 						</View>
 					</View>
 				</View>
 				
-				<ScrollableView>
+				<ScrollableView id="contentTabs">
 					<View class="profileStatistics">
 						<View class="graphic1">
-							<WebView url="https://1f0b6fd33fa8afdb54e5479c5a17447732b25d68.cloudapp.appcelerator.com/piechart" scalesPageToFit="true"/>
+							<!-- <WebView url="https://1f0b6fd33fa8afdb54e5479c5a17447732b25d68.cloudapp.appcelerator.com/piechart" scalesPageToFit="true"/> -->
 						</View>
 						
 						<View class="borderBottom borderGray"/>
@@ -102,47 +102,25 @@
 					
 					<View class="profileFriends">
 						<View id="containerSearch" class="black">
+							<ImageView image="/images/icon-search.png" top="0" left="0" zIndex="100" />
 							<TextField id="search" class="white fontGray radiusLarge proximaNovaRegular" hintText="Pesquisar" />
 						</View>
 						
 						<TableView class="listFriends">
 							<TableViewRow class="rowFriends">
-								<ImageView class="imageProfile imageProfileFriends" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+								<ImageView class="imageProfile imageProfileFriends" backgroundImage="/images/icon-user.png" />
 								<Label class="friendName proximaNovaRegular" text="Tomas Lau"/>
 								
 								<View class="borderGray borderGrayProfile" />						
-						    </TableViewRow>
-						    <TableViewRow class="rowFriends">
-								<ImageView class="imageProfile imageProfileFriends" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
-								<Label class="friendName proximaNovaRegular" text="Rafael Costa"/>
-								
-								<View class="borderGray borderGrayProfile" />						
-						    </TableViewRow>
-						    <TableViewRow class="rowFriends">
-								<ImageView class="imageProfile imageProfileFriends" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
-								<Label class="friendName proximaNovaRegular" text="Rafael Costas"/>	
-								
-								<View class="borderGray borderGrayProfile" />
-						    </TableViewRow>					    
+						    </TableViewRow>						    
 						</TableView>				            
 					</View>
 					
 					<View class="profileRank">							
-		               <TableView class="listRank">
-							<TableViewRow class="rowRank">
-								<Label class="rankNumber proximaNovaRegular" text="1."/>
-								<ImageView class="imageProfile imageProfileRank" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
-								<Label class="rankName proximaNovaRegular" text="Rafael Costas"/>
-								<View class="rankPoint">
-									<Label class="rankPt proximaNovaRegular" textid="abbreviation_points"/>
-									<Label class="rankTotal proximaNovaRegular" text="12.156"/>							
-								</View>
-								
-								<View class="borderGray borderGrayProfile" />
-						    </TableViewRow>
+		               <TableView class="listRank">							
 						    <TableViewRow class="rowRank">
 								<Label class="rankNumber proximaNovaRegular" text="1."/>
-								<ImageView class="imageProfile imageProfileRank" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+								<ImageView class="imageProfile imageProfileRank" backgroundImage="/images/icon-user.png" />
 								<Label class="rankName proximaNovaRegular" text="Rafael Costas"/>
 								<View class="rankPoint">
 									<Label class="rankPt proximaNovaRegular" textid="abbreviation_points"/>
@@ -156,7 +134,7 @@
 					
 					<View class="profileConquer">							
 		               <TableView id="conquer">
-							<!--<TableViewRow>						
+							<TableViewRow>						
 								<ImageView class="imageConquer" image="/images/conquer-master-of-chemistry.png" />
 								
 								<View class="rightContentConquer">
@@ -176,7 +154,7 @@
 								</View>
 								
 								<View class="borderGray borderGrayConquer" />
-						    </TableViewRow>-->
+						    </TableViewRow>
 						</TableView>				            
 					</View>
 				</ScrollableView>					

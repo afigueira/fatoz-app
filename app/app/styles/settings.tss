@@ -1,0 +1,45 @@
+".topProfile": {
+	height: 231
+},
+".imageProfile": {
+	width: 64,
+	height: 64	
+},
+".profile": {	
+	width: 64,
+	height: 64,
+	borderRadius: 324,
+	borderWidth: 2,
+	borderColor: "#ffffff"
+},
+".editImageProfile": {
+	font: {fontSize: 10},
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	color: "#ffffff",
+	height: 20,
+	backgroundImage: "/images/background-black-transparent.png",
+	width: Titanium.UI.FILL,	
+	bottom: 2
+},
+".editBackground": {
+	font: {fontSize: 14},
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+	color: "#ffffff",
+	height: 30,
+	backgroundImage: "/images/background-black-transparent.png",
+	width: Titanium.UI.FILL,	
+	bottom: 0
+},
+"TextField": {
+	width: Titanium.UI.FILL,
+	height: 40,
+	left: 28,
+	right: 28,
+	top: 20
+},
+"#submit": {
+	width: Titanium.UI.FILL,
+	top: 30,
+	left: 28,
+	right: 28
+}

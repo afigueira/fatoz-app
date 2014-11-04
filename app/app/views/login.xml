@@ -2,10 +2,18 @@
 	<Window class="container">
 		<ImageView image="/images/logo-login.png" id="logo"/>
 		
-		<View id="form">
-			<TextField id="email" hintText="L('email')" class="radius input fontGray" />
-			<TextField id="password" passwordMask="true" hintText="L('password')" class="radius input fontGray" />
-			<Button id="submit" class="radius" />
+		<View id="form">			
+			<View class="layoutVertical heightUiSize">
+				<View class="layoutAbsolute heightUiSize">
+					<TextField id="email" hintText="L('email')" class="radius input fontGray" />
+					<ImageView image="/images/icon-key.png" right="52" top="15" />
+				</View>
+				<View class="layoutAbsolute heightUiSize">
+					<TextField id="password" passwordMask="true" hintText="L('password')" class="radius input fontGray" />
+					<ImageView image="/images/icon-user.png" right="52" top="23" />
+				</View>
+			</View>
+			<Button id="submit" class="radius" />			
 			<Label id="forgotPassword" textid="forgotpassword" class="fontWhite proximaNovaRegular"/>
 		</View>
 		

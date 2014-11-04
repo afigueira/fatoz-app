@@ -17,41 +17,31 @@ function Controller() {
     }
     var $ = this;
     var exports = {};
-    var __alloyId242 = [];
-    $.__views.__alloyId244 = Ti.UI.createWindow({
+    var __alloyId231 = [];
+    $.__views.__alloyId233 = Ti.UI.createWindow({
         backgroundColor: Alloy.Globals.constants.BASE_COLOR,
         barColor: Alloy.Globals.constants.NAV_BAR_COLOR,
         navTintColor: "white",
         tabBarHidden: true,
         translucent: false,
-        id: "__alloyId244"
+        id: "__alloyId233"
     });
     $.__views.back = Ti.UI.createButton({
         image: "/images/button-back.png",
         id: "back"
     });
-    $.__views.__alloyId244.leftNavButton = $.__views.back;
-    $.__views.__alloyId247 = Ti.UI.createLabel({
-        color: "white",
-        tintColor: "white",
-        font: {
-            fontFamily: "ProximaNova-Regular"
-        },
-        textid: "signup",
-        id: "__alloyId247"
-    });
-    $.__views.__alloyId244.titleControl = $.__views.__alloyId247;
-    $.__views.__alloyId248 = Ti.UI.createScrollView({
+    $.__views.__alloyId233.leftNavButton = $.__views.back;
+    $.__views.__alloyId235 = Ti.UI.createScrollView({
         layout: "vertical",
-        id: "__alloyId248"
+        id: "__alloyId235"
     });
-    $.__views.__alloyId244.add($.__views.__alloyId248);
+    $.__views.__alloyId233.add($.__views.__alloyId235);
     $.__views.logo = Ti.UI.createImageView({
         top: 33,
         image: "/images/logo-signup.png",
         id: "logo"
     });
-    $.__views.__alloyId248.add($.__views.logo);
+    $.__views.__alloyId235.add($.__views.logo);
     $.__views.firstName = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -65,7 +55,7 @@ function Controller() {
         id: "firstName",
         hintText: L("first_name")
     });
-    $.__views.__alloyId248.add($.__views.firstName);
+    $.__views.__alloyId235.add($.__views.firstName);
     $.__views.lastName = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -79,7 +69,7 @@ function Controller() {
         id: "lastName",
         hintText: L("last_name")
     });
-    $.__views.__alloyId248.add($.__views.lastName);
+    $.__views.__alloyId235.add($.__views.lastName);
     $.__views.email = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -93,7 +83,7 @@ function Controller() {
         id: "email",
         hintText: L("email")
     });
-    $.__views.__alloyId248.add($.__views.email);
+    $.__views.__alloyId235.add($.__views.email);
     $.__views.password = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -108,7 +98,7 @@ function Controller() {
         passwordMask: "true",
         hintText: L("password")
     });
-    $.__views.__alloyId248.add($.__views.password);
+    $.__views.__alloyId235.add($.__views.password);
     $.__views.states = Ti.UI.createPicker({
         left: 28,
         right: 28,
@@ -117,7 +107,14 @@ function Controller() {
         id: "states",
         width: Titanium.UI.FILL
     });
-    $.__views.__alloyId248.add($.__views.states);
+    $.__views.__alloyId235.add($.__views.states);
+    var __alloyId236 = [];
+    $.__views.__alloyId237 = Ti.UI.createPickerRow({
+        title: "Selecione seu Estado",
+        id: "__alloyId237"
+    });
+    __alloyId236.push($.__views.__alloyId237);
+    $.__views.states.add(__alloyId236);
     $.__views.cities = Ti.UI.createPicker({
         left: 28,
         right: 28,
@@ -126,7 +123,14 @@ function Controller() {
         id: "cities",
         width: Titanium.UI.FILL
     });
-    $.__views.__alloyId248.add($.__views.cities);
+    $.__views.__alloyId235.add($.__views.cities);
+    var __alloyId238 = [];
+    $.__views.__alloyId239 = Ti.UI.createPickerRow({
+        title: "Selecione sua Cidade",
+        id: "__alloyId239"
+    });
+    __alloyId238.push($.__views.__alloyId239);
+    $.__views.cities.add(__alloyId238);
     $.__views.terms = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -137,7 +141,7 @@ function Controller() {
         id: "terms",
         textid: "terms_signup"
     });
-    $.__views.__alloyId248.add($.__views.terms);
+    $.__views.__alloyId235.add($.__views.terms);
     $.__views.submit = Ti.UI.createButton({
         borderRadius: 4,
         color: "red",
@@ -151,7 +155,7 @@ function Controller() {
         id: "submit",
         titleid: "finish_signup"
     });
-    $.__views.__alloyId248.add($.__views.submit);
+    $.__views.__alloyId235.add($.__views.submit);
     $.__views.footer = Ti.UI.createView({
         backgroundColor: Alloy.Globals.constants.NAV_BAR_COLOR,
         height: 75,
@@ -159,7 +163,7 @@ function Controller() {
         width: Titanium.UI.FILL,
         id: "footer"
     });
-    $.__views.__alloyId248.add($.__views.footer);
+    $.__views.__alloyId235.add($.__views.footer);
     $.__views.btnFacebook = Ti.UI.createView({
         borderRadius: 4,
         backgroundColor: Alloy.Globals.constants.FACEBOOK_BUTTON_COLOR,
@@ -189,14 +193,14 @@ function Controller() {
         id: "labelBtnFacebook"
     });
     $.__views.btnFacebook.add($.__views.labelBtnFacebook);
-    $.__views.__alloyId243 = Ti.UI.createTab({
-        window: $.__views.__alloyId244,
+    $.__views.__alloyId232 = Ti.UI.createTab({
+        window: $.__views.__alloyId233,
         titleid: "signup",
-        id: "__alloyId243"
+        id: "__alloyId232"
     });
-    __alloyId242.push($.__views.__alloyId243);
+    __alloyId231.push($.__views.__alloyId232);
     $.__views.signup = Ti.UI.createTabGroup({
-        tabs: __alloyId242,
+        tabs: __alloyId231,
         id: "signup"
     });
     $.__views.signup && $.addTopLevelView($.__views.signup);
@@ -216,9 +220,8 @@ function Controller() {
                     states_id: e.states[i].states_id
                 });
                 states.addRow(row);
-                console.log(e.states[i].name);
-                console.log(row);
             }
+            $.states.remove($.states.children[0]);
             $.states.add([ states ]);
         } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
     });
@@ -234,15 +237,11 @@ function Controller() {
         }, function(e) {
             if (e.success) {
                 var cities = Ti.UI.createPickerColumn();
-                for (var i = 0, j = e.cities.length; j > i; i++) {
-                    var row = Ti.UI.createPickerRow({
-                        title: e.cities[i].name,
-                        id: e.cities[i].id
-                    });
-                    cities.addRow(row);
-                    console.log(e.cities[i].name);
-                    console.log(row);
-                }
+                for (var i = 0, j = e.cities.length; j > i; i++) Ti.UI.createPickerRow({
+                    title: e.cities[i].name,
+                    id: e.cities[i].id
+                });
+                $.cities.remove($.cities.children[0]);
                 $.cities.add(cities);
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });

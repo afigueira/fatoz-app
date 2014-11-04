@@ -14,11 +14,11 @@ Cloud.Objects.query({
 			    states_id: e.states[i].states_id
 			  });
 			  
-		  	states.addRow(row);
-			console.log(e.states[i].name);
-			console.log(row);
+		  	states.addRow(row);			
 		};
-		    	    			 
+		    	    			
+		$.states.remove($.states.children[0]);
+
 		$.states.add([states]);	
 
 
@@ -53,11 +53,10 @@ $.states.addEventListener('change', function(e) {
 				    title: e.cities[i].name,
 				    id: e.cities[i].id
 				  });
-				  
-			  	cities.addRow(row);
-				console.log(e.cities[i].name);
-				console.log(row);
+
 			};
+
+			$.cities.remove($.cities.children[0]);
 			    	    			 
 			$.cities.add(cities);	
 	    } else {

@@ -39,8 +39,6 @@
 							</View>
 							
 							<View class="contentGame layoutVertical" width="228">
-								
-								
 								<!-- opcao 1 -->					
 								<!--<View class="imageGame">
 									<ImageView image="/images/trophy.png" />
@@ -71,11 +69,11 @@
 									</View>	
 								</View>
 								
-								<View id="currentRound layoutVertical" visible="true">
-									<Label textid="last_round" class="proximaNovaRegular lastRoundGame" />
+								<View id="currentRound" class="layoutVertical" visible="true">
+									<Label textid="last_round" class="proximaNovaRegular lastRoundGame" id="lastRound" visible="false" />
 									<View class="layoutHorizontal">
 										<Label textid="round" class="proximaNovaRegular roundGame" />
-										<Label text="5" class="proximaNovaRegular roundGame" id="roundNumber" />		
+										<Label text=" 1" class="proximaNovaRegular roundGame" id="roundNumber" />		
 									</View>
 								</View>
 							
@@ -96,7 +94,7 @@
 			</View>
 
 			<View class="layoutVertical">
-				<View class="youWinGame visibleFalse" id="containerYouWin">
+				<View class="youWinGame" id="containerYouWin" visible="false">
 					<ImageView class="imageProfile imageProfileYouWin" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
 					
 					<View class="youWinBackground">

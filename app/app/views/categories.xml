@@ -6,64 +6,74 @@
 			<ScrollView class="inside">
 				<View id="containerTabs" class="white">
 					<View id="tabs">
-						<View class="tab">
+						<View class="tab" onClick="tabNavigation" contentTabsIndex="0">
 							<Label textid="all" class="fontOrange proximaNovaRegular labelTab"/>
 							<View class="tabSelected orange" />
 						</View>
-						<View class="tab">
+						<View class="tab" onClick="tabNavigation" contentTabsIndex="1">
 							<Label textid="popular" class="fontOrange proximaNovaRegular labelTab"/>
 							<View class="tabSelected orange" visible="false" />
 						</View>
-						<View class="tab">
+						<View class="tab" onClick="tabNavigation" contentTabsIndex="2">
 							<Label textid="text_new" class="fontOrange proximaNovaRegular labelTab"/>
 							<View class="tabSelected orange" visible="false" />
-						</View>
-						<View class="tab">
-							<Label textid="suggested" class="fontOrange proximaNovaRegular labelTab"/>
-							<View class="tabSelected orange" visible="false" />
-						</View>
+						</View>						
 					</View>
 				</View>
-				<View id="containerSearch" class="black">
-					<TextField id="search" class="white fontGray radiusLarge proximaNovaRegular" hintText="Pesquisar" />
-				</View>
 				
-				<TableView id="listCategories">						
-					<TableViewRow teste="foi">
-						<View class="category">							
-							<View class="layoutAbsolute">
-								<View class="layoutHorizontal">
-									<ImageView image="/images/background-categories-soccer.jpg" class="backgroundCategory"/>
-								</View>
-							</View>
-							
-							<View class="containerTitleCategory">
-								<View class="layoutAbsolute">
-									<View class="layoutHorizontal">
-										<ImageView image="/images/icon-category.png"/>
-										<Label textid="category_title" class="titleCategory fontWhite proximaNovaRegular" />
-									</View>
-								</View>
-							</View>
-							<ImageView image="/images/arrow-down.png" class="arrowCategory"/>
-							<Label textid="category_description" class="descriptionCategory fontWhite proximaNovaRegular" />
-							<View class="actionsCategory">
-								<ScrollableView>
-									<View class="insideScrollable">
-										<View class="widthUiSize">
-											<Button titleid="new_match" class="radiusLarge green fontWhite proximaNovaRegular btnNewMatch" />
-											<Button titleid="challenge" class="btnWhite btnChallenge" />
-											<Button titleid="ranking" class="btnWhite btnRanking" />	
+				<ScrollableView id="contentTabs">
+					<View class="allCategories layoutVertical">
+						<View id="containerSearch" class="black">
+							<TextField id="search" class="white fontGray radiusLarge proximaNovaRegular" hintText="Pesquisar" />
+						</View>
+						
+						<TableView id="allCategories">
+							<!--<TableViewRow>
+								<View class="category">							
+									<View class="layoutAbsolute">
+										<View class="layoutHorizontal">
+											<ImageView image="/images/background-categories-soccer.jpg" class="backgroundCategory"/>
 										</View>
 									</View>
-									<View class="insideScrollable">
-										<Label text="Statistics" class="fontWhite" />
+									
+									<View class="containerTitleCategory">
+										<View class="layoutAbsolute">
+											<View class="layoutHorizontal">
+												<ImageView image="/images/icon-category.png"/>
+												<Label textid="category_title" class="titleCategory fontWhite proximaNovaRegular" />
+											</View>
+										</View>
 									</View>
-								</ScrollableView>
-							</View>
-						</View>
-					</TableViewRow>
-				</TableView>
+									<ImageView image="/images/arrow-down.png" class="arrowCategory"/>
+									<Label textid="category_description" class="descriptionCategory fontWhite proximaNovaRegular" />
+									<View class="actionsCategory">
+										<ScrollableView>
+											<View class="insideScrollable">
+												<View class="widthUiSize">
+													<Button titleid="new_match" class="radiusLarge green fontWhite proximaNovaRegular btnNewMatch" />
+													<Button titleid="challenge" class="btnWhite btnChallenge" />
+													<Button titleid="ranking" class="btnWhite btnRanking" />	
+												</View>
+											</View>
+											<View class="insideScrollable">
+												<Label text="Statistics" class="fontWhite" />
+											</View>
+										</ScrollableView>
+									</View>
+								</View>
+							</TableViewRow>-->
+						</TableView>
+					</View>
+					<View class="popular layoutVertical">
+						<TableView id="popularCategories">
+						</TableView>
+					</View>
+
+					<View class="recent layoutVertical">
+						<TableView id="recentCategories">
+						</TableView>
+					</View>
+				</ScrollableView>
 			</ScrollView>
     	</View>
     </Widget>

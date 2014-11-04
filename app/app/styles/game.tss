@@ -80,6 +80,12 @@
 	height: 0,
 	bottom: 0
 },
+".greenPercentBar": {
+	backgroundColor: "#78a800"
+},
+".redPercentBar": {
+	backgroundColor: "#e42e24"
+},
 ".imageProfileProgess": {
 	width: 29,
 	height: 29,

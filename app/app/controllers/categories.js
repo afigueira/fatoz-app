@@ -1,17 +1,61 @@
 require('alloy').Globals.drawer($.sidebar, $.drawer, 'Categorias', init());
 
+var canSearch = false;
+
 function init(){
 	Cloud = require("ti.cloud");
 
-	allCategories();
-}
-
-function allCategories(){
-	Cloud.Objects.query({
+	getCategories($.allCategories, {
 	    classname: 'categories',
 	    page: 1,
 	    per_page: 10
-	}, function (e) {
+	});
+
+	getCategories($.popularCategories, {
+	    classname: 'categories',
+	    page: 1,
+	    per_page: 10,
+	     where: {
+	    	is_popular: 1
+	    }
+	});
+
+	getCategories($.recentCategories, {
+	    classname: 'categories',
+	    page: 1,
+	    per_page: 10,
+	     where: {
+	    	is_recent: 1
+	    }
+	});
+
+	pagination();
+}
+
+function pagination(){
+	$.contentTabs.addEventListener('scrollend', function(e){	        			        	
+    	for(var i=0,j=$.tabs.children.length; i<j; i++){
+			$.tabs.children[i].children[1].visible = false;
+		};
+
+		$.tabs.children[e.currentPage].children[1].visible = true;        
+    });
+}
+
+function tabNavigation(e){	
+	var contentTabsIndex = e.source.contentTabsIndex;
+
+	$.contentTabs.scrollToView(Number(contentTabsIndex));
+
+	for(var i=0,j=$.tabs.children.length; i<j; i++){
+		$.tabs.children[i].children[1].visible = false;
+	};
+
+	$.tabs.children[contentTabsIndex].children[1].visible = true;
+}
+
+function getCategories(element, param){
+	Cloud.Objects.query(param, function (e) {
 		
 	    if (e.success) {    	
 	    	var total = e.categories.length;
@@ -130,7 +174,7 @@ function allCategories(){
 				
 				row.add(category);
 				
-				$.listCategories.appendRow(row);
+				element.appendRow(row);
 			}
 	        
 	    } else {
@@ -142,7 +186,7 @@ function allCategories(){
 
 
 
-$.listCategories.addEventListener('click', function(e){
+$.allCategories.addEventListener('click', function(e){
 	if (e.source.classes){
 		if (e.source.classes.indexOf('btnNewMatch') > -1){			
 			Alloy.createController('roomQueue', {categoryId: e.source.id});
@@ -153,5 +197,19 @@ $.listCategories.addEventListener('click', function(e){
 		e.row.children[0].closed = false;		
 		e.row.height = 220;
 		e.row.children[0].height = 220;		
+	}
+});
+
+$.search.addEventListener('change', function(e){
+	if(canSearch){
+		setTimeout(function(){
+			console.log(e.source.value);
+
+			canSearch = false;
+		}, 1000);
+	}else{		
+		setTimeout(function(){
+			canSearch = true;
+		}, 1000);
 	}
 });

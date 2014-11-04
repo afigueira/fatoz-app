@@ -6,10 +6,21 @@ $.profile.addEventListener('click', function(){
 	Alloy.createController('profile');
 });
 
+$.statistics.addEventListener('click', function(){
+	Alloy.createController('profile', {scrollToView: 0});
+});
+
+$.achievements.addEventListener('click', function(){
+	Alloy.createController('profile', {scrollToView: 3});
+});
+
 $.categories.addEventListener('click', function(){
 	Alloy.createController('categories');
 });
 
+$.settings.addEventListener('click', function(){
+	Alloy.createController('settings');
+});
 
 $.exit.addEventListener('click', function(){
 	var alertWindow = Titanium.UI.createAlertDialog({

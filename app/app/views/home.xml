@@ -4,7 +4,7 @@
 
         <View platform="android" role="centerWindow">			
 			<ScrollView class="inside">		
-				<View class="layoutVertical">		
+				<View class="layoutVertical">
 					<View class="layoutAbsolute heightUiSize" width="280" id="goToCategories">
 						<View class="layoutVertical heightUiSize" height="Titanium.UI.SIZE">																
 							<View id="containerLabelHighlight">
@@ -28,11 +28,7 @@
 							<View class="tab" id="recentTab" onClick="tabNavigation" contentTabsIndex="1">
 								<Label textid="text_new" class="fontOrange proximaNovaRegular labelTab"/>
 								<View class="tabSelected orange" />
-							</View>
-							<View class="tab">
-								<Label textid="recent" class="fontOrange proximaNovaRegular labelTab"/>
-								<View class="tabSelected orange" />
-							</View>
+							</View>							
 						</View>
 						
 						<View id="contentTabs" top="46">

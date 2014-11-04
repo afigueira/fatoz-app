@@ -19,18 +19,18 @@
 	right: 40
 },
 "#password": {
-	top: 48
+	top: 8
 },
 "#forgotPassword": {
 	left: 0,
-	top: 100
+	top: 115
 },
 "#submit": {
 	backgroundColor: "white",
 	height: 88,
 	right: 0,
 	width: 32,
-	top: 0,
+	top: 21,
 	image: "/images/icon-lock.png"
 },
 "#btnFacebook": {
