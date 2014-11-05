@@ -73,7 +73,7 @@ function Controller() {
         $.removeClass($.option4, "optionGreenGame");
         $.removeClass($.option4, "optionBlueGame");
         counterTimer = new Date();
-        timerInterval = setInterval(updateTimer, 500);
+        timerInterval = setInterval(updateTimer, 1e3);
         var questionIndex = e.questionIndex;
         currentQuestionIndex = questionIndex;
         var transformCurrentRound = Titanium.UI.create2DMatrix({
@@ -131,40 +131,16 @@ function Controller() {
         setQuestionResult(myUserSide, clickedOption, isCorrect);
         setQuestionPoints(myUserSide, time, isCorrect);
     }
-    function setQuestionResult(userSide, clickedOption, isCorrect) {
-        var optionClassColor = userSide == myUserSide ? isCorrect ? "chosenOptionGame fillChosenOptionGame optionGreenGame" : "chosenOptionGame fillChosenOptionGame optionRedGame" : "chosenOptionGame fillChosenOptionGame optionBlueGame";
-        var option = $["option" + clickedOption];
-        $.addClass(option, optionClassColor);
-        isCorrect || userSide != myUserSide || setQuestionResult(myUserSide, currentQuestion.correct_option, true);
-    }
+    function setQuestionResult() {}
     function setQuestionPoints(userSide, time, isCorrect) {
         var points = Alloy.Globals.calculateQuestionPoints(time, isCorrect);
         updateUserPoints(userSide, points);
-        updateProgressBar(userSide, points, isCorrect);
     }
     function updateUserPoints(userSide, points) {
         var labelPoints = "a" == userSide ? $.pointsScoreA : $.pointsScoreB;
         var currentPoints = Number(labelPoints.text);
         currentPoints += points;
         labelPoints.text = currentPoints > 0 ? currentPoints : 0;
-    }
-    function updateProgressBar(userSide, points, isCorrect) {
-        var labelPoints = "a" == userSide ? $.pointsScoreA : $.pointsScoreB;
-        var currentPoints = Number(labelPoints.text);
-        currentPoints += points;
-        var percentBar = "a" == userSide ? $.percentBarA : $.percentBarB;
-        var imageProfileProgess = "a" == userSide ? $.imageProfileProgessA : $.imageProfileProgessB;
-        var animateImageProfileProgess = Titanium.UI.createAnimation({
-            duration: 500,
-            bottom: currentPoints * maxImageProfileProgess / 100
-        });
-        imageProfileProgess.animate(animateImageProfileProgess);
-        var animatePercentBar = Titanium.UI.createAnimation({
-            duration: 500,
-            height: currentPoints * maxHeightProgressBar / 100
-        });
-        percentBar.animate(animatePercentBar);
-        userSide == myUserSide ? isCorrect ? percentBar.setBackgroundColor("#78a800") : percentBar.setBackgroundColor("#e42e24") : percentBar.setBackgroundColor("#41b6da");
     }
     function updateTimer() {
         var currentTimer = new Date();
@@ -660,8 +636,6 @@ function Controller() {
     var userReady = 0;
     var counterTimer;
     var timerInterval;
-    var maxHeightProgressBar = 325;
-    var maxImageProfileProgess = 310;
     Cloud.Objects.query({
         classname: "matches",
         where: {
