@@ -10,8 +10,22 @@ function __processArg(obj, key) {
 function Controller() {
     function init() {
         Cloud = require("ti.cloud");
-        is_popular();
-        is_recent();
+        getCategories($.popular, {
+            classname: "categories",
+            page: 1,
+            per_page: 10,
+            where: {
+                is_popular: 1
+            }
+        }, true);
+        getCategories($.recent, {
+            classname: "categories",
+            page: 1,
+            per_page: 10,
+            where: {
+                is_recent: 1
+            }
+        }, false);
         navigation();
     }
     function tabNavigation(e) {
@@ -51,10 +65,12 @@ function Controller() {
     function createRowCategories(obj) {
         var views = [];
         for (var i = 0, j = obj.length; j > i; i++) {
-            var category = Titanium.UI.createView();
-            $.addClass(category, "category soccer");
+            var category = Titanium.UI.createView({
+                background_image: obj[i].background_image
+            });
+            $.addClass(category, "category");
             var iconCategory = Titanium.UI.createImageView({
-                image: "/images/icon-home-category-football.png"
+                icon_image: obj[i].icon_image
             });
             $.addClass(iconCategory, "iconCategory");
             var titleCategory = Titanium.UI.createLabel({
@@ -89,38 +105,68 @@ function Controller() {
         }
         return views;
     }
-    function is_popular() {
-        Cloud.Objects.query({
-            classname: "categories",
-            page: 1,
-            per_page: 10,
-            where: {
-                is_popular: 1
-            }
-        }, function(e) {
+    function getCategories(element, obj, isFirst) {
+        Cloud.Objects.query(obj, function(e) {
             if (e.success) {
                 var views = createRowCategories(e.categories);
-                $.popular.views = views;
-                $.popular.totalChildren = views.length;
-                mountNavigationBoll(views.length);
+                element.views = views;
+                element.totalChildren = views.length;
+                setImages(element);
+                isFirst && mountNavigationBoll(views.length);
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });
     }
-    function is_recent() {
-        Cloud.Objects.query({
-            classname: "categories",
-            page: 1,
-            per_page: 10,
-            where: {
-                is_recent: 1
+    function setImages(element) {
+        var length = element.totalChildren;
+        var backgroundImage;
+        var iconImage;
+        var image;
+        var icon;
+        var queuedBackground = [];
+        var queuedIcon = [];
+        console.log("length => ", length);
+        for (var i = 0; length > i; i++) {
+            console.log("i => ", i);
+            console.log("element", element.views[i]);
+            image = element.views[i];
+            backgroundImage = image.background_image;
+            icon = element.views[i].children[0];
+            iconImage = icon.icon_image;
+            if (backgroundImage) {
+                console.log("backgroundImage => ", backgroundImage);
+                queuedBackground.push(image);
+                Cloud.Photos.query({
+                    where: {
+                        id: backgroundImage
+                    }
+                }, function(e) {
+                    if (e.success) {
+                        console.log("success => ", e);
+                        for (var i = 0; e.photos.length > i; i++) {
+                            var photo = e.photos[i];
+                            var urlImage = photo.urls.square_75;
+                            queuedBackground[0].backgroundImage = urlImage;
+                            queuedBackground.shift();
+                        }
+                    }
+                });
             }
-        }, function(e) {
-            if (e.success) {
-                var views = createRowCategories(e.categories);
-                $.recent.views = views;
-                $.recent.totalChildren = views.length;
-            } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
-        });
+            if (iconImage) {
+                queuedIcon.push(icon);
+                Cloud.Photos.query({
+                    where: {
+                        id: iconImage
+                    }
+                }, function(e) {
+                    if (e.success) for (var i = 0; e.photos.length > i; i++) {
+                        var photo = e.photos[i];
+                        var urlIcon = photo.urls.square_75;
+                        queuedIcon[0].image = urlIcon;
+                        queuedIcon.shift();
+                    }
+                });
+            }
+        }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "home";

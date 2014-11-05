@@ -38,7 +38,8 @@ function Controller() {
             scale: 1
         });
         var AnimateCurrentRound = Titanium.UI.createAnimation({
-            transform: transformCurrentRound
+            transform: transformCurrentRound,
+            opacity: 1
         });
         $.currentRound.animate(AnimateCurrentRound);
         $.removeClass($.currentRound, "visibleFalse");
@@ -81,7 +82,8 @@ function Controller() {
         });
         var AnimateCurrentRound = Titanium.UI.createAnimation({
             transform: transformCurrentRound,
-            duration: 1
+            duration: 1,
+            opacity: 0
         });
         $.currentRound.animate(AnimateCurrentRound);
         $.addClass($.currentRound, "visibleFalse");
@@ -164,6 +166,7 @@ function Controller() {
             height: currentPoints * maxHeightProgressBar / 100
         });
         percentBar.animate(animatePercentBar);
+        console.log("userSide: " + userSide + " currentPoints: " + currentPoints + " isCorrect: " + isCorrect);
         userSide == myUserSide ? isCorrect ? percentBar.setBackgroundColor("#78a800") : percentBar.setBackgroundColor("#e42e24") : percentBar.setBackgroundColor("#41b6da");
     }
     function updateTimer() {

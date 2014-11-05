@@ -88,7 +88,8 @@ function showQuestion(e) {
 		scale: 1
 	});
 	var AnimateCurrentRound = Titanium.UI.createAnimation({
-		transform: transformCurrentRound
+		transform: transformCurrentRound,
+		opacity: 1
 	});
 	
 	$.currentRound.animate(AnimateCurrentRound);
@@ -142,7 +143,8 @@ function startQuestion(e) {
 	});
 	var AnimateCurrentRound = Titanium.UI.createAnimation({
 		transform: transformCurrentRound,
-		duration: 1
+		duration: 1,
+		opacity: 0
 	});
 	$.currentRound.animate(AnimateCurrentRound);
 	$.addClass($.currentRound, "visibleFalse");
@@ -259,6 +261,8 @@ function updateProgressBar(userSide, points, isCorrect){
 		height: currentPoints * maxHeightProgressBar / 100
 	});
 	percentBar.animate(animatePercentBar);
+
+	console.log('userSide: ' + userSide + ' currentPoints: ' + currentPoints + ' isCorrect: ' + isCorrect);
 
 	//percentBar.height = currentPoints * maxHeightProgressBar / 100;
 	//imageProfileProgess.bottom = currentPoints * maxImageProfileProgess / 100;

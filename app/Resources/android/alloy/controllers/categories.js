@@ -50,9 +50,7 @@ function Controller() {
             if (e.success) {
                 var total = e.categories.length;
                 for (var i = 0; total > i; i++) {
-                    var row = Titanium.UI.createTableViewRow({
-                        index: i
-                    });
+                    var row = Titanium.UI.createTableViewRow();
                     var category = Titanium.UI.createView({
                         closed: true
                     });
@@ -60,13 +58,17 @@ function Controller() {
                     var backgroundCategory = Titanium.UI.createImageView({
                         width: 320,
                         height: 220,
-                        image: "/images/background-categories-soccer.jpg"
+                        background_image: e.categories[i].background_image
                     });
                     $.addClass(backgroundCategory, "backgroundCategory");
+                    console.log("ID Categoria: ", e.categories[i].id);
+                    console.log("Nome Categoria: ", e.categories[i].title);
                     var containerTitleCategory = Titanium.UI.createView();
                     $.addClass(containerTitleCategory, "containerTitleCategory");
                     var iconCategory = Titanium.UI.createImageView({
-                        image: "/images/icon-category.png"
+                        icon_image: e.categories[i].icon_image,
+                        width: 16,
+                        height: 16
                     });
                     var titleCategory = Titanium.UI.createLabel();
                     $.addClass(titleCategory, "titleCategory fontWhite proximaNovaRegular");
@@ -134,8 +136,54 @@ function Controller() {
                     row.add(category);
                     element.appendRow(row);
                 }
+                setImages(element);
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });
+    }
+    function setImages(element) {
+        var length = element.data[0].rows.length;
+        var backgroundImage;
+        var iconImage;
+        var image;
+        var icon;
+        var queuedBackground = [];
+        var queuedIcon = [];
+        for (var i = 0; length > i; i++) {
+            image = element.data[0].rows[i].children[0].children[0].children[0].children[0];
+            backgroundImage = image.background_image;
+            icon = element.data[0].rows[i].children[0].children[1].children[0].children[0].children[0];
+            iconImage = icon.icon_image;
+            if (backgroundImage) {
+                queuedBackground.push(image);
+                Cloud.Photos.query({
+                    where: {
+                        id: backgroundImage
+                    }
+                }, function(e) {
+                    if (e.success) for (var i = 0; e.photos.length > i; i++) {
+                        var photo = e.photos[i];
+                        var urlImage = photo.urls.square_75;
+                        queuedBackground[0].image = urlImage;
+                        queuedBackground.shift();
+                    }
+                });
+            }
+            if (iconImage) {
+                queuedIcon.push(icon);
+                Cloud.Photos.query({
+                    where: {
+                        id: iconImage
+                    }
+                }, function(e) {
+                    if (e.success) for (var i = 0; e.photos.length > i; i++) {
+                        var photo = e.photos[i];
+                        var urlIcon = photo.urls.square_75;
+                        queuedIcon[0].image = urlIcon;
+                        queuedIcon.shift();
+                    }
+                });
+            }
+        }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "categories";
@@ -364,9 +412,8 @@ function Controller() {
             e.row.children[0].height = 220;
         }
     });
-    $.search.addEventListener("change", function(e) {
+    $.search.addEventListener("change", function() {
         canSearch ? setTimeout(function() {
-            console.log(e.source.value);
             canSearch = false;
         }, 1e3) : setTimeout(function() {
             canSearch = true;
