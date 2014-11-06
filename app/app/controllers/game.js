@@ -80,19 +80,8 @@ function showQuestion(e) {
 		$.lastRound.visible = true;
 	}
 	$.roundNumber.text = ' ' + questionIndex;
-	
-	//$.currentRound.visible = true;
-
-	var transformCurrentRound = Titanium.UI.create2DMatrix({
-		scale: 1
-	});
-	var AnimateCurrentRound = Titanium.UI.createAnimation({
-		transform: transformCurrentRound
-	});
-	
-	$.currentRound.animate(AnimateCurrentRound);
-
-	$.removeClass($.currentRound, "visibleFalse");
+		
+	$.removeClass($.currentRound, 'visibleFalse');
 	
 	// pegar a questão
 	var questionId = match['question_' + questionIndex];
@@ -135,15 +124,6 @@ function startQuestion(e) {
 	currentQuestionIndex = questionIndex;
 	
 	// esconder round atual
-	/*$.currentRound.visible = false;*/
-	var transformCurrentRound = Titanium.UI.create2DMatrix({
-		scale: 0.5
-	});
-	var AnimateCurrentRound = Titanium.UI.createAnimation({
-		transform: transformCurrentRound,
-		duration: 1
-	});
-	$.currentRound.animate(AnimateCurrentRound);
 	$.addClass($.currentRound, "visibleFalse");
 	
 	$.titleQuestion.text = currentQuestion.title;
@@ -225,10 +205,10 @@ function setQuestionResult(userSide, clickedOption, isCorrect) {
 function setQuestionPoints(userSide, time, isCorrect){	
 	var points = Alloy.Globals.calculateQuestionPoints(time, isCorrect);
 
-	updateUserPoints(userSide, points);
+	updateUserPoints(userSide, points, isCorrect);
 }
 
-function updateUserPoints(userSide, points){
+function updateUserPoints(userSide, points, isCorrect){
 	var labelPoints = userSide == 'a' ? $.pointsScoreA : $.pointsScoreB;
 
 	var currentPoints = Number(labelPoints.text);
@@ -236,6 +216,30 @@ function updateUserPoints(userSide, points){
 	currentPoints += points;
 
 	labelPoints.text = (currentPoints > 0) ? currentPoints : 0;
+	
+	updateProgressBar(userSide, currentPoints, isCorrect);
+}
+
+function updateProgressBar(userSide, points, isCorrect) {
+	var height = Math.round(maxHeightProgressBar * points / Alloy.Globals.maxPointsPerMatch);
+	
+	var progressBar = userSide == 'a' ? $.percentBarA : $.percentBarB;
+	var imageProfile = userSide == 'a' ? $.imageProfileProgessA : $.imageProfileProgessB;
+	
+	var backgroundColor = isCorrect ? '#78a800' : '#e42e24';
+	
+	var animationProgressBar = Titanium.UI.createAnimation({backgroundColor:backgroundColor, height: height, duration: 400});
+	var animationImageProfile = Titanium.UI.createAnimation({bottom: height - (imageProfile.height/2), duration: 400});
+	
+	var onCompleteAnimation = function(){
+		animationProgressBar.removeEventListener('complete', onCompleteAnimation);
+		progressBar.animate(Titanium.UI.createAnimation({backgroundColor:'#41b6da', duration: 400, delay: 200}));
+	};
+	
+	animationProgressBar.addEventListener('complete', onCompleteAnimation);
+	
+	progressBar.animate(animationProgressBar);
+	imageProfile.animate(animationImageProfile);
 }
 
 function updateTimer(){
@@ -246,6 +250,9 @@ function updateTimer(){
 	$.rightNumber.text = (time > 0) ? time : 0;
 
 	if(time == 0){
+		
+		clearInterval(timerInterval);
+		
 		Titanium.App.fireEvent('websocket.dispatchEvent', {
 			event: 'timerEnd',
 			matchId: matchId,

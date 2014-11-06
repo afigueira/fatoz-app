@@ -34,13 +34,6 @@ function Controller() {
         $.addClass($.optionsQuestion, "optionGame visibleFalse");
         5 == questionIndex && ($.lastRound.visible = true);
         $.roundNumber.text = " " + questionIndex;
-        var transformCurrentRound = Titanium.UI.create2DMatrix({
-            scale: 1
-        });
-        var AnimateCurrentRound = Titanium.UI.createAnimation({
-            transform: transformCurrentRound
-        });
-        $.currentRound.animate(AnimateCurrentRound);
         $.removeClass($.currentRound, "visibleFalse");
         var questionId = match["question_" + questionIndex];
         Cloud.Objects.query({
@@ -76,14 +69,6 @@ function Controller() {
         timerInterval = setInterval(updateTimer, 1e3);
         var questionIndex = e.questionIndex;
         currentQuestionIndex = questionIndex;
-        var transformCurrentRound = Titanium.UI.create2DMatrix({
-            scale: .5
-        });
-        var AnimateCurrentRound = Titanium.UI.createAnimation({
-            transform: transformCurrentRound,
-            duration: 1
-        });
-        $.currentRound.animate(AnimateCurrentRound);
         $.addClass($.currentRound, "visibleFalse");
         $.titleQuestion.text = currentQuestion.title;
         $.option1.title = currentQuestion.option_1;
@@ -134,24 +119,54 @@ function Controller() {
     function setQuestionResult() {}
     function setQuestionPoints(userSide, time, isCorrect) {
         var points = Alloy.Globals.calculateQuestionPoints(time, isCorrect);
-        updateUserPoints(userSide, points);
+        updateUserPoints(userSide, points, isCorrect);
     }
-    function updateUserPoints(userSide, points) {
+    function updateUserPoints(userSide, points, isCorrect) {
         var labelPoints = "a" == userSide ? $.pointsScoreA : $.pointsScoreB;
         var currentPoints = Number(labelPoints.text);
         currentPoints += points;
         labelPoints.text = currentPoints > 0 ? currentPoints : 0;
+        updateProgressBar(userSide, currentPoints, isCorrect);
+    }
+    function updateProgressBar(userSide, points, isCorrect) {
+        var height = Math.round(maxHeightProgressBar * points / Alloy.Globals.maxPointsPerMatch);
+        var progressBar = "a" == userSide ? $.percentBarA : $.percentBarB;
+        var imageProfile = "a" == userSide ? $.imageProfileProgessA : $.imageProfileProgessB;
+        var backgroundColor = isCorrect ? "#78a800" : "#e42e24";
+        var animationProgressBar = Titanium.UI.createAnimation({
+            backgroundColor: backgroundColor,
+            height: height,
+            duration: 400
+        });
+        var animationImageProfile = Titanium.UI.createAnimation({
+            bottom: height - imageProfile.height / 2,
+            duration: 400
+        });
+        var onCompleteAnimation = function() {
+            animationProgressBar.removeEventListener("complete", onCompleteAnimation);
+            progressBar.animate(Titanium.UI.createAnimation({
+                backgroundColor: "#41b6da",
+                duration: 400,
+                delay: 200
+            }));
+        };
+        animationProgressBar.addEventListener("complete", onCompleteAnimation);
+        progressBar.animate(animationProgressBar);
+        imageProfile.animate(animationImageProfile);
     }
     function updateTimer() {
         var currentTimer = new Date();
         var time = Math.ceil(10 - (currentTimer.getTime() - counterTimer.getTime()) / 1e3);
         $.leftNumber.text = 0;
         $.rightNumber.text = time > 0 ? time : 0;
-        0 == time && Titanium.App.fireEvent("websocket.dispatchEvent", {
-            event: "timerEnd",
-            matchId: matchId,
-            questionIndex: currentQuestionIndex
-        });
+        if (0 == time) {
+            clearInterval(timerInterval);
+            Titanium.App.fireEvent("websocket.dispatchEvent", {
+                event: "timerEnd",
+                matchId: matchId,
+                questionIndex: currentQuestionIndex
+            });
+        }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "game";
@@ -636,6 +651,7 @@ function Controller() {
     var userReady = 0;
     var counterTimer;
     var timerInterval;
+    var maxHeightProgressBar = 325;
     Cloud.Objects.query({
         classname: "matches",
         where: {

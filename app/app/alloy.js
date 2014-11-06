@@ -47,13 +47,13 @@ Alloy.Globals.drawer = function(sidebar, element, titleActionBar, func) {
 	element.open();	
 };
 
+Alloy.Globals.maxPointsPerMatch = 100;
+Alloy.Globals.maxPointsPerQuestion = 20;
+Alloy.Globals.maxTimePerQuestion = 10;
+
 Alloy.Globals.calculateQuestionPoints = function(time, isCorrect){
-	var maxPoints = 20;
 
-	var maxTime = 10;
-
-
-	var points = Number(isCorrect) * (maxPoints * ((maxTime * 1000) - time) / (maxTime * 1000));
+	var points = Number(isCorrect) * (Alloy.Globals.maxPointsPerQuestion * ((Alloy.Globals.maxTimePerQuestion * 1000) - time) / (Alloy.Globals.maxTimePerQuestion * 1000));
 
 	return Math.round(points);
 };
