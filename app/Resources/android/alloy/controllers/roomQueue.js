@@ -29,6 +29,7 @@ function Controller() {
                     if (e.success) {
                         $.addClass($.searchPlayer, "visibleFalse");
                         $.profileB.visible = true;
+                        $.trophy.visible = true;
                         $.profileTitleB.text = e.users[0].first_name + " " + e.users[0].last_name;
                         fighterReceived = true;
                         mountReceived && mountMatch();
@@ -64,6 +65,14 @@ function Controller() {
         role: "centerWindow",
         id: "__alloyId195"
     });
+    $.__views.trophy = Ti.UI.createImageView({
+        visible: "false",
+        id: "trophy",
+        image: "/images/icon-queue-trophy.png",
+        top: "195",
+        zIndex: "100"
+    });
+    $.__views.__alloyId195.add($.__views.trophy);
     $.__views.__alloyId196 = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.SIZE,
@@ -111,35 +120,39 @@ function Controller() {
     $.__views.__alloyId198.add($.__views.profileTitleA);
     $.__views.searchPlayer = Ti.UI.createView({
         layout: "vertical",
-        width: Titanium.UI.SIZE,
-        height: Titanium.UI.SIZE,
+        width: Titanium.UI.FILL,
+        height: Titanium.UI.FILL,
+        backgroundColor: "#219fd2",
         id: "searchPlayer"
     });
     $.__views.__alloyId196.add($.__views.searchPlayer);
-    $.__views.__alloyId200 = Ti.UI.createLabel({
-        top: 50,
-        text: "Procurando jogador...",
+    $.__views.__alloyId200 = Ti.UI.createImageView({
+        top: 20,
+        image: "/images/img-queue.png",
         id: "__alloyId200"
     });
     $.__views.searchPlayer.add($.__views.__alloyId200);
+    $.__views.__alloyId201 = Ti.UI.createLabel({
+        top: 10,
+        color: "#ffffff",
+        text: "Procurando oponente ideal",
+        id: "__alloyId201"
+    });
+    $.__views.searchPlayer.add($.__views.__alloyId201);
     $.__views.cancelMatch = Ti.UI.createButton({
+        backgroundImage: "/images/background-btn-more.png",
         height: 30,
         borderRadius: 15,
-        backgroundGradient: {
-            type: "linear",
-            colors: [ "#da3c30", "#cd3023" ],
-            startRadius: "90%",
-            endRadius: 0,
-            backfillStart: true
-        },
         font: {
             fontSize: 12,
-            fontWeight: "bold",
-            fontFamily: "ProximaNova-Regular"
+            fontWeight: "bold"
         },
+        borderColor: "white",
+        borderWidth: 1,
         color: "#ffffff",
         bottom: 50,
         top: 20,
+        width: 135,
         id: "cancelMatch",
         title: "Cancelar"
     });
@@ -153,13 +166,20 @@ function Controller() {
         backgroundImage: "http://pixabay.com/static/uploads/photo/2014/06/01/11/35/landscape-359541_640.jpg"
     });
     $.__views.__alloyId196.add($.__views.profileB);
-    $.__views.__alloyId201 = Ti.UI.createView({
+    $.__views.__alloyId202 = Ti.UI.createView({
+        height: "2",
+        backgroundColor: "#ffffff",
+        top: "0",
+        id: "__alloyId202"
+    });
+    $.__views.profileB.add($.__views.__alloyId202);
+    $.__views.__alloyId203 = Ti.UI.createView({
         width: 250,
         height: Titanium.UI.SIZE,
-        id: "__alloyId201"
+        id: "__alloyId203"
     });
-    $.__views.profileB.add($.__views.__alloyId201);
-    $.__views.__alloyId202 = Ti.UI.createImageView({
+    $.__views.profileB.add($.__views.__alloyId203);
+    $.__views.__alloyId204 = Ti.UI.createImageView({
         width: 64,
         height: 64,
         borderRadius: 324,
@@ -167,9 +187,9 @@ function Controller() {
         borderColor: "#ffffff",
         left: 0,
         backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg",
-        id: "__alloyId202"
+        id: "__alloyId204"
     });
-    $.__views.__alloyId201.add($.__views.__alloyId202);
+    $.__views.__alloyId203.add($.__views.__alloyId204);
     $.__views.profileTitleB = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -184,7 +204,7 @@ function Controller() {
         id: "profileTitleB",
         text: "Raul Claudino"
     });
-    $.__views.__alloyId201.add($.__views.profileTitleB);
+    $.__views.__alloyId203.add($.__views.profileTitleB);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_NONE",
         closeDrawerGestureMode: "CLOSE_MODE_MARGIN",

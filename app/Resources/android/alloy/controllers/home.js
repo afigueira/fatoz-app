@@ -34,7 +34,7 @@ function Controller() {
         var contentTabsIndex = e.source.contentTabsIndex;
         $.contentTabs.children[contentTabsIndex].visible = true;
         $.tabs.children[contentTabsIndex].children[1].visible = true;
-        mountNavigationBoll($.contentTabs.children[contentTabsIndex].totalChildren);
+        mountNavigationBoll($.contentTabs.children[contentTabsIndex].views.length);
     }
     function navigation() {
         for (var i = 0, j = $.tabs.children.length; j > i; i++) $.tabs.children[i].children[1].visible = false;
@@ -70,7 +70,9 @@ function Controller() {
             });
             $.addClass(category, "category");
             var iconCategory = Titanium.UI.createImageView({
-                icon_image: obj[i].icon_image
+                icon_image: obj[i].icon_image,
+                width: 32,
+                height: 32
             });
             $.addClass(iconCategory, "iconCategory");
             var titleCategory = Titanium.UI.createLabel({
@@ -110,14 +112,13 @@ function Controller() {
             if (e.success) {
                 var views = createRowCategories(e.categories);
                 element.views = views;
-                element.totalChildren = views.length;
                 setImages(element);
                 isFirst && mountNavigationBoll(views.length);
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });
     }
     function setImages(element) {
-        var length = element.totalChildren;
+        var length = element.views.length;
         var backgroundImage;
         var iconImage;
         var image;

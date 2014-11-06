@@ -26,12 +26,19 @@
 	height: Titanium.UI.SIZE
 },
 ".searchPlayer": {
-	height: Titanium.UI.SIZE
+	height: Titanium.UI.FILL,
+	backgroundColor: "#219fd2",
+	width: Titanium.UI.FILL
 },
 ".labelSearchPlayer": {
-	top: 50
+	top: 10,
+	color: "#ffffff"
 },
 ".cancelSearchPlayer": {
 	bottom: 50,
+	top: 20,
+	width: 135
+},
+".star": {
 	top: 20
 }

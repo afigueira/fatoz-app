@@ -40,7 +40,7 @@ function tabNavigation(e){
 	$.contentTabs.children[contentTabsIndex].visible = true;
 	$.tabs.children[contentTabsIndex].children[1].visible = true;
 
-	mountNavigationBoll($.contentTabs.children[contentTabsIndex].totalChildren);
+	mountNavigationBoll($.contentTabs.children[contentTabsIndex].views.length);
 }
 
 function navigation(){
@@ -106,7 +106,9 @@ function createRowCategories(obj){
 		$.addClass(category, "category");
 		
 		var iconCategory = Titanium.UI.createImageView({
-			icon_image: obj[i].icon_image
+			icon_image: obj[i].icon_image,
+			width: 32,
+			height: 32
 		});
 		$.addClass(iconCategory, "iconCategory");
 		
@@ -156,8 +158,7 @@ function getCategories(element, obj, isFirst){
 			var views = createRowCategories(e.categories);
 
 			element.views = views;	
-			element.totalChildren = views.length;
-
+			
 			setImages(element);
 			
 			if(isFirst){
@@ -172,7 +173,7 @@ function getCategories(element, obj, isFirst){
 }
 
 function setImages(element){	
-	var length = element.totalChildren;	
+	var length = element.views.length;	
 	var backgroundImage;
 	var iconImage;
 	var image;

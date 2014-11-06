@@ -33,7 +33,8 @@ function joinRoom(){
 			    if (e.success) {		    					
 					// $.searchPlayer.visible = false;
 					$.addClass($.searchPlayer, 'visibleFalse');					
-					$.profileB.visible = true;					
+					$.profileB.visible = true;
+					$.trophy.visible = true;
 					$.profileTitleB.text = e.users[0].first_name + " " + e.users[0].last_name;
 					
 					fighterReceived = true;
