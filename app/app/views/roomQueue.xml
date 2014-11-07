@@ -6,9 +6,9 @@
         	<ImageView visible="false" id="trophy" image="/images/icon-queue-trophy.png" top="195" zIndex="100" />
 
 			<View class="layoutVertical">
-				<View class="topProfile layoutAbsolute" backgroundImage="http://pixabay.com/static/uploads/photo/2014/06/01/11/35/landscape-359541_640.jpg">				
+				<View class="topProfile layoutAbsolute" id="coverA">				
 					<View class="profile">
-						<ImageView class="imageProfile" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+						<ImageView class="imageProfile" id="imageProfileA" />
 						<Label class="proximaNovaRegular fontWhite profileTitle" id="profileTitleA" />								
 					</View>				
 				</View>
@@ -20,11 +20,11 @@
 					<Button id="cancelMatch" class="btnWhite cancelSearchPlayer" title="Cancelar" />
 				</View>
 				
-				<View id="profileB" visible="false" class="topProfile layoutAbsolute" backgroundImage="http://pixabay.com/static/uploads/photo/2014/06/01/11/35/landscape-359541_640.jpg">				
+				<View id="profileB" visible="false" class="topProfile layoutAbsolute">				
 					<View height="2" backgroundColor="#ffffff" top="0"></View>
 
 					<View class="profile">
-						<ImageView class="imageProfile" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+						<ImageView class="imageProfile" id="imageProfileB" />
 						<Label id="profileTitleB" class="proximaNovaRegular fontWhite profileTitle" text="Raul Claudino" />								
 					</View>				
 				</View>

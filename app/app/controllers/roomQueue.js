@@ -13,7 +13,7 @@ function init(){
 }
 
 function joinRoom(){
-	$.profileTitleA.text= Ti.App.Properties.getString('userName');
+	 showMe();
 
 	if(categoryId){
 		Titanium.App.fireEvent('websocket.dispatchEvent', { 
@@ -37,10 +37,33 @@ function joinRoom(){
 					$.trophy.visible = true;
 					$.profileTitleB.text = e.users[0].first_name + " " + e.users[0].last_name;
 					
+					Cloud.Photos.show({
+					    photo_id: e.users[0].custom_fields.profile_image
+					}, function (e) {
+					    if (e.success) {
+					        var photo = e.photos[0];			        
+
+					        $.imageProfileB.image = photo.urls.square_75;
+					    }
+					});
+
+					Cloud.Photos.show({
+					    photo_id: e.users[0].custom_fields.cover_image
+					}, function (e) {
+					    if (e.success) {
+					        var photo = e.photos[0];			        
+
+					        $.profileB.backgroundImage = photo.urls.square_75;					        
+					    }
+					});
+
 					fighterReceived = true;
+
 					if(mountReceived){
 						mountMatch();
 					}
+
+					
 			    } else {
 			        alert('Error:\n' +
 			            ((e.error && e.message) || JSON.stringify(e)));
@@ -62,6 +85,36 @@ function joinRoom(){
 
 function mountMatch(){
 	Alloy.createController('game', {matchId: matchId});
+}
+
+function showMe(){
+	$.profileTitleA.text = Ti.App.Properties.getString('userName');
+	
+	Cloud.Users.showMe(function (e) {
+	    if (e.success) {
+	        var user = e.users[0];
+	        
+	        Cloud.Photos.show({
+			    photo_id: user.custom_fields.profile_image
+			}, function (e) {
+			    if (e.success) {
+			        var photo = e.photos[0];			        
+
+			        $.imageProfileA.image = photo.urls.square_75;
+			    }
+			});
+
+			Cloud.Photos.show({
+			    photo_id: user.custom_fields.cover_image
+			}, function (e) {
+			    if (e.success) {
+			        var photo = e.photos[0];			        
+
+			        $.coverA.backgroundImage = photo.urls.square_75;
+			    }
+			});
+	    }
+	});
 }
 
 

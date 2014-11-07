@@ -10,6 +10,9 @@ Cloud.Users.showMe(function (e) {
     }
 });
 
+
+
+
 /*var win = Titanium.UI.createWindow();
 
 var data = [
@@ -28,6 +31,23 @@ var tableview = Titanium.UI.createTableView({
 win.add(tableview);
 win.open();
 */
+
+/*Cloud.Objects.update({
+    classname: 'categories',
+    id: '54441050775e1307c0067609',
+    fields: {
+        icon_image: '545a12981aab9d121a0250f1'
+    }
+}, function (e) {
+    if (e.success) {
+        console.log('-------:', e);
+    } else {
+        alert('Error:\n' +
+            ((e.error && e.message) || JSON.stringify(e)));
+    }
+});*/
+
+
 
 /*Cloud.Objects.update({
     classname: 'categories',
@@ -85,6 +105,7 @@ Cloud.Photos.query({
     }
 });*/
 
+
 /*
 var image;
 Titanium.Media.openPhotoGallery({
@@ -92,8 +113,7 @@ Titanium.Media.openPhotoGallery({
     //  alert(e.mediaType);
         if(e.mediaType == Ti.Media.MEDIA_TYPE_PHOTO){
            image = e.media;
-           alert(image);
-
+           
            Cloud.Photos.create({
                 photo: image
             }, function(e){
@@ -107,6 +127,25 @@ Titanium.Media.openPhotoGallery({
 
                     console.log('Success:\n' +
                         'id: ' + photo.id );
+
+
+                    Cloud.Users.update({                
+                        custom_fields: {
+                            cover_image: photo.id
+                        }
+                    }, function (e) {
+                        if (e.success) {
+                            var user = e.users[0];
+                            alert('Success:\n' +
+                                'id: ' + user.id + '\n' +
+                                'first name: ' + user.first_name + '\n' +
+                                'last name: ' + user.last_name);
+                        } else {
+                            alert('Error:\n' +
+                                ((e.error && e.message) || JSON.stringify(e)));
+                        }
+                    });
+
                 }else{
                     alert('Error:\n' +
                     ((e.error && e.message) || JSON.stringify(e)));
@@ -122,8 +161,8 @@ Titanium.Media.openPhotoGallery({
         alert("ERROR: "+err);
     },
     mediaTypes:[Ti.Media.MEDIA_TYPE_PHOTO]
-});
-*/
+});*/
+
 
 
 /*Cloud.Photos.show({

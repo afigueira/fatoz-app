@@ -12,7 +12,7 @@ function Controller() {
         joinRoom();
     }
     function joinRoom() {
-        $.profileTitleA.text = Ti.App.Properties.getString("userName");
+        showMe();
         if (categoryId) {
             Titanium.App.fireEvent("websocket.dispatchEvent", {
                 event: "joinRoom",
@@ -31,6 +31,22 @@ function Controller() {
                         $.profileB.visible = true;
                         $.trophy.visible = true;
                         $.profileTitleB.text = e.users[0].first_name + " " + e.users[0].last_name;
+                        Cloud.Photos.show({
+                            photo_id: e.users[0].custom_fields.profile_image
+                        }, function(e) {
+                            if (e.success) {
+                                var photo = e.photos[0];
+                                $.imageProfileB.image = photo.urls.square_75;
+                            }
+                        });
+                        Cloud.Photos.show({
+                            photo_id: e.users[0].custom_fields.cover_image
+                        }, function(e) {
+                            if (e.success) {
+                                var photo = e.photos[0];
+                                $.profileB.backgroundImage = photo.urls.square_75;
+                            }
+                        });
                         fighterReceived = true;
                         mountReceived && mountMatch();
                     } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
@@ -46,6 +62,30 @@ function Controller() {
     function mountMatch() {
         Alloy.createController("game", {
             matchId: matchId
+        });
+    }
+    function showMe() {
+        $.profileTitleA.text = Ti.App.Properties.getString("userName");
+        Cloud.Users.showMe(function(e) {
+            if (e.success) {
+                var user = e.users[0];
+                Cloud.Photos.show({
+                    photo_id: user.custom_fields.profile_image
+                }, function(e) {
+                    if (e.success) {
+                        var photo = e.photos[0];
+                        $.imageProfileA.image = photo.urls.square_75;
+                    }
+                });
+                Cloud.Photos.show({
+                    photo_id: user.custom_fields.cover_image
+                }, function(e) {
+                    if (e.success) {
+                        var photo = e.photos[0];
+                        $.coverA.backgroundImage = photo.urls.square_75;
+                    }
+                });
+            }
         });
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -79,31 +119,29 @@ function Controller() {
         id: "__alloyId204"
     });
     $.__views.__alloyId203.add($.__views.__alloyId204);
-    $.__views.__alloyId205 = Ti.UI.createView({
+    $.__views.coverA = Ti.UI.createView({
         layout: "absolute",
         width: Titanium.UI.FILL,
         height: 231,
-        backgroundImage: "http://pixabay.com/static/uploads/photo/2014/06/01/11/35/landscape-359541_640.jpg",
-        id: "__alloyId205"
+        id: "coverA"
     });
-    $.__views.__alloyId204.add($.__views.__alloyId205);
-    $.__views.__alloyId206 = Ti.UI.createView({
+    $.__views.__alloyId204.add($.__views.coverA);
+    $.__views.__alloyId205 = Ti.UI.createView({
         width: 250,
         height: Titanium.UI.SIZE,
-        id: "__alloyId206"
+        id: "__alloyId205"
     });
-    $.__views.__alloyId205.add($.__views.__alloyId206);
-    $.__views.__alloyId207 = Ti.UI.createImageView({
+    $.__views.coverA.add($.__views.__alloyId205);
+    $.__views.imageProfileA = Ti.UI.createImageView({
         width: 64,
         height: 64,
         borderRadius: 324,
         borderWidth: 2,
         borderColor: "#ffffff",
         left: 0,
-        backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg",
-        id: "__alloyId207"
+        id: "imageProfileA"
     });
-    $.__views.__alloyId206.add($.__views.__alloyId207);
+    $.__views.__alloyId205.add($.__views.imageProfileA);
     $.__views.profileTitleA = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -117,7 +155,7 @@ function Controller() {
         top: 20,
         id: "profileTitleA"
     });
-    $.__views.__alloyId206.add($.__views.profileTitleA);
+    $.__views.__alloyId205.add($.__views.profileTitleA);
     $.__views.searchPlayer = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.FILL,
@@ -126,19 +164,19 @@ function Controller() {
         id: "searchPlayer"
     });
     $.__views.__alloyId204.add($.__views.searchPlayer);
-    $.__views.__alloyId208 = Ti.UI.createImageView({
+    $.__views.__alloyId206 = Ti.UI.createImageView({
         top: 20,
         image: "/images/img-queue.png",
-        id: "__alloyId208"
+        id: "__alloyId206"
     });
-    $.__views.searchPlayer.add($.__views.__alloyId208);
-    $.__views.__alloyId209 = Ti.UI.createLabel({
+    $.__views.searchPlayer.add($.__views.__alloyId206);
+    $.__views.__alloyId207 = Ti.UI.createLabel({
         top: 10,
         color: "#ffffff",
         text: "Procurando oponente ideal",
-        id: "__alloyId209"
+        id: "__alloyId207"
     });
-    $.__views.searchPlayer.add($.__views.__alloyId209);
+    $.__views.searchPlayer.add($.__views.__alloyId207);
     $.__views.cancelMatch = Ti.UI.createButton({
         backgroundImage: "/images/background-btn-more.png",
         height: 30,
@@ -162,34 +200,32 @@ function Controller() {
         width: Titanium.UI.FILL,
         height: 231,
         id: "profileB",
-        visible: "false",
-        backgroundImage: "http://pixabay.com/static/uploads/photo/2014/06/01/11/35/landscape-359541_640.jpg"
+        visible: "false"
     });
     $.__views.__alloyId204.add($.__views.profileB);
-    $.__views.__alloyId210 = Ti.UI.createView({
+    $.__views.__alloyId208 = Ti.UI.createView({
         height: "2",
         backgroundColor: "#ffffff",
         top: "0",
-        id: "__alloyId210"
+        id: "__alloyId208"
     });
-    $.__views.profileB.add($.__views.__alloyId210);
-    $.__views.__alloyId211 = Ti.UI.createView({
+    $.__views.profileB.add($.__views.__alloyId208);
+    $.__views.__alloyId209 = Ti.UI.createView({
         width: 250,
         height: Titanium.UI.SIZE,
-        id: "__alloyId211"
+        id: "__alloyId209"
     });
-    $.__views.profileB.add($.__views.__alloyId211);
-    $.__views.__alloyId212 = Ti.UI.createImageView({
+    $.__views.profileB.add($.__views.__alloyId209);
+    $.__views.imageProfileB = Ti.UI.createImageView({
         width: 64,
         height: 64,
         borderRadius: 324,
         borderWidth: 2,
         borderColor: "#ffffff",
         left: 0,
-        backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg",
-        id: "__alloyId212"
+        id: "imageProfileB"
     });
-    $.__views.__alloyId211.add($.__views.__alloyId212);
+    $.__views.__alloyId209.add($.__views.imageProfileB);
     $.__views.profileTitleB = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -204,7 +240,7 @@ function Controller() {
         id: "profileTitleB",
         text: "Raul Claudino"
     });
-    $.__views.__alloyId211.add($.__views.profileTitleB);
+    $.__views.__alloyId209.add($.__views.profileTitleB);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_NONE",
         closeDrawerGestureMode: "CLOSE_MODE_MARGIN",

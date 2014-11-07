@@ -73,9 +73,11 @@ function getCategories(element, param){
 				var backgroundCategory = Titanium.UI.createImageView({
 				  width: 320,
 				  height: 220,				  
-				  background_image: e.categories[i].background_image
+				  background: e.categories[i].background
 				});
 				$.addClass(backgroundCategory, "backgroundCategory");
+
+				console.log('background', e.categories[i].background);
 
 				console.log('ID Categoria: ', e.categories[i].id);
 				console.log('Nome Categoria: ', e.categories[i].title);
@@ -84,7 +86,7 @@ function getCategories(element, param){
 				$.addClass(containerTitleCategory, "containerTitleCategory");
 							
 				var iconCategory = Titanium.UI.createImageView({
-					icon_image: e.categories[i].icon_image,
+					icon: e.categories[i].icon,
 					width: 16,
 					height: 16					
 				});
@@ -201,28 +203,27 @@ function setImages(element){
 
 	for (var i=0; i < length; i++){		
 		image = element.data[0].rows[i].children[0].children[0].children[0].children[0];		
-		backgroundImage = image.background_image;
+		backgroundImage = image.background;
 
 
 		icon = element.data[0].rows[i].children[0].children[1].children[0].children[0].children[0];		
-		iconImage = icon.icon_image;
+		iconImage = icon.icon;
 		
 		if(backgroundImage){
-			queuedBackground.push(image);			
-			Cloud.Photos.query({
-				where: {
-			        id: backgroundImage
-			    }			    
+			queuedBackground.push(image);		
+			console.log('guarda index', i);	
+			
+			Cloud.Photos.show({
+			    photo_id: backgroundImage
 			}, function (e) {
 			    if (e.success) {
-			        for (var i = 0; i < e.photos.length; i++) {
-			            var photo = e.photos[i];
+			        var photo = e.photos[0];
 
-			            var urlImage = photo.urls.square_75;
-			            
-			            queuedBackground[0].image = urlImage
-			            queuedBackground.shift();
-			        }
+			        var urlImage = photo.urls.square_75;
+		            console.log('imagens: ', photo.urls);
+		            
+		            queuedBackground.shift().image = urlImage;			            
+		            console.log('guarda index2', i);
 			    }
 			});
 		}
@@ -246,6 +247,9 @@ function setImages(element){
 			    }
 			});
 		}
+
+		console.log('-------------------------------------------------------');
+
 	};
 }
 

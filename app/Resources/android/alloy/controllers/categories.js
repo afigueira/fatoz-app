@@ -60,15 +60,16 @@ function Controller() {
                     var backgroundCategory = Titanium.UI.createImageView({
                         width: 320,
                         height: 220,
-                        background_image: e.categories[i].background_image
+                        background: e.categories[i].background
                     });
                     $.addClass(backgroundCategory, "backgroundCategory");
+                    console.log("background", e.categories[i].background);
                     console.log("ID Categoria: ", e.categories[i].id);
                     console.log("Nome Categoria: ", e.categories[i].title);
                     var containerTitleCategory = Titanium.UI.createView();
                     $.addClass(containerTitleCategory, "containerTitleCategory");
                     var iconCategory = Titanium.UI.createImageView({
-                        icon_image: e.categories[i].icon_image,
+                        icon: e.categories[i].icon,
                         width: 16,
                         height: 16
                     });
@@ -152,21 +153,21 @@ function Controller() {
         var queuedIcon = [];
         for (var i = 0; length > i; i++) {
             image = element.data[0].rows[i].children[0].children[0].children[0].children[0];
-            backgroundImage = image.background_image;
+            backgroundImage = image.background;
             icon = element.data[0].rows[i].children[0].children[1].children[0].children[0].children[0];
-            iconImage = icon.icon_image;
+            iconImage = icon.icon;
             if (backgroundImage) {
                 queuedBackground.push(image);
-                Cloud.Photos.query({
-                    where: {
-                        id: backgroundImage
-                    }
+                console.log("guarda index", i);
+                Cloud.Photos.show({
+                    photo_id: backgroundImage
                 }, function(e) {
-                    if (e.success) for (var i = 0; e.photos.length > i; i++) {
-                        var photo = e.photos[i];
+                    if (e.success) {
+                        var photo = e.photos[0];
                         var urlImage = photo.urls.square_75;
-                        queuedBackground[0].image = urlImage;
-                        queuedBackground.shift();
+                        console.log("imagens: ", photo.urls);
+                        queuedBackground.shift().image = urlImage;
+                        console.log("guarda index2", i);
                     }
                 });
             }
@@ -185,6 +186,7 @@ function Controller() {
                     }
                 });
             }
+            console.log("-------------------------------------------------------");
         }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));

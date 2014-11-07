@@ -101,12 +101,12 @@ function createRowCategories(obj){
 
 	for(var i=0,j=obj.length; i<j; i++){
 		var category = Titanium.UI.createView({
-			background_image: obj[i].background_image
+			background: obj[i].background
 		});
 		$.addClass(category, "category");
 		
 		var iconCategory = Titanium.UI.createImageView({
-			icon_image: obj[i].icon_image,
+			icon: obj[i].icon,
 			width: 32,
 			height: 32
 		});
@@ -187,10 +187,10 @@ function setImages(element){
 		console.log('i => ', i);	
 		console.log('element', element.views[i]);
 		image = element.views[i];
-		backgroundImage = image.background_image;
+		backgroundImage = image.background;
 
 		icon = element.views[i].children[0];		
-		iconImage = icon.icon_image;
+		iconImage = icon.icon;
 		
 		if(backgroundImage){
 			console.log('backgroundImage => ', backgroundImage);
