@@ -15,22 +15,6 @@ function Controller() {
             page: 1,
             per_page: 10
         });
-        getCategories($.popularCategories, {
-            classname: "categories",
-            page: 1,
-            per_page: 10,
-            where: {
-                is_popular: 1
-            }
-        });
-        getCategories($.recentCategories, {
-            classname: "categories",
-            page: 1,
-            per_page: 10,
-            where: {
-                is_recent: 1
-            }
-        });
         pagination();
     }
     function pagination() {
@@ -139,54 +123,50 @@ function Controller() {
                     row.add(category);
                     element.appendRow(row);
                 }
-                setImages(element);
+                setBackgrounds(element.data[0].rows, element.data[0].rows.length, 0);
+                setIcons(element.data[0].rows, element.data[0].rows.length, 0);
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });
     }
-    function setImages(element) {
-        var length = element.data[0].rows.length;
+    function setBackgrounds(element, length, a) {
         var backgroundImage;
-        var iconImage;
         var image;
-        var icon;
-        var queuedBackground = [];
-        var queuedIcon = [];
-        for (var i = 0; length > i; i++) {
-            image = element.data[0].rows[i].children[0].children[0].children[0].children[0];
+        for (var i = a; length > i; i++) {
+            image = element[i].children[0].children[0].children[0].children[0];
             backgroundImage = image.background;
-            icon = element.data[0].rows[i].children[0].children[1].children[0].children[0].children[0];
+            Cloud.Photos.show({
+                photo_id: backgroundImage
+            }, function(e) {
+                if (e.success) {
+                    var photo = e.photos[0];
+                    var urlImage = photo.urls.square_75;
+                    console.log("imagens: ", photo.urls);
+                    image.image = urlImage;
+                    element.shift();
+                    setBackgrounds(element, length, i);
+                }
+            });
+            break;
+        }
+    }
+    function setIcons(element, length, a) {
+        var iconImage;
+        var icon;
+        for (var i = a; length > i; i++) {
+            icon = element[i].children[0].children[1].children[0].children[0].children[0];
             iconImage = icon.icon;
-            if (backgroundImage) {
-                queuedBackground.push(image);
-                console.log("guarda index", i);
-                Cloud.Photos.show({
-                    photo_id: backgroundImage
-                }, function(e) {
-                    if (e.success) {
-                        var photo = e.photos[0];
-                        var urlImage = photo.urls.square_75;
-                        console.log("imagens: ", photo.urls);
-                        queuedBackground.shift().image = urlImage;
-                        console.log("guarda index2", i);
-                    }
-                });
-            }
-            if (iconImage) {
-                queuedIcon.push(icon);
-                Cloud.Photos.query({
-                    where: {
-                        id: iconImage
-                    }
-                }, function(e) {
-                    if (e.success) for (var i = 0; e.photos.length > i; i++) {
-                        var photo = e.photos[i];
-                        var urlIcon = photo.urls.square_75;
-                        queuedIcon[0].image = urlIcon;
-                        queuedIcon.shift();
-                    }
-                });
-            }
-            console.log("-------------------------------------------------------");
+            Cloud.Photos.show({
+                photo_id: iconImage
+            }, function(e) {
+                if (e.success) {
+                    var photo = e.photos[0];
+                    var urlIcon = photo.urls.square_75;
+                    icon.image = urlIcon;
+                    element.shift();
+                    setIcons(element, length, i);
+                }
+            });
+            break;
         }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
