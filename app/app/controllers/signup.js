@@ -67,22 +67,22 @@ $.states.addEventListener('change', function(e) {
 });
 
 $.submit.addEventListener('click', function(event){
-	
+	var strName = $.firstName.value;
+	strName = strName.split(" ");
+	var firstName = strName.shift();
+	var lastName = strName.join(" ");
+
 	Cloud.Users.create({
 	    email: $.email.value,
-	    first_name: $.firstName.value,
-	    last_name: $.lastName.value,
+	    first_name: firstName,
+	    last_name: lastName,
 	    password: $.password.value,
-	    password_confirmation: $.password.value,
-	    cities_id: $.cities.getSelectedRow(0).title
+	    password_confirmation: $.password.value	    
 	}, function (e) {
 	    if (e.success) {	    	
 	        var user = e.users[0];
-	        alert('Success:\n' +
-	            'id: ' + user.id + '\n' +
-	            'sessionId: ' + Cloud.sessionId + '\n' +
-	            'first name: ' + user.first_name + '\n' +
-	            'last name: ' + user.last_name);
+	        alert('Cadastro realizado com sucesso.');
+	        Alloy.createController('home');
 	    } else {	    	
 	        alert('Error:\n' +
 	            ((e.error && e.message) || JSON.stringify(e)));

@@ -50,7 +50,9 @@ function Controller() {
             if (e.success) {
                 var total = e.categories.length;
                 for (var i = 0; total > i; i++) {
-                    var row = Titanium.UI.createTableViewRow();
+                    var row = Titanium.UI.createTableViewRow({
+                        title: e.categories[i].title
+                    });
                     var category = Titanium.UI.createView({
                         closed: true
                     });
@@ -329,53 +331,45 @@ function Controller() {
         id: "__alloyId12"
     });
     __alloyId11.push($.__views.__alloyId12);
-    $.__views.containerSearch = Ti.UI.createView({
-        backgroundColor: "#2e2e2e",
-        height: 60,
-        width: Titanium.UI.FILL,
-        id: "containerSearch"
+    $.__views.__alloyId13 = Ti.UI.Android.createSearchView({
+        backgroundColor: "#ffffff",
+        id: "__alloyId13"
     });
-    $.__views.__alloyId12.add($.__views.containerSearch);
-    $.__views.search = Ti.UI.createTextField({
-        borderRadius: 14,
-        color: "#888888",
-        tintColor: "#888888",
-        backgroundColor: "white",
-        font: {
-            fontFamily: "ProximaNova-Regular"
-        },
-        height: 30,
-        width: Titanium.UI.FILL,
-        left: 10,
-        right: 10,
-        id: "search",
-        hintText: "Pesquisar"
-    });
-    $.__views.containerSearch.add($.__views.search);
     $.__views.allCategories = Ti.UI.createTableView({
+        search: $.__views.__alloyId13,
         id: "allCategories"
     });
     $.__views.__alloyId12.add($.__views.allCategories);
-    $.__views.__alloyId13 = Ti.UI.createView({
-        layout: "vertical",
-        width: Titanium.UI.SIZE,
-        id: "__alloyId13"
-    });
-    __alloyId11.push($.__views.__alloyId13);
-    $.__views.popularCategories = Ti.UI.createTableView({
-        id: "popularCategories"
-    });
-    $.__views.__alloyId13.add($.__views.popularCategories);
     $.__views.__alloyId14 = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.SIZE,
         id: "__alloyId14"
     });
     __alloyId11.push($.__views.__alloyId14);
+    $.__views.__alloyId15 = Ti.UI.Android.createSearchView({
+        backgroundColor: "#ffffff",
+        id: "__alloyId15"
+    });
+    $.__views.popularCategories = Ti.UI.createTableView({
+        search: $.__views.__alloyId15,
+        id: "popularCategories"
+    });
+    $.__views.__alloyId14.add($.__views.popularCategories);
+    $.__views.__alloyId16 = Ti.UI.createView({
+        layout: "vertical",
+        width: Titanium.UI.SIZE,
+        id: "__alloyId16"
+    });
+    __alloyId11.push($.__views.__alloyId16);
+    $.__views.__alloyId17 = Ti.UI.Android.createSearchView({
+        backgroundColor: "#ffffff",
+        id: "__alloyId17"
+    });
     $.__views.recentCategories = Ti.UI.createTableView({
+        search: $.__views.__alloyId17,
         id: "recentCategories"
     });
-    $.__views.__alloyId14.add($.__views.recentCategories);
+    $.__views.__alloyId16.add($.__views.recentCategories);
     $.__views.contentTabs = Ti.UI.createScrollableView({
         width: Titanium.UI.FILL,
         height: Titanium.UI.FILL,
@@ -401,7 +395,6 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     require("alloy").Globals.drawer($.sidebar, $.drawer, "Categorias", init());
-    var canSearch = false;
     $.allCategories.addEventListener("click", function(e) {
         e.source.classes && e.source.classes.indexOf("btnNewMatch") > -1 && Alloy.createController("roomQueue", {
             categoryId: e.source.id
@@ -411,13 +404,6 @@ function Controller() {
             e.row.height = 220;
             e.row.children[0].height = 220;
         }
-    });
-    $.search.addEventListener("change", function() {
-        canSearch ? setTimeout(function() {
-            canSearch = false;
-        }, 1e3) : setTimeout(function() {
-            canSearch = true;
-        }, 1e3);
     });
     __defers["$.__views.__alloyId2!click!tabNavigation"] && $.__views.__alloyId2.addEventListener("click", tabNavigation);
     __defers["$.__views.__alloyId5!click!tabNavigation"] && $.__views.__alloyId5.addEventListener("click", tabNavigation);

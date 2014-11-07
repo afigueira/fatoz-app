@@ -50,20 +50,20 @@ function Controller() {
         id: "form"
     });
     $.__views.login.add($.__views.form);
-    $.__views.__alloyId103 = Ti.UI.createView({
+    $.__views.__alloyId111 = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.SIZE,
         height: Titanium.UI.SIZE,
-        id: "__alloyId103"
+        id: "__alloyId111"
     });
-    $.__views.form.add($.__views.__alloyId103);
-    $.__views.__alloyId104 = Ti.UI.createView({
+    $.__views.form.add($.__views.__alloyId111);
+    $.__views.__alloyId112 = Ti.UI.createView({
         layout: "absolute",
         width: Titanium.UI.FILL,
         height: Titanium.UI.SIZE,
-        id: "__alloyId104"
+        id: "__alloyId112"
     });
-    $.__views.__alloyId103.add($.__views.__alloyId104);
+    $.__views.__alloyId111.add($.__views.__alloyId112);
     $.__views.email = Ti.UI.createTextField({
         borderRadius: 4,
         backgroundColor: "white",
@@ -77,21 +77,21 @@ function Controller() {
         id: "email",
         hintText: L("email")
     });
-    $.__views.__alloyId104.add($.__views.email);
-    $.__views.__alloyId105 = Ti.UI.createImageView({
+    $.__views.__alloyId112.add($.__views.email);
+    $.__views.__alloyId113 = Ti.UI.createImageView({
         image: "/images/icon-key.png",
         right: "52",
         top: "15",
-        id: "__alloyId105"
+        id: "__alloyId113"
     });
-    $.__views.__alloyId104.add($.__views.__alloyId105);
-    $.__views.__alloyId106 = Ti.UI.createView({
+    $.__views.__alloyId112.add($.__views.__alloyId113);
+    $.__views.__alloyId114 = Ti.UI.createView({
         layout: "absolute",
         width: Titanium.UI.FILL,
         height: Titanium.UI.SIZE,
-        id: "__alloyId106"
+        id: "__alloyId114"
     });
-    $.__views.__alloyId103.add($.__views.__alloyId106);
+    $.__views.__alloyId111.add($.__views.__alloyId114);
     $.__views.password = Ti.UI.createTextField({
         borderRadius: 4,
         backgroundColor: "white",
@@ -106,14 +106,14 @@ function Controller() {
         passwordMask: "true",
         hintText: L("password")
     });
-    $.__views.__alloyId106.add($.__views.password);
-    $.__views.__alloyId107 = Ti.UI.createImageView({
+    $.__views.__alloyId114.add($.__views.password);
+    $.__views.__alloyId115 = Ti.UI.createImageView({
         image: "/images/icon-user.png",
         right: "52",
         top: "23",
-        id: "__alloyId107"
+        id: "__alloyId115"
     });
-    $.__views.__alloyId106.add($.__views.__alloyId107);
+    $.__views.__alloyId114.add($.__views.__alloyId115);
     $.__views.submit = Ti.UI.createButton({
         borderRadius: 4,
         backgroundColor: "white",

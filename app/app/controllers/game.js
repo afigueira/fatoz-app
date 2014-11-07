@@ -8,7 +8,6 @@ var userReady = 0;
 var counterTimer;
 var timerInterval;
 var maxHeightProgressBar = 325;
-var maxImageProfileProgess = 310;
 
 Cloud.Objects.query({
     classname: 'matches',
@@ -81,20 +80,8 @@ function showQuestion(e) {
 		$.lastRound.visible = true;
 	}
 	$.roundNumber.text = ' ' + questionIndex;
-	
-	//$.currentRound.visible = true;
-
-	var transformCurrentRound = Titanium.UI.create2DMatrix({
-		scale: 1
-	});
-	var AnimateCurrentRound = Titanium.UI.createAnimation({
-		transform: transformCurrentRound,
-		opacity: 1
-	});
-	
-	$.currentRound.animate(AnimateCurrentRound);
-
-	$.removeClass($.currentRound, "visibleFalse");
+		
+	$.removeClass($.currentRound, 'visibleFalse');
 	
 	// pegar a questão
 	var questionId = match['question_' + questionIndex];
@@ -130,23 +117,13 @@ function startQuestion(e) {
 	$.removeClass($.option4, 'optionBlueGame');
 
 	counterTimer = new Date();
-	timerInterval = setInterval(updateTimer, 500);
+	timerInterval = setInterval(updateTimer, 1000);
 
 	var questionIndex = e.questionIndex;
 	
 	currentQuestionIndex = questionIndex;
 	
 	// esconder round atual
-	/*$.currentRound.visible = false;*/
-	var transformCurrentRound = Titanium.UI.create2DMatrix({
-		scale: 0.5
-	});
-	var AnimateCurrentRound = Titanium.UI.createAnimation({
-		transform: transformCurrentRound,
-		duration: 1,
-		opacity: 0
-	});
-	$.currentRound.animate(AnimateCurrentRound);
 	$.addClass($.currentRound, "visibleFalse");
 	
 	$.titleQuestion.text = currentQuestion.title;
@@ -212,15 +189,15 @@ function questionAnswered(clickedOption) {
 
 function setQuestionResult(userSide, clickedOption, isCorrect) {
 	// aplicar se tá correto ou não
-	var optionClassColor = userSide == myUserSide ? (isCorrect ? 'chosenOptionGame fillChosenOptionGame optionGreenGame' : 'chosenOptionGame fillChosenOptionGame optionRedGame') : 'chosenOptionGame fillChosenOptionGame optionBlueGame';
+	/*var optionClassColor = userSide == myUserSide ? (isCorrect ? 'chosenOptionGame fillChosenOptionGame optionGreenGame' : 'chosenOptionGame fillChosenOptionGame optionRedGame') : 'chosenOptionGame fillChosenOptionGame optionBlueGame';
 		
 	var option = $['option' + clickedOption];
 	
-	$.addClass(option, optionClassColor);
+	$.addClass(option, optionClassColor);*/
 	 	
-	if (!isCorrect && userSide == myUserSide) {
+	/*if (!isCorrect && userSide == myUserSide) {
 		setQuestionResult(myUserSide, currentQuestion.correct_option, true);	
-	}
+	}*/
 	
 	// to-do: marcar na fotinho quem foi que clicou
 }
@@ -228,11 +205,10 @@ function setQuestionResult(userSide, clickedOption, isCorrect) {
 function setQuestionPoints(userSide, time, isCorrect){	
 	var points = Alloy.Globals.calculateQuestionPoints(time, isCorrect);
 
-	updateUserPoints(userSide, points);
-	updateProgressBar(userSide, points, isCorrect);
+	updateUserPoints(userSide, points, isCorrect);
 }
 
-function updateUserPoints(userSide, points){
+function updateUserPoints(userSide, points, isCorrect){
 	var labelPoints = userSide == 'a' ? $.pointsScoreA : $.pointsScoreB;
 
 	var currentPoints = Number(labelPoints.text);
@@ -240,50 +216,30 @@ function updateUserPoints(userSide, points){
 	currentPoints += points;
 
 	labelPoints.text = (currentPoints > 0) ? currentPoints : 0;
-}
-
-function updateProgressBar(userSide, points, isCorrect){
-	var labelPoints = userSide == 'a' ? $.pointsScoreA : $.pointsScoreB;
-	var currentPoints = Number(labelPoints.text);
-	currentPoints += points;
-
-	var percentBar = userSide == 'a' ? $.percentBarA : $.percentBarB;
-	var imageProfileProgess = userSide == 'a' ? $.imageProfileProgessA : $.imageProfileProgessB;
-
-	var animateImageProfileProgess = Titanium.UI.createAnimation({
-		duration: 500,
-		bottom: currentPoints * maxImageProfileProgess / 100
-	});
-	imageProfileProgess.animate(animateImageProfileProgess);
-
-	var animatePercentBar = Titanium.UI.createAnimation({
-		duration: 500,
-		height: currentPoints * maxHeightProgressBar / 100
-	});
-	percentBar.animate(animatePercentBar);
-
-	console.log('userSide: ' + userSide + ' currentPoints: ' + currentPoints + ' isCorrect: ' + isCorrect);
-
-	//percentBar.height = currentPoints * maxHeightProgressBar / 100;
-	//imageProfileProgess.bottom = currentPoints * maxImageProfileProgess / 100;
-
-	if(userSide == myUserSide){
-		if(isCorrect){
-			// green
-			percentBar.setBackgroundColor('#78a800');
-		}else{
-			// red
-			percentBar.setBackgroundColor('#e42e24');
-		}
-	}else{
-		// blue
-		percentBar.setBackgroundColor('#41b6da');
-	}
 	
+	updateProgressBar(userSide, currentPoints, isCorrect);
 }
 
-function calculatePontuation(time) {
-	//
+function updateProgressBar(userSide, points, isCorrect) {
+	var height = Math.round(maxHeightProgressBar * points / Alloy.Globals.maxPointsPerMatch);
+	
+	var progressBar = userSide == 'a' ? $.percentBarA : $.percentBarB;
+	var imageProfile = userSide == 'a' ? $.imageProfileProgessA : $.imageProfileProgessB;
+	
+	var backgroundColor = isCorrect ? '#78a800' : '#e42e24';
+	
+	var animationProgressBar = Titanium.UI.createAnimation({backgroundColor:backgroundColor, height: height, duration: 400});
+	var animationImageProfile = Titanium.UI.createAnimation({bottom: height - (imageProfile.height/2), duration: 400});
+	
+	var onCompleteAnimation = function(){
+		animationProgressBar.removeEventListener('complete', onCompleteAnimation);
+		progressBar.animate(Titanium.UI.createAnimation({backgroundColor:'#41b6da', duration: 400, delay: 200}));
+	};
+	
+	animationProgressBar.addEventListener('complete', onCompleteAnimation);
+	
+	progressBar.animate(animationProgressBar);
+	imageProfile.animate(animationImageProfile);
 }
 
 function updateTimer(){
@@ -294,6 +250,9 @@ function updateTimer(){
 	$.rightNumber.text = (time > 0) ? time : 0;
 
 	if(time == 0){
+		
+		clearInterval(timerInterval);
+		
 		Titanium.App.fireEvent('websocket.dispatchEvent', {
 			event: 'timerEnd',
 			matchId: matchId,

@@ -21,6 +21,26 @@ function Controller() {
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
+    $.__views.__alloyId107 = Ti.UI.Android.createSearchView({
+        id: "__alloyId107"
+    });
+    var __alloyId108 = [];
+    $.__views.__alloyId109 = Ti.UI.createTableViewRow({
+        title: "1",
+        id: "__alloyId109"
+    });
+    __alloyId108.push($.__views.__alloyId109);
+    $.__views.__alloyId110 = Ti.UI.createTableViewRow({
+        title: "2",
+        id: "__alloyId110"
+    });
+    __alloyId108.push($.__views.__alloyId110);
+    $.__views.__alloyId106 = Ti.UI.createTableView({
+        data: __alloyId108,
+        search: $.__views.__alloyId107,
+        id: "__alloyId106"
+    });
+    $.__views.index.add($.__views.__alloyId106);
     exports.destroy = function() {};
     _.extend($, $.__views);
     Cloud = require("ti.cloud");

@@ -61,7 +61,9 @@ function getCategories(element, param){
 	    	var total = e.categories.length;
 	              
 	        for (var i = 0; i < total; i++){
-	        	var row = Titanium.UI.createTableViewRow();
+	        	var row = Titanium.UI.createTableViewRow({
+	        		title: e.categories[i].title
+	        	});
 				
 				var category = Titanium.UI.createView({
 					closed: true
@@ -263,7 +265,7 @@ $.allCategories.addEventListener('click', function(e){
 	}
 });
 
-$.search.addEventListener('change', function(e){
+/*$.search.addEventListener('change', function(e){
 	if(canSearch){
 		setTimeout(function(){
 			canSearch = false;
@@ -273,4 +275,4 @@ $.search.addEventListener('change', function(e){
 			canSearch = true;
 		}, 1000);
 	}
-});
+});*/

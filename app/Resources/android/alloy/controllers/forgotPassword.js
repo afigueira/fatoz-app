@@ -44,20 +44,20 @@ function Controller() {
         id: "form"
     });
     $.__views.forgotPassword.add($.__views.form);
-    $.__views.__alloyId15 = Ti.UI.createView({
+    $.__views.__alloyId18 = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.SIZE,
         height: Titanium.UI.SIZE,
-        id: "__alloyId15"
+        id: "__alloyId18"
     });
-    $.__views.form.add($.__views.__alloyId15);
-    $.__views.__alloyId16 = Ti.UI.createView({
+    $.__views.form.add($.__views.__alloyId18);
+    $.__views.__alloyId19 = Ti.UI.createView({
         layout: "absolute",
         width: Titanium.UI.FILL,
         height: Titanium.UI.SIZE,
-        id: "__alloyId16"
+        id: "__alloyId19"
     });
-    $.__views.__alloyId15.add($.__views.__alloyId16);
+    $.__views.__alloyId18.add($.__views.__alloyId19);
     $.__views.email = Ti.UI.createTextField({
         borderRadius: 4,
         backgroundColor: "white",
@@ -71,14 +71,14 @@ function Controller() {
         id: "email",
         hintText: L("email")
     });
-    $.__views.__alloyId16.add($.__views.email);
-    $.__views.__alloyId17 = Ti.UI.createImageView({
+    $.__views.__alloyId19.add($.__views.email);
+    $.__views.__alloyId20 = Ti.UI.createImageView({
         image: "/images/icon-user.png",
         right: "52",
         top: "15",
-        id: "__alloyId17"
+        id: "__alloyId20"
     });
-    $.__views.__alloyId16.add($.__views.__alloyId17);
+    $.__views.__alloyId19.add($.__views.__alloyId20);
     $.__views.submit = Ti.UI.createButton({
         borderRadius: 4,
         backgroundColor: "white",

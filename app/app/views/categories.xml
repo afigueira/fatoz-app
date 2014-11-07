@@ -23,11 +23,13 @@
 				
 				<ScrollableView id="contentTabs">
 					<View class="allCategories layoutVertical">
-						<View id="containerSearch" class="black">
+						<!-- <View id="containerSearch" class="black">
 							<TextField id="search" class="white fontGray radiusLarge proximaNovaRegular" hintText="Pesquisar" />
-						</View>
+						</View> -->
 						
 						<TableView id="allCategories">
+							<SearchBar platform="ios" />							
+							<SearchView ns="Ti.UI.Android" platform="android" backgroundColor="#ffffff" />
 							<!--<TableViewRow>
 								<View class="category">							
 									<View class="layoutAbsolute">
@@ -66,11 +68,15 @@
 					</View>
 					<View class="popular layoutVertical">
 						<TableView id="popularCategories">
+							<SearchBar platform="ios" />							
+							<SearchView ns="Ti.UI.Android" platform="android" backgroundColor="#ffffff" />
 						</TableView>
 					</View>
 
 					<View class="recent layoutVertical">
 						<TableView id="recentCategories">
+							<SearchBar platform="ios" />							
+							<SearchView ns="Ti.UI.Android" platform="android" backgroundColor="#ffffff" />
 						</TableView>
 					</View>
 				</ScrollableView>

@@ -10,6 +10,25 @@ Cloud.Users.showMe(function (e) {
     }
 });
 
+/*var win = Titanium.UI.createWindow();
+
+var data = [
+    {title:'Alan'}, {title:'Azlaxn'}, {title:'fAlan'}, {title:'Ablasdfan'}, {title:'Raul'}
+];
+ 
+var win = Ti.UI.createWindow();
+var search = Titanium.UI.createSearchBar({
+    showCancel:false,
+});
+var tableview = Titanium.UI.createTableView({
+    data:data,
+    search:search,
+    filterAttribute:'title'
+});
+win.add(tableview);
+win.open();
+*/
+
 /*Cloud.Objects.update({
     classname: 'categories',
     id: '54441050775e1307c0067609',
