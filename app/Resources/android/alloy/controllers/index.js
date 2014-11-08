@@ -21,26 +21,26 @@ function Controller() {
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
-    $.__views.__alloyId107 = Ti.UI.Android.createSearchView({
-        id: "__alloyId107"
+    $.__views.__alloyId112 = Ti.UI.Android.createSearchView({
+        id: "__alloyId112"
     });
-    var __alloyId108 = [];
-    $.__views.__alloyId109 = Ti.UI.createTableViewRow({
+    var __alloyId113 = [];
+    $.__views.__alloyId114 = Ti.UI.createTableViewRow({
         title: "1",
-        id: "__alloyId109"
+        id: "__alloyId114"
     });
-    __alloyId108.push($.__views.__alloyId109);
-    $.__views.__alloyId110 = Ti.UI.createTableViewRow({
+    __alloyId113.push($.__views.__alloyId114);
+    $.__views.__alloyId115 = Ti.UI.createTableViewRow({
         title: "2",
-        id: "__alloyId110"
+        id: "__alloyId115"
     });
-    __alloyId108.push($.__views.__alloyId110);
-    $.__views.__alloyId106 = Ti.UI.createTableView({
-        data: __alloyId108,
-        search: $.__views.__alloyId107,
-        id: "__alloyId106"
+    __alloyId113.push($.__views.__alloyId115);
+    $.__views.__alloyId111 = Ti.UI.createTableView({
+        data: __alloyId113,
+        search: $.__views.__alloyId112,
+        id: "__alloyId111"
     });
-    $.__views.index.add($.__views.__alloyId106);
+    $.__views.index.add($.__views.__alloyId111);
     exports.destroy = function() {};
     _.extend($, $.__views);
     Cloud = require("ti.cloud");

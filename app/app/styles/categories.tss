@@ -59,7 +59,8 @@
 ".actionsCategory": {
 	backgroundImage: "/images/background-black-transparent.png",
 	height: 130,
-	top: 90
+	top: 90,
+	zIndex: 300
 },
 "ScrollableView": {
 	width: Titanium.UI.FILL,
@@ -86,7 +87,7 @@
 ".btnRanking": {
 	top: 58,
 	right: 0,
-	width: 110,
+	width: 238,
 	font: {fontSize: 12, fontWeight: 'bold'}
 }
 

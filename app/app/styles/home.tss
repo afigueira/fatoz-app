@@ -81,7 +81,8 @@
 ".btnRanking": {
 	top: 255,
 	right: 25,
-	width: 110,
+	left: 25,
+	width: Titanium.UI.FILL,
 	font: {fontSize: 12, fontWeight: 'bold'}
 },
 ".margin": {

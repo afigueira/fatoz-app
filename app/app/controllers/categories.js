@@ -11,7 +11,7 @@ function init(){
 	    per_page: 10
 	});
 
-	/*getCategories($.popularCategories, {
+	getCategories($.popularCategories, {
 	    classname: 'categories',
 	    page: 1,
 	    per_page: 10,
@@ -27,7 +27,7 @@ function init(){
 	     where: {
 	    	is_recent: 1
 	    }
-	});*/
+	});
 
 	pagination();
 }
@@ -65,14 +65,14 @@ function getCategories(element, param){
 	        		title: e.categories[i].title
 	        	});
 				
-				var category = Titanium.UI.createView({
-					closed: true
-				});			
+				var category = Titanium.UI.createView();			
 				$.addClass(category, "category");
 				
 				var backgroundCategory = Titanium.UI.createImageView({
-				  width: 320,
-				  height: 220,				  
+				  /*width: 320,
+				  height: 220,*/	
+				  width: Titanium.UI.FILL,				  
+				  height: 220,
 				  background: e.categories[i].background
 				});
 				$.addClass(backgroundCategory, "backgroundCategory");
@@ -114,10 +114,10 @@ function getCategories(element, param){
 				});
 				$.addClass(btnNewMatch, "radiusLarge green fontWhite proximaNovaRegular btnNewMatch");
 				
-				var btnChallenge = Titanium.UI.createButton({
+				/*var btnChallenge = Titanium.UI.createButton({
 					titleid: "challenge"
 				});
-				$.addClass(btnChallenge, "btnWhite btnChallenge");
+				$.addClass(btnChallenge, "btnWhite btnChallenge");*/
 				
 				var btnRanking = Titanium.UI.createButton({				
 					titleid: "ranking"
@@ -128,7 +128,7 @@ function getCategories(element, param){
 				$.addClass(widthUiSize, "widthUiSize");			
 
 				widthUiSize.add(btnNewMatch);
-				widthUiSize.add(btnChallenge);
+				// widthUiSize.add(btnChallenge);
 				widthUiSize.add(btnRanking);
 				insideScrollable.add(widthUiSize);
 				
@@ -163,13 +163,14 @@ function getCategories(element, param){
 				layoutAbsolute.add(layoutHorizontal);
 				containerTitleCategory.add(layoutAbsolute);
 
-				var layoutAbsolute = Titanium.UI.createView();			
+				/*var layoutAbsolute = Titanium.UI.createView();			
 				$.addClass(layoutAbsolute, "layoutAbsolute");			
 				var layoutHorizontal = Titanium.UI.createView();			
-				$.addClass(layoutHorizontal, "layoutHorizontal");			
-				layoutHorizontal.add(backgroundCategory);
+				$.addClass(layoutHorizontal, "layoutHorizontal");*/
+				/*layoutHorizontal.add(backgroundCategory);
 				layoutAbsolute.add(layoutHorizontal);
-				category.add(layoutAbsolute);
+				category.add(layoutAbsolute);*/
+				category.add(backgroundCategory);
 
 				category.add(containerTitleCategory);
 				category.add(arrowDown);
@@ -177,10 +178,21 @@ function getCategories(element, param){
 				category.add(descriptionCategory);
 
 				category.add(actionsCategory);				
-				
-				
+
+				var toggle = Titanium.UI.createView({					
+					top: 0,
+					left: 0,
+					right: 0,
+					zIndex: 200,
+					layout: "absolute",
+					height: 89,
+					closed: true		
+				});
+				$.addClass(toggle, "toggle");
+								
 				row.add(category);
-				
+				row.add(toggle);
+
 				element.appendRow(row);
 			}
 	        
@@ -191,6 +203,27 @@ function getCategories(element, param){
 	            ((e.error && e.message) || JSON.stringify(e)));
 	    }
 	});
+
+	element.addEventListener('click', function(e){
+		if (e.source.classes){
+			if (e.source.classes.indexOf('btnNewMatch') > -1){
+				Alloy.createController('roomQueue', {categoryId: e.source.id});
+			}
+
+			if (e.source.classes.indexOf('toggle') > -1){
+				if(e.row.children[0].closed){
+					e.row.children[0].closed = false;		
+					e.row.children[0].height = 220;
+					e.row.height = 220;
+					
+				}else{			
+					e.row.children[0].closed = true;		
+					e.row.children[0].height = 89;
+					e.row.height = 89;					
+				}
+			}
+		}
+	});
 }
 
 function setBackgrounds(element, length, a){		
@@ -198,7 +231,7 @@ function setBackgrounds(element, length, a){
 	var image;		
 
 	for (var i=a; i < length; i++){		
-		image = element[i].children[0].children[0].children[0].children[0];		
+		image = element[i].children[0].children[0];		
 		backgroundImage = image.background;
 				
 		Cloud.Photos.show({
@@ -207,7 +240,7 @@ function setBackgrounds(element, length, a){
 		    if (e.success) {
 		        var photo = e.photos[0];
 
-		        var urlImage = photo.urls.square_75;
+		        var urlImage = photo.urls.original;
 	            console.log('imagens: ', photo.urls);
 	            
 	            image.image = urlImage;			            
@@ -220,13 +253,9 @@ function setBackgrounds(element, length, a){
 	};
 }
 
-function setIcons(element, length, a){		
-	var backgroundImage;
-	var iconImage;
-	var image;
+function setIcons(element, length, a){			
+	var iconImage;	
 	var icon;
-	var queuedBackground = [];
-	var queuedIcon = [];
 
 	for (var i=a; i < length; i++){		
 		icon = element[i].children[0].children[1].children[0].children[0].children[0];		
@@ -238,7 +267,7 @@ function setIcons(element, length, a){
 		    if (e.success) {
 		        var photo = e.photos[0];
 
-		        var urlIcon = photo.urls.square_75;
+		        var urlIcon = photo.urls.original;
 	            	            
 	            icon.image = urlIcon;			            
 	            
@@ -252,19 +281,7 @@ function setIcons(element, length, a){
 
 
 
-$.allCategories.addEventListener('click', function(e){
-	if (e.source.classes){
-		if (e.source.classes.indexOf('btnNewMatch') > -1){			
-			Alloy.createController('roomQueue', {categoryId: e.source.id});
-		}
-	}
 
-	if(e.row.children[0].closed){
-		e.row.children[0].closed = false;		
-		e.row.height = 220;
-		e.row.children[0].height = 220;		
-	}
-});
 
 /*$.search.addEventListener('change', function(e){
 	if(canSearch){

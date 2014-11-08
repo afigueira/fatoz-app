@@ -88,10 +88,6 @@ function Controller() {
                 id: obj[i].id
             });
             $.addClass(btnNewMatch, "radiusLarge green fontWhite proximaNovaRegular btnNewMatch");
-            var btnChallenge = Titanium.UI.createButton({
-                titleid: "challenge"
-            });
-            $.addClass(btnChallenge, "btnWhite btnChallenge");
             var btnRanking = Titanium.UI.createButton({
                 titleid: "ranking",
                 id: obj[i].id
@@ -101,7 +97,6 @@ function Controller() {
             category.add(titleCategory);
             category.add(descriptionCategory);
             category.add(btnNewMatch);
-            category.add(btnChallenge);
             category.add(btnRanking);
             views[i] = category;
         }
@@ -112,61 +107,50 @@ function Controller() {
             if (e.success) {
                 var views = createRowCategories(e.categories);
                 element.views = views;
-                setImages(element);
+                setBackgrounds(element.views, element.views.length, 0);
+                setIcons(element.views, element.views.length, 0);
                 isFirst && mountNavigationBoll(views.length);
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });
     }
-    function setImages(element) {
-        var length = element.views.length;
+    function setBackgrounds(element, length, a) {
         var backgroundImage;
-        var iconImage;
         var image;
-        var icon;
-        var queuedBackground = [];
-        var queuedIcon = [];
-        console.log("length => ", length);
-        for (var i = 0; length > i; i++) {
-            console.log("i => ", i);
-            console.log("element", element.views[i]);
-            image = element.views[i];
+        for (var i = a; length > i; i++) {
+            image = element[i];
             backgroundImage = image.background;
-            icon = element.views[i].children[0];
+            Cloud.Photos.show({
+                photo_id: backgroundImage
+            }, function(e) {
+                if (e.success) {
+                    var photo = e.photos[0];
+                    var urlImage = photo.urls.original;
+                    image.backgroundImage = urlImage;
+                    element.shift();
+                    setBackgrounds(element, length, i);
+                }
+            });
+            break;
+        }
+    }
+    function setIcons(element, length, a) {
+        var iconImage;
+        var icon;
+        for (var i = a; length > i; i++) {
+            icon = element[i].children[0];
             iconImage = icon.icon;
-            if (backgroundImage) {
-                console.log("backgroundImage => ", backgroundImage);
-                queuedBackground.push(image);
-                Cloud.Photos.query({
-                    where: {
-                        id: backgroundImage
-                    }
-                }, function(e) {
-                    if (e.success) {
-                        console.log("success => ", e);
-                        for (var i = 0; e.photos.length > i; i++) {
-                            var photo = e.photos[i];
-                            var urlImage = photo.urls.square_75;
-                            queuedBackground[0].backgroundImage = urlImage;
-                            queuedBackground.shift();
-                        }
-                    }
-                });
-            }
-            if (iconImage) {
-                queuedIcon.push(icon);
-                Cloud.Photos.query({
-                    where: {
-                        id: iconImage
-                    }
-                }, function(e) {
-                    if (e.success) for (var i = 0; e.photos.length > i; i++) {
-                        var photo = e.photos[i];
-                        var urlIcon = photo.urls.square_75;
-                        queuedIcon[0].image = urlIcon;
-                        queuedIcon.shift();
-                    }
-                });
-            }
+            Cloud.Photos.show({
+                photo_id: iconImage
+            }, function(e) {
+                if (e.success) {
+                    var photo = e.photos[0];
+                    var urlIcon = photo.urls.original;
+                    icon.image = urlIcon;
+                    element.shift();
+                    setIcons(element, length, i);
+                }
+            });
+            break;
         }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -352,32 +336,18 @@ function Controller() {
     });
     $.__views.categories.add($.__views.contentTabs);
     var __alloyId99 = [];
-    $.__views.popular = Ti.UI.createScrollableView({
-        width: Titanium.UI.FILL,
-        height: Titanium.UI.SIZE,
-        left: 0,
-        showPagingControl: true,
-        pagingControlColor: "transparent",
-        pagingControlHeight: 40,
-        overlayEnabled: true,
-        views: __alloyId99,
-        id: "popular",
-        totalChildren: "0"
-    });
-    $.__views.contentTabs.add($.__views.popular);
-    var __alloyId100 = [];
-    $.__views.__alloyId101 = Ti.UI.createView({
+    $.__views.__alloyId100 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         backgroundImage: "/images/background-home-categories-soccer.jpg",
-        id: "__alloyId101"
+        id: "__alloyId100"
     });
-    __alloyId100.push($.__views.__alloyId101);
-    $.__views.__alloyId102 = Ti.UI.createImageView({
+    __alloyId99.push($.__views.__alloyId100);
+    $.__views.__alloyId101 = Ti.UI.createImageView({
         top: 64,
         image: "/images/icon-home-category-football.png",
-        id: "__alloyId102"
+        id: "__alloyId101"
     });
-    $.__views.__alloyId101.add($.__views.__alloyId102);
+    $.__views.__alloyId100.add($.__views.__alloyId101);
     $.__views.titleCategory = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -389,7 +359,7 @@ function Controller() {
         top: 108,
         id: "titleCategory"
     });
-    $.__views.__alloyId101.add($.__views.titleCategory);
+    $.__views.__alloyId100.add($.__views.titleCategory);
     $.__views.descriptionCategory = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -401,8 +371,8 @@ function Controller() {
         top: 139,
         id: "descriptionCategory"
     });
-    $.__views.__alloyId101.add($.__views.descriptionCategory);
-    $.__views.__alloyId103 = Ti.UI.createButton({
+    $.__views.__alloyId100.add($.__views.descriptionCategory);
+    $.__views.__alloyId102 = Ti.UI.createButton({
         borderRadius: 14,
         color: "white",
         tintColor: "white",
@@ -416,10 +386,10 @@ function Controller() {
         width: 230,
         height: 33,
         titleid: "new_match",
-        id: "__alloyId103"
+        id: "__alloyId102"
     });
-    $.__views.__alloyId101.add($.__views.__alloyId103);
-    $.__views.__alloyId104 = Ti.UI.createButton({
+    $.__views.__alloyId100.add($.__views.__alloyId102);
+    $.__views.__alloyId103 = Ti.UI.createButton({
         backgroundImage: "/images/background-btn-more.png",
         height: 30,
         borderRadius: 15,
@@ -434,10 +404,10 @@ function Controller() {
         left: 25,
         width: 110,
         titleid: "challenge",
-        id: "__alloyId104"
+        id: "__alloyId103"
     });
-    $.__views.__alloyId101.add($.__views.__alloyId104);
-    $.__views.__alloyId105 = Ti.UI.createButton({
+    $.__views.__alloyId100.add($.__views.__alloyId103);
+    $.__views.__alloyId104 = Ti.UI.createButton({
         backgroundImage: "/images/background-btn-more.png",
         height: 30,
         borderRadius: 15,
@@ -450,11 +420,116 @@ function Controller() {
         color: "#ffffff",
         top: 255,
         right: 25,
-        width: 110,
+        left: 25,
+        width: Titanium.UI.FILL,
         titleid: "ranking",
-        id: "__alloyId105"
+        id: "__alloyId104"
     });
-    $.__views.__alloyId101.add($.__views.__alloyId105);
+    $.__views.__alloyId100.add($.__views.__alloyId104);
+    $.__views.popular = Ti.UI.createScrollableView({
+        width: Titanium.UI.FILL,
+        height: Titanium.UI.SIZE,
+        left: 0,
+        showPagingControl: true,
+        pagingControlColor: "transparent",
+        pagingControlHeight: 40,
+        overlayEnabled: true,
+        views: __alloyId99,
+        id: "popular",
+        totalChildren: "0"
+    });
+    $.__views.contentTabs.add($.__views.popular);
+    var __alloyId105 = [];
+    $.__views.__alloyId106 = Ti.UI.createView({
+        height: Titanium.UI.SIZE,
+        backgroundImage: "/images/background-home-categories-soccer.jpg",
+        id: "__alloyId106"
+    });
+    __alloyId105.push($.__views.__alloyId106);
+    $.__views.__alloyId107 = Ti.UI.createImageView({
+        top: 64,
+        image: "/images/icon-home-category-football.png",
+        id: "__alloyId107"
+    });
+    $.__views.__alloyId106.add($.__views.__alloyId107);
+    $.__views.titleCategory = Ti.UI.createLabel({
+        color: "white",
+        tintColor: "white",
+        font: {
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 24,
+            fontWeight: "bold"
+        },
+        top: 108,
+        id: "titleCategory"
+    });
+    $.__views.__alloyId106.add($.__views.titleCategory);
+    $.__views.descriptionCategory = Ti.UI.createLabel({
+        color: "white",
+        tintColor: "white",
+        font: {
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 12,
+            fontWeight: "bold"
+        },
+        top: 139,
+        id: "descriptionCategory"
+    });
+    $.__views.__alloyId106.add($.__views.descriptionCategory);
+    $.__views.__alloyId108 = Ti.UI.createButton({
+        borderRadius: 14,
+        color: "white",
+        tintColor: "white",
+        backgroundColor: "#08ad4d",
+        font: {
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 12,
+            fontWeight: "bold"
+        },
+        top: 213,
+        width: 230,
+        height: 33,
+        titleid: "new_match",
+        id: "__alloyId108"
+    });
+    $.__views.__alloyId106.add($.__views.__alloyId108);
+    $.__views.__alloyId109 = Ti.UI.createButton({
+        backgroundImage: "/images/background-btn-more.png",
+        height: 30,
+        borderRadius: 15,
+        font: {
+            fontSize: 12,
+            fontWeight: "bold"
+        },
+        borderColor: "white",
+        borderWidth: 1,
+        color: "#ffffff",
+        top: 255,
+        left: 25,
+        width: 110,
+        titleid: "challenge",
+        id: "__alloyId109"
+    });
+    $.__views.__alloyId106.add($.__views.__alloyId109);
+    $.__views.__alloyId110 = Ti.UI.createButton({
+        backgroundImage: "/images/background-btn-more.png",
+        height: 30,
+        borderRadius: 15,
+        font: {
+            fontSize: 12,
+            fontWeight: "bold"
+        },
+        borderColor: "white",
+        borderWidth: 1,
+        color: "#ffffff",
+        top: 255,
+        right: 25,
+        left: 25,
+        width: Titanium.UI.FILL,
+        titleid: "ranking",
+        id: "__alloyId110"
+    });
+    $.__views.__alloyId106.add($.__views.__alloyId110);
     $.__views.recent = Ti.UI.createScrollableView({
         width: Titanium.UI.FILL,
         height: Titanium.UI.SIZE,
@@ -463,7 +538,7 @@ function Controller() {
         pagingControlColor: "transparent",
         pagingControlHeight: 40,
         overlayEnabled: true,
-        views: __alloyId100,
+        views: __alloyId105,
         id: "recent",
         totalChildren: "0"
     });

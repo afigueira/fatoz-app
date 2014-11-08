@@ -128,10 +128,10 @@ function createRowCategories(obj){
 		});
 		$.addClass(btnNewMatch, "radiusLarge green fontWhite proximaNovaRegular btnNewMatch");
 		
-		var btnChallenge = Titanium.UI.createButton({
+		/*var btnChallenge = Titanium.UI.createButton({
 			titleid: 'challenge'
 		});
-		$.addClass(btnChallenge, "btnWhite btnChallenge");
+		$.addClass(btnChallenge, "btnWhite btnChallenge");*/
 		
 		var btnRanking = Titanium.UI.createButton({
 			titleid: 'ranking',
@@ -143,7 +143,7 @@ function createRowCategories(obj){
 		category.add(titleCategory);
 		category.add(descriptionCategory);
 		category.add(btnNewMatch);
-		category.add(btnChallenge);
+		// category.add(btnChallenge);
 		category.add(btnRanking);
 		
 		views[i] = category;
@@ -159,7 +159,8 @@ function getCategories(element, obj, isFirst){
 
 			element.views = views;	
 			
-			setImages(element);
+			setBackgrounds(element.views, element.views.length, 0);
+			setIcons(element.views, element.views.length, 0);
 			
 			if(isFirst){
 				mountNavigationBoll(views.length);	
@@ -172,7 +173,60 @@ function getCategories(element, obj, isFirst){
 	});
 }
 
-function setImages(element){	
+function setBackgrounds(element, length, a){		
+	var backgroundImage;	
+	var image;		
+
+	for (var i=a; i < length; i++){		
+		image = element[i];
+		backgroundImage = image.background;
+				
+		Cloud.Photos.show({
+		    photo_id: backgroundImage
+		}, function (e) {
+		    if (e.success) {
+		        var photo = e.photos[0];
+
+		        var urlImage = photo.urls.original;
+	            	            
+	            image.backgroundImage = urlImage;			            
+	            
+	            element.shift();
+	            setBackgrounds(element, length, i);
+		    }
+		});		
+		break;
+	};
+}
+
+function setIcons(element, length, a){			
+	var iconImage;	
+	var icon;
+
+	for (var i=a; i < length; i++){		
+		icon = element[i].children[0];
+		iconImage = icon.icon;
+					
+		Cloud.Photos.show({
+		    photo_id: iconImage
+		}, function (e) {
+		    if (e.success) {
+		        var photo = e.photos[0];
+
+		        var urlIcon = photo.urls.original;
+	            	            
+	            icon.image = urlIcon;			            
+	            
+	            element.shift();
+	            setIcons(element, length, i);
+		    }
+		});
+		break;
+	};
+}
+
+
+/*function setImages(element){	
 	var length = element.views.length;	
 	var backgroundImage;
 	var iconImage;
@@ -181,27 +235,21 @@ function setImages(element){
 	var queuedBackground = [];
 	var queuedIcon = [];
 
-	console.log('length => ', length);
-
-	for (var i=0; i < length; i++){	
-		console.log('i => ', i);	
-		console.log('element', element.views[i]);
+	for (var i=0; i < length; i++){			
 		image = element.views[i];
 		backgroundImage = image.background;
 
 		icon = element.views[i].children[0];		
 		iconImage = icon.icon;
 		
-		if(backgroundImage){
-			console.log('backgroundImage => ', backgroundImage);
+		if(backgroundImage){			
 			queuedBackground.push(image);			
 			Cloud.Photos.query({
 				where: {
 			        id: backgroundImage
 			    }			    
 			}, function (e) {
-			    if (e.success) {
-			    	console.log('success => ', e);
+			    if (e.success) {			    	
 			        for (var i = 0; i < e.photos.length; i++) {
 			            var photo = e.photos[i];
 
@@ -234,7 +282,7 @@ function setImages(element){
 			});
 		}
 	};
-}
+}*/
 
 $.categories.addEventListener('click', function(e){
 	if (e.source.classes){		

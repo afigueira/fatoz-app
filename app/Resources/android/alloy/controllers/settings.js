@@ -42,28 +42,28 @@ function Controller() {
         role: "leftWindow",
         id: "sidebar"
     });
-    $.__views.__alloyId210 = Ti.UI.createView({
+    $.__views.__alloyId215 = Ti.UI.createView({
         role: "centerWindow",
-        id: "__alloyId210"
+        id: "__alloyId215"
     });
-    $.__views.__alloyId211 = Ti.UI.createScrollView({
+    $.__views.__alloyId216 = Ti.UI.createScrollView({
         backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
-        id: "__alloyId211"
+        id: "__alloyId216"
     });
-    $.__views.__alloyId210.add($.__views.__alloyId211);
-    $.__views.__alloyId212 = Ti.UI.createView({
+    $.__views.__alloyId215.add($.__views.__alloyId216);
+    $.__views.__alloyId217 = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.SIZE,
         bottom: "30",
-        id: "__alloyId212"
+        id: "__alloyId217"
     });
-    $.__views.__alloyId211.add($.__views.__alloyId212);
-    $.__views.__alloyId213 = Ti.UI.createView({
+    $.__views.__alloyId216.add($.__views.__alloyId217);
+    $.__views.__alloyId218 = Ti.UI.createView({
         height: 231,
         backgroundImage: "/images/background-categories-soccer.jpg",
-        id: "__alloyId213"
+        id: "__alloyId218"
     });
-    $.__views.__alloyId212.add($.__views.__alloyId213);
+    $.__views.__alloyId217.add($.__views.__alloyId218);
     $.__views.editImageProfile = Ti.UI.createView({
         width: 64,
         height: 64,
@@ -72,15 +72,15 @@ function Controller() {
         borderColor: "#ffffff",
         id: "editImageProfile"
     });
-    $.__views.__alloyId213.add($.__views.editImageProfile);
-    $.__views.__alloyId214 = Ti.UI.createImageView({
+    $.__views.__alloyId218.add($.__views.editImageProfile);
+    $.__views.__alloyId219 = Ti.UI.createImageView({
         width: 64,
         height: 64,
         backgroundImage: "/images/icon-user.png",
-        id: "__alloyId214"
+        id: "__alloyId219"
     });
-    $.__views.editImageProfile.add($.__views.__alloyId214);
-    $.__views.__alloyId215 = Ti.UI.createLabel({
+    $.__views.editImageProfile.add($.__views.__alloyId219);
+    $.__views.__alloyId220 = Ti.UI.createLabel({
         font: {
             fontSize: 10
         },
@@ -91,10 +91,10 @@ function Controller() {
         width: Titanium.UI.FILL,
         bottom: 2,
         text: "EDITAR",
-        id: "__alloyId215"
+        id: "__alloyId220"
     });
-    $.__views.editImageProfile.add($.__views.__alloyId215);
-    $.__views.__alloyId216 = Ti.UI.createLabel({
+    $.__views.editImageProfile.add($.__views.__alloyId220);
+    $.__views.__alloyId221 = Ti.UI.createLabel({
         font: {
             fontSize: 14
         },
@@ -105,9 +105,9 @@ function Controller() {
         width: Titanium.UI.FILL,
         bottom: 0,
         text: "EDITAR PAPEL DE PAREDE",
-        id: "__alloyId216"
+        id: "__alloyId221"
     });
-    $.__views.__alloyId213.add($.__views.__alloyId216);
+    $.__views.__alloyId218.add($.__views.__alloyId221);
     $.__views.firstName = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -121,7 +121,7 @@ function Controller() {
         id: "firstName",
         hintText: L("first_name")
     });
-    $.__views.__alloyId212.add($.__views.firstName);
+    $.__views.__alloyId217.add($.__views.firstName);
     $.__views.lastName = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -135,7 +135,7 @@ function Controller() {
         id: "lastName",
         hintText: L("last_name")
     });
-    $.__views.__alloyId212.add($.__views.lastName);
+    $.__views.__alloyId217.add($.__views.lastName);
     $.__views.email = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -149,7 +149,7 @@ function Controller() {
         id: "email",
         hintText: L("email")
     });
-    $.__views.__alloyId212.add($.__views.email);
+    $.__views.__alloyId217.add($.__views.email);
     $.__views.password = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -164,7 +164,7 @@ function Controller() {
         passwordMask: "true",
         hintText: L("password")
     });
-    $.__views.__alloyId212.add($.__views.password);
+    $.__views.__alloyId217.add($.__views.password);
     $.__views.submit = Ti.UI.createButton({
         borderRadius: 4,
         color: "red",
@@ -177,13 +177,13 @@ function Controller() {
         id: "submit",
         title: "Salvar"
     });
-    $.__views.__alloyId212.add($.__views.submit);
+    $.__views.__alloyId217.add($.__views.submit);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_NONE",
         closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
         leftDrawerWidth: 250,
         id: "drawer",
-        children: [ $.__views.sidebar, $.__views.__alloyId210 ],
+        children: [ $.__views.sidebar, $.__views.__alloyId215 ],
         __parentSymbol: __parentSymbol
     });
     $.__views.drawer && $.addTopLevelView($.__views.drawer);

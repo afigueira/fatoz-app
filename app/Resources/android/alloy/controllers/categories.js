@@ -15,6 +15,22 @@ function Controller() {
             page: 1,
             per_page: 10
         });
+        getCategories($.popularCategories, {
+            classname: "categories",
+            page: 1,
+            per_page: 10,
+            where: {
+                is_popular: 1
+            }
+        });
+        getCategories($.recentCategories, {
+            classname: "categories",
+            page: 1,
+            per_page: 10,
+            where: {
+                is_recent: 1
+            }
+        });
         pagination();
     }
     function pagination() {
@@ -37,12 +53,10 @@ function Controller() {
                     var row = Titanium.UI.createTableViewRow({
                         title: e.categories[i].title
                     });
-                    var category = Titanium.UI.createView({
-                        closed: true
-                    });
+                    var category = Titanium.UI.createView();
                     $.addClass(category, "category");
                     var backgroundCategory = Titanium.UI.createImageView({
-                        width: 320,
+                        width: Titanium.UI.FILL,
                         height: 220,
                         background: e.categories[i].background
                     });
@@ -74,10 +88,6 @@ function Controller() {
                         id: e.categories[i].id
                     });
                     $.addClass(btnNewMatch, "radiusLarge green fontWhite proximaNovaRegular btnNewMatch");
-                    var btnChallenge = Titanium.UI.createButton({
-                        titleid: "challenge"
-                    });
-                    $.addClass(btnChallenge, "btnWhite btnChallenge");
                     var btnRanking = Titanium.UI.createButton({
                         titleid: "ranking"
                     });
@@ -85,7 +95,6 @@ function Controller() {
                     var widthUiSize = Titanium.UI.createView();
                     $.addClass(widthUiSize, "widthUiSize");
                     widthUiSize.add(btnNewMatch);
-                    widthUiSize.add(btnChallenge);
                     widthUiSize.add(btnRanking);
                     insideScrollable.add(widthUiSize);
                     var insideScrollable2 = Titanium.UI.createView();
@@ -108,38 +117,59 @@ function Controller() {
                     layoutHorizontal.add(titleCategory);
                     layoutAbsolute.add(layoutHorizontal);
                     containerTitleCategory.add(layoutAbsolute);
-                    var layoutAbsolute = Titanium.UI.createView();
-                    $.addClass(layoutAbsolute, "layoutAbsolute");
-                    var layoutHorizontal = Titanium.UI.createView();
-                    $.addClass(layoutHorizontal, "layoutHorizontal");
-                    layoutHorizontal.add(backgroundCategory);
-                    layoutAbsolute.add(layoutHorizontal);
-                    category.add(layoutAbsolute);
+                    category.add(backgroundCategory);
                     category.add(containerTitleCategory);
                     category.add(arrowDown);
                     descriptionCategory.text = e.categories[i].description;
                     category.add(descriptionCategory);
                     category.add(actionsCategory);
+                    var toggle = Titanium.UI.createView({
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        zIndex: 200,
+                        layout: "absolute",
+                        height: 89,
+                        closed: true
+                    });
+                    $.addClass(toggle, "toggle");
                     row.add(category);
+                    row.add(toggle);
                     element.appendRow(row);
                 }
                 setBackgrounds(element.data[0].rows, element.data[0].rows.length, 0);
                 setIcons(element.data[0].rows, element.data[0].rows.length, 0);
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });
+        element.addEventListener("click", function(e) {
+            if (e.source.classes) {
+                e.source.classes.indexOf("btnNewMatch") > -1 && Alloy.createController("roomQueue", {
+                    categoryId: e.source.id
+                });
+                if (e.source.classes.indexOf("toggle") > -1) if (e.row.children[0].closed) {
+                    e.row.children[0].closed = false;
+                    e.row.children[0].height = 220;
+                    e.row.height = 220;
+                } else {
+                    e.row.children[0].closed = true;
+                    e.row.children[0].height = 89;
+                    e.row.height = 89;
+                }
+            }
+        });
     }
     function setBackgrounds(element, length, a) {
         var backgroundImage;
         var image;
         for (var i = a; length > i; i++) {
-            image = element[i].children[0].children[0].children[0].children[0];
+            image = element[i].children[0].children[0];
             backgroundImage = image.background;
             Cloud.Photos.show({
                 photo_id: backgroundImage
             }, function(e) {
                 if (e.success) {
                     var photo = e.photos[0];
-                    var urlImage = photo.urls.square_75;
+                    var urlImage = photo.urls.original;
                     console.log("imagens: ", photo.urls);
                     image.image = urlImage;
                     element.shift();
@@ -160,7 +190,7 @@ function Controller() {
             }, function(e) {
                 if (e.success) {
                     var photo = e.photos[0];
-                    var urlIcon = photo.urls.square_75;
+                    var urlIcon = photo.urls.original;
                     icon.image = urlIcon;
                     element.shift();
                     setIcons(element, length, i);
@@ -377,16 +407,6 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     require("alloy").Globals.drawer($.sidebar, $.drawer, "Categorias", init());
-    $.allCategories.addEventListener("click", function(e) {
-        e.source.classes && e.source.classes.indexOf("btnNewMatch") > -1 && Alloy.createController("roomQueue", {
-            categoryId: e.source.id
-        });
-        if (e.row.children[0].closed) {
-            e.row.children[0].closed = false;
-            e.row.height = 220;
-            e.row.children[0].height = 220;
-        }
-    });
     __defers["$.__views.__alloyId2!click!tabNavigation"] && $.__views.__alloyId2.addEventListener("click", tabNavigation);
     __defers["$.__views.__alloyId5!click!tabNavigation"] && $.__views.__alloyId5.addEventListener("click", tabNavigation);
     __defers["$.__views.__alloyId8!click!tabNavigation"] && $.__views.__alloyId8.addEventListener("click", tabNavigation);
