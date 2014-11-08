@@ -254,8 +254,7 @@
 	borderColor: "#383838",
 	backgroundColor: "#383838",
 },
-".percentBar": {
-	width: 140,
+".percentBar": {	
 	backgroundColor: "#8dc400",
 	height: 8,	
 	left: 0

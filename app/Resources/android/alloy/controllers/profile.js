@@ -70,15 +70,16 @@ function Controller() {
                     var rightContentConquer = Titanium.UI.createView();
                     $.addClass(rightContentConquer, "rightContentConquer");
                     var conquerTitle = Titanium.UI.createLabel({
-                        text: categories[i].title,
-                        id: categories[i].id
+                        text: categories[i].title
                     });
                     $.addClass(conquerTitle, "conquerTitle proximaNovaRegular");
                     console.log(categories[i].id + " ELEMENTO -------->", conquerTitle);
                     var layoutHorizontal = Titanium.UI.createView();
                     $.addClass(layoutHorizontal, "layoutHorizontal left0");
                     var numberConquer = Titanium.UI.createLabel({
-                        text: "468"
+                        text: "0 de " + categories[i].points_to_badge,
+                        points_to_badge: categories[i].points_to_badge,
+                        categories_id: categories[i].id
                     });
                     $.addClass(numberConquer, "numberConquer proximaNovaRegular");
                     var ptConquer = Titanium.UI.createLabel({
@@ -93,7 +94,9 @@ function Controller() {
                     $.addClass(percentNumber, "percentNumber");
                     var progressBar = Titanium.UI.createView();
                     $.addClass(progressBar, "progressBar");
-                    var percentBar = Titanium.UI.createView();
+                    var percentBar = Titanium.UI.createView({
+                        width: "100%"
+                    });
                     $.addClass(percentBar, "percentBar");
                     var borderGrayConquer = Titanium.UI.createView();
                     $.addClass(borderGrayConquer, "borderGray borderGrayConquer");
@@ -110,8 +113,35 @@ function Controller() {
                     rowConquer.add(borderGrayConquer);
                     $.conquer.appendRow(rowConquer);
                 }
+                setPointsAchievements($.conquer.data[0].rows, $.conquer.data[0].rows.length, 0);
             }
         });
+    }
+    function setPointsAchievements(element, length, a) {
+        var label;
+        var pointsToBadge;
+        var categoriesId;
+        for (var i = a; length > i; i++) {
+            label = element[i].children[1].children[1].children[0];
+            var percentBar = element[i].children[1].children[2].children[1].children[0];
+            pointsToBadge = label.points_to_badge;
+            categoriesId = label.categories_id;
+            Cloud.Objects.query({
+                classname: "achievements",
+                where: {
+                    categories_id: categoriesId
+                }
+            }, function(e) {
+                if (e.success) {
+                    var achievement = e.achievements[0];
+                    label.text = achievement.points;
+                    percentBar.width = 100 * achievement.points / pointsToBadge + "%";
+                    element.shift();
+                    setPointsAchievements(element, length, i);
+                }
+            });
+            break;
+        }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "profile";
@@ -935,7 +965,6 @@ function Controller() {
     $.__views.__alloyId203.add($.__views.__alloyId205);
     $.__views.__alloyId206 = Ti.UI.createView({
         height: 8,
-        width: 140,
         backgroundColor: "#8dc400",
         left: 0,
         id: "__alloyId206"
