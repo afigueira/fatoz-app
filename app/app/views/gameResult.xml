@@ -12,7 +12,7 @@
 				<View class="resultsGame">
 					<View class="playersResultGame">
 						<View class="containerImageProfileResult">
-							<ImageView id="imageProfileA" class="imageProfile imageProfileYouResult" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+							<ImageView id="imageProfileA" class="imageProfile imageProfileYouResult" />
 							<View id="trophyA" class="trophyGame trophyResultGame" visible="false" />
 						</View>
 						
@@ -23,7 +23,7 @@
 						</View>
 						
 						<View class="containerImageProfileResult">
-							<ImageView id="imageProfileB" class="imageProfile imageProfileYouResult" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+							<ImageView id="imageProfileB" class="imageProfile imageProfileYouResult" />
 							<View id="trophyB" class="trophyGame trophyResultGame" visible="false" />					
 						</View>				
 					</View>

@@ -44,8 +44,10 @@ function getUserInfo(userId, side){
 						
 			if(side == 'a'){				
 				$.nameScoreA.text = name;
+				Alloy.Globals.loadPhoto($.imageProfileProgessA, 'image', user.custom_fields.profile_image);
 			}else{
 				$.nameScoreB.text = name;
+				Alloy.Globals.loadPhoto($.imageProfileProgessB, 'image', user.custom_fields.profile_image);
 			}
 			
 			userReady++;
@@ -192,7 +194,9 @@ function createYouWin(pointsA, pointsB) {
 	$youWinGame = Titanium.UI.createView({id: 'containerYouWin', opacity: 0});
 	$.addClass($youWinGame, 'youWinGame');
 	
-	$imageView = Titanium.UI.createImageView({backgroundImage: 'http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg'});
+	var imageProfile = myUserSide == 'a' ? $.imageProfileProgessA : $.imageProfileProgessB; 
+	
+	$imageView = Titanium.UI.createImageView({image: imageProfile.image});
 	$.addClass($imageView, 'imageProfile imageProfileYouWin');
 	
 	$youWinBackground = Titanium.UI.createView();

@@ -1,6 +1,6 @@
 var args = arguments[0] || {};
 
-Alloy.Globals.drawer($.sidebar, $.drawer, 'Resultado da Partida', init);
+Alloy.Globals.drawer($.sidebar, $.drawer, 'Resultado final', init);
 
 var matchId = args.matchId;
 var pointsA;
@@ -79,10 +79,12 @@ function setUserInfo(userId, side, points){
 						
 			if(side == 'a'){				
 				$.nameUserA.text = name;
-				$.pointsA.text = points;		
+				$.pointsA.text = points;
+				Alloy.Globals.loadPhoto($.imageProfileA, 'image', user.custom_fields.profile_image);
 			}else{
 				$.nameUserB.text = name;
 				$.pointsB.text = points;
+				Alloy.Globals.loadPhoto($.imageProfileB, 'image', user.custom_fields.profile_image);
 			}
 		}
 	});

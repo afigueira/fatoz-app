@@ -31,7 +31,7 @@
 					<View class="layoutAbsolute">
 						<View class="layoutHorizontal" height="335">
 							<View class="progressGame">
-								<ImageView class="imageProfile imageProfileProgess" id="imageProfileProgessA" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+								<ImageView class="imageProfile imageProfileProgess" id="imageProfileProgessA" />
 								
 								<View class="progressBar">
 									<View class="percentBar" id="percentBarA"></View>
@@ -82,7 +82,7 @@
 							</View>
 							
 							<View class="progressGame">
-								<ImageView class="imageProfile imageProfileProgess" id="imageProfileProgessB" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+								<ImageView class="imageProfile imageProfileProgess" id="imageProfileProgessB" />
 								
 								<View class="progressBar">
 									<View class="percentBar" id="percentBarB"></View>
