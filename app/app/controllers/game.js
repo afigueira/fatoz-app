@@ -8,6 +8,7 @@ var userReady = 0;
 var counterTimer;
 var timerInterval;
 var maxHeightProgressBar = 325;
+var canClick = false;
 
 Cloud.Objects.query({
     classname: 'matches',
@@ -70,9 +71,7 @@ function showQuestion(e) {
 	$.rightNumber.text = 0;
 	
 	// esconder atual
-	//$.titleQuestion.visible = false;
 	$.addClass($.titleQuestion, "questionGame proximaNovaRegular visibleFalse");
-	//$.optionsQuestion.visible = false;
 	$.addClass($.optionsQuestion, "optionGame visibleFalse");
 	
 	// animar o round1
@@ -133,10 +132,10 @@ function startQuestion(e) {
 	$.option4.title = currentQuestion.option_4;	
 	//correct_option
 	
-	//$.titleQuestion.visible = true;
 	$.removeClass($.titleQuestion, "visibleFalse");
-	//$.optionsQuestion.visible = true;
 	$.removeClass($.optionsQuestion, "visibleFalse");
+	
+	canClick = true;
 }
 
 function fighterAnswered(e) {
@@ -153,7 +152,30 @@ function fighterAnswered(e) {
 }
 
 function finishGame(e) {
-	if(myUserSide == 'a' && Number($.pointsScoreA.text) > Number($.pointsScoreB.text) || myUserSide == 'b' && Number($.pointsScoreA.text) < Number($.pointsScoreB.text)){		
+	var pointsA = Number($.pointsScoreA.text);
+	var pointsB = Number($.pointsScoreB.text);
+	
+	// somente o criador da partida dispara o evento
+	if (myUserSide == 'a') {
+		Titanium.App.fireEvent('websocket.dispatchEvent', {
+			event: 'matchResult',
+			matchId: matchId,
+			pointsA: pointsA,
+			pointsB: pointsB
+		});	
+	}
+	
+	if(timerInterval){
+		clearInterval(timerInterval);
+	}
+	
+	$.scrollView.remove($.playing);
+	//$.removeClass($.containerYouWin, 'visibleFalse');
+	//$.addClass($.containerYouWin, 'youWinGame');
+	
+	createYouWin(pointsA, pointsB);
+	
+	/*if(myUserSide == 'a' && Number($.pointsScoreA.text) > Number($.pointsScoreB.text) || myUserSide == 'b' && Number($.pointsScoreA.text) < Number($.pointsScoreB.text)){		
 		$.addClass($.playing,'visibleFalse');
 		$.containerYouWin.visible = true;
 
@@ -162,7 +184,58 @@ function finishGame(e) {
 		}, 1000);
 	}else{
 		Alloy.createController('gameResult', {matchId: matchId});
+	}*/
+}
+
+function createYouWin(pointsA, pointsB) {
+	
+	$youWinGame = Titanium.UI.createView({id: 'containerYouWin'});
+	$.addClass($youWinGame, 'youWinGame');
+	
+	$imageView = Titanium.UI.createImageView({backgroundImage: 'http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg'});
+	$.addClass($imageView, 'imageProfile imageProfileYouWin');
+	
+	$youWinBackground = Titanium.UI.createView();
+	$.addClass($youWinBackground, 'youWinBackground');
+	
+	$label = Titanium.UI.createLabel({id: 'textWinner'});
+	$.addClass($label, 'proximaNovaRegular youWin');
+	
+	$youWinBackground.add($label);
+	
+	$trophy = Titanium.UI.createView();
+	$.addClass($trophy, 'trophyGame');
+	
+	$youWinGame.add($imageView);
+	$youWinGame.add($youWinBackground);
+	$youWinGame.add($trophy);
+	
+	$.scrollView.add($youWinGame);
+	
+	if (pointsA != pointsB) {
+		if (myUserSide == 'a' && pointsA > pointsB || myUserSide == 'b' && pointsB > pointsA) {
+			$label.text = 'VOCÊ\n VENCEU!';
+		} else {
+			$label.text = 'VOCÊ\n PERDEU!';
+		}
+	} else {
+		$label.text = 'EMPATE!';
 	}
+	
+	$youWinGame.opacity = 0;
+	
+	var youWinFadeIn = Titanium.UI.createAnimation({opacity: 1, duration: 500});
+	var onCompleteFadeIn = function() {
+		var youWinFadeout = Titanium.UI.createAnimation({opacity: 0, duration: 500, delay: 1500});
+		var onCompleteFadeout = function() {
+			Alloy.createController('gameResult', {matchId: matchId});
+		};
+		youWinFadeout.addEventListener('complete', onCompleteFadeout);
+		$youWinGame.animate(youWinFadeout);
+	};
+	
+	youWinFadeIn.addEventListener('complete', onCompleteFadeIn);	
+	$youWinGame.animate(youWinFadeIn);
 }
 
 function questionAnswered(clickedOption) {
@@ -183,8 +256,6 @@ function questionAnswered(clickedOption) {
 	setQuestionResult(myUserSide, clickedOption, isCorrect);
 
 	setQuestionPoints(myUserSide, time, isCorrect);
-	
-	//finishGame();
 }
 
 function setQuestionResult(userSide, clickedOption, isCorrect) {
@@ -228,12 +299,12 @@ function updateProgressBar(userSide, points, isCorrect) {
 	
 	var backgroundColor = isCorrect ? '#78a800' : '#e42e24';
 	
-	var animationProgressBar = Titanium.UI.createAnimation({backgroundColor:backgroundColor, height: height, duration: 400});
-	var animationImageProfile = Titanium.UI.createAnimation({bottom: height - (imageProfile.height/2), duration: 400});
+	var animationProgressBar = Titanium.UI.createAnimation({backgroundColor:backgroundColor, height: height, duration: 600});
+	var animationImageProfile = Titanium.UI.createAnimation({bottom: height - (imageProfile.height/2), duration: 600});
 	
 	var onCompleteAnimation = function(){
 		animationProgressBar.removeEventListener('complete', onCompleteAnimation);
-		progressBar.animate(Titanium.UI.createAnimation({backgroundColor:'#41b6da', duration: 400, delay: 200}));
+		progressBar.animate(Titanium.UI.createAnimation({backgroundColor:'#41b6da', duration: 600, delay: 400}));
 	};
 	
 	animationProgressBar.addEventListener('complete', onCompleteAnimation);
@@ -262,13 +333,17 @@ function updateTimer(){
 }
 
 $.optionsQuestion.addEventListener('click', function(e){
-	if (e.source.id){		
-		if (e.source.id.indexOf('option') > -1){			
-			var id = e.source.id;
-			var clickedId = id.substr(-1);
-			
-			questionAnswered(clickedId);
-		}
+	if (canClick) {
+		if (e.source.id){		
+			if (e.source.id.indexOf('option') > -1){			
+				var id = e.source.id;
+				var clickedId = id.substr(-1);
+				
+				canClick = false;
+				
+				questionAnswered(clickedId);
+			}
+		}	
 	}
 });
 

@@ -1,6 +1,6 @@
 <Alloy>	
 	<Window class="container">
-		<ScrollView class="inside">
+		<ScrollView class="inside" id="scrollView">
 			<View class="layoutVertical" id="playing">
 				<View class="score">
 					<View class="layoutAbsolute">
@@ -93,17 +93,17 @@
 				</View>
 			</View>
 
-			<View class="layoutVertical">
-				<View class="youWinGame" id="containerYouWin" visible="false">
-					<ImageView class="imageProfile imageProfileYouWin" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
-					
-					<View class="youWinBackground">
-						<Label class="proximaNovaRegular youWin" text="VOCÊ\n VENCEU!" />	
-					</View>					
-					
-					<View class="trophyGame"></View>
-				</View>
-			</View>
+			<!--<View class="youWinGame visibleFalse" id="containerYouWin">
+				<ImageView class="imageProfile imageProfileYouWin" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+				
+				<View class="youWinBackground">
+					<Label class="proximaNovaRegular youWin" text="VOCÊ\n VENCEU!" id="textWinner" />	
+				</View>					
+				
+				<View class="trophyGame"></View>
+			</View>-->
+			
+			
 		</ScrollView>
 	</Window>
 </Alloy>
