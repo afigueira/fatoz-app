@@ -23,7 +23,7 @@ Alloy.Globals.marginTopiOS7 = Alloy.Globals.iOS7 ? 20 : 0;
 
 Alloy.Globals.updateFacebookInfos = function() {
 	if (Alloy.Globals.Facebook.loggedIn) {
-		Alloy.Globals.Facebook.requestWithGraphPath('me', {'fields': 'id,cover'}, 'GET', function(response) {
+		Alloy.Globals.Facebook.requestWithGraphPath('me', {'fields': 'id,cover,picture.type(large)'}, 'GET', function(response) {
 			if (response.success) {
 				
 				var result = response.result;
@@ -31,9 +31,8 @@ Alloy.Globals.updateFacebookInfos = function() {
 					result = JSON.parse(response.result);
 				}
 				
-				var id = result.id;
 				var cover = result.cover.source;
-				var profileImage = 'http://graph.facebook.com/'+id+'/picture?type=large';
+				var profileImage = result.picture.data.url;
 				
 				Alloy.Globals.Cloud.Users.update({
 					custom_fields: {

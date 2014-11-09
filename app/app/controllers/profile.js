@@ -35,11 +35,13 @@ function myInfos(){
 	        
 			$.userName.text = user.first_name + " " + user.last_name;
 			
+			console.log(user.custom_fields);
+			
 			Alloy.Globals.loadPhoto($.profilePhoto, 'image', user.custom_fields.profile_image);
 			
 			Alloy.Globals.loadPhoto($.coverPhoto, 'backgroundImage', user.custom_fields.cover_image);
 					
-			Alloy.Globals.Cloud.Objects.query({
+			/*Alloy.Globals.Cloud.Objects.query({
 			    classname: 'cities',
 			    page: 1,
 			    per_page: 1,
@@ -68,7 +70,7 @@ function myInfos(){
 			        alert('Error:\n' +
 			            ((e.error && e.message) || JSON.stringify(e)));
 			    }
-			}); 
+			});*/
 	            
 	    } else {
 	        alert('Error:\n' +
