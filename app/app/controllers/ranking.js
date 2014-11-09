@@ -1,11 +1,11 @@
 var args = arguments[0] || {};
 
-require('alloy').Globals.drawer($.sidebar, $.drawer, 'Ranking', init());
+Alloy.Globals.drawer($.sidebar, $.drawer, 'Ranking', init);
 
 function init(){
 	categoryId = args.categoryId || '';
 
-	Cloud.Objects.query({
+	Alloy.Globals.Cloud.Objects.query({
 	    classname: 'achievements',
 	    where: {
 		     categories_id: categoryId,
@@ -90,7 +90,7 @@ function setUserName(element, length, a){
 		row = element[i];
 		usersId = row.users_id;
 
-		Cloud.Users.query({		    
+		Alloy.Globals.Cloud.Users.query({		    
 		    where: {
 		        id: usersId
 		    }

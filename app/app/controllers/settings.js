@@ -1,4 +1,4 @@
-Alloy.Globals.drawer($.sidebar, $.drawer, 'Definições', init());
+Alloy.Globals.drawer($.sidebar, $.drawer, 'Definições', init);
 
 function init(){
 	showUser();
@@ -6,7 +6,7 @@ function init(){
 
 
 function showUser(){
-	Cloud.Users.showMe(function (e) {
+	Alloy.Globals.Cloud.Users.showMe(function (e) {
 	    if (e.success) {
 	        var user = e.users[0];	        
 
@@ -21,7 +21,7 @@ function showUser(){
 }
 
 function updateUser(obj){
-	Cloud.Users.update(obj, function (e) {
+	Alloy.Globals.Cloud.Users.update(obj, function (e) {
 	    if (e.success) {	    	
 	    	alert("Dados salvos com sucesso.");
 	    	Ti.App.Properties.setString('userName', e.users[0].first_name + " " + e.users[0].last_name);	    	

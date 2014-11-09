@@ -1,5 +1,3 @@
-var Cloud = require("ti.cloud");
-
 /*Cloud.Objects.query({
     classname: 'states',
     page: 1,
@@ -72,7 +70,7 @@ $.submit.addEventListener('click', function(event){
 	var firstName = strName.shift();
 	var lastName = strName.join(" ");
 
-	Cloud.Users.create({
+	Alloy.Globals.Cloud.Users.create({
 	    email: $.email.value,
 	    first_name: firstName,
 	    last_name: lastName,

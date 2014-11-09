@@ -1,15 +1,18 @@
 var args = arguments[0] || {};
 
-require('alloy').Globals.drawer($.sidebar, $.drawer, 'Perfil', init());
+Alloy.Globals.drawer($.sidebar, $.drawer, 'Perfil', init);
 
 function init(){
 	myInfos();
 	achievements();
 
-
 	if (typeof args.scrollToView != 'undefined') {
 		tabNavigation({source: {contentTabsIndex: args.scrollToView}});
 	}
+	
+	/*$.settings.addEventListener('click', function(){
+		Alloy.createController('settings');
+	});*/
 }
 
 
@@ -26,13 +29,17 @@ function tabNavigation(e){
 }
 
 function myInfos(){
-	Cloud.Users.showMe(function (e) {
+	Alloy.Globals.Cloud.Users.showMe(function (e) {
 	    if (e.success) {
 	        var user = e.users[0];
 	        
 			$.userName.text = user.first_name + " " + user.last_name;
+			
+			Alloy.Globals.loadPhoto($.profilePhoto, 'image', user.custom_fields.profile_image);
+			
+			Alloy.Globals.loadPhoto($.coverPhoto, 'backgroundImage', user.custom_fields.cover_image);
 					
-			Cloud.Objects.query({
+			Alloy.Globals.Cloud.Objects.query({
 			    classname: 'cities',
 			    page: 1,
 			    per_page: 1,
@@ -42,7 +49,7 @@ function myInfos(){
 			}, function (e) {
 			    if (e.success) {		
 			    	var city = e.cities[0].name;						
-					Cloud.Objects.query({
+					Alloy.Globals.Cloud.Objects.query({
 					    classname: 'states',
 					    page: 1,
 					    per_page: 1,
@@ -72,7 +79,7 @@ function myInfos(){
 
 
 function achievements(){
-	Cloud.Objects.query({
+	Alloy.Globals.Cloud.Objects.query({
 	    classname: 'categories'
 	}, function (e) {
 	    if (e.success) {
@@ -174,7 +181,7 @@ function setPointsAchievements(element, length, a){
 		pointsToBadge = label.points_to_badge;
 		categoriesId = label.categories_id;
 
-		Cloud.Objects.query({
+		Alloy.Globals.Cloud.Objects.query({
 		    classname: 'achievements',		    
 		    where: {
 		        categories_id: categoriesId,
@@ -196,7 +203,3 @@ function setPointsAchievements(element, length, a){
 		break;		
 	}
 }
-
-$.settings.addEventListener('click', function(){
-	Alloy.createController('settings');
-});

@@ -1,9 +1,6 @@
-Alloy.Globals.drawer($.sidebar, $.drawer, 'Início', init());
-
+Alloy.Globals.drawer($.sidebar, $.drawer, 'Início', init);
 
 function init(){
-	Cloud = require("ti.cloud");
-
 	getCategories($.popular, {
 	    classname: 'categories',
 	    page: 1,
@@ -39,8 +36,6 @@ function tabNavigation(e){
 	
 	$.contentTabs.children[contentTabsIndex].visible = true;
 	$.tabs.children[contentTabsIndex].children[1].visible = true;
-
-	mountNavigationBoll($.contentTabs.children[contentTabsIndex].views.length);
 }
 
 function navigation(){
@@ -50,50 +45,11 @@ function navigation(){
 
 	for(var i=0,j=$.contentTabs.children.length; i<j; i++){
 		$.contentTabs.children[i].visible = false;	
-
-		elementScrollend($.contentTabs.children[i]);
-		/*(function(element) {
-	        element.addEventListener('scrollend', function(e){	        		
-	        	
-	        	for(var a=0,k=$.paginationBall.children.length; a<k; a++){	        	
-					$.removeClass($.paginationBall.children[a], 'selectedBall');	  					          	        		
-	        	};
-
-	            $.addClass($.paginationBall.children[e.currentPage], 'itemBall selectedBall');	            
-	        });
-	    }($.contentTabs.children[i]));*/
 	};
 
 	
 	$.contentTabs.children[0].visible = true;
 	$.tabs.children[0].children[1].visible = true;
-}
-
-function elementScrollend(element){
-	element.addEventListener('scrollend', function(e){	        			        	
-    	for(var a=0,k=$.paginationBall.children.length; a<k; a++){	        	
-			$.removeClass($.paginationBall.children[a], 'selectedBall');	  					          	        		
-    	};
-
-        $.addClass($.paginationBall.children[e.currentPage], 'itemBall selectedBall');
-    });
-}
-
-function mountNavigationBoll(length){	
-	$.paginationBall.visible = false;
-	while($.paginationBall.children.length > 0){
-	    $.paginationBall.remove($.paginationBall.children[0]);
-	};
-
-	for(var a=0; a<length; a++){
-		var itemBall = Titanium.UI.createImageView();
-		$.addClass(itemBall, 'itemBall');
-
-		$.paginationBall.add(itemBall);		
-	};
-
-	$.addClass($.paginationBall.children[0], 'itemBall selectedBall');
-	$.paginationBall.visible = true;
 }
 
 function createRowCategories(obj){
@@ -153,7 +109,7 @@ function createRowCategories(obj){
 }
 
 function getCategories(element, obj, isFirst){
-	Cloud.Objects.query(obj, function (e) {	
+	Alloy.Globals.Cloud.Objects.query(obj, function (e) {	
 	    if (e.success) {			
 			var views = createRowCategories(e.categories);
 
@@ -161,127 +117,59 @@ function getCategories(element, obj, isFirst){
 			
 			setBackgrounds(element.views, element.views.length, 0);
 			setIcons(element.views, element.views.length, 0);
-			
-			if(isFirst){
-				mountNavigationBoll(views.length);	
-			}
-			
 	    } else {
-	        alert('Error:\n' +
-	            ((e.error && e.message) || JSON.stringify(e)));
+	        alert('Houve um erro para carregar as categorias');
 	    }
 	});
 }
 
-function setBackgrounds(element, length, a){		
+function setBackgrounds(element, length, a){
 	var backgroundImage;	
 	var image;		
+		
+	image = element[a];
+	backgroundImage = image.background;
+	
+	Alloy.Globals.Cloud.Photos.show({
+	    photo_id: backgroundImage
+	}, function (e) {
+		console.log(a, e);
+	    if (e.success) {
+	        var photo = e.photos[0];
 
-	for (var i=a; i < length; i++){		
-		image = element[i];
-		backgroundImage = image.background;
-				
-		Cloud.Photos.show({
-		    photo_id: backgroundImage
-		}, function (e) {
-		    if (e.success) {
-		        var photo = e.photos[0];
+	        var urlImage = photo.urls.original;
 
-		        var urlImage = photo.urls.original;
-
-	            image.backgroundImage = urlImage;			            
-	            
-	            element.shift();
-	            setBackgrounds(element, length, i);
-		    }
-		});		
-		break;
-	};
+            image.backgroundImage = urlImage;			            
+            
+			if (a < length - 1) {
+				setBackgrounds(element, length, ++a);	
+			}
+	    }
+	});
 }
 
-function setIcons(element, length, a){			
+function setIcons(element, length, a){
 	var iconImage;	
 	var icon;
-
-	for (var i=a; i < length; i++){		
-		icon = element[i].children[0];
-		iconImage = icon.icon;
-					
-		Cloud.Photos.show({
-		    photo_id: iconImage
-		}, function (e) {
-		    if (e.success) {
-		        var photo = e.photos[0];
-
-		        var urlIcon = photo.urls.large_1024;		        
-	            icon.image = urlIcon;			            
-	            
-	            element.shift();
-	            setIcons(element, length, i);
-		    }
-		});
-		break;
-	};
-}
-
-
-/*function setImages(element){	
-	var length = element.views.length;	
-	var backgroundImage;
-	var iconImage;
-	var image;
-	var icon;
-	var queuedBackground = [];
-	var queuedIcon = [];
-
-	for (var i=0; i < length; i++){			
-		image = element.views[i];
-		backgroundImage = image.background;
-
-		icon = element.views[i].children[0];		
-		iconImage = icon.icon;
 		
-		if(backgroundImage){			
-			queuedBackground.push(image);			
-			Cloud.Photos.query({
-				where: {
-			        id: backgroundImage
-			    }			    
-			}, function (e) {
-			    if (e.success) {			    	
-			        for (var i = 0; i < e.photos.length; i++) {
-			            var photo = e.photos[i];
+	icon = element[a].children[0];
+	iconImage = icon.icon;
+				
+	Alloy.Globals.Cloud.Photos.show({
+	    photo_id: iconImage
+	}, function (e) {
+	    if (e.success) {
+	        var photo = e.photos[0];
 
-			            var urlImage = photo.urls.square_75;
-			            
-			            queuedBackground[0].backgroundImage = urlImage
-			            queuedBackground.shift();
-			        }
-			    }
-			});
-		}
-
-		if(iconImage){
-			queuedIcon.push(icon);			
-			Cloud.Photos.query({
-				where: {
-			        id: iconImage
-			    }			    
-			}, function (e) {
-			    if (e.success) {
-			        for (var i = 0; i < e.photos.length; i++) {
-			            var photo = e.photos[i];
-
-			            var urlIcon = photo.urls.square_75;
-			            
-			            queuedIcon[0].image = urlIcon
-			            queuedIcon.shift();
-			        }
-			    }
-			});
-		}
-	};
-}*/
+	        var urlIcon = photo.urls.original;		        
+            icon.image = urlIcon;			            
+            
+            if (a < length - 1) {
+            	setIcons(element, length, ++a);
+            }
+	    }
+	});
+}
 
 $.categories.addEventListener('click', function(e){
 	if (e.source.classes){		
@@ -298,101 +186,3 @@ $.categories.addEventListener('click', function(e){
 $.goToCategories.addEventListener('click', function(e){
 	Alloy.createController('categories');
 });
-
-/*for(var i=1,j=$.contentTabs.children.length; i<j; i++){
-	var children = $.contentTabs.children[i];	
-	children.visible = false;	
-};
-$.contentTabs.children[0].visible = true;
-
-$.tabs.addEventListener('click', function(e){
-	for(var i=0,j=$.contentTabs.children.length; i<j; i++){
-		var children = $.contentTabs.children[i];	
-		children.visible = false;	
-	};
-
-	if(e.source.id == 'popularTab'){
-		$.popular.visible = true;
-	}
-	
-	if(e.source.id == 'recentTab'){
-		$.recent.visible = true;
-	}
-});*/
-
-
-
-
-
-/*$.categories.children
-contem eles
-aí faz
-for (var i = 0; i < $.categories.children.length; i++) {
-var scrollable = $.categories.children[i
-scrollable.visible = false;*/
-
-
-
-
-/*$.home.addEventListener("open", function() {
-	alert(":D");
-    if (Ti.Platform.osname === "android") {
-        if (! $.home.activity) {
-            Ti.API.error("Can't access action bar on a lightweight window.");
-        } else {
-            var actionBar = $.home.activity.actionBar;
-            if (actionBar) {
-                actionBar.backgroundImage = "/bg.png";
-                actionBar.title = "New Title";
-                          
-			    actionBar.icon = "/images/trophy.png";
-			    actionBar.displayHomeAsUp = true;			    
-			    actionBar.backgroundImage = "/images/trophy.png";
-                
-                actionBar.onHomeIconItemSelected = function() {
-                    Ti.API.info("Home icon clicked!");
-                };
-            }
-        }
-    }
-});*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-$.sidebar.add(Alloy.createController('sidebar').getView());
-
-$.drawer.addEventListener('open', onNavDrawerWinOpen);
-function onNavDrawerWinOpen(evt) {
-	this.removeEventListener('open', onNavDrawerWinOpen);
-	if(this.getActivity()) {
-		// need to explicitly use getXYZ methods
-		var actionBar = this.getActivity().getActionBar();
-		if (actionBar) {
-			// Now we can do stuff to the actionbar
-			actionBar.setTitle('Início');
-			// show an angle bracket next to the home icon,
-			// indicating to users that the home icon is tappable
-			//actionBar.setDisplayHomeAsUp(true);
-			// toggle the left window when the home icon is selected
-			actionBar.setOnHomeIconItemSelected(function() {
-				$.drawer.toggleLeftWindow();
-			});
-		}
-	}
-}
-
-$.drawer.open();*/
-
-
-
