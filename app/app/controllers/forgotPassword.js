@@ -4,14 +4,13 @@ $.submit.addEventListener('click', function(e){
 	var email = $.email.value;
 
 	if(email){		
-		Cloud.Users.requestResetPassword({
+		Alloy.Globals.Cloud.Users.requestResetPassword({
 		    email: email
 		}, function (e) {
 		    if (e.success) {
-		        alert('Success: Reset Request Sent');
+		        alert('Siga as instruções enviadas para o seu e-mail.');
 		    } else {
-		        alert('Error:\n' +
-		            ((e.error && e.message) || JSON.stringify(e)));
+		        alert('Houve um erro ou este e-mail não está cadastrado');
 		    }
 		});
 	}

@@ -5,7 +5,7 @@ var matchId;
 var mountReceived = false;
 var fighterReceived = false;
 
-require('alloy').Globals.drawer($.sidebar, $.drawer, 'Procurando...' , init());
+Alloy.Globals.drawer($.sidebar, $.drawer, 'Procurando...' , init);
 
 
 function init(){
@@ -23,7 +23,7 @@ function joinRoom(){
 		
 		Titanium.App.addEventListener('websocket.creatingMatch', function(e){
 			
-			Cloud.Users.query({
+			Alloy.Globals.Cloud.Users.query({
 			    page: 1,
 			    per_page: 1,
 			    where: {
@@ -37,25 +37,9 @@ function joinRoom(){
 					$.trophy.visible = true;
 					$.profileTitleB.text = e.users[0].first_name + " " + e.users[0].last_name;
 					
-					Cloud.Photos.show({
-					    photo_id: e.users[0].custom_fields.profile_image
-					}, function (e) {
-					    if (e.success) {
-					        var photo = e.photos[0];			        
+					Alloy.Globals.loadPhoto($.imageProfileB, 'image', e.users[0].custom_fields.profile_image);
 
-					        $.imageProfileB.image = photo.urls.original;
-					    }
-					});
-
-					Cloud.Photos.show({
-					    photo_id: e.users[0].custom_fields.cover_image
-					}, function (e) {
-					    if (e.success) {
-					        var photo = e.photos[0];			        
-
-					        $.profileB.backgroundImage = photo.urls.original;					        
-					    }
-					});
+					Alloy.Globals.loadPhoto($.profileB, 'backgroundImage', e.users[0].custom_fields.cover_image);
 
 					fighterReceived = true;
 
@@ -90,29 +74,13 @@ function mountMatch(){
 function showMe(){
 	$.profileTitleA.text = Ti.App.Properties.getString('userName');
 	
-	Cloud.Users.showMe(function (e) {
+	Alloy.Globals.Cloud.Users.showMe(function (e) {
 	    if (e.success) {
 	        var user = e.users[0];
 	        
-	        Cloud.Photos.show({
-			    photo_id: user.custom_fields.profile_image
-			}, function (e) {
-			    if (e.success) {
-			        var photo = e.photos[0];			        
-
-			        $.imageProfileA.image = photo.urls.original;
-			    }
-			});
-
-			Cloud.Photos.show({
-			    photo_id: user.custom_fields.cover_image
-			}, function (e) {
-			    if (e.success) {
-			        var photo = e.photos[0];			        
-
-			        $.coverA.backgroundImage = photo.urls.original;
-			    }
-			});
+	        Alloy.Globals.loadPhoto($.imageProfileA, 'image', user.custom_fields.profile_image);
+	        
+	        Alloy.Globals.loadPhoto($.coverA, 'backgroundImage', user.custom_fields.cover_image);
 	    }
 	});
 }

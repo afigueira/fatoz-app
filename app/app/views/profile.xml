@@ -4,9 +4,9 @@
 
         <Window module="xp.ui" role="centerWindow">
 			<ScrollView class="inside">
-				<View class="topProfile" backgroundImage="/images/background-categories-soccer.jpg">				
+				<View class="topProfile" id="coverPhoto">				
 					<View class="profile">
-						<ImageView class="imageProfile" backgroundImage="/images/icon-user.png" />
+						<ImageView class="imageProfile" id="profilePhoto"/>
 						<Label class="proximaNovaRegular fontWhite profileTitle" id="userName"/>
 						<Label class="proximaNovaRegular fontWhite profileCityState" id="cityState"/>			
 					</View>

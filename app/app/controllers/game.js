@@ -10,7 +10,7 @@ var timerInterval;
 var maxHeightProgressBar = 325;
 var canClick = false;
 
-Cloud.Objects.query({
+Alloy.Globals.Cloud.Objects.query({
     classname: 'matches',
     where: {
         id: matchId
@@ -31,7 +31,7 @@ Cloud.Objects.query({
 });
 
 function getUserInfo(userId, side){
-	Cloud.Users.show({
+	Alloy.Globals.Cloud.Users.show({
 		user_id: userId
 	}, function(e){		
 		if(e.success){
@@ -85,7 +85,7 @@ function showQuestion(e) {
 	// pegar a questão
 	var questionId = match['question_' + questionIndex];
 	
-	Cloud.Objects.query({
+	Alloy.Globals.Cloud.Objects.query({
 		classname: 'questions',
 		where: {
 			id: questionId

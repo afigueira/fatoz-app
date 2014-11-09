@@ -1,9 +1,7 @@
-Cloud = require("ti.cloud");
-
 var createController = 'home';
 
 $.submit.addEventListener('click', function(event){	
-	Cloud.Users.login({
+	Alloy.Globals.Cloud.Users.login({
 	    login: $.email.value,
 	    password: $.password.value
 	}, function (e) {
@@ -28,7 +26,7 @@ $.forgotPassword.addEventListener('click', function(e){
 
 Titanium.App.addEventListener('facebook.login', function(e) {
 	if (e.success) {
-		Cloud.SocialIntegrations.externalAccountLogin({
+		Alloy.Globals.Cloud.SocialIntegrations.externalAccountLogin({
 			type: 'facebook',
 			token: Alloy.Globals.Facebook.accessToken
 		}, function(e) {
@@ -41,7 +39,7 @@ Titanium.App.addEventListener('facebook.login', function(e) {
 
 function login(e) {
 	if (e.success) {	    	
-	    	Ti.App.Properties.setString('sessionId', Cloud.sessionId);
+	    	Ti.App.Properties.setString('sessionId', Alloy.Globals.Cloud.sessionId);
 	    	Ti.App.Properties.setString('userId', e.users[0].id);
 	    	Ti.App.Properties.setString('userName', e.users[0].first_name + " " + e.users[0].last_name);	    	
 			Alloy.createController(createController);

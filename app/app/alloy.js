@@ -17,6 +17,8 @@ Alloy.Globals.constants = {
 	
 };
 
+Alloy.Globals.Cloud = require("ti.cloud");
+
 Alloy.Globals.drawer = function(sidebar, element, titleActionBar, func) {	
 	sidebar.add(Alloy.createController('sidebar').getView());
 
@@ -40,7 +42,7 @@ Alloy.Globals.drawer = function(sidebar, element, titleActionBar, func) {
 		}
 
 		if(typeof(func) == "function"){
-			func.call();
+			func();
 		}
 	}
 	
@@ -64,6 +66,24 @@ Alloy.Globals.Facebook.permissions = ['email'];
 Alloy.Globals.Facebook.addEventListener('login', function(e) {
 	Titanium.App.fireEvent('facebook.login', e);
 });
+
+Alloy.Globals.loadPhoto = function(container, field, value) {
+	if (value.indexOf('http') > -1) {
+		container[field] = value;
+	} else {
+		Alloy.Globals.Cloud.Photos.show({
+		    photo_id: value
+		}, function (e) {
+		    if (e.success) {
+		        var photo = e.photos[0];
+	
+		        var urlImage = photo.urls.original;
+	
+	            container[field] = urlImage;
+		    }
+		});
+	}
+};
 
 var io = require('socket.io');
 var socket = io.connect('https://1f0b6fd33fa8afdb54e5479c5a17447732b25d68.cloudapp.appcelerator.com');

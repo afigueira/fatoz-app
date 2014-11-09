@@ -1,6 +1,6 @@
 var args = arguments[0] || {};
 
-Alloy.Globals.drawer($.sidebar, $.drawer, 'Resultado da Partida', init());
+Alloy.Globals.drawer($.sidebar, $.drawer, 'Resultado da Partida', init);
 
 var matchId = args.matchId;
 var pointsA;
@@ -25,7 +25,7 @@ function openRanking() {
 }
 
 function matches(){
-    Cloud.Objects.query({
+    Alloy.Globals.Cloud.Objects.query({
         classname: 'matches',
         where: {
             id: matchId
@@ -69,7 +69,7 @@ function matches(){
 
 
 function setUserInfo(userId, side, points){
-	Cloud.Users.show({
+	Alloy.Globals.Cloud.Users.show({
 		user_id: userId
 	}, function(e){		
 		if(e.success){

@@ -1,8 +1,6 @@
-Cloud = require("ti.cloud");
+Alloy.Globals.Cloud.sessionId = Ti.App.Properties.getString('sessionId');
 
-Cloud.sessionId = Ti.App.Properties.getString('sessionId');
-
-Cloud.Users.showMe(function (e) {
+Alloy.Globals.Cloud.Users.showMe(function (e) {
     if (e.success) {
         Alloy.createController('home');
     } else {

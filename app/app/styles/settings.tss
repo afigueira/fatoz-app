@@ -8,9 +8,7 @@
 ".profile": {	
 	width: 64,
 	height: 64,
-	borderRadius: 324,
-	borderWidth: 2,
-	borderColor: "#ffffff"
+	borderRadius: 32
 },
 ".editImageProfile": {
 	font: {fontSize: 10},

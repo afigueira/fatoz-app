@@ -1,9 +1,8 @@
-require('alloy').Globals.drawer($.sidebar, $.drawer, 'Categorias', init());
+Alloy.Globals.drawer($.sidebar, $.drawer, 'Categorias', init);
 
 var canSearch = false;
 
 function init(){
-	Cloud = require("ti.cloud");
 
 	getCategories($.allCategories, {
 	    classname: 'categories',
@@ -55,7 +54,7 @@ function tabNavigation(e){
 }
 
 function getCategories(element, param){
-	Cloud.Objects.query(param, function (e) {
+	Alloy.Globals.Cloud.Objects.query(param, function (e) {
 		
 	    if (e.success) {    	
 	    	var total = e.categories.length;
@@ -241,57 +240,52 @@ function getCategories(element, param){
 	});
 }
 
-function setBackgrounds(element, length, a){		
+function setBackgrounds(element, length, a){
 	var backgroundImage;	
 	var image;		
+		
+	image = element[a];
+	backgroundImage = image.background;
+	
+	Alloy.Globals.Cloud.Photos.show({
+	    photo_id: backgroundImage
+	}, function (e) {
+		console.log(a, e);
+	    if (e.success) {
+	        var photo = e.photos[0];
 
-	for (var i=a; i < length; i++){		
-		image = element[i].children[0].children[0];		
-		backgroundImage = image.background;
-				
-		Cloud.Photos.show({
-		    photo_id: backgroundImage
-		}, function (e) {
-		    if (e.success) {
-		        var photo = e.photos[0];
+	        var urlImage = photo.urls.original;
 
-		        var urlImage = photo.urls.original;
-	            console.log('imagens: ', photo.urls);
-	            
-	            image.image = urlImage;			            
-	            
-	            element.shift();
-	            setBackgrounds(element, length, i);
-		    }
-		});		
-		break;
-	};
+            image.backgroundImage = urlImage;			            
+            
+			if (a < length - 1) {
+				setBackgrounds(element, length, ++a);	
+			}
+	    }
+	});
 }
 
-function setIcons(element, length, a){			
+function setIcons(element, length, a){
 	var iconImage;	
 	var icon;
+		
+	icon = element[a].children[0].children[1].children[0].children[0].children[0];
+	iconImage = icon.icon;
+				
+	Alloy.Globals.Cloud.Photos.show({
+	    photo_id: iconImage
+	}, function (e) {
+	    if (e.success) {
+	        var photo = e.photos[0];
 
-	for (var i=a; i < length; i++){		
-		icon = element[i].children[0].children[1].children[0].children[0].children[0];		
-		iconImage = icon.icon;
-					
-		Cloud.Photos.show({
-		    photo_id: iconImage
-		}, function (e) {
-		    if (e.success) {
-		        var photo = e.photos[0];
-
-		        var urlIcon = photo.urls.original;
-	            	            
-	            icon.image = urlIcon;			            
-	            
-	            element.shift();
-	            setIcons(element, length, i);
-		    }
-		});
-		break;
-	};
+	        var urlIcon = photo.urls.original;		        
+            icon.image = urlIcon;			            
+            
+            if (a < length - 1) {
+            	setIcons(element, length, ++a);
+            }
+	    }
+	});
 }
 
 
