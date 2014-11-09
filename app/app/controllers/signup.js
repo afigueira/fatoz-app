@@ -79,9 +79,14 @@ $.submit.addEventListener('click', function(event){
 	    profile_image: '545f827444f2450e5e045905',
 	    cover_image: '545f82f57c874208b50014b0'
 	}, function (e) {
-	    if (e.success) {	    	
-	        var user = e.users[0];
+	    if (e.success) {	    		        
 	        alert('Cadastro realizado com sucesso.');
+
+	        Ti.App.Properties.setString('sessionId', Alloy.Globals.Cloud.sessionId);
+	    	Ti.App.Properties.setString('userId', e.users[0].id);
+	    	Ti.App.Properties.setString('userName', e.users[0].first_name + " " + e.users[0].last_name);
+	        Alloy.Globals.updateFacebookInfos();
+
 	        Alloy.createController('home');
 	        $.destroy();
 	    } else {	    	
