@@ -89,5 +89,7 @@
 	right: 0,
 	width: 238,
 	font: {fontSize: 12, fontWeight: 'bold'}
+},
+"#allCategories": {
+	height: Titanium.UI.FILL
 }
-
