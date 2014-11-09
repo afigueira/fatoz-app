@@ -33,7 +33,8 @@ $.exit.addEventListener('click', function(){
 	alertWindow.addEventListener('click', function(e){    
 	    switch(e.index){
 	    case 0:
-	      Cloud.Users.logout(function (e) {
+	    	Alloy.Globals.Facebook.logout();
+	      	Cloud.Users.logout(function (e) {
 			    if (e.success) {
 			        Alloy.createController('login');
 			        

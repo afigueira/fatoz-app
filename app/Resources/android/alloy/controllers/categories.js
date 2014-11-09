@@ -223,8 +223,8 @@ function Controller() {
         id: "__alloyId0"
     });
     $.__views.__alloyId1 = Ti.UI.createScrollView({
-        backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
         layout: "vertical",
+        backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
         id: "__alloyId1"
     });
     $.__views.__alloyId0.add($.__views.__alloyId1);
@@ -247,9 +247,9 @@ function Controller() {
     });
     $.__views.containerTabs.add($.__views.tabs);
     $.__views.__alloyId2 = Ti.UI.createView({
-        touchEnabled: true,
         height: 46,
         width: 72,
+        touchEnabled: true,
         contentTabsIndex: "0",
         id: "__alloyId2"
     });
@@ -270,6 +270,8 @@ function Controller() {
     $.__views.__alloyId2.add($.__views.__alloyId3);
     $.__views.__alloyId4 = Ti.UI.createView({
         backgroundColor: "#ff7026",
+        left: 10,
+        right: 10,
         bottom: 0,
         height: 3,
         width: Titanium.UI.FILL,
@@ -278,9 +280,9 @@ function Controller() {
     });
     $.__views.__alloyId2.add($.__views.__alloyId4);
     $.__views.__alloyId5 = Ti.UI.createView({
-        touchEnabled: true,
         height: 46,
         width: 72,
+        touchEnabled: true,
         contentTabsIndex: "1",
         id: "__alloyId5"
     });
@@ -301,6 +303,8 @@ function Controller() {
     $.__views.__alloyId5.add($.__views.__alloyId6);
     $.__views.__alloyId7 = Ti.UI.createView({
         backgroundColor: "#ff7026",
+        left: 10,
+        right: 10,
         bottom: 0,
         height: 3,
         width: Titanium.UI.FILL,
@@ -310,9 +314,9 @@ function Controller() {
     });
     $.__views.__alloyId5.add($.__views.__alloyId7);
     $.__views.__alloyId8 = Ti.UI.createView({
-        touchEnabled: true,
         height: 46,
         width: 72,
+        touchEnabled: true,
         contentTabsIndex: "2",
         id: "__alloyId8"
     });
@@ -333,6 +337,8 @@ function Controller() {
     $.__views.__alloyId8.add($.__views.__alloyId9);
     $.__views.__alloyId10 = Ti.UI.createView({
         backgroundColor: "#ff7026",
+        left: 10,
+        right: 10,
         bottom: 0,
         height: 3,
         width: Titanium.UI.FILL,

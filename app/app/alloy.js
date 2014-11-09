@@ -58,7 +58,6 @@ Alloy.Globals.calculateQuestionPoints = function(time, isCorrect){
 	return Math.round(points);
 };
 
-
 Alloy.Globals.Facebook = require('facebook');
 Alloy.Globals.Facebook.appid = '1480203828923788';
 Alloy.Globals.Facebook.permissions = ['email'];

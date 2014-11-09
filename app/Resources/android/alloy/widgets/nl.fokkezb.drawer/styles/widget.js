@@ -232,6 +232,8 @@ module.exports = [ {
     priority: 10000.0034,
     key: "tabSelected",
     style: {
+        left: 10,
+        right: 10,
         bottom: 0,
         height: 3,
         width: Titanium.UI.FILL,

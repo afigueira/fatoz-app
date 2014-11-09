@@ -31,7 +31,6 @@
 },
 "#tabs": {
 	top: 0,
-	left: 10,
 	height: 46,
 	width: Titanium.UI.FILL,
 	layout: "horizontal"

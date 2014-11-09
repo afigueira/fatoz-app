@@ -14,7 +14,7 @@ function Controller() {
             Ti.App.Properties.setString("userId", e.users[0].id);
             Ti.App.Properties.setString("userName", e.users[0].first_name + " " + e.users[0].last_name);
             Alloy.createController(createController);
-        } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+        } else alert("Houve um erro para efetuar seu login");
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "login";
@@ -228,9 +228,12 @@ function Controller() {
         });
     });
     $.btnFacebook.addEventListener("click", function() {
+        console.log("btn facebook clicked");
+        console.log(Alloy.Globals.Facebook);
         Alloy.Globals.Facebook.authorize();
     });
     $.signup.addEventListener("click", function() {
+        console.log("signup");
         Alloy.createController("signup");
     });
     $.forgotPassword.addEventListener("click", function() {
@@ -242,7 +245,7 @@ function Controller() {
             token: Alloy.Globals.Facebook.accessToken
         }, function(e) {
             login(e);
-        }) : alert(e.error);
+        }) : alert("Houve um erro para efetuar seu login");
     });
     $.login.open();
     _.extend($, exports);

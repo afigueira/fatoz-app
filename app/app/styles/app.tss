@@ -127,6 +127,8 @@
 	touchEnabled: false
 },
 ".tabSelected": {
+	left: 10,
+	right: 10,
 	bottom: 0,
 	height: 3,
 	width: Titanium.UI.FILL,

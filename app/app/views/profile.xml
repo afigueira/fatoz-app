@@ -11,10 +11,10 @@
 						<Label class="proximaNovaRegular fontWhite profileCityState" id="cityState"/>			
 					</View>
 					
-					<View class="profileButtons">
-						<!--<Button class="fontWhite proximaNovaRegular btnFollow" id="btnFollow" titleid="btn_follow" />-->
+					<!--<View class="profileButtons">
+						<Button class="fontWhite proximaNovaRegular btnFollow" id="btnFollow" titleid="btn_follow" />
 						<Button id="settings" class="borderWhite fontWhite proximaNovaRegular btnMore" />
-					</View>						
+					</View>-->
 				</View>
 				
 				<View id="containerTabs" class="white">
@@ -102,7 +102,7 @@
 						</View>		            
 					</View>
 					
-					<View class="profileFriends">
+					<!--<View class="profileFriends">
 						<View id="containerSearch" class="black">
 							<ImageView image="/images/icon-search.png" top="0" left="0" zIndex="100" />
 							<TextField id="search" class="white fontGray radiusLarge proximaNovaRegular" hintText="Pesquisar" />
@@ -116,9 +116,9 @@
 								<View class="borderGray borderGrayProfile" />						
 						    </TableViewRow>						    
 						</TableView>				            
-					</View>
+					</View>-->
 					
-					<View class="profileRank">							
+					<!--<View class="profileRank">							
 		               <TableView class="listRank">							
 						    <TableViewRow class="rowRank">
 								<Label class="rankNumber proximaNovaRegular" text="1."/>
@@ -132,7 +132,7 @@
 								<View class="borderGray borderGrayProfile" />
 						    </TableViewRow>						   				   			    
 						</TableView>				            
-					</View>
+					</View>-->
 					
 					<View class="profileConquer">							
 		               <TableView id="conquer">

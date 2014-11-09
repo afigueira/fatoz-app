@@ -261,7 +261,6 @@ function Controller() {
     $.__views.tabs = Ti.UI.createView({
         height: 46,
         top: 0,
-        left: 10,
         width: Titanium.UI.FILL,
         layout: "horizontal",
         id: "tabs"
@@ -292,6 +291,8 @@ function Controller() {
     $.__views.__alloyId74 = Ti.UI.createView({
         height: 3,
         backgroundColor: "#ff7026",
+        left: 10,
+        right: 10,
         bottom: 0,
         width: Titanium.UI.FILL,
         touchEnabled: false,
@@ -323,6 +324,8 @@ function Controller() {
     $.__views.__alloyId76 = Ti.UI.createView({
         height: 3,
         backgroundColor: "#ff7026",
+        left: 10,
+        right: 10,
         bottom: 0,
         width: Titanium.UI.FILL,
         touchEnabled: false,
