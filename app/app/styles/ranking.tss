@@ -2,7 +2,8 @@
 	height: Titanium.UI.SIZE
 },
 ".listRank": {
-	backgroundColor: "#ffffff"
+	backgroundColor: "#ffffff",
+	top: Alloy.Globals.marginTopWindow
 }
 ".rowRank": {
 	width: Titanium.UI.FILL,
