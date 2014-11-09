@@ -1,29 +1,31 @@
 <Alloy>
 	<Window class="container">
-		<ImageView image="/images/logo-login.png" id="logo"/>
-		
-		<View id="form">			
-			<View class="layoutVertical heightUiSize">
-				<View class="layoutAbsolute heightUiSize">
-					<TextField id="email" hintText="L('email')" class="radius input fontGray" />
-					<ImageView image="/images/icon-key.png" right="52" top="15" />
+		<ScrollView class="layoutVertical">
+			<ImageView image="/images/logo-login.png" id="logo"/>
+			
+			<View id="form">			
+				<View class="layoutVertical heightUiSize">
+					<View class="layoutAbsolute heightUiSize">
+						<TextField id="email" hintText="L('email')" class="radius input fontGray" />
+						<ImageView image="/images/icon-key.png" right="52" top="15" />
+					</View>
+					<View class="layoutAbsolute heightUiSize">
+						<TextField id="password" passwordMask="true" hintText="L('password')" class="radius input fontGray" />
+						<ImageView image="/images/icon-user.png" right="52" top="23" />
+					</View>
 				</View>
-				<View class="layoutAbsolute heightUiSize">
-					<TextField id="password" passwordMask="true" hintText="L('password')" class="radius input fontGray" />
-					<ImageView image="/images/icon-user.png" right="52" top="23" />
-				</View>
+				<Button id="submit" class="radius" />			
+				<Label id="forgotPassword" textid="forgotpassword" class="fontWhite proximaNovaRegular"/>
 			</View>
-			<Button id="submit" class="radius" />			
-			<Label id="forgotPassword" textid="forgotpassword" class="fontWhite proximaNovaRegular"/>
-		</View>
-		
-		<View id="btnFacebook" class="radius">
-			<ImageView image="/images/logo-button-facebook.jpg" id="logoBtnFacebook"/>
-			<Label textid="button_facebook_login" id="labelBtnFacebook" class="fontWhite proximaNovaRegular"/>
-		</View>
-		
-		<View id="footer">
-			<Button id="signup" titleid="button_signup" class="radius orange fontWhite"/>
-		</View>
+			
+			<View id="btnFacebook" class="radius">
+				<ImageView image="/images/logo-button-facebook.jpg" id="logoBtnFacebook"/>
+				<Label textid="button_facebook_login" id="labelBtnFacebook" class="fontWhite proximaNovaRegular"/>
+			</View>
+			
+			<View id="footer">
+				<Button id="signup" titleid="button_signup" class="radius orange fontWhite"/>
+			</View>
+		</ScrollView>
 	</Window>
 </Alloy>

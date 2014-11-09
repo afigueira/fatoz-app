@@ -1,13 +1,16 @@
 ".container": {
 	width: Titanium.UI.FILL,
-	height: Titanium.UI.FILL
+	height: Titanium.UI.FILL,
+},
+"ScrollView": {
+	width: Titanium.UI.FILL
 },
 "#logo": {
 	top: 55
 },
 "#form": {
 	height: Titanium.UI.SIZE,
-	top: 237,
+	top: 50,
 	left: 28,
 	right: 28
 },
@@ -34,13 +37,13 @@
 	image: "/images/icon-lock.png"
 },
 "#btnFacebook": {
-	bottom: 95
+	top: 35
 },
 "#footer": {
-	backgroundColor: Alloy.Globals.constants.NAV_BAR_COLOR,
+	//backgroundColor: Alloy.Globals.constants.NAV_BAR_COLOR,
 	height: 75,
-	bottom: 0,
-	width: Titanium.UI.FILL
+	top: 10,
+	width: 320
 },
 "#signup": {
 	height: 35,
