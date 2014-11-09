@@ -5,6 +5,17 @@
 	top: 0,
 	left: 0,
 },
+"#titleBar": {
+	backgroundColor: Alloy.Globals.constants.BASE_COLOR,
+	top: 0,
+	left: 0,
+	height: 66,
+	width: Titanium.UI.FILL
+},
+"#labelTitleBar": {
+	font: {fontSize: 20},
+	bottom: 15
+},
 ".container": {
 	backgroundColor: Alloy.Globals.constants.BASE_COLOR,
 	barColor: Alloy.Globals.constants.NAV_BAR_COLOR,
@@ -12,11 +23,12 @@
 	tabBarHidden: true,
 	translucent: false
 },
-".container[platform=ios]": {
+"Window[platform=ios]": {
 	statusBarStyle: Titanium.UI.iPhone.StatusBar.LIGHT_CONTENT
 },
 ".inside": {
-	backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR
+	backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
+	top: Alloy.Globals.marginTopWindow
 },
 "#drawer": {
     openDrawerGestureMode: "OPEN_MODE_NONE",

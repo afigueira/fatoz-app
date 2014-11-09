@@ -6,7 +6,7 @@ iOS header: ca-app-pub-1202817906596777/3528442443
 https://github.com/appcelerator/titanium_modules
 Precisa instalar o módulo do admob */
 
-
+Alloy.Globals.Cloud = require("ti.cloud");
 
 Alloy.Globals.constants = {
 	
@@ -17,7 +17,8 @@ Alloy.Globals.constants = {
 	
 };
 
-Alloy.Globals.Cloud = require("ti.cloud");
+Alloy.Globals.iOS7 = Titanium.Platform.osname == 'iphone' && parseFloat(Titanium.Platform.version) >= 7;
+Alloy.Globals.marginTopWindow = Alloy.Globals.iOS7 ? 66 : 0;
 
 Alloy.Globals.drawer = function(sidebar, element, titleActionBar, func) {	
 	sidebar.add(Alloy.createController('sidebar').getView());

@@ -2,7 +2,12 @@
     <Widget id="drawer" src="nl.fokkezb.drawer">
         <Window module="xp.ui" role="leftWindow" id="sidebar"></Window>
 
-        <Window module="xp.ui" role="centerWindow">			
+        <Window module="xp.ui" role="centerWindow" title="Procurando jogador...">
+        	
+        	<View id="titleBar" platform="ios">
+        		<Label text="Procurando jogador..." class="fontWhite proximaNovaRegular" id="labelTitleBar"/>
+    		</View>
+    					
         	<ImageView visible="false" id="trophy" image="/images/icon-queue-trophy.png" top="195" zIndex="100" />
 
 			<View class="layoutVertical">

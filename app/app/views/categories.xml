@@ -2,7 +2,12 @@
     <Widget id="drawer" src="nl.fokkezb.drawer">
         <Window module="xp.ui" role="leftWindow" id="sidebar"></Window>
 
-        <Window module="xp.ui" role="centerWindow">			
+        <Window module="xp.ui" role="centerWindow" title="Categorias">
+        	
+        	<View id="titleBar" platform="ios">
+        		<Label text="Categorias" class="fontWhite proximaNovaRegular" id="labelTitleBar"/>
+    		</View>	
+    			
 			<View class="inside">
 				<!--<View id="containerTabs" class="white">
 					<View id="tabs">

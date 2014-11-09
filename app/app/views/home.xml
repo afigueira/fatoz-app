@@ -4,13 +4,9 @@
 
         <Window module="xp.ui" role="centerWindow" title="Início">
         	
-        	<LeftNavButton platform="ios">
-        		<Button>...</Button>
-        	</LeftNavButton>
-        	
-        	<TitleControl platform="ios">
-        		<Label text="Início"></Label>
-        	</TitleControl>
+        	<View id="titleBar" platform="ios">
+        		<Label text="Início" class="fontWhite proximaNovaRegular" id="labelTitleBar"/>
+    		</View>
         	
 			<ScrollView class="inside">		
 				<View class="layoutVertical">

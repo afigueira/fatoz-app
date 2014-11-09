@@ -1,6 +1,7 @@
 Alloy.Globals.drawer($.sidebar, $.drawer, 'Início', init);
 
 function init(){
+	
 	getCategories($.popular, {
 	    classname: 'categories',
 	    page: 1,
@@ -46,7 +47,6 @@ function navigation(){
 	for(var i=0,j=$.contentTabs.children.length; i<j; i++){
 		$.contentTabs.children[i].visible = false;	
 	};
-
 	
 	$.contentTabs.children[0].visible = true;
 	$.tabs.children[0].children[1].visible = true;
@@ -126,7 +126,7 @@ function getCategories(element, obj, isFirst){
 function setBackgrounds(element, length, a){
 	var backgroundImage;	
 	var image;		
-		
+	
 	image = element[a];
 	backgroundImage = image.background;
 	

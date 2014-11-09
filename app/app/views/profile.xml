@@ -2,7 +2,12 @@
     <Widget id="drawer" src="nl.fokkezb.drawer">
         <Window module="xp.ui" role="leftWindow" id="sidebar"></Window>
 
-        <Window module="xp.ui" role="centerWindow">
+        <Window module="xp.ui" role="centerWindow" title="Perfil">
+        	
+        	<View id="titleBar" platform="ios">
+        		<Label text="Perfil" class="fontWhite proximaNovaRegular" id="labelTitleBar"/>
+    		</View>
+    		
 			<ScrollView class="inside">
 				<View class="topProfile" id="coverPhoto">				
 					<View class="profile">
