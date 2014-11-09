@@ -223,8 +223,8 @@ function Controller() {
         id: "__alloyId0"
     });
     $.__views.__alloyId1 = Ti.UI.createScrollView({
-        layout: "vertical",
         backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
+        layout: "vertical",
         id: "__alloyId1"
     });
     $.__views.__alloyId0.add($.__views.__alloyId1);
@@ -247,9 +247,9 @@ function Controller() {
     });
     $.__views.containerTabs.add($.__views.tabs);
     $.__views.__alloyId2 = Ti.UI.createView({
+        touchEnabled: true,
         height: 46,
         width: 72,
-        touchEnabled: true,
         contentTabsIndex: "0",
         id: "__alloyId2"
     });
@@ -278,9 +278,9 @@ function Controller() {
     });
     $.__views.__alloyId2.add($.__views.__alloyId4);
     $.__views.__alloyId5 = Ti.UI.createView({
+        touchEnabled: true,
         height: 46,
         width: 72,
-        touchEnabled: true,
         contentTabsIndex: "1",
         id: "__alloyId5"
     });
@@ -310,9 +310,9 @@ function Controller() {
     });
     $.__views.__alloyId5.add($.__views.__alloyId7);
     $.__views.__alloyId8 = Ti.UI.createView({
+        touchEnabled: true,
         height: 46,
         width: 72,
-        touchEnabled: true,
         contentTabsIndex: "2",
         id: "__alloyId8"
     });

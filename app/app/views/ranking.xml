@@ -1,17 +1,21 @@
 <Alloy>
-	<Window>
-		<TableView class="listRank" id="listRank">
-			<!--<TableViewRow class="rowRank">
-				<Label class="rankNumber proximaNovaRegular" text="1."/>
-				<ImageView class="imageProfile imageProfileRank" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
-				<Label class="rankName proximaNovaRegular" text="Rafael Costas"/>
-				<View class="rankPoint">
-					<Label class="rankPt proximaNovaRegular" textid="abbreviation_points"/>
-					<Label class="rankTotal proximaNovaRegular" text="12.156"/>							
-				</View>
-				
-				<View class="borderGray borderGrayProfile" />
-		    </TableViewRow>-->		    						   				   			    
-		</TableView>
-	</Window>
+    <Widget id="drawer" src="nl.fokkezb.drawer">
+        <Window module="xp.ui" role="leftWindow" id="sidebar"></Window>
+
+        <View platform="android" role="centerWindow">			
+			<TableView class="listRank" id="listRank">
+				<!--<TableViewRow class="rowRank">
+					<Label class="rankNumber proximaNovaRegular" text="1."/>
+					<ImageView class="imageProfile imageProfileRank" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+					<Label class="rankName proximaNovaRegular" text="Rafael Costas"/>
+					<View class="rankPoint">
+						<Label class="rankPt proximaNovaRegular" textid="abbreviation_points"/>
+						<Label class="rankTotal proximaNovaRegular" text="12.156"/>							
+					</View>
+					
+					<View class="borderGray borderGrayProfile" />
+			    </TableViewRow>-->		    						   				   			    
+			</TableView>
+    	</View>
+    </Widget>
 </Alloy>

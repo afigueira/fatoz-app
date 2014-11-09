@@ -89,28 +89,39 @@ function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "ranking";
     if (arguments[0]) {
-        __processArg(arguments[0], "__parentSymbol");
+        var __parentSymbol = __processArg(arguments[0], "__parentSymbol");
         __processArg(arguments[0], "$model");
         __processArg(arguments[0], "__itemTemplate");
     }
     var $ = this;
     var exports = {};
-    $.__views.ranking = Ti.UI.createWindow({
-        id: "ranking"
+    $.__views.sidebar = require("xp.ui").createWindow({
+        role: "leftWindow",
+        id: "sidebar"
     });
-    $.__views.ranking && $.addTopLevelView($.__views.ranking);
+    $.__views.__alloyId166 = Ti.UI.createView({
+        height: Titanium.UI.SIZE,
+        role: "centerWindow",
+        id: "__alloyId166"
+    });
     $.__views.listRank = Ti.UI.createTableView({
         backgroundColor: "#ffffff",
         id: "listRank"
     });
-    $.__views.ranking.add($.__views.listRank);
+    $.__views.__alloyId166.add($.__views.listRank);
+    $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
+        openDrawerGestureMode: "OPEN_MODE_NONE",
+        closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
+        leftDrawerWidth: 250,
+        id: "drawer",
+        children: [ $.__views.sidebar, $.__views.__alloyId166 ],
+        __parentSymbol: __parentSymbol
+    });
+    $.__views.drawer && $.addTopLevelView($.__views.drawer);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
-    $.ranking.addEventListener("open", function() {
-        init();
-    });
-    $.ranking.open();
+    require("alloy").Globals.drawer($.sidebar, $.drawer, "Ranking", init());
     _.extend($, exports);
 }
 

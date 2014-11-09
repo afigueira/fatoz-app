@@ -1,5 +1,7 @@
 var args = arguments[0] || {};
 
+require('alloy').Globals.drawer($.sidebar, $.drawer, 'Ranking', init());
+
 function init(){
 	categoryId = args.categoryId || '';
 
@@ -129,8 +131,3 @@ function setUserName(element, length, a){
 	};	
 }*/
 
-$.ranking.addEventListener('open', function(e){
-	init();
-});
-
-$.ranking.open();
