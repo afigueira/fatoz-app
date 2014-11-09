@@ -31,20 +31,17 @@ function Controller() {
                     $.addClass(category, "category");
                     var backgroundCategory = Titanium.UI.createImageView({
                         width: "100%",
-                        height: 350,
-                        background: e.categories[i].background
+                        height: 350
                     });
                     $.addClass(backgroundCategory, "backgroundCategory");
-                    console.log("background", e.categories[i].background);
-                    console.log("ID Categoria: ", e.categories[i].id);
-                    console.log("Nome Categoria: ", e.categories[i].title);
+                    Alloy.Globals.loadPhoto(backgroundCategory, "image", e.categories[i].background);
                     var containerTitleCategory = Titanium.UI.createView();
                     $.addClass(containerTitleCategory, "containerTitleCategory");
                     var iconCategory = Titanium.UI.createImageView({
-                        icon: e.categories[i].icon,
                         width: 16,
                         height: 16
                     });
+                    Alloy.Globals.loadPhoto(iconCategory, "image", e.categories[i].icon);
                     var titleCategory = Titanium.UI.createLabel();
                     $.addClass(titleCategory, "titleCategory fontWhite proximaNovaRegular");
                     var arrowDown = Titanium.UI.createImageView({
@@ -53,7 +50,9 @@ function Controller() {
                     $.addClass(arrowDown, "arrowCategory");
                     var descriptionCategory = Titanium.UI.createLabel();
                     $.addClass(descriptionCategory, "descriptionCategory fontWhite proximaNovaRegular");
-                    var actionsCategory = Titanium.UI.createView();
+                    var actionsCategory = Titanium.UI.createView({
+                        visible: false
+                    });
                     $.addClass(actionsCategory, "actionsCategory");
                     var insideScrollable = Titanium.UI.createView();
                     $.addClass(insideScrollable, "insideScrollable");
@@ -113,9 +112,7 @@ function Controller() {
                     row.add(toggle);
                     element.add(row);
                 }
-                setBackgrounds(element.children, element.children.length, 0);
-                setIcons(element.children, element.children.length, 0);
-            } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+            } else alert("Houve um erro para carregar as categorias");
         });
         element.addEventListener("click", function(e) {
             if (e.source.classes) {
@@ -135,44 +132,13 @@ function Controller() {
                     e.source.closed = false;
                     this.children[e.source.index].children[0].height = 220;
                     this.children[e.source.index].height = 220;
+                    this.children[e.source.index].children[0].children[4].visible = true;
                 } else {
                     e.source.closed = true;
                     this.children[e.source.index].children[0].height = 89;
                     this.children[e.source.index].height = 89;
+                    this.children[e.source.index].children[0].children[4].visible = false;
                 }
-            }
-        });
-    }
-    function setBackgrounds(element, length, a) {
-        var backgroundImage;
-        var image;
-        image = element[a].children[0].children[0];
-        backgroundImage = image.background;
-        Alloy.Globals.Cloud.Photos.show({
-            photo_id: backgroundImage
-        }, function(e) {
-            console.log(a, e);
-            if (e.success) {
-                var photo = e.photos[0];
-                var urlImage = photo.urls.original;
-                image.backgroundImage = urlImage;
-                length - 1 > a && setBackgrounds(element, length, ++a);
-            }
-        });
-    }
-    function setIcons(element, length, a) {
-        var iconImage;
-        var icon;
-        icon = element[a].children[0].children[1].children[0].children[0].children[0];
-        iconImage = icon.icon;
-        Alloy.Globals.Cloud.Photos.show({
-            photo_id: iconImage
-        }, function(e) {
-            if (e.success) {
-                var photo = e.photos[0];
-                var urlIcon = photo.urls.original;
-                icon.image = urlIcon;
-                length - 1 > a && setIcons(element, length, ++a);
             }
         });
     }
@@ -210,6 +176,7 @@ function Controller() {
     $.__views.allCategories = Ti.UI.createScrollView({
         layout: "vertical",
         width: Titanium.UI.SIZE,
+        height: Titanium.UI.FILL,
         id: "allCategories"
     });
     $.__views.__alloyId2.add($.__views.allCategories);

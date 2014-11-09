@@ -1,0 +1,34 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch development
+# Your branch is up-to-date with 'origin/development'.
+#
+# Changes to be committed:
+#	modified:   app/Resources/android/alloy/controllers/categories.js
+#	modified:   app/Resources/android/alloy/controllers/home.js
+#	modified:   app/Resources/android/alloy/controllers/profile.js
+#	modified:   app/Resources/android/alloy/controllers/ranking.js
+#	modified:   app/Resources/android/alloy/controllers/roomQueue.js
+#	modified:   app/Resources/android/alloy/controllers/settings.js
+#	modified:   app/Resources/android/alloy/controllers/sidebar.js
+#	modified:   app/Resources/android/alloy/controllers/signup.js
+#	modified:   app/Resources/android/alloy/styles/categories.js
+#	modified:   app/Resources/android/alloy/styles/forgotPassword.js
+#	modified:   app/Resources/android/alloy/styles/friends.js
+#	modified:   app/Resources/android/alloy/styles/game.js
+#	modified:   app/Resources/android/alloy/styles/gameResult.js
+#	modified:   app/Resources/android/alloy/styles/home.js
+#	modified:   app/Resources/android/alloy/styles/login.js
+#	modified:   app/Resources/android/alloy/styles/profile.js
+#	modified:   app/Resources/android/alloy/styles/ranking.js
+#	modified:   app/Resources/android/alloy/styles/roomQueue.js
+#	modified:   app/Resources/android/alloy/styles/settings.js
+#	modified:   app/Resources/android/alloy/styles/sidebar.js
+#	modified:   app/Resources/android/alloy/styles/signup.js
+#	modified:   app/app/controllers/login.js
+#
+# Changes not staged for commit:
+#	modified:   app/app/controllers/login.js
+#
+

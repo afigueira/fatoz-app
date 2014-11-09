@@ -40,15 +40,11 @@ function Controller() {
         $.contentTabs.children[0].visible = true;
         $.tabs.children[0].children[1].visible = true;
     }
-    function createRowCategories(obj) {
-        var views = [];
+    function createRowCategories(obj, container) {
         for (var i = 0, j = obj.length; j > i; i++) {
-            var category = Titanium.UI.createView({
-                background: obj[i].background
-            });
+            var category = Titanium.UI.createView();
             $.addClass(category, "category");
             var iconCategory = Titanium.UI.createImageView({
-                icon: obj[i].icon,
                 width: 32,
                 height: 32
             });
@@ -76,50 +72,14 @@ function Controller() {
             category.add(descriptionCategory);
             category.add(btnNewMatch);
             category.add(btnRanking);
-            views[i] = category;
+            container.addView(category);
+            Alloy.Globals.loadPhoto(iconCategory, "image", obj[i].icon);
+            Alloy.Globals.loadPhoto(category, "backgroundImage", obj[i].background);
         }
-        return views;
     }
     function getCategories(element, obj) {
         Alloy.Globals.Cloud.Objects.query(obj, function(e) {
-            if (e.success) {
-                var views = createRowCategories(e.categories);
-                element.views = views;
-                setBackgrounds(element.views, element.views.length, 0);
-                setIcons(element.views, element.views.length, 0);
-            } else alert("Houve um erro para carregar as categorias");
-        });
-    }
-    function setBackgrounds(element, length, a) {
-        var backgroundImage;
-        var image;
-        image = element[a];
-        backgroundImage = image.background;
-        Alloy.Globals.Cloud.Photos.show({
-            photo_id: backgroundImage
-        }, function(e) {
-            if (e.success) {
-                var photo = e.photos[0];
-                var urlImage = photo.urls.original;
-                image.backgroundImage = urlImage;
-                length - 1 > a && setBackgrounds(element, length, ++a);
-            }
-        });
-    }
-    function setIcons(element, length, a) {
-        var iconImage;
-        var icon;
-        icon = element[a].children[0];
-        iconImage = icon.icon;
-        Alloy.Globals.Cloud.Photos.show({
-            photo_id: iconImage
-        }, function(e) {
-            if (e.success) {
-                var photo = e.photos[0];
-                var urlIcon = photo.urls.original;
-                icon.image = urlIcon;
-                length - 1 > a && setIcons(element, length, ++a);
-            }
+            e.success ? createRowCategories(e.categories, element) : alert("Houve um erro para carregar as categorias");
         });
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
