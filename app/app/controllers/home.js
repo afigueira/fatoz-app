@@ -52,17 +52,14 @@ function navigation(){
 	$.tabs.children[0].children[1].visible = true;
 }
 
-function createRowCategories(obj){
-	var views = [];
+function createRowCategories(obj, container){
 
 	for(var i=0,j=obj.length; i<j; i++){
-		var category = Titanium.UI.createView({
-			background: obj[i].background
-		});
+		var category = Titanium.UI.createView();
 		$.addClass(category, "category");
 		
 		var iconCategory = Titanium.UI.createImageView({
-			icon: obj[i].icon,
+			//icon: obj[i].icon,
 			width: 32,
 			height: 32
 		});
@@ -102,70 +99,26 @@ function createRowCategories(obj){
 		// category.add(btnChallenge);
 		category.add(btnRanking);
 		
-		views[i] = category;
+		container.addView(category);
+		
+		Alloy.Globals.loadPhoto(iconCategory, 'image', obj[i].icon);
+		Alloy.Globals.loadPhoto(category, 'backgroundImage', obj[i].background);
+		
+		//views[i] = category;
 	};
-
-	return views;
 }
 
 function getCategories(element, obj, isFirst){
 	Alloy.Globals.Cloud.Objects.query(obj, function (e) {	
 	    if (e.success) {			
-			var views = createRowCategories(e.categories);
+			createRowCategories(e.categories, element);
 
-			element.views = views;	
+			//element.views = views;	
 			
-			setBackgrounds(element.views, element.views.length, 0);
-			setIcons(element.views, element.views.length, 0);
+			//setBackgrounds(element.views, element.views.length, 0);
+			//setIcons(element.views, element.views.length, 0);
 	    } else {
 	        alert('Houve um erro para carregar as categorias');
-	    }
-	});
-}
-
-function setBackgrounds(element, length, a){
-	var backgroundImage;	
-	var image;		
-	
-	image = element[a];
-	backgroundImage = image.background;
-	
-	Alloy.Globals.Cloud.Photos.show({
-	    photo_id: backgroundImage
-	}, function (e) {
-	    if (e.success) {
-	        var photo = e.photos[0];
-
-	        var urlImage = photo.urls.original;
-
-            image.backgroundImage = urlImage;			            
-            
-			if (a < length - 1) {
-				setBackgrounds(element, length, ++a);	
-			}
-	    }
-	});
-}
-
-function setIcons(element, length, a){
-	var iconImage;	
-	var icon;
-		
-	icon = element[a].children[0];
-	iconImage = icon.icon;
-				
-	Alloy.Globals.Cloud.Photos.show({
-	    photo_id: iconImage
-	}, function (e) {
-	    if (e.success) {
-	        var photo = e.photos[0];
-
-	        var urlIcon = photo.urls.original;		        
-            icon.image = urlIcon;			            
-            
-            if (a < length - 1) {
-            	setIcons(element, length, ++a);
-            }
 	    }
 	});
 }

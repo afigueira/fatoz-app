@@ -27,7 +27,7 @@
 				</View>-->
 				
 				<!--<ScrollableView id="contentTabs">-->
-				<View class="allCategories layoutVertical">
+				<View class="layoutVertical">
 					<!-- <View id="containerSearch" class="black">
 						<TextField id="search" class="white fontGray radiusLarge proximaNovaRegular" hintText="Pesquisar" />
 					</View> -->

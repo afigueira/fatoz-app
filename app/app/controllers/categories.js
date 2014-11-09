@@ -57,24 +57,22 @@ function getCategories(element, param){
 				  /*width: 320,
 				  height: 220,*/					  
 				  width: "100%",
-				  height: 350,
-				  background: e.categories[i].background
+				  height: 350
+				  //background: e.categories[i].background
 				});
 				$.addClass(backgroundCategory, "backgroundCategory");
-
-				console.log('background', e.categories[i].background);
-
-				console.log('ID Categoria: ', e.categories[i].id);
-				console.log('Nome Categoria: ', e.categories[i].title);
+				Alloy.Globals.loadPhoto(backgroundCategory, 'image', e.categories[i].background);
 									
 				var containerTitleCategory = Titanium.UI.createView();
 				$.addClass(containerTitleCategory, "containerTitleCategory");
 							
 				var iconCategory = Titanium.UI.createImageView({
-					icon: e.categories[i].icon,
+					//icon: e.categories[i].icon,
 					width: 16,
 					height: 16					
 				});
+				
+				Alloy.Globals.loadPhoto(iconCategory, 'image', e.categories[i].icon);
 				
 				var titleCategory = Titanium.UI.createLabel();
 				$.addClass(titleCategory, "titleCategory fontWhite proximaNovaRegular");
@@ -87,7 +85,9 @@ function getCategories(element, param){
 				var descriptionCategory = Titanium.UI.createLabel();
 				$.addClass(descriptionCategory, "descriptionCategory fontWhite proximaNovaRegular");
 				
-				var actionsCategory = Titanium.UI.createView();
+				var actionsCategory = Titanium.UI.createView({
+					visible: false
+				});
 				$.addClass(actionsCategory, "actionsCategory");
 
 				var insideScrollable = Titanium.UI.createView();
@@ -118,8 +118,6 @@ function getCategories(element, param){
 				widthUiSize.add(btnRanking);
 				insideScrollable.add(widthUiSize);
 				
-				
-				
 				var insideScrollable2 = Titanium.UI.createView();
 				$.addClass(insideScrollable2, "insideScrollable");
 
@@ -141,9 +139,7 @@ function getCategories(element, param){
 				});
 
 				actionsCategory.add(ScrollableView);
-				
-
-				
+								
 				var layoutAbsolute = Titanium.UI.createView();			
 				$.addClass(layoutAbsolute, "layoutAbsolute");			
 				var layoutHorizontal = Titanium.UI.createView();			
@@ -190,11 +186,10 @@ function getCategories(element, param){
 				element.add(row);
 			}
 	        
-	        setBackgrounds(element.children, element.children.length, 0);
-	        setIcons(element.children, element.children.length, 0);
+	        //setBackgrounds(element.children, element.children.length, 0);
+	        //setIcons(element.children, element.children.length, 0);
 	    } else {
-	        alert('Error:\n' +
-	            ((e.error && e.message) || JSON.stringify(e)));
+	        alert('Houve um erro para carregar as categorias');
 	    }
 	});
 
@@ -219,6 +214,7 @@ function getCategories(element, param){
 					//e.row.height = 220;
 					this.children[e.source.index].children[0].height = 220;
 					this.children[e.source.index].height = 220;
+					this.children[e.source.index].children[0].children[4].visible = true;
 					
 				}else{			
 					e.source.closed = true;		
@@ -226,6 +222,7 @@ function getCategories(element, param){
 					//e.row.height = 89;					
 					this.children[e.source.index].children[0].height = 89;
 					this.children[e.source.index].height = 89;
+					this.children[e.source.index].children[0].children[4].visible = false;
 				}
 			}
 		}
