@@ -3,11 +3,11 @@
         <Window module="xp.ui" role="leftWindow" id="sidebar"></Window>
 
         <View platform="android" role="centerWindow">
-        	<ScrollView class="inside">			
+        	<ScrollView class="inside" id="scrollView">			
 				<View class="resultsGame">
 					<View class="playersResultGame">
 						<View class="containerImageProfileResult">
-							<ImageView id="imageProfileA" class="imageProfile imageProfileYouResult borderGreenGame" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
+							<ImageView id="imageProfileA" class="imageProfile imageProfileYouResult" backgroundImage="http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg" />
 							<View id="trophyA" class="trophyGame trophyResultGame" visible="false" />
 						</View>
 						
@@ -24,12 +24,12 @@
 					</View>
 					
 					<View class="statisticsResultGame">
-						<View class="statisticsItemGame">
-							<Label class="numberStatisticsItemGame proximaNovaRegular" id="matchPoints" />
-							<Label class="labelStatisticsItemGame proximaNovaRegular" textid="match_points" />
+						<View class="statisticsItemGame pullLeft">
+							<Label class="numberStatisticsItemGame proximaNovaRegular" id="pointsA" />
+							<Label class="labelStatisticsItemGame proximaNovaRegular" textid="points" />
 						</View>
 						
-						<View class="statisticsBorderGame" />
+						<!--<View class="statisticsBorderGame" />
 						
 						<View class="statisticsItemGame">
 							<Label class="numberStatisticsItemGame proximaNovaRegular" text="620" />
@@ -39,15 +39,15 @@
 						<View class="statisticsBorderGame" />
 						
 						<View class="statisticsItemGame">
-							<Label class="numberStatisticsItemGame proximaNovaRegular" text="720" />
-							<Label class="labelStatisticsItemGame proximaNovaRegular" textid="bonus_victory" />
+							<Label class="numberStatisticsItemGame labelOrangeGame proximaNovaRegular" text="720" />
+							<Label class="labelStatisticsItemGame labelOrangeGame proximaNovaRegular" textid="bonus_victory" />
 						</View>
 						
-						<View class="statisticsBorderGame" />
+						<View class="statisticsBorderGame" />-->
 						
-						<View class="statisticsItemGame">
-							<Label class="numberStatisticsItemGame labelOrangeGame proximaNovaRegular" text="820" />
-							<Label class="labelStatisticsItemGame labelOrangeGame proximaNovaRegular" textid="total_points" />
+						<View class="statisticsItemGame pullRight">
+							<Label class="numberStatisticsItemGame proximaNovaRegular" id="pointsB" />
+							<Label class="labelStatisticsItemGame proximaNovaRegular" textid="points" />
 						</View>
 					</View>
 				
@@ -58,14 +58,14 @@
 						<Button class="btnBlue btnFacebook btnFacebookResultGame" title="Compartilhar Resultado" />
 						
 						<View class="layoutHorizontal">
-							<Button class="btnWhite btnWhiteResultGame marginRightBtnWhite" titleid="button_rematch" />
-							<Button class="btnWhite btnWhiteResultGame" titleid="button_play_again" />
+							<Button class="btnWhite btnWhiteResultGame marginRightBtnWhite" titleid="button_ranking" id="buttonRanking" />
+							<Button class="btnWhite btnWhiteResultGame" titleid="button_play_again" id="buttonPlayAgain" />
 						</View>
 						
-						<View class="layoutHorizontal">
+						<!--<View class="layoutHorizontal">
 							<Button class="btnWhite btnWhiteResultGame marginRightBtnWhite" titleid="button_challenge" />
-							<Button class="btnWhite btnWhiteResultGame" titleid="button_ranking" />
-						</View>			
+							<Button class="btnWhite btnWhiteResultGame marginRightBtnWhite" titleid="button_rematch" />
+						</View>-->			
 					</View>
 				</View>
 			</ScrollView>

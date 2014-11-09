@@ -33,7 +33,7 @@
 						
 						<View id="contentTabs" top="46">
 							<ScrollableView id="popular" class="scrollable" totalChildren="0">
-								<View class="category soccer">									
+								<!--<View class="category soccer">									
 									<ImageView image="/images/icon-home-category-football.png" class="iconCategory"/>
 									<Label class="fontWhite proximaNovaRegular titleCategory" id="titleCategory" />
 									<Label class="fontWhite proximaNovaRegular descriptionCategory" id="descriptionCategory" />
@@ -41,11 +41,11 @@
 									<Button titleid="new_match" class="radiusLarge green fontWhite proximaNovaRegular btnNewMatch" />
 									<Button titleid="challenge" class="btnWhite btnChallenge" />
 									<Button titleid="ranking" class="btnWhite btnRanking" />	
-								</View>
+								</View>-->
 							</ScrollableView>
 							
 							<ScrollableView id="recent" class="scrollable" totalChildren="0">							
-								<View class="category soccer">
+								<!--<View class="category soccer">
 									<ImageView image="/images/icon-home-category-football.png" class="iconCategory"/>
 									<Label class="fontWhite proximaNovaRegular titleCategory" id="titleCategory" />
 									<Label class="fontWhite proximaNovaRegular descriptionCategory" id="descriptionCategory" />
@@ -53,7 +53,7 @@
 									<Button titleid="new_match" class="radiusLarge green fontWhite proximaNovaRegular btnNewMatch" />
 									<Button titleid="challenge" class="btnWhite btnChallenge" />
 									<Button titleid="ranking" class="btnWhite btnRanking" />	
-								</View>
+								</View>-->
 							</ScrollableView>	
 						</View>
 

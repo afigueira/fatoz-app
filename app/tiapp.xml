@@ -63,6 +63,7 @@
         <module platform="android">dk.napp.drawer</module>
         <module platform="iphone">net.iamyellow.tiws</module>
         <module platform="android">net.iamyellow.tiws</module>
+        <module platform="iphone">com.appcelerator.urlSession</module>
     </modules>
     <deployment-targets>
         <target device="android">true</target>

@@ -2,13 +2,26 @@ var args = arguments[0] || {};
 
 Alloy.Globals.drawer($.sidebar, $.drawer, 'Resultado da Partida', init());
 
-var myUserSide;
 var matchId = args.matchId;
 var pointsA;
 var pointsB;
-
+var match;
+ 
 function init(){
     matches();
+}
+
+function events() {
+	$.buttonPlayAgain.addEventListener('click', openQueue);
+	$.buttonRanking.addEventListener('click', openRanking);
+}
+
+function openQueue() {
+	Alloy.createController('roomQueue', {categoryId: match.category});
+}
+
+function openRanking() {
+	Alloy.createController('ranking', {categoryId: match.category});
 }
 
 function matches(){
@@ -20,6 +33,9 @@ function matches(){
     }, function (e) {   
         if (e.success) {
             match = e.matches[0];
+            
+            events();
+            
             var userA = match.user_a;
             var userB = match.user_b;
             pointsA = match.points_a;
@@ -29,23 +45,24 @@ function matches(){
             setUserInfo(userB, 'b', pointsB);
 
 
-            if(pointsA > pointsB){
-                $.trophyA.visible = true;
-            }else{
-                $.trophyB.visible = true;
-            }
-
-            console.log(match);
-            console.log('pointsA', pointsA);
-            console.log('pointsB', pointsB);
-
-            //matchPoints
-
-
+			if (pointsA != pointsB) {
+				if(pointsA > pointsB){
+	            	$.addClass($.imageProfileA, 'imageProfile imageProfileYouResult borderGreenGame');
+	            	$.addClass($.imageProfileB, 'imageProfile imageProfileYouResult borderRedGame');
+	                $.trophyA.visible = true;
+	            }else{
+	            	$.addClass($.imageProfileB, 'imageProfile imageProfileYouResult borderGreenGame');
+	            	$.addClass($.imageProfileA, 'imageProfile imageProfileYouResult borderRedGame');
+	                $.trophyB.visible = true;
+	            }
+			} else {
+				$.addClass($.imageProfileA, 'imageProfile imageProfileYouResult borderRedGame');
+				$.addClass($.imageProfileB, 'imageProfile imageProfileYouResult borderRedGame');
+			}
+            
             
         } else {
-            alert('Error:\n' +
-                ((e.error && e.message) || JSON.stringify(e)));
+            alert('Houve um erro para pegar os dados da partida');
         }
     });
 }
@@ -59,19 +76,13 @@ function setUserInfo(userId, side, points){
 			var user = e.users[0];						
 			
 			var name = user.id == Titanium.App.Properties.getString('userId') ? 'Você' : user.first_name;
-			
-			if (user.id == Titanium.App.Properties.getString('userId')) {
-				myUserSide = side;
-			}
 						
 			if(side == 'a'){				
 				$.nameUserA.text = name;
-
-				$.matchPoints.text = points;			
+				$.pointsA.text = points;		
 			}else{
 				$.nameUserB.text = name;
-
-				$.matchPoints.text = points;
+				$.pointsB.text = points;
 			}
 		}
 	});
