@@ -10,28 +10,10 @@ function init(){
 	    per_page: 10
 	});
 
-	getCategories($.popularCategories, {
-	    classname: 'categories',
-	    page: 1,
-	    per_page: 10,
-	     where: {
-	    	is_popular: 1
-	    }
-	});
-
-	getCategories($.recentCategories, {
-	    classname: 'categories',
-	    page: 1,
-	    per_page: 10,
-	     where: {
-	    	is_recent: 1
-	    }
-	});
-
-	pagination();
+	//pagination();
 }
 
-function pagination(){
+/*function pagination(){
 	$.contentTabs.addEventListener('scrollend', function(e){	        			        	
     	for(var i=0,j=$.tabs.children.length; i<j; i++){
 			$.tabs.children[i].children[1].visible = false;
@@ -51,7 +33,7 @@ function tabNavigation(e){
 	};
 
 	$.tabs.children[contentTabsIndex].children[1].visible = true;
-}
+}*/
 
 function getCategories(element, param){
 	Alloy.Globals.Cloud.Objects.query(param, function (e) {
@@ -60,9 +42,10 @@ function getCategories(element, param){
 	    	var total = e.categories.length;
 	              
 	        for (var i = 0; i < total; i++){
-	        	var row = Titanium.UI.createTableViewRow({
+	        	var row = Titanium.UI.createView({
+	        		height: Titanium.UI.SIZE,
 	        		title: e.categories[i].title,
-	        		categories_id: e.categories[i].id
+	        		categories_id: e.categories[i].id	        		
 	        	});
 				
 				var category = Titanium.UI.createView();			
@@ -73,7 +56,8 @@ function getCategories(element, param){
 				  height: 220,*/	
 				  width: Titanium.UI.FILL,				  
 				  height: 220,
-				  background: e.categories[i].background
+				  background: e.categories[i].background,
+				  backgroundImage: "https://s3-us-west-1.amazonaws.com/storage.cloud.appcelerator.com/Sg2e4ptGlzUPVVvGfWUotUGeq72dkPeH/photos/da/61/5456cede7c874208ad0006b1/bg_entretenimento_square_75.jpg"
 				});
 				$.addClass(backgroundCategory, "backgroundCategory");
 
@@ -201,11 +185,11 @@ function getCategories(element, param){
 				row.add(category);
 				row.add(toggle);
 
-				element.appendRow(row);
+				element.add(row);
 			}
 	        
-	        setBackgrounds(element.data[0].rows, element.data[0].rows.length, 0);
-	        setIcons(element.data[0].rows, element.data[0].rows.length, 0);
+	        setBackgrounds(element.children, element.children.length, 0);
+	        setIcons(element.children, element.children.length, 0);
 	    } else {
 	        alert('Error:\n' +
 	            ((e.error && e.message) || JSON.stringify(e)));
