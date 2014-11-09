@@ -8,9 +8,20 @@
 				<ScrollView>
 					<ImageView image="/images/logo-signup.png" id="logo"></ImageView>
 					
-					<TextField id="firstName" hintText="L('first_name')" class="radius input fontGray" />					
-					<TextField id="email" hintText="L('email')" class="radius input fontGray" />
-					<TextField id="password" passwordMask="true" hintText="L('password')" class="radius input fontGray" />
+					<View class="layoutAbsolute heightUiSize">
+						<TextField id="firstName" hintText="L('first_name')" class="radius input fontGray" />					
+						<ImageView image="/images/icon-user.png" right="40" top="30" />
+					</View>
+
+					<View class="layoutAbsolute heightUiSize">
+						<TextField id="email" hintText="L('email')" class="radius input fontGray" />
+						<ImageView image="/images/icon-email.png" right="40" top="30" />
+					</View>
+
+					<View class="layoutAbsolute heightUiSize">
+						<TextField id="password" passwordMask="true" hintText="L('password')" class="radius input fontGray" />
+						<ImageView image="/images/icon-key.png" right="40" top="30" />
+					</View>
 					
 					<!--<Picker id="states" width="Titanium.UI.FILL">
 						<PickerRow title="Selecione seu Estado"></PickerRow>

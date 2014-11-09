@@ -62,7 +62,8 @@ function getCategories(element, param){
 	              
 	        for (var i = 0; i < total; i++){
 	        	var row = Titanium.UI.createTableViewRow({
-	        		title: e.categories[i].title
+	        		title: e.categories[i].title,
+	        		categories_id: e.categories[i].id
 	        	});
 				
 				var category = Titanium.UI.createView();			
@@ -120,7 +121,8 @@ function getCategories(element, param){
 				$.addClass(btnChallenge, "btnWhite btnChallenge");*/
 				
 				var btnRanking = Titanium.UI.createButton({				
-					titleid: "ranking"
+					titleid: "ranking",
+					categories_id: e.categories[i].id
 				});
 				$.addClass(btnRanking, "btnWhite btnRanking");
 				
@@ -137,11 +139,18 @@ function getCategories(element, param){
 				var insideScrollable2 = Titanium.UI.createView();
 				$.addClass(insideScrollable2, "insideScrollable");
 
-				var Statistics = Titanium.UI.createLabel({
+				/*var Statistics = Titanium.UI.createLabel({
 					text: "estatisticas"
 				});
 				$.addClass(Statistics, "fontWhite");
-				insideScrollable2.add(Statistics);	
+				insideScrollable2.add(Statistics);	*/
+
+				var webView = Titanium.UI.createWebView({
+					url: "https://1f0b6fd33fa8afdb54e5479c5a17447732b25d68.cloudapp.appcelerator.com/piechart",
+					scalesPageToFit: true
+				});
+
+				insideScrollable2.add(webView);
 				
 				var ScrollableView = Titanium.UI.createScrollableView({
 					views: [insideScrollable, insideScrollable2]
@@ -210,18 +219,24 @@ function getCategories(element, param){
 				Alloy.createController('roomQueue', {categoryId: e.source.id});
 			}
 
-			if (e.source.classes.indexOf('toggle') > -1){
-				if(e.row.children[0].closed){
-					e.row.children[0].closed = false;		
-					e.row.children[0].height = 220;
-					e.row.height = 220;
-					
-				}else{			
-					e.row.children[0].closed = true;		
-					e.row.children[0].height = 89;
-					e.row.height = 89;					
-				}
+			if (e.source.classes){
+			if (e.source.classes.indexOf('btnRanking') > -1){
+				Alloy.createController('ranking', {categoryId: e.source.categories_id});
 			}
+		}
+
+		if (e.source.classes.indexOf('toggle') > -1){
+			if(e.row.children[0].closed){
+				e.row.children[0].closed = false;		
+				e.row.children[0].height = 220;
+				e.row.height = 220;
+				
+			}else{			
+				e.row.children[0].closed = true;		
+				e.row.children[0].height = 89;
+				e.row.height = 89;					
+			}
+		}
 		}
 	});
 }

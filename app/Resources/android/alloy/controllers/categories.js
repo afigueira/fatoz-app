@@ -51,7 +51,8 @@ function Controller() {
                 var total = e.categories.length;
                 for (var i = 0; total > i; i++) {
                     var row = Titanium.UI.createTableViewRow({
-                        title: e.categories[i].title
+                        title: e.categories[i].title,
+                        categories_id: e.categories[i].id
                     });
                     var category = Titanium.UI.createView();
                     $.addClass(category, "category");
@@ -89,7 +90,8 @@ function Controller() {
                     });
                     $.addClass(btnNewMatch, "radiusLarge green fontWhite proximaNovaRegular btnNewMatch");
                     var btnRanking = Titanium.UI.createButton({
-                        titleid: "ranking"
+                        titleid: "ranking",
+                        categories_id: e.categories[i].id
                     });
                     $.addClass(btnRanking, "btnWhite btnRanking");
                     var widthUiSize = Titanium.UI.createView();
@@ -99,11 +101,11 @@ function Controller() {
                     insideScrollable.add(widthUiSize);
                     var insideScrollable2 = Titanium.UI.createView();
                     $.addClass(insideScrollable2, "insideScrollable");
-                    var Statistics = Titanium.UI.createLabel({
-                        text: "estatisticas"
+                    var webView = Titanium.UI.createWebView({
+                        url: "https://1f0b6fd33fa8afdb54e5479c5a17447732b25d68.cloudapp.appcelerator.com/piechart",
+                        scalesPageToFit: true
                     });
-                    $.addClass(Statistics, "fontWhite");
-                    insideScrollable2.add(Statistics);
+                    insideScrollable2.add(webView);
                     var ScrollableView = Titanium.UI.createScrollableView({
                         views: [ insideScrollable, insideScrollable2 ]
                     });
@@ -145,6 +147,9 @@ function Controller() {
             if (e.source.classes) {
                 e.source.classes.indexOf("btnNewMatch") > -1 && Alloy.createController("roomQueue", {
                     categoryId: e.source.id
+                });
+                e.source.classes && e.source.classes.indexOf("btnRanking") > -1 && Alloy.createController("ranking", {
+                    categoryId: e.source.categories_id
                 });
                 if (e.source.classes.indexOf("toggle") > -1) if (e.row.children[0].closed) {
                     e.row.children[0].closed = false;

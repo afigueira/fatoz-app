@@ -41,12 +41,14 @@
 				<ScrollableView id="contentTabs">
 					<View class="profileStatistics">
 						<View class="graphic1">
-							<!-- <WebView url="https://1f0b6fd33fa8afdb54e5479c5a17447732b25d68.cloudapp.appcelerator.com/piechart" scalesPageToFit="true"/> -->
+							<WebView url="https://1f0b6fd33fa8afdb54e5479c5a17447732b25d68.cloudapp.appcelerator.com/piechart" scalesPageToFit="true"/>
 						</View>
 						
 						<View class="borderBottom borderGray"/>
 						
-						<View class="graphic2"><Label text="Grafico 2"/></View>
+						<View class="graphic2">
+							<WebView url="https://1f0b6fd33fa8afdb54e5479c5a17447732b25d68.cloudapp.appcelerator.com/piechart" scalesPageToFit="true"/>
+						</View>
 						
 						<View class="borderBottom borderGray"/>
 						
@@ -134,7 +136,7 @@
 					
 					<View class="profileConquer">							
 		               <TableView id="conquer">
-							<TableViewRow>						
+							<!--<TableViewRow>						
 								<ImageView class="imageConquer" image="/images/conquer-master-of-chemistry.png" />
 								
 								<View class="rightContentConquer">
@@ -154,7 +156,7 @@
 								</View>
 								
 								<View class="borderGray borderGrayConquer" />
-						    </TableViewRow>
+						    </TableViewRow>-->
 						</TableView>				            
 					</View>
 				</ScrollableView>					

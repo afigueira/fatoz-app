@@ -1,6 +1,6 @@
 var Cloud = require("ti.cloud");
 
-Cloud.Objects.query({
+/*Cloud.Objects.query({
     classname: 'states',
     page: 1,
     per_page: 27
@@ -29,9 +29,9 @@ Cloud.Objects.query({
         alert('Error:\n' +
             ((e.error && e.message) || JSON.stringify(e)));
     }
-});
+});*/
 
-$.states.addEventListener('change', function(e) {
+/*$.states.addEventListener('change', function(e) {
 
 
 
@@ -64,7 +64,7 @@ $.states.addEventListener('change', function(e) {
 	            ((e.error && e.message) || JSON.stringify(e)));
 	    }
 	});
-});
+});*/
 
 $.submit.addEventListener('click', function(event){
 	var strName = $.firstName.value;

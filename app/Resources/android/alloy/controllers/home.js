@@ -144,7 +144,7 @@ function Controller() {
             }, function(e) {
                 if (e.success) {
                     var photo = e.photos[0];
-                    var urlIcon = photo.urls.original;
+                    var urlIcon = photo.urls.large_1024;
                     icon.image = urlIcon;
                     element.shift();
                     setIcons(element, length, i);

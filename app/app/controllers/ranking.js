@@ -15,7 +15,11 @@ function init(){
 	        console.log(e);
 	        
 			for(var i=0,j=e.achievements.length; i<j; i++){								
-				var rowRank = Titanium.UI.createTableViewRow();
+				var rowRank = Titanium.UI.createTableViewRow({
+					users_id: e.achievements[i].users_id
+				});
+				console.log('users_id', e.achievements[i].users_id);
+
 			    $.addClass(rowRank, "rowRank");
 			    
 			    var rankNumber = Titanium.UI.createLabel({
@@ -29,7 +33,7 @@ function init(){
 			    $.addClass(imageProfile, "imageProfile imageProfileRank");
 			    
 			    var rankName = Titanium.UI.createLabel({
-					id: 'user_' + e.achievements[i].user_id
+					id: 'user_' + e.achievements[i].users_id
 			    });
 			    $.addClass(rankName, "rankName proximaNovaRegular");
 
@@ -62,30 +66,49 @@ function init(){
 			    
 			    $.listRank.appendRow(rowRank);
 				
-				Cloud.Users.show({
-				    user_id: e.achievements[i].user_id
-				}, function (e) {
-				    if (e.success) {
-				        var user = e.users[0];
-				        var userId = user.id;
-				        
-				       	/*$[userId].text = user.first_name + " " + user.last_name;*/
-				       	
-				       	var label = getUserLabel('user_'+userId);
-				       	label.text = user.first_name + " " + user.last_name;
-				   	     
-				    }
-				});
 			};
+
+			
+			setUserName($.listRank.data[0].rows, $.listRank.data[0].rows.length, 0);
 	        
 	    } else {
 	        alert('Error:\n' +
 	            ((e.error && e.message) || JSON.stringify(e)));
 	    }
-});	
+	});	
 }
 
-function getUserLabel(userId){
+function setUserName(element, length, a){	
+	var usersId;	
+	var row;		
+
+	
+
+	for (var i=a; i < length; i++){		
+		row = element[i];
+		usersId = row.users_id;
+
+		Cloud.Users.query({		    
+		    where: {
+		        id: usersId
+		    }
+		}, function (e) {
+		    if (e.success) {
+		        var user = e.users[0];
+
+		        row.children[2].text =  user.first_name;
+
+		        element.shift();
+		        if(element){
+		        	setUserName(element, length, i);
+		        }
+		    }
+		});	
+		break;
+	};
+}
+
+/*function getUserLabel(userId){
 	console.log($.listRank);
 	console.log($.listRank.sections);
 	var rows = $.listRank.sections[0].rows;
@@ -104,7 +127,7 @@ function getUserLabel(userId){
 			}
 		}; 	  
 	};	
-}
+}*/
 
 $.ranking.addEventListener('open', function(e){
 	init();

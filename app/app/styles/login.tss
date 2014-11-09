@@ -7,7 +7,7 @@
 },
 "#form": {
 	height: Titanium.UI.SIZE,
-	top: 237,
+	top: 32,
 	left: 28,
 	right: 28
 },
@@ -23,18 +23,19 @@
 },
 "#forgotPassword": {
 	left: 0,
-	top: 115
+	top: 130
 },
 "#submit": {
 	backgroundColor: "white",
 	height: 88,
 	right: 0,
 	width: 32,
-	top: 21,
+	top: 30,
 	image: "/images/icon-lock.png"
 },
 "#btnFacebook": {
-	bottom: 95
+	top: 42,
+	bottom: 42
 },
 "#footer": {
 	backgroundColor: Alloy.Globals.constants.NAV_BAR_COLOR,

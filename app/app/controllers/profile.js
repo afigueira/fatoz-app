@@ -109,7 +109,7 @@ function achievements(){
 			    $.addClass(numberConquer, 'numberConquer proximaNovaRegular');
 
 			    var ptConquer = Titanium.UI.createLabel({
-			    	text: 'Pontos em ciência'
+			    	text: 'Pontos'
 			    });
 			    $.addClass(ptConquer, 'ptConquer proximaNovaRegular');
 
@@ -117,7 +117,7 @@ function achievements(){
 			    $.addClass(percentConquer, 'percentConquer');
 
 			    var percentNumber = Titanium.UI.createLabel({
-			    	text: '100%'
+			    	text: '0%'
 			    });
 			    $.addClass(percentNumber, 'percentNumber');
 
@@ -168,39 +168,26 @@ function setPointsAchievements(element, length, a){
 	
 	for (var i=a; i < length; i++){		
 		label = element[i].children[1].children[1].children[0];
-		var percentBar = element[i].children[1].children[2].children[1].children[0];		
+		var percentBar = element[i].children[1].children[2].children[1].children[0];	
+		var percent = element[i].children[1].children[2].children[0];
+		
 		pointsToBadge = label.points_to_badge;
 		categoriesId = label.categories_id;
-
-		/*Cloud.Photos.show({
-		    photo_id: backgroundImage
-		}, function (e) {
-		    if (e.success) {
-		        var photo = e.photos[0];
-
-		        var urlImage = photo.urls.original;
-	            console.log('imagens: ', photo.urls);
-	            
-	            image.image = urlImage;			            
-	            
-	            element.shift();
-	            setPointsAchievements(element, length, i);
-		    }
-		});*/
 
 		Cloud.Objects.query({
 		    classname: 'achievements',		    
 		    where: {
-		        categories_id: categoriesId
+		        categories_id: categoriesId,
+		        users_id: Ti.App.Properties.getString('userId')
 		    }
 		}, function (e) {
 		    if (e.success) {
 		    	var achievement = e.achievements[0];
 
-		    	label.text = achievement.points;
-
-
+		    	label.text = achievement.points + ' de ' + pointsToBadge;
+		    	
 				percentBar.width = (achievement.points * 100 / pointsToBadge) + '%';
+				percent.text = (achievement.points * 100 / pointsToBadge) + '%';
 
 		    	element.shift();
 	            setPointsAchievements(element, length, i);

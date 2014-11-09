@@ -188,7 +188,7 @@ function setBackgrounds(element, length, a){
 		        var photo = e.photos[0];
 
 		        var urlImage = photo.urls.original;
-	            	            
+
 	            image.backgroundImage = urlImage;			            
 	            
 	            element.shift();
@@ -213,8 +213,7 @@ function setIcons(element, length, a){
 		    if (e.success) {
 		        var photo = e.photos[0];
 
-		        var urlIcon = photo.urls.original;
-	            	            
+		        var urlIcon = photo.urls.large_1024;		        
 	            icon.image = urlIcon;			            
 	            
 	            element.shift();

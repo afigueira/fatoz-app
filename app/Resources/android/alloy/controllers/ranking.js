@@ -23,7 +23,10 @@ function Controller() {
             if (e.success) {
                 console.log(e);
                 for (var i = 0, j = e.achievements.length; j > i; i++) {
-                    var rowRank = Titanium.UI.createTableViewRow();
+                    var rowRank = Titanium.UI.createTableViewRow({
+                        users_id: e.achievements[i].users_id
+                    });
+                    console.log("users_id", e.achievements[i].users_id);
                     $.addClass(rowRank, "rowRank");
                     var rankNumber = Titanium.UI.createLabel({
                         text: i + 1 + " ."
@@ -34,7 +37,7 @@ function Controller() {
                     });
                     $.addClass(imageProfile, "imageProfile imageProfileRank");
                     var rankName = Titanium.UI.createLabel({
-                        id: "user_" + e.achievements[i].user_id
+                        id: "user_" + e.achievements[i].users_id
                     });
                     $.addClass(rankName, "rankName proximaNovaRegular");
                     var rankPoint = Titanium.UI.createView();
@@ -57,36 +60,30 @@ function Controller() {
                     rowRank.add(rankPoint);
                     rowRank.add(borderGray);
                     $.listRank.appendRow(rowRank);
-                    Cloud.Users.show({
-                        user_id: e.achievements[i].user_id
-                    }, function(e) {
-                        if (e.success) {
-                            var user = e.users[0];
-                            var userId = user.id;
-                            var label = getUserLabel("user_" + userId);
-                            label.text = user.first_name + " " + user.last_name;
-                        }
-                    });
                 }
+                setUserName($.listRank.data[0].rows, $.listRank.data[0].rows.length, 0);
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });
     }
-    function getUserLabel(userId) {
-        console.log($.listRank);
-        console.log($.listRank.sections);
-        var rows = $.listRank.sections[0].rows;
-        var totalRows = rows.length;
-        console.log(rows);
-        for (var i = 0; totalRows > i; i++) {
-            var elements = rows[i].children;
-            var totalElements = elements.length;
-            console.log("---");
-            console.log(elements);
-            for (var j = 0; totalElements > j; j++) {
-                var element = elements[j];
-                console.log("element:" + element);
-                if (element.id && element.id == userId) return element;
-            }
+    function setUserName(element, length, a) {
+        var usersId;
+        var row;
+        for (var i = a; length > i; i++) {
+            row = element[i];
+            usersId = row.users_id;
+            Cloud.Users.query({
+                where: {
+                    id: usersId
+                }
+            }, function(e) {
+                if (e.success) {
+                    var user = e.users[0];
+                    row.children[2].text = user.first_name;
+                    element.shift();
+                    element && setUserName(element, length, i);
+                }
+            });
+            break;
         }
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));

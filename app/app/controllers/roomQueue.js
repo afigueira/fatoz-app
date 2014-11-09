@@ -43,7 +43,7 @@ function joinRoom(){
 					    if (e.success) {
 					        var photo = e.photos[0];			        
 
-					        $.imageProfileB.image = photo.urls.square_75;
+					        $.imageProfileB.image = photo.urls.original;
 					    }
 					});
 
@@ -53,7 +53,7 @@ function joinRoom(){
 					    if (e.success) {
 					        var photo = e.photos[0];			        
 
-					        $.profileB.backgroundImage = photo.urls.square_75;					        
+					        $.profileB.backgroundImage = photo.urls.original;					        
 					    }
 					});
 
@@ -100,7 +100,7 @@ function showMe(){
 			    if (e.success) {
 			        var photo = e.photos[0];			        
 
-			        $.imageProfileA.image = photo.urls.square_75;
+			        $.imageProfileA.image = photo.urls.original;
 			    }
 			});
 
@@ -110,7 +110,7 @@ function showMe(){
 			    if (e.success) {
 			        var photo = e.photos[0];			        
 
-			        $.coverA.backgroundImage = photo.urls.square_75;
+			        $.coverA.backgroundImage = photo.urls.original;
 			    }
 			});
 	    }
