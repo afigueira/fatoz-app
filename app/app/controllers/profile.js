@@ -90,9 +90,7 @@ function achievements(){
 				var rowConquer = Titanium.UI.createTableViewRow();
 			    $.addClass(rowConquer, 'rowConquer');
 
-			    var imageConquer = Titanium.UI.createImageView({
-			    	image: '/images/conquer-master-of-chemistry.png'
-			    });
+			    var imageConquer = Titanium.UI.createImageView();
 			    $.addClass(imageConquer, 'imageConquer');
 
 			    var rightContentConquer = Titanium.UI.createView();
@@ -161,6 +159,8 @@ function achievements(){
 			    rowConquer.add(borderGrayConquer);
 
 			    $.conquer.appendRow(rowConquer);
+			    
+			    Alloy.Globals.loadPhoto(imageConquer, 'image', categories[i].badge);
 			};
 		
 			setPointsAchievements($.conquer.data[0].rows, $.conquer.data[0].rows.length, 0);
@@ -190,14 +190,20 @@ function setPointsAchievements(element, length, a){
 		}, function (e) {
 		    if (e.success) {
 		    	var achievement = e.achievements[0];
-
-		    	label.text = achievement.points + ' de ' + pointsToBadge;
 		    	
-				percentBar.width = (achievement.points * 100 / pointsToBadge) + '%';
-				percent.text = (achievement.points * 100 / pointsToBadge) + '%';
-
-		    	element.shift();
-	            setPointsAchievements(element, length, i);
+		    	if (achievement) {
+		    		label.text = achievement.points + ' de ' + pointsToBadge;
+		    		
+		    		var pct = (achievement.points * 100 / pointsToBadge);
+		    		pct = pct > 100 ? 100 : pct;
+		    		
+		    	
+					percentBar.width = pct + '%';
+					percent.text = pct + '%';
+	
+			    	element.shift();
+		            setPointsAchievements(element, length, i);
+		    	}
 		    }
 		});		
 		break;		
