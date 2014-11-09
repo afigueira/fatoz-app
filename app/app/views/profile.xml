@@ -2,7 +2,7 @@
     <Widget id="drawer" src="nl.fokkezb.drawer">
         <Window module="xp.ui" role="leftWindow" id="sidebar"></Window>
 
-        <View platform="android" role="centerWindow">
+        <Window module="xp.ui" role="centerWindow">
 			<ScrollView class="inside">
 				<View class="topProfile" backgroundImage="/images/background-categories-soccer.jpg">				
 					<View class="profile">
@@ -161,6 +161,6 @@
 					</View>
 				</ScrollableView>					
 			</ScrollView>
-		</View>
+		</Window>
     </Widget>
 </Alloy>

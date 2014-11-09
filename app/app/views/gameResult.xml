@@ -2,7 +2,7 @@
     <Widget id="drawer" src="nl.fokkezb.drawer">
         <Window module="xp.ui" role="leftWindow" id="sidebar"></Window>
 
-        <View platform="android" role="centerWindow">
+        <Window module="xp.ui" role="centerWindow">
         	<ScrollView class="inside" id="scrollView">			
 				<View class="resultsGame">
 					<View class="playersResultGame">
@@ -79,7 +79,7 @@
 					</View>				
 				</View>	
 			</View>-->
-        </View>
+        </Window>
     </Widget>
 </Alloy>
 

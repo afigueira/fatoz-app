@@ -2,7 +2,7 @@
     <Widget id="drawer" src="nl.fokkezb.drawer">
         <Window module="xp.ui" role="leftWindow" id="sidebar"></Window>
 
-        <View platform="android" role="centerWindow">			
+        <Window module="xp.ui" role="centerWindow">			
 			<ScrollView class="inside">		
 				<View class="layoutVertical" bottom="30">
 					<View class="topProfile" backgroundImage="/images/background-categories-soccer.jpg">				
@@ -23,6 +23,6 @@
 					<Button id="submit" title="Salvar" class="radius white fontRed"/>
 				</View>
 			</ScrollView>
-    	</View>
+    	</Window>
     </Widget>
 </Alloy>
