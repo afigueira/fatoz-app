@@ -76,8 +76,10 @@ $.submit.addEventListener('click', function(event){
 	    last_name: lastName,
 	    password: $.password.value,
 	    password_confirmation: $.password.value,
-	    profile_image: '545f827444f2450e5e045905',
-	    cover_image: '545f82f57c874208b50014b0'
+	    custom_fields: {
+	    	profile_image: '545f827444f2450e5e045905',
+	    	cover_image: '545f82f57c874208b50014b0'	
+	    }	    
 	}, function (e) {
 	    if (e.success) {	    		        
 	        alert('Cadastro realizado com sucesso.');
