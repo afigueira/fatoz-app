@@ -81,6 +81,7 @@ $.submit.addEventListener('click', function(event){
 	        var user = e.users[0];
 	        alert('Cadastro realizado com sucesso.');
 	        Alloy.createController('home');
+	        $.destroy();
 	    } else {	    	
 	        alert('Error:\n' +
 	            ((e.error && e.message) || JSON.stringify(e)));

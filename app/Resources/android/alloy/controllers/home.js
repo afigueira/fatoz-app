@@ -9,7 +9,6 @@ function __processArg(obj, key) {
 
 function Controller() {
     function init() {
-        Cloud = require("ti.cloud");
         getCategories($.popular, {
             classname: "categories",
             page: 1,
@@ -34,33 +33,12 @@ function Controller() {
         var contentTabsIndex = e.source.contentTabsIndex;
         $.contentTabs.children[contentTabsIndex].visible = true;
         $.tabs.children[contentTabsIndex].children[1].visible = true;
-        mountNavigationBoll($.contentTabs.children[contentTabsIndex].views.length);
     }
     function navigation() {
         for (var i = 0, j = $.tabs.children.length; j > i; i++) $.tabs.children[i].children[1].visible = false;
-        for (var i = 0, j = $.contentTabs.children.length; j > i; i++) {
-            $.contentTabs.children[i].visible = false;
-            elementScrollend($.contentTabs.children[i]);
-        }
+        for (var i = 0, j = $.contentTabs.children.length; j > i; i++) $.contentTabs.children[i].visible = false;
         $.contentTabs.children[0].visible = true;
         $.tabs.children[0].children[1].visible = true;
-    }
-    function elementScrollend(element) {
-        element.addEventListener("scrollend", function(e) {
-            for (var a = 0, k = $.paginationBall.children.length; k > a; a++) $.removeClass($.paginationBall.children[a], "selectedBall");
-            $.addClass($.paginationBall.children[e.currentPage], "itemBall selectedBall");
-        });
-    }
-    function mountNavigationBoll(length) {
-        $.paginationBall.visible = false;
-        while ($.paginationBall.children.length > 0) $.paginationBall.remove($.paginationBall.children[0]);
-        for (var a = 0; length > a; a++) {
-            var itemBall = Titanium.UI.createImageView();
-            $.addClass(itemBall, "itemBall");
-            $.paginationBall.add(itemBall);
-        }
-        $.addClass($.paginationBall.children[0], "itemBall selectedBall");
-        $.paginationBall.visible = true;
     }
     function createRowCategories(obj) {
         var views = [];
@@ -102,56 +80,48 @@ function Controller() {
         }
         return views;
     }
-    function getCategories(element, obj, isFirst) {
-        Cloud.Objects.query(obj, function(e) {
+    function getCategories(element, obj) {
+        Alloy.Globals.Cloud.Objects.query(obj, function(e) {
             if (e.success) {
                 var views = createRowCategories(e.categories);
                 element.views = views;
                 setBackgrounds(element.views, element.views.length, 0);
                 setIcons(element.views, element.views.length, 0);
-                isFirst && mountNavigationBoll(views.length);
-            } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+            } else alert("Houve um erro para carregar as categorias");
         });
     }
     function setBackgrounds(element, length, a) {
         var backgroundImage;
         var image;
-        for (var i = a; length > i; i++) {
-            image = element[i];
-            backgroundImage = image.background;
-            Cloud.Photos.show({
-                photo_id: backgroundImage
-            }, function(e) {
-                if (e.success) {
-                    var photo = e.photos[0];
-                    var urlImage = photo.urls.original;
-                    image.backgroundImage = urlImage;
-                    element.shift();
-                    setBackgrounds(element, length, i);
-                }
-            });
-            break;
-        }
+        image = element[a];
+        backgroundImage = image.background;
+        Alloy.Globals.Cloud.Photos.show({
+            photo_id: backgroundImage
+        }, function(e) {
+            console.log(a, e);
+            if (e.success) {
+                var photo = e.photos[0];
+                var urlImage = photo.urls.original;
+                image.backgroundImage = urlImage;
+                length - 1 > a && setBackgrounds(element, length, ++a);
+            }
+        });
     }
     function setIcons(element, length, a) {
         var iconImage;
         var icon;
-        for (var i = a; length > i; i++) {
-            icon = element[i].children[0];
-            iconImage = icon.icon;
-            Cloud.Photos.show({
-                photo_id: iconImage
-            }, function(e) {
-                if (e.success) {
-                    var photo = e.photos[0];
-                    var urlIcon = photo.urls.large_1024;
-                    icon.image = urlIcon;
-                    element.shift();
-                    setIcons(element, length, i);
-                }
-            });
-            break;
-        }
+        icon = element[a].children[0];
+        iconImage = icon.icon;
+        Alloy.Globals.Cloud.Photos.show({
+            photo_id: iconImage
+        }, function(e) {
+            if (e.success) {
+                var photo = e.photos[0];
+                var urlIcon = photo.urls.original;
+                icon.image = urlIcon;
+                length - 1 > a && setIcons(element, length, ++a);
+            }
+        });
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "home";
@@ -169,10 +139,12 @@ function Controller() {
     });
     $.__views.__alloyId53 = require("xp.ui").createWindow({
         role: "centerWindow",
+        title: "Início",
         id: "__alloyId53"
     });
     $.__views.__alloyId54 = Ti.UI.createScrollView({
         backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
+        top: Alloy.Globals.marginTopWindow,
         id: "__alloyId54"
     });
     $.__views.__alloyId53.add($.__views.__alloyId54);
@@ -347,8 +319,7 @@ function Controller() {
         pagingControlHeight: 40,
         overlayEnabled: true,
         views: __alloyId62,
-        id: "popular",
-        totalChildren: "0"
+        id: "popular"
     });
     $.__views.contentTabs.add($.__views.popular);
     var __alloyId63 = [];
@@ -361,18 +332,9 @@ function Controller() {
         pagingControlHeight: 40,
         overlayEnabled: true,
         views: __alloyId63,
-        id: "recent",
-        totalChildren: "0"
+        id: "recent"
     });
     $.__views.contentTabs.add($.__views.recent);
-    $.__views.paginationBall = Ti.UI.createView({
-        height: Titanium.UI.SIZE,
-        layout: "horizontal",
-        width: Titanium.UI.SIZE,
-        bottom: 15,
-        id: "paginationBall"
-    });
-    $.__views.categories.add($.__views.paginationBall);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_NONE",
         closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
@@ -384,19 +346,26 @@ function Controller() {
     $.__views.drawer && $.addTopLevelView($.__views.drawer);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Alloy.Globals.drawer($.sidebar, $.drawer, "Início", init());
+    Alloy.Globals.drawer($.sidebar, $.drawer, "Início", init);
     $.categories.addEventListener("click", function(e) {
         if (e.source.classes) {
-            e.source.classes.indexOf("btnNewMatch") > -1 && Alloy.createController("roomQueue", {
-                categoryId: e.source.id
-            });
-            e.source.classes.indexOf("btnRanking") > -1 && Alloy.createController("ranking", {
-                categoryId: e.source.id
-            });
+            if (e.source.classes.indexOf("btnNewMatch") > -1) {
+                Alloy.createController("roomQueue", {
+                    categoryId: e.source.id
+                });
+                $.destroy();
+            }
+            if (e.source.classes.indexOf("btnRanking") > -1) {
+                Alloy.createController("ranking", {
+                    categoryId: e.source.id
+                });
+                $.destroy();
+            }
         }
     });
     $.goToCategories.addEventListener("click", function() {
         Alloy.createController("categories");
+        $.destroy();
     });
     __defers["$.__views.popularTab!click!tabNavigation"] && $.__views.popularTab.addEventListener("click", tabNavigation);
     __defers["$.__views.recentTab!click!tabNavigation"] && $.__views.recentTab.addEventListener("click", tabNavigation);

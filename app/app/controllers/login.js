@@ -17,11 +17,13 @@ $.btnFacebook.addEventListener('click', function(event){
 
 $.signup.addEventListener('click', function(event){
 	console.log('signup');
-	Alloy.createController('signup');	
+	Alloy.createController('signup');
+	$.destroy();	
 });
 
 $.forgotPassword.addEventListener('click', function(e){
-	Alloy.createController('forgotPassword');	
+	Alloy.createController('forgotPassword');
+	$.destroy();
 });
 
 Titanium.App.addEventListener('facebook.login', function(e) {
@@ -43,6 +45,7 @@ function login(e) {
 	    	Ti.App.Properties.setString('userId', e.users[0].id);
 	    	Ti.App.Properties.setString('userName', e.users[0].first_name + " " + e.users[0].last_name);	    	
 			Alloy.createController(createController);
+			$.destroy();
 	    } else {
 	        alert('Houve um erro para efetuar seu login');
 	    }

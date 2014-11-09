@@ -19,14 +19,16 @@ function Controller() {
         Alloy.createController("roomQueue", {
             categoryId: match.category
         });
+        $.destroy();
     }
     function openRanking() {
         Alloy.createController("ranking", {
             categoryId: match.category
         });
+        $.destroy();
     }
     function matches() {
-        Cloud.Objects.query({
+        Alloy.Globals.Cloud.Objects.query({
             classname: "matches",
             where: {
                 id: matchId
@@ -57,7 +59,7 @@ function Controller() {
         });
     }
     function setUserInfo(userId, side, points) {
-        Cloud.Users.show({
+        Alloy.Globals.Cloud.Users.show({
             user_id: userId
         }, function(e) {
             if (e.success) {
@@ -88,10 +90,12 @@ function Controller() {
     });
     $.__views.__alloyId37 = require("xp.ui").createWindow({
         role: "centerWindow",
+        title: "Resultado final",
         id: "__alloyId37"
     });
     $.__views.scrollView = Ti.UI.createScrollView({
         backgroundColor: "#383738",
+        top: Alloy.Globals.marginTopWindow,
         layout: "vertical",
         id: "scrollView"
     });
@@ -359,7 +363,7 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
-    Alloy.Globals.drawer($.sidebar, $.drawer, "Resultado da Partida", init());
+    Alloy.Globals.drawer($.sidebar, $.drawer, "Resultado da Partida", init);
     var matchId = args.matchId;
     var pointsA;
     var pointsB;

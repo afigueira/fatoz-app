@@ -202,11 +202,13 @@ function getCategories(element, param){
 		if (e.source.classes){
 			if (e.source.classes.indexOf('btnNewMatch') > -1){
 				Alloy.createController('roomQueue', {categoryId: e.source.id});
+				 $.destroy();
 			}
 
 			
 			if (e.source.classes.indexOf('btnRanking') > -1){
 				Alloy.createController('ranking', {categoryId: e.source.categories_id});
+				 $.destroy();
 			}
 			
 
@@ -234,7 +236,7 @@ function setBackgrounds(element, length, a){
 	var backgroundImage;	
 	var image;		
 		
-	image = element[a];
+	image = element[a].children[0].children[0];
 	backgroundImage = image.background;
 	
 	Alloy.Globals.Cloud.Photos.show({

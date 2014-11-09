@@ -10,10 +10,11 @@ function __processArg(obj, key) {
 function Controller() {
     function login(e) {
         if (e.success) {
-            Ti.App.Properties.setString("sessionId", Cloud.sessionId);
+            Ti.App.Properties.setString("sessionId", Alloy.Globals.Cloud.sessionId);
             Ti.App.Properties.setString("userId", e.users[0].id);
             Ti.App.Properties.setString("userName", e.users[0].first_name + " " + e.users[0].last_name);
             Alloy.createController(createController);
+            $.destroy();
         } else alert("Houve um erro para efetuar seu login");
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -42,6 +43,7 @@ function Controller() {
         navTintColor: "white",
         tabBarHidden: true,
         translucent: false,
+        top: Alloy.Globals.marginTopWindow,
         width: Titanium.UI.FILL,
         height: Titanium.UI.FILL,
         id: "__alloyId69"
@@ -217,10 +219,9 @@ function Controller() {
     $.__views.footer.add($.__views.signup);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Cloud = require("ti.cloud");
     var createController = "home";
     $.submit.addEventListener("click", function() {
-        Cloud.Users.login({
+        Alloy.Globals.Cloud.Users.login({
             login: $.email.value,
             password: $.password.value
         }, function(e) {
@@ -235,12 +236,14 @@ function Controller() {
     $.signup.addEventListener("click", function() {
         console.log("signup");
         Alloy.createController("signup");
+        $.destroy();
     });
     $.forgotPassword.addEventListener("click", function() {
         Alloy.createController("forgotPassword");
+        $.destroy();
     });
     Titanium.App.addEventListener("facebook.login", function(e) {
-        e.success ? Cloud.SocialIntegrations.externalAccountLogin({
+        e.success ? Alloy.Globals.Cloud.SocialIntegrations.externalAccountLogin({
             type: "facebook",
             token: Alloy.Globals.Facebook.accessToken
         }, function(e) {

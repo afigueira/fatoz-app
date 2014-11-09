@@ -95,10 +95,10 @@ function Controller() {
     $.forgotPassword.open();
     $.submit.addEventListener("click", function() {
         var email = $.email.value;
-        email && Cloud.Users.requestResetPassword({
+        email && Alloy.Globals.Cloud.Users.requestResetPassword({
             email: email
         }, function(e) {
-            e.success ? alert("Success: Reset Request Sent") : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+            e.success ? alert("Siga as instruções enviadas para o seu e-mail.") : alert("Houve um erro ou este e-mail não está cadastrado");
         });
     });
     _.extend($, exports);

@@ -28,6 +28,7 @@ function Controller() {
     $.__views.friends && $.addTopLevelView($.__views.friends);
     $.__views.__alloyId6 = Ti.UI.createScrollView({
         backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
+        top: Alloy.Globals.marginTopWindow,
         layout: "vertical",
         id: "__alloyId6"
     });

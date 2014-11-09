@@ -9,7 +9,7 @@ function __processArg(obj, key) {
 
 function Controller() {
     function getUserInfo(userId, side) {
-        Cloud.Users.show({
+        Alloy.Globals.Cloud.Users.show({
             user_id: userId
         }, function(e) {
             if (e.success) {
@@ -36,7 +36,7 @@ function Controller() {
         $.roundNumber.text = " " + questionIndex;
         $.removeClass($.currentRound, "visibleFalse");
         var questionId = match["question_" + questionIndex];
-        Cloud.Objects.query({
+        Alloy.Globals.Cloud.Objects.query({
             classname: "questions",
             where: {
                 id: questionId
@@ -139,6 +139,7 @@ function Controller() {
                 Alloy.createController("gameResult", {
                     matchId: matchId
                 });
+                $.destroy();
             };
             youWinFadeout.addEventListener("complete", onCompleteFadeout);
             $youWinGame.animate(youWinFadeout);
@@ -234,6 +235,7 @@ function Controller() {
     $.__views.game && $.addTopLevelView($.__views.game);
     $.__views.scrollView = Ti.UI.createScrollView({
         backgroundColor: "#383738",
+        top: Alloy.Globals.marginTopWindow,
         layout: "vertical",
         id: "scrollView"
     });
@@ -634,7 +636,7 @@ function Controller() {
     var timerInterval;
     var maxHeightProgressBar = 325;
     var canClick = false;
-    Cloud.Objects.query({
+    Alloy.Globals.Cloud.Objects.query({
         classname: "matches",
         where: {
             id: matchId

@@ -1,11 +1,17 @@
 var Alloy = require("alloy"), _ = Alloy._, Backbone = Alloy.Backbone;
 
+Alloy.Globals.Cloud = require("ti.cloud");
+
 Alloy.Globals.constants = {
     BASE_COLOR: "#e33124",
     NAV_BAR_COLOR: "#d63023",
     FACEBOOK_BUTTON_COLOR: "#3b5998",
     BACKGROUND_INSIDE_COLOR: "#323233"
 };
+
+Alloy.Globals.iOS7 = false;
+
+Alloy.Globals.marginTopWindow = Alloy.Globals.iOS7 ? 66 : 0;
 
 Alloy.Globals.drawer = function(sidebar, element, titleActionBar, func) {
     function onNavDrawerWinOpen() {
@@ -19,7 +25,7 @@ Alloy.Globals.drawer = function(sidebar, element, titleActionBar, func) {
                 });
             }
         }
-        "function" == typeof func && func.call();
+        "function" == typeof func && func();
     }
     sidebar.add(Alloy.createController("sidebar").getView());
     element.addEventListener("open", onNavDrawerWinOpen);
@@ -46,6 +52,18 @@ Alloy.Globals.Facebook.permissions = [ "email" ];
 Alloy.Globals.Facebook.addEventListener("login", function(e) {
     Titanium.App.fireEvent("facebook.login", e);
 });
+
+Alloy.Globals.loadPhoto = function(container, field, value) {
+    value.indexOf("http") > -1 ? container[field] = value : Alloy.Globals.Cloud.Photos.show({
+        photo_id: value
+    }, function(e) {
+        if (e.success) {
+            var photo = e.photos[0];
+            var urlImage = photo.urls.original;
+            container[field] = urlImage;
+        }
+    });
+};
 
 var io = require("socket.io");
 

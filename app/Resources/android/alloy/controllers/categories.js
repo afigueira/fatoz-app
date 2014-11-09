@@ -9,7 +9,6 @@ function __processArg(obj, key) {
 
 function Controller() {
     function init() {
-        Cloud = require("ti.cloud");
         getCategories($.allCategories, {
             classname: "categories",
             page: 1,
@@ -17,7 +16,7 @@ function Controller() {
         });
     }
     function getCategories(element, param) {
-        Cloud.Objects.query(param, function(e) {
+        Alloy.Globals.Cloud.Objects.query(param, function(e) {
             if (e.success) {
                 var total = e.categories.length;
                 for (var i = 0; total > i; i++) {
@@ -120,12 +119,18 @@ function Controller() {
         });
         element.addEventListener("click", function(e) {
             if (e.source.classes) {
-                e.source.classes.indexOf("btnNewMatch") > -1 && Alloy.createController("roomQueue", {
-                    categoryId: e.source.id
-                });
-                e.source.classes.indexOf("btnRanking") > -1 && Alloy.createController("ranking", {
-                    categoryId: e.source.categories_id
-                });
+                if (e.source.classes.indexOf("btnNewMatch") > -1) {
+                    Alloy.createController("roomQueue", {
+                        categoryId: e.source.id
+                    });
+                    $.destroy();
+                }
+                if (e.source.classes.indexOf("btnRanking") > -1) {
+                    Alloy.createController("ranking", {
+                        categoryId: e.source.categories_id
+                    });
+                    $.destroy();
+                }
                 if (e.source.classes.indexOf("toggle") > -1) if (e.source.closed) {
                     e.source.closed = false;
                     this.children[e.source.index].children[0].height = 220;
@@ -141,43 +146,35 @@ function Controller() {
     function setBackgrounds(element, length, a) {
         var backgroundImage;
         var image;
-        for (var i = a; length > i; i++) {
-            image = element[i].children[0].children[0];
-            backgroundImage = image.background;
-            Cloud.Photos.show({
-                photo_id: backgroundImage
-            }, function(e) {
-                if (e.success) {
-                    var photo = e.photos[0];
-                    var urlImage = photo.urls.original;
-                    console.log("imagens: ", photo.urls);
-                    image.image = urlImage;
-                    element.shift();
-                    setBackgrounds(element, length, i);
-                }
-            });
-            break;
-        }
+        image = element[a].children[0].children[0];
+        backgroundImage = image.background;
+        Alloy.Globals.Cloud.Photos.show({
+            photo_id: backgroundImage
+        }, function(e) {
+            console.log(a, e);
+            if (e.success) {
+                var photo = e.photos[0];
+                var urlImage = photo.urls.original;
+                image.backgroundImage = urlImage;
+                length - 1 > a && setBackgrounds(element, length, ++a);
+            }
+        });
     }
     function setIcons(element, length, a) {
         var iconImage;
         var icon;
-        for (var i = a; length > i; i++) {
-            icon = element[i].children[0].children[1].children[0].children[0].children[0];
-            iconImage = icon.icon;
-            Cloud.Photos.show({
-                photo_id: iconImage
-            }, function(e) {
-                if (e.success) {
-                    var photo = e.photos[0];
-                    var urlIcon = photo.urls.original;
-                    icon.image = urlIcon;
-                    element.shift();
-                    setIcons(element, length, i);
-                }
-            });
-            break;
-        }
+        icon = element[a].children[0].children[1].children[0].children[0].children[0];
+        iconImage = icon.icon;
+        Alloy.Globals.Cloud.Photos.show({
+            photo_id: iconImage
+        }, function(e) {
+            if (e.success) {
+                var photo = e.photos[0];
+                var urlIcon = photo.urls.original;
+                icon.image = urlIcon;
+                length - 1 > a && setIcons(element, length, ++a);
+            }
+        });
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "categories";
@@ -194,11 +191,13 @@ function Controller() {
     });
     $.__views.__alloyId0 = require("xp.ui").createWindow({
         role: "centerWindow",
+        title: "Categorias",
         id: "__alloyId0"
     });
     $.__views.__alloyId1 = Ti.UI.createView({
         layout: "vertical",
         backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
+        top: Alloy.Globals.marginTopWindow,
         id: "__alloyId1"
     });
     $.__views.__alloyId0.add($.__views.__alloyId1);
@@ -225,7 +224,7 @@ function Controller() {
     $.__views.drawer && $.addTopLevelView($.__views.drawer);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    require("alloy").Globals.drawer($.sidebar, $.drawer, "Categorias", init());
+    Alloy.Globals.drawer($.sidebar, $.drawer, "Categorias", init);
     _.extend($, exports);
 }
 

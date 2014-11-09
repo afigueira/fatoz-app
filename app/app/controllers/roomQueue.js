@@ -69,6 +69,7 @@ function joinRoom(){
 
 function mountMatch(){
 	Alloy.createController('game', {matchId: matchId});
+	$.destroy();
 }
 
 function showMe(){
@@ -93,4 +94,5 @@ $.cancelMatch.addEventListener('click', function(e){
 	});
 	
 	Alloy.createController('home');
+	$.destroy();
 });

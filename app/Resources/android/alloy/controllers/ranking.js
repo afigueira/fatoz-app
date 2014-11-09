@@ -10,7 +10,7 @@ function __processArg(obj, key) {
 function Controller() {
     function init() {
         categoryId = args.categoryId || "";
-        Cloud.Objects.query({
+        Alloy.Globals.Cloud.Objects.query({
             classname: "achievements",
             where: {
                 categories_id: categoryId,
@@ -71,7 +71,7 @@ function Controller() {
         for (var i = a; length > i; i++) {
             row = element[i];
             usersId = row.users_id;
-            Cloud.Users.query({
+            Alloy.Globals.Cloud.Users.query({
                 where: {
                     id: usersId
                 }
@@ -99,28 +99,29 @@ function Controller() {
         role: "leftWindow",
         id: "sidebar"
     });
-    $.__views.__alloyId131 = require("xp.ui").createWindow({
+    $.__views.__alloyId129 = require("xp.ui").createWindow({
         role: "centerWindow",
-        id: "__alloyId131"
+        title: "Ranking",
+        id: "__alloyId129"
     });
     $.__views.listRank = Ti.UI.createTableView({
         backgroundColor: "#ffffff",
         id: "listRank"
     });
-    $.__views.__alloyId131.add($.__views.listRank);
+    $.__views.__alloyId129.add($.__views.listRank);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_NONE",
         closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
         leftDrawerWidth: 250,
         id: "drawer",
-        children: [ $.__views.sidebar, $.__views.__alloyId131 ],
+        children: [ $.__views.sidebar, $.__views.__alloyId129 ],
         __parentSymbol: __parentSymbol
     });
     $.__views.drawer && $.addTopLevelView($.__views.drawer);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
-    require("alloy").Globals.drawer($.sidebar, $.drawer, "Ranking", init());
+    Alloy.Globals.drawer($.sidebar, $.drawer, "Ranking", init);
     _.extend($, exports);
 }
 
