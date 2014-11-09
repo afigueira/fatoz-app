@@ -29,15 +29,15 @@
 	bottom: 0
 },
 "TextField": {
-	width: Titanium.UI.FILL,
-	height: 40,
+	width: 265,
+	height: 40,/*
 	left: 28,
-	right: 28,
+	right: 28,*/
 	top: 20
 },
 "#submit": {
-	width: Titanium.UI.FILL,
-	top: 30,
+	width: 265,
+	top: 30/*,
 	left: 28,
-	right: 28
+	right: 28*/
 }

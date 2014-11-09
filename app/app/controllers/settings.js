@@ -51,33 +51,27 @@ $.submit.addEventListener('click', function(){
 	}
 });
 
-$.facebook.addEventListener('click', function(event){
+$.btnFacebook.addEventListener('click', function(event){
 	console.log('btn facebook clicked');
 	console.log(Alloy.Globals.Facebook);
 	Alloy.Globals.Facebook.authorize();
 });
 
+Titanium.App.addEventListener('facebook.updated', function() {
+	alert('Conta linkada com sucesso.');
+});
+
 Titanium.App.addEventListener('facebook.login', function(e) {
 	if (e.success) {
-		Alloy.Globals.Cloud.SocialIntegrations.externalAccountLogin({
+		Alloy.Globals.Cloud.SocialIntegrations.externalAccountLink({
 			type: 'facebook',
 			token: Alloy.Globals.Facebook.accessToken
 		}, function(e) {
-			login(e);	
-
-			Cloud.SocialIntegrations.externalAccountLink({
-			    type: 'facebook',
-			    token: Alloy.Globals.Facebook.accessToken
-			}, function (e) {
-			    if (e.success) {
-			        Alloy.Globals.updateFacebookInfos();
-			    } else {
-			        alert('Error:\n' +
-			            ((e.error && e.message) || JSON.stringify(e)));
-			    }
-			});		
+			if (e.success) {
+				Alloy.Globals.updateFacebookInfos();	
+			}	
 		});
 	} else {
-		alert('Houve um erro para efetuar seu login');
+		alert('Houve um erro para linkar sua conta do Facebook');
 	}
 });

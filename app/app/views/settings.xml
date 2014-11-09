@@ -10,7 +10,11 @@
     					
 			<ScrollView class="inside">		
 				<View class="layoutVertical" bottom="30">
-					<View class="topProfile" backgroundImage="/images/background-categories-soccer.jpg">				
+					<View id="btnFacebook" class="radius" top="20">
+						<ImageView image="/images/logo-button-facebook.jpg" id="logoBtnFacebook"/>
+						<Label textid="button_facebook_integrate" id="labelBtnFacebook" class="fontWhite proximaNovaRegular"/>
+					</View>
+					<!--<View class="topProfile" backgroundImage="/images/background-categories-soccer.jpg">				
 						<View class="profile" id="editImageProfile">
 							<ImageView class="imageProfile" backgroundImage="/images/icon-user.png" />
 
@@ -18,14 +22,12 @@
 						</View>
 
 						<Label text="EDITAR PAPEL DE PAREDE" class="editBackground" />
-					</View>
+					</View>-->
 
 					<TextField id="firstName" hintText="L('first_name')" class="radius input fontGray" />
 					<TextField id="lastName" hintText="L('last_name')" class="radius input fontGray" />
 					<TextField id="email" hintText="L('email')" class="radius input fontGray" />
 					<TextField id="password" passwordMask="true" hintText="L('password')" class="radius input fontGray" />
-
-					<Button id="facebook" title="facebook" class="radius white fontRed"/>
 
 					<Button id="submit" title="Salvar" class="radius white fontRed"/>
 				</View>
