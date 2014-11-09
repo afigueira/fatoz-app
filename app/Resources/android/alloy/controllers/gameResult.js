@@ -68,9 +68,11 @@ function Controller() {
                 if ("a" == side) {
                     $.nameUserA.text = name;
                     $.pointsA.text = points;
+                    Alloy.Globals.loadPhoto($.imageProfileA, "image", user.custom_fields.profile_image);
                 } else {
                     $.nameUserB.text = name;
                     $.pointsB.text = points;
+                    Alloy.Globals.loadPhoto($.imageProfileB, "image", user.custom_fields.profile_image);
                 }
             }
         });
@@ -125,8 +127,7 @@ function Controller() {
         width: 64,
         height: 64,
         borderRadius: 32,
-        id: "imageProfileA",
-        backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg"
+        id: "imageProfileA"
     });
     $.__views.__alloyId40.add($.__views.imageProfileA);
     $.__views.trophyA = Ti.UI.createView({
@@ -189,8 +190,7 @@ function Controller() {
         width: 64,
         height: 64,
         borderRadius: 32,
-        id: "imageProfileB",
-        backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg"
+        id: "imageProfileB"
     });
     $.__views.__alloyId43.add($.__views.imageProfileB);
     $.__views.trophyB = Ti.UI.createView({
@@ -363,7 +363,7 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
-    Alloy.Globals.drawer($.sidebar, $.drawer, "Resultado da Partida", init);
+    Alloy.Globals.drawer($.sidebar, $.drawer, "Resultado final", init);
     var matchId = args.matchId;
     var pointsA;
     var pointsB;

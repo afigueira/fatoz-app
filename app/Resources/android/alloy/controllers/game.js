@@ -16,7 +16,13 @@ function Controller() {
                 var user = e.users[0];
                 var name = user.id == Titanium.App.Properties.getString("userId") ? "Você" : user.first_name;
                 user.id == Titanium.App.Properties.getString("userId") && (myUserSide = side);
-                "a" == side ? $.nameScoreA.text = name : $.nameScoreB.text = name;
+                if ("a" == side) {
+                    $.nameScoreA.text = name;
+                    Alloy.Globals.loadPhoto($.imageProfileProgessA, "image", user.custom_fields.profile_image);
+                } else {
+                    $.nameScoreB.text = name;
+                    Alloy.Globals.loadPhoto($.imageProfileProgessB, "image", user.custom_fields.profile_image);
+                }
                 userReady++;
                 2 == userReady && Titanium.App.fireEvent("websocket.dispatchEvent", {
                     event: "userReady",
@@ -103,11 +109,13 @@ function Controller() {
     }
     function createYouWin(pointsA, pointsB) {
         $youWinGame = Titanium.UI.createView({
-            id: "containerYouWin"
+            id: "containerYouWin",
+            opacity: 0
         });
         $.addClass($youWinGame, "youWinGame");
+        var imageProfile = "a" == myUserSide ? $.imageProfileProgessA : $.imageProfileProgessB;
         $imageView = Titanium.UI.createImageView({
-            backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg"
+            image: imageProfile.image
         });
         $.addClass($imageView, "imageProfile imageProfileYouWin");
         $youWinBackground = Titanium.UI.createView();
@@ -124,7 +132,6 @@ function Controller() {
         $youWinGame.add($trophy);
         $.scrollView.add($youWinGame);
         $label.text = pointsA != pointsB ? "a" == myUserSide && pointsA > pointsB || "b" == myUserSide && pointsB > pointsA ? "VOCÊ\n VENCEU!" : "VOCÊ\n PERDEU!" : "EMPATE!";
-        $youWinGame.opacity = 0;
         var youWinFadeIn = Titanium.UI.createAnimation({
             opacity: 1,
             duration: 500
@@ -179,6 +186,7 @@ function Controller() {
         var height = Math.round(maxHeightProgressBar * points / Alloy.Globals.maxPointsPerMatch);
         var progressBar = "a" == userSide ? $.percentBarA : $.percentBarB;
         var imageProfile = "a" == userSide ? $.imageProfileProgessA : $.imageProfileProgessB;
+        var imageBottom = Math.round((maxHeightProgressBar - imageProfile.height) * points / Alloy.Globals.maxPointsPerMatch);
         var backgroundColor = isCorrect ? "#78a800" : "#e42e24";
         var animationProgressBar = Titanium.UI.createAnimation({
             backgroundColor: backgroundColor,
@@ -186,7 +194,7 @@ function Controller() {
             duration: 600
         });
         var animationImageProfile = Titanium.UI.createAnimation({
-            bottom: height - imageProfile.height / 2,
+            bottom: imageBottom,
             duration: 600
         });
         var onCompleteAnimation = function() {
@@ -230,6 +238,7 @@ function Controller() {
         navTintColor: "white",
         tabBarHidden: true,
         translucent: false,
+        top: Alloy.Globals.marginTopiOS7,
         id: "game"
     });
     $.__views.game && $.addTopLevelView($.__views.game);
@@ -427,8 +436,7 @@ function Controller() {
         borderRadius: 15,
         bottom: 0,
         zIndex: 1,
-        id: "imageProfileProgessA",
-        backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg"
+        id: "imageProfileProgessA"
     });
     $.__views.__alloyId29.add($.__views.imageProfileProgessA);
     $.__views.__alloyId30 = Ti.UI.createView({
@@ -601,8 +609,7 @@ function Controller() {
         borderRadius: 15,
         bottom: 0,
         zIndex: 1,
-        id: "imageProfileProgessB",
-        backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg"
+        id: "imageProfileProgessB"
     });
     $.__views.__alloyId35.add($.__views.imageProfileProgessB);
     $.__views.__alloyId36 = Ti.UI.createView({

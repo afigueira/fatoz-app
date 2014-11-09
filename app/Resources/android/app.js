@@ -13,6 +13,8 @@ Alloy.Globals.iOS7 = false;
 
 Alloy.Globals.marginTopWindow = Alloy.Globals.iOS7 ? 66 : 0;
 
+Alloy.Globals.marginTopiOS7 = Alloy.Globals.iOS7 ? 20 : 0;
+
 Alloy.Globals.drawer = function(sidebar, element, titleActionBar, func) {
     function onNavDrawerWinOpen() {
         this.removeEventListener("open", onNavDrawerWinOpen);

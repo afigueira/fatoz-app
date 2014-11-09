@@ -28,12 +28,12 @@
 			</View>
 		</View>-->
 		
-		<View id="statistics" class="rowSidebar">
+		<!-- <View id="statistics" class="rowSidebar">
 			<View class="layoutHorizontal floatLeft">
 				<ImageView class="imageSidebar" image="/images/icon-statistics.png" />
 				<Label class="labelSidebar" textid="button_statistics" />
 			</View>
-		</View>
+		</View> -->
 		
 		<View id="achievements" class="rowSidebar">
 			<View class="layoutHorizontal floatLeft">

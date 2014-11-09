@@ -98,7 +98,6 @@ function Controller() {
         Alloy.Globals.Cloud.Photos.show({
             photo_id: backgroundImage
         }, function(e) {
-            console.log(a, e);
             if (e.success) {
                 var photo = e.photos[0];
                 var urlImage = photo.urls.original;
@@ -312,11 +311,11 @@ function Controller() {
     var __alloyId62 = [];
     $.__views.popular = Ti.UI.createScrollableView({
         width: Titanium.UI.FILL,
-        height: Titanium.UI.SIZE,
+        height: 344,
         left: 0,
         showPagingControl: true,
         pagingControlColor: "transparent",
-        pagingControlHeight: 40,
+        pagingControlHeight: 30,
         overlayEnabled: true,
         views: __alloyId62,
         id: "popular"
@@ -325,11 +324,11 @@ function Controller() {
     var __alloyId63 = [];
     $.__views.recent = Ti.UI.createScrollableView({
         width: Titanium.UI.FILL,
-        height: Titanium.UI.SIZE,
+        height: 344,
         left: 0,
         showPagingControl: true,
         pagingControlColor: "transparent",
-        pagingControlHeight: 40,
+        pagingControlHeight: 30,
         overlayEnabled: true,
         views: __alloyId63,
         id: "recent"

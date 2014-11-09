@@ -22,8 +22,8 @@
 					</View>-->
 				</View>
 				
-				<View id="containerTabs" class="white">
-					<View id="tabs">
+				<!-- <View id="containerTabs" class="white">
+					<View id="tabs">						
 						<View class="tab" onClick="tabNavigation" contentTabsIndex="0">
 							<Label textid="statistics" class="fontOrange proximaNovaRegular labelTab"/>
 							<View class="tabSelected orange" />								
@@ -41,10 +41,10 @@
 							<View class="tabSelected orange" visible="false" />
 						</View>
 					</View>
-				</View>
+				</View> -->
 				
 				<ScrollableView id="contentTabs">
-					<View class="profileStatistics">
+					<!--<View class="profileStatistics">
 						<View class="graphic1">
 							<WebView url="https://1f0b6fd33fa8afdb54e5479c5a17447732b25d68.cloudapp.appcelerator.com/piechart" scalesPageToFit="true"/>
 						</View>
@@ -105,7 +105,7 @@
 								</View>
 							</View>
 						</View>		            
-					</View>
+					</View>-->
 					
 					<!--<View class="profileFriends">
 						<View id="containerSearch" class="black">

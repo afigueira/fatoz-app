@@ -21,20 +21,16 @@ function Controller() {
             order: "-points"
         }, function(e) {
             if (e.success) {
-                console.log(e);
                 for (var i = 0, j = e.achievements.length; j > i; i++) {
                     var rowRank = Titanium.UI.createTableViewRow({
                         users_id: e.achievements[i].users_id
                     });
-                    console.log("users_id", e.achievements[i].users_id);
                     $.addClass(rowRank, "rowRank");
                     var rankNumber = Titanium.UI.createLabel({
                         text: i + 1 + " ."
                     });
                     $.addClass(rankNumber, "rankNumber proximaNovaRegular");
-                    var imageProfile = Titanium.UI.createImageView({
-                        backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg"
-                    });
+                    var imageProfile = Titanium.UI.createImageView();
                     $.addClass(imageProfile, "imageProfile imageProfileRank");
                     var rankName = Titanium.UI.createLabel({
                         id: "user_" + e.achievements[i].users_id
@@ -61,30 +57,28 @@ function Controller() {
                     rowRank.add(borderGray);
                     $.listRank.appendRow(rowRank);
                 }
+                console.log($.listRank.data[0].rows);
                 setUserName($.listRank.data[0].rows, $.listRank.data[0].rows.length, 0);
-            } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+            } else alert("Houve um erro para carregar o usuário");
         });
     }
     function setUserName(element, length, a) {
         var usersId;
         var row;
-        for (var i = a; length > i; i++) {
-            row = element[i];
-            usersId = row.users_id;
-            Alloy.Globals.Cloud.Users.query({
-                where: {
-                    id: usersId
-                }
-            }, function(e) {
-                if (e.success) {
-                    var user = e.users[0];
-                    row.children[2].text = user.first_name;
-                    element.shift();
-                    element && setUserName(element, length, i);
-                }
-            });
-            break;
-        }
+        row = element[a];
+        usersId = row.users_id;
+        Alloy.Globals.Cloud.Users.query({
+            where: {
+                id: usersId
+            }
+        }, function(e) {
+            if (e.success) {
+                var user = e.users[0];
+                row.children[2].text = user.first_name;
+                Alloy.Globals.loadPhoto(row.children[1], "image", user.custom_fields.profile_image);
+                length - 1 > a && setUserName(element, length, ++a);
+            }
+        });
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "ranking";
@@ -99,22 +93,23 @@ function Controller() {
         role: "leftWindow",
         id: "sidebar"
     });
-    $.__views.__alloyId129 = require("xp.ui").createWindow({
+    $.__views.__alloyId84 = require("xp.ui").createWindow({
         role: "centerWindow",
         title: "Ranking",
-        id: "__alloyId129"
+        id: "__alloyId84"
     });
     $.__views.listRank = Ti.UI.createTableView({
         backgroundColor: "#ffffff",
+        top: Alloy.Globals.marginTopWindow,
         id: "listRank"
     });
-    $.__views.__alloyId129.add($.__views.listRank);
+    $.__views.__alloyId84.add($.__views.listRank);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_NONE",
         closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
         leftDrawerWidth: 250,
         id: "drawer",
-        children: [ $.__views.sidebar, $.__views.__alloyId129 ],
+        children: [ $.__views.sidebar, $.__views.__alloyId84 ],
         __parentSymbol: __parentSymbol
     });
     $.__views.drawer && $.addTopLevelView($.__views.drawer);

@@ -6,9 +6,9 @@ function init(){
 	myInfos();
 	achievements();
 
-	if (typeof args.scrollToView != 'undefined') {
+	/*if (typeof args.scrollToView != 'undefined') {
 		tabNavigation({source: {contentTabsIndex: args.scrollToView}});
-	}
+	}*/
 	
 	/*$.settings.addEventListener('click', function(){
 		Alloy.createController('settings');
@@ -16,7 +16,7 @@ function init(){
 }
 
 
-function tabNavigation(e){	
+/*function tabNavigation(e){	
 	var contentTabsIndex = e.source.contentTabsIndex;
 
 	$.contentTabs.scrollToView(Number(contentTabsIndex));
@@ -26,7 +26,7 @@ function tabNavigation(e){
 	};
 
 	$.tabs.children[contentTabsIndex].children[1].visible = true;
-}
+}*/
 
 function myInfos(){
 	Alloy.Globals.Cloud.Users.showMe(function (e) {
