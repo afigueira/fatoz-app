@@ -23,16 +23,26 @@ Alloy.Globals.marginTopiOS7 = Alloy.Globals.iOS7 ? 20 : 0;
 
 Alloy.Globals.updateFacebookInfos = function() {
 	if (Alloy.Globals.Facebook.loggedIn) {
-		Alloy.Globals.Facebook.requestWithGraphPath('me', {fields: 'id,cover'}, 'GET', function(response) {
+		Alloy.Globals.Facebook.requestWithGraphPath('me', {'fields': 'id,cover'}, 'GET', function(response) {
 			if (response.success) {
-				var id = response.result.id;
-				var cover = response.result.cover.source;
+				
+				var result = response.result;
+				if (typeof response.result == 'string') {
+					result = JSON.parse(response.result);
+				}
+				
+				var id = result.id;
+				var cover = result.cover.source;
 				var profileImage = 'http://graph.facebook.com/'+id+'/picture?type=large';
 				
 				Alloy.Globals.Cloud.Users.update({
 					custom_fields: {
 						profile_image:  profileImage,
 						cover_image: cover
+					}
+				}, function(e) {
+					if (e.success) {
+						Titanium.App.fireEvent('facebook.updated');
 					}
 				});
 			} else {

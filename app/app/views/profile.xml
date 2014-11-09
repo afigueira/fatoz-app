@@ -13,7 +13,7 @@
 					<View class="profile">
 						<ImageView class="imageProfile" id="profilePhoto"/>
 						<Label class="proximaNovaRegular fontWhite profileTitle" id="userName"/>
-						<Label class="proximaNovaRegular fontWhite profileCityState" id="cityState"/>			
+						<!--<Label class="proximaNovaRegular fontWhite profileCityState" id="cityState"/>-->			
 					</View>
 					
 					<!--<View class="profileButtons">
