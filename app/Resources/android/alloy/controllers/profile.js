@@ -11,17 +11,6 @@ function Controller() {
     function init() {
         myInfos();
         achievements();
-        "undefined" != typeof args.scrollToView && tabNavigation({
-            source: {
-                contentTabsIndex: args.scrollToView
-            }
-        });
-    }
-    function tabNavigation(e) {
-        var contentTabsIndex = e.source.contentTabsIndex;
-        $.contentTabs.scrollToView(Number(contentTabsIndex));
-        for (var i = 0, j = $.tabs.children.length; j > i; i++) $.tabs.children[i].children[1].visible = false;
-        $.tabs.children[contentTabsIndex].children[1].visible = true;
     }
     function myInfos() {
         Alloy.Globals.Cloud.Users.showMe(function(e) {
@@ -157,7 +146,6 @@ function Controller() {
     }
     var $ = this;
     var exports = {};
-    var __defers = {};
     $.__views.sidebar = require("xp.ui").createWindow({
         role: "leftWindow",
         id: "sidebar"
@@ -220,73 +208,21 @@ function Controller() {
         id: "cityState"
     });
     $.__views.__alloyId78.add($.__views.cityState);
-    $.__views.containerTabs = Ti.UI.createView({
-        height: 46,
-        backgroundColor: "white",
-        left: 0,
-        top: 0,
-        width: Titanium.UI.FILL,
-        id: "containerTabs"
-    });
-    $.__views.__alloyId77.add($.__views.containerTabs);
-    $.__views.tabs = Ti.UI.createView({
-        height: 46,
-        top: 0,
-        left: 15,
-        width: Titanium.UI.FILL,
-        layout: "horizontal",
-        id: "tabs"
-    });
-    $.__views.containerTabs.add($.__views.tabs);
-    $.__views.__alloyId79 = Ti.UI.createView({
-        height: 46,
-        touchEnabled: true,
-        width: 72,
-        contentTabsIndex: "3",
-        id: "__alloyId79"
-    });
-    $.__views.tabs.add($.__views.__alloyId79);
-    tabNavigation ? $.__views.__alloyId79.addEventListener("click", tabNavigation) : __defers["$.__views.__alloyId79!click!tabNavigation"] = true;
-    $.__views.__alloyId80 = Ti.UI.createLabel({
-        color: "#ff7026",
-        tintColor: "#ff7026",
-        font: {
-            fontFamily: "ProximaNova-Regular",
-            fontSize: 10,
-            fontWeight: "bold"
-        },
-        touchEnabled: false,
-        textid: "conquer",
-        id: "__alloyId80"
-    });
-    $.__views.__alloyId79.add($.__views.__alloyId80);
-    $.__views.__alloyId81 = Ti.UI.createView({
-        height: 3,
-        backgroundColor: "#ff7026",
-        left: 10,
-        right: 10,
-        bottom: 0,
-        width: Titanium.UI.FILL,
-        touchEnabled: false,
-        visible: "false",
-        id: "__alloyId81"
-    });
-    $.__views.__alloyId79.add($.__views.__alloyId81);
-    var __alloyId82 = [];
-    $.__views.__alloyId83 = Ti.UI.createView({
+    var __alloyId79 = [];
+    $.__views.__alloyId80 = Ti.UI.createView({
         height: Titanium.UI.FILL,
         width: Titanium.UI.FILL,
         layout: "vertical",
         backgroundColor: "#f0f0f0",
-        id: "__alloyId83"
+        id: "__alloyId80"
     });
-    __alloyId82.push($.__views.__alloyId83);
+    __alloyId79.push($.__views.__alloyId80);
     $.__views.conquer = Ti.UI.createTableView({
         id: "conquer"
     });
-    $.__views.__alloyId83.add($.__views.conquer);
+    $.__views.__alloyId80.add($.__views.conquer);
     $.__views.contentTabs = Ti.UI.createScrollableView({
-        views: __alloyId82,
+        views: __alloyId79,
         id: "contentTabs"
     });
     $.__views.__alloyId77.add($.__views.contentTabs);
@@ -301,9 +237,8 @@ function Controller() {
     $.__views.drawer && $.addTopLevelView($.__views.drawer);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var args = arguments[0] || {};
+    arguments[0] || {};
     Alloy.Globals.drawer($.sidebar, $.drawer, "Perfil", init);
-    __defers["$.__views.__alloyId79!click!tabNavigation"] && $.__views.__alloyId79.addEventListener("click", tabNavigation);
     _.extend($, exports);
 }
 
