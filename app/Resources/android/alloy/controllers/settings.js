@@ -165,6 +165,15 @@ function Controller() {
         hintText: L("password")
     });
     $.__views.__alloyId91.add($.__views.password);
+    $.__views.facebook = Ti.UI.createButton({
+        borderRadius: 4,
+        color: "red",
+        tintColor: "red",
+        backgroundColor: "white",
+        id: "facebook",
+        title: "facebook"
+    });
+    $.__views.__alloyId91.add($.__views.facebook);
     $.__views.submit = Ti.UI.createButton({
         borderRadius: 4,
         color: "red",
@@ -203,6 +212,25 @@ function Controller() {
             }
             updateUser(obj);
         } else alert("Preencha os campos vazios.");
+    });
+    $.facebook.addEventListener("click", function() {
+        console.log("btn facebook clicked");
+        console.log(Alloy.Globals.Facebook);
+        Alloy.Globals.Facebook.authorize();
+    });
+    Titanium.App.addEventListener("facebook.login", function(e) {
+        e.success ? Alloy.Globals.Cloud.SocialIntegrations.externalAccountLogin({
+            type: "facebook",
+            token: Alloy.Globals.Facebook.accessToken
+        }, function(e) {
+            login(e);
+            Cloud.SocialIntegrations.externalAccountLink({
+                type: "facebook",
+                token: Alloy.Globals.Facebook.accessToken
+            }, function(e) {
+                e.success ? Alloy.Globals.updateFacebookInfos() : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+            });
+        }) : alert("Houve um erro para efetuar seu login");
     });
     _.extend($, exports);
 }

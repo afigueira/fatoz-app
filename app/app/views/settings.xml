@@ -25,6 +25,8 @@
 					<TextField id="email" hintText="L('email')" class="radius input fontGray" />
 					<TextField id="password" passwordMask="true" hintText="L('password')" class="radius input fontGray" />
 
+					<Button id="facebook" title="facebook" class="radius white fontRed"/>
+
 					<Button id="submit" title="Salvar" class="radius white fontRed"/>
 				</View>
 			</ScrollView>

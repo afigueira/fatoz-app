@@ -17,30 +17,9 @@ function Controller() {
             if (e.success) {
                 var user = e.users[0];
                 $.userName.text = user.first_name + " " + user.last_name;
+                console.log(user.custom_fields);
                 Alloy.Globals.loadPhoto($.profilePhoto, "image", user.custom_fields.profile_image);
                 Alloy.Globals.loadPhoto($.coverPhoto, "backgroundImage", user.custom_fields.cover_image);
-                Alloy.Globals.Cloud.Objects.query({
-                    classname: "cities",
-                    page: 1,
-                    per_page: 1,
-                    where: {
-                        id: user.cities_id
-                    }
-                }, function(e) {
-                    if (e.success) {
-                        var city = e.cities[0].name;
-                        Alloy.Globals.Cloud.Objects.query({
-                            classname: "states",
-                            page: 1,
-                            per_page: 1,
-                            where: {
-                                states_id: e.cities[0].states_id
-                            }
-                        }, function(e) {
-                            e.success ? $.cityState.text = city + ", " + e.states[0].name : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
-                        });
-                    } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
-                });
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });
     }
@@ -54,9 +33,7 @@ function Controller() {
                 for (var i = 0, j = e.categories.length; j > i; i++) {
                     var rowConquer = Titanium.UI.createTableViewRow();
                     $.addClass(rowConquer, "rowConquer");
-                    var imageConquer = Titanium.UI.createImageView({
-                        image: "/images/conquer-master-of-chemistry.png"
-                    });
+                    var imageConquer = Titanium.UI.createImageView();
                     $.addClass(imageConquer, "imageConquer");
                     var rightContentConquer = Titanium.UI.createView();
                     $.addClass(rightContentConquer, "rightContentConquer");
@@ -103,6 +80,7 @@ function Controller() {
                     rowConquer.add(rightContentConquer);
                     rowConquer.add(borderGrayConquer);
                     $.conquer.appendRow(rowConquer);
+                    Alloy.Globals.loadPhoto(imageConquer, "image", categories[i].badge);
                 }
                 setPointsAchievements($.conquer.data[0].rows, $.conquer.data[0].rows.length, 0);
             }
@@ -127,11 +105,15 @@ function Controller() {
             }, function(e) {
                 if (e.success) {
                     var achievement = e.achievements[0];
-                    label.text = achievement.points + " de " + pointsToBadge;
-                    percentBar.width = 100 * achievement.points / pointsToBadge + "%";
-                    percent.text = 100 * achievement.points / pointsToBadge + "%";
-                    element.shift();
-                    setPointsAchievements(element, length, i);
+                    if (achievement) {
+                        label.text = achievement.points + " de " + pointsToBadge;
+                        var pct = 100 * achievement.points / pointsToBadge;
+                        pct = pct > 100 ? 100 : pct;
+                        percentBar.width = pct + "%";
+                        percent.text = pct + "%";
+                        element.shift();
+                        setPointsAchievements(element, length, i);
+                    }
                 }
             });
             break;
@@ -195,19 +177,6 @@ function Controller() {
         id: "userName"
     });
     $.__views.__alloyId78.add($.__views.userName);
-    $.__views.cityState = Ti.UI.createLabel({
-        color: "white",
-        tintColor: "white",
-        font: {
-            fontFamily: "ProximaNova-Regular",
-            fontSize: 14
-        },
-        height: Titanium.UI.SIZE,
-        left: 74,
-        top: 35,
-        id: "cityState"
-    });
-    $.__views.__alloyId78.add($.__views.cityState);
     var __alloyId79 = [];
     $.__views.__alloyId80 = Ti.UI.createView({
         height: Titanium.UI.FILL,

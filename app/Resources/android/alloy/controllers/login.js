@@ -13,6 +13,7 @@ function Controller() {
             Ti.App.Properties.setString("sessionId", Alloy.Globals.Cloud.sessionId);
             Ti.App.Properties.setString("userId", e.users[0].id);
             Ti.App.Properties.setString("userName", e.users[0].first_name + " " + e.users[0].last_name);
+            Alloy.Globals.updateFacebookInfos();
             Alloy.createController(createController);
             $.destroy();
         } else alert("Houve um erro para efetuar seu login");

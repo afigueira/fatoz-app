@@ -202,12 +202,17 @@ function Controller() {
             last_name: lastName,
             password: $.password.value,
             password_confirmation: $.password.value,
-            profile_image: "545f827444f2450e5e045905",
-            cover_image: "545f82f57c874208b50014b0"
+            custom_fields: {
+                profile_image: "545f827444f2450e5e045905",
+                cover_image: "545f82f57c874208b50014b0"
+            }
         }, function(e) {
             if (e.success) {
-                e.users[0];
                 alert("Cadastro realizado com sucesso.");
+                Ti.App.Properties.setString("sessionId", Alloy.Globals.Cloud.sessionId);
+                Ti.App.Properties.setString("userId", e.users[0].id);
+                Ti.App.Properties.setString("userName", e.users[0].first_name + " " + e.users[0].last_name);
+                Alloy.Globals.updateFacebookInfos();
                 Alloy.createController("home");
                 $.destroy();
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));

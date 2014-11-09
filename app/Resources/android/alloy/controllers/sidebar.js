@@ -230,12 +230,6 @@ function Controller() {
         Alloy.createController("profile");
         $.destroy();
     });
-    $.statistics.addEventListener("click", function() {
-        Alloy.createController("profile", {
-            scrollToView: 0
-        });
-        $.destroy();
-    });
     $.achievements.addEventListener("click", function() {
         Alloy.createController("profile", {
             scrollToView: 3

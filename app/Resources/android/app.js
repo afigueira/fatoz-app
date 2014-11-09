@@ -15,6 +15,36 @@ Alloy.Globals.marginTopWindow = Alloy.Globals.iOS7 ? 66 : 0;
 
 Alloy.Globals.marginTopiOS7 = Alloy.Globals.iOS7 ? 20 : 0;
 
+Alloy.Globals.updateFacebookInfos = function() {
+    Alloy.Globals.Facebook.loggedIn ? Alloy.Globals.Facebook.requestWithGraphPath("me", {
+        fields: "id,cover,picture.type(large)"
+    }, "GET", function(response) {
+        if (response.success) {
+            var result = response.result;
+            "string" == typeof response.result && (result = JSON.parse(response.result));
+            var cover = result.cover.source;
+            var profileImage = result.picture.data.url;
+            Alloy.Globals.Cloud.Users.update({
+                custom_fields: {
+                    profile_image: profileImage,
+                    cover_image: cover
+                }
+            }, function(e) {
+                e.success && Titanium.App.fireEvent("facebook.updated");
+            });
+        } else Alloy.Globals.resetUserPhotos();
+    }) : Alloy.Globals.resetUserPhotos();
+};
+
+Alloy.Globals.resetUserPhotos = function() {
+    Alloy.Globals.Cloud.Users.update({
+        custom_fields: {
+            profile_image: "545f827444f2450e5e045905",
+            cover_image: "545f82f57c874208b50014b0"
+        }
+    });
+};
+
 Alloy.Globals.drawer = function(sidebar, element, titleActionBar, func) {
     function onNavDrawerWinOpen() {
         this.removeEventListener("open", onNavDrawerWinOpen);

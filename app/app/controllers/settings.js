@@ -50,3 +50,34 @@ $.submit.addEventListener('click', function(){
 		alert("Preencha os campos vazios.");
 	}
 });
+
+$.facebook.addEventListener('click', function(event){
+	console.log('btn facebook clicked');
+	console.log(Alloy.Globals.Facebook);
+	Alloy.Globals.Facebook.authorize();
+});
+
+Titanium.App.addEventListener('facebook.login', function(e) {
+	if (e.success) {
+		Alloy.Globals.Cloud.SocialIntegrations.externalAccountLogin({
+			type: 'facebook',
+			token: Alloy.Globals.Facebook.accessToken
+		}, function(e) {
+			login(e);	
+
+			Cloud.SocialIntegrations.externalAccountLink({
+			    type: 'facebook',
+			    token: Alloy.Globals.Facebook.accessToken
+			}, function (e) {
+			    if (e.success) {
+			        Alloy.Globals.updateFacebookInfos();
+			    } else {
+			        alert('Error:\n' +
+			            ((e.error && e.message) || JSON.stringify(e)));
+			    }
+			});		
+		});
+	} else {
+		alert('Houve um erro para efetuar seu login');
+	}
+});
