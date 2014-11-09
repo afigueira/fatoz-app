@@ -13,14 +13,11 @@ function init(){
 		},
 		order: '-points'
 	}, function (e) {
-	    if (e.success) {        
-	        console.log(e);
-	        
+	    if (e.success) {   	        
 			for(var i=0,j=e.achievements.length; i<j; i++){								
 				var rowRank = Titanium.UI.createTableViewRow({
 					users_id: e.achievements[i].users_id
 				});
-				console.log('users_id', e.achievements[i].users_id);
 
 			    $.addClass(rowRank, "rowRank");
 			    
@@ -29,9 +26,7 @@ function init(){
 			    });
 			    $.addClass(rankNumber, "rankNumber proximaNovaRegular");
 			    
-			    var imageProfile = Titanium.UI.createImageView({
-			    	backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg"
-			    });
+			    var imageProfile = Titanium.UI.createImageView();
 			    $.addClass(imageProfile, "imageProfile imageProfileRank");
 			    
 			    var rankName = Titanium.UI.createLabel({
@@ -69,13 +64,12 @@ function init(){
 			    $.listRank.appendRow(rowRank);
 				
 			};
-
-			
+						
+			console.log($.listRank.data[0].rows);
 			setUserName($.listRank.data[0].rows, $.listRank.data[0].rows.length, 0);
 	        
 	    } else {
-	        alert('Error:\n' +
-	            ((e.error && e.message) || JSON.stringify(e)));
+	        alert('Houve um erro para carregar o usuário');
 	    }
 	});	
 }
@@ -83,31 +77,27 @@ function init(){
 function setUserName(element, length, a){	
 	var usersId;	
 	var row;		
+			
+	row = element[a];
+	usersId = row.users_id;
 
-	
+	Alloy.Globals.Cloud.Users.query({		    
+	    where: {
+	        id: usersId
+	    }
+	}, function (e) {
+	    if (e.success) {
+	        var user = e.users[0];
 
-	for (var i=a; i < length; i++){		
-		row = element[i];
-		usersId = row.users_id;
+	        row.children[2].text =  user.first_name;
+	        
+		    Alloy.Globals.loadPhoto(row.children[1], 'image', user.custom_fields.profile_image);
 
-		Alloy.Globals.Cloud.Users.query({		    
-		    where: {
-		        id: usersId
-		    }
-		}, function (e) {
-		    if (e.success) {
-		        var user = e.users[0];
-
-		        row.children[2].text =  user.first_name;
-
-		        element.shift();
-		        if(element){
-		        	setUserName(element, length, i);
-		        }
-		    }
-		});	
-		break;
-	};
+	        if(a < length - 1){
+	        	setUserName(element, length, ++a);
+	        }
+	    }
+	});
 }
 
 /*function getUserLabel(userId){

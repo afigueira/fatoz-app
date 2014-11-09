@@ -1,3 +1,6 @@
+".container": {
+	top: Alloy.Globals.marginTopiOS7
+},
 ".inside": {
 	layout: "vertical",
 	backgroundColor: "#383738"
@@ -165,7 +168,6 @@
 	width: 64,
 	height: 64,
 	borderRadius: 32,
-	borderColor: "#8dc400",
 	left: 48,
 	top: 0,
 	zIndex: 1

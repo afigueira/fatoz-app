@@ -19,6 +19,7 @@ Alloy.Globals.constants = {
 
 Alloy.Globals.iOS7 = Titanium.Platform.osname == 'iphone' && parseFloat(Titanium.Platform.version) >= 7;
 Alloy.Globals.marginTopWindow = Alloy.Globals.iOS7 ? 66 : 0;
+Alloy.Globals.marginTopiOS7 = Alloy.Globals.iOS7 ? 20 : 0;
 
 Alloy.Globals.drawer = function(sidebar, element, titleActionBar, func) {	
 	sidebar.add(Alloy.createController('sidebar').getView());

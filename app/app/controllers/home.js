@@ -133,7 +133,6 @@ function setBackgrounds(element, length, a){
 	Alloy.Globals.Cloud.Photos.show({
 	    photo_id: backgroundImage
 	}, function (e) {
-		console.log(a, e);
 	    if (e.success) {
 	        var photo = e.photos[0];
 

@@ -44,8 +44,10 @@ function getUserInfo(userId, side){
 						
 			if(side == 'a'){				
 				$.nameScoreA.text = name;
+				Alloy.Globals.loadPhoto($.imageProfileProgessA, 'image', user.custom_fields.profile_image);
 			}else{
 				$.nameScoreB.text = name;
+				Alloy.Globals.loadPhoto($.imageProfileProgessB, 'image', user.custom_fields.profile_image);
 			}
 			
 			userReady++;
@@ -189,10 +191,12 @@ function finishGame(e) {
 
 function createYouWin(pointsA, pointsB) {
 	
-	$youWinGame = Titanium.UI.createView({id: 'containerYouWin'});
+	$youWinGame = Titanium.UI.createView({id: 'containerYouWin', opacity: 0});
 	$.addClass($youWinGame, 'youWinGame');
 	
-	$imageView = Titanium.UI.createImageView({backgroundImage: 'http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg'});
+	var imageProfile = myUserSide == 'a' ? $.imageProfileProgessA : $.imageProfileProgessB; 
+	
+	$imageView = Titanium.UI.createImageView({image: imageProfile.image});
 	$.addClass($imageView, 'imageProfile imageProfileYouWin');
 	
 	$youWinBackground = Titanium.UI.createView();
@@ -221,8 +225,6 @@ function createYouWin(pointsA, pointsB) {
 	} else {
 		$label.text = 'EMPATE!';
 	}
-	
-	$youWinGame.opacity = 0;
 	
 	var youWinFadeIn = Titanium.UI.createAnimation({opacity: 1, duration: 500});
 	var onCompleteFadeIn = function() {
@@ -298,10 +300,12 @@ function updateProgressBar(userSide, points, isCorrect) {
 	var progressBar = userSide == 'a' ? $.percentBarA : $.percentBarB;
 	var imageProfile = userSide == 'a' ? $.imageProfileProgessA : $.imageProfileProgessB;
 	
+	var imageBottom = Math.round((maxHeightProgressBar - imageProfile.height) * points / Alloy.Globals.maxPointsPerMatch);
+	
 	var backgroundColor = isCorrect ? '#78a800' : '#e42e24';
 	
 	var animationProgressBar = Titanium.UI.createAnimation({backgroundColor:backgroundColor, height: height, duration: 600});
-	var animationImageProfile = Titanium.UI.createAnimation({bottom: height - (imageProfile.height/2), duration: 600});
+	var animationImageProfile = Titanium.UI.createAnimation({bottom: imageBottom, duration: 600});
 	
 	var onCompleteAnimation = function(){
 		animationProgressBar.removeEventListener('complete', onCompleteAnimation);

@@ -41,11 +41,11 @@
 },
 ".scrollable": {
 	width: Titanium.UI.FILL,
-	height: Titanium.UI.SIZE,
+	height: 344,
 	left: 0,
 	showPagingControl: true,
 	pagingControlColor: "transparent",
-	pagingControlHeight: 40,
+	pagingControlHeight: 30,
 	overlayEnabled: true
 },
 ".icon-highlights":{
