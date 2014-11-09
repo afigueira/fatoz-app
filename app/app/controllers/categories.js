@@ -48,16 +48,17 @@ function getCategories(element, param){
 	        		categories_id: e.categories[i].id	        		
 	        	});
 				
-				var category = Titanium.UI.createView();			
+				var category = Titanium.UI.createView({
+					width: Titanium.UI.FILL
+				});			
 				$.addClass(category, "category");
 				
 				var backgroundCategory = Titanium.UI.createImageView({
 				  /*width: 320,
-				  height: 220,*/	
-				  width: Titanium.UI.FILL,				  
-				  height: 220,
-				  background: e.categories[i].background,
-				  backgroundImage: "https://s3-us-west-1.amazonaws.com/storage.cloud.appcelerator.com/Sg2e4ptGlzUPVVvGfWUotUGeq72dkPeH/photos/da/61/5456cede7c874208ad0006b1/bg_entretenimento_square_75.jpg"
+				  height: 220,*/					  
+				  width: "100%",
+				  height: 350,
+				  background: e.categories[i].background
 				});
 				$.addClass(backgroundCategory, "backgroundCategory");
 
@@ -178,7 +179,8 @@ function getCategories(element, param){
 					zIndex: 200,
 					layout: "absolute",
 					height: 89,
-					closed: true		
+					closed: true,
+					index: i		
 				});
 				$.addClass(toggle, "toggle");
 								
@@ -202,24 +204,28 @@ function getCategories(element, param){
 				Alloy.createController('roomQueue', {categoryId: e.source.id});
 			}
 
-			if (e.source.classes){
+			
 			if (e.source.classes.indexOf('btnRanking') > -1){
 				Alloy.createController('ranking', {categoryId: e.source.categories_id});
 			}
-		}
+			
 
-		if (e.source.classes.indexOf('toggle') > -1){
-			if(e.row.children[0].closed){
-				e.row.children[0].closed = false;		
-				e.row.children[0].height = 220;
-				e.row.height = 220;
-				
-			}else{			
-				e.row.children[0].closed = true;		
-				e.row.children[0].height = 89;
-				e.row.height = 89;					
+			if (e.source.classes.indexOf('toggle') > -1){								
+				if(e.source.closed){
+					e.source.closed = false;		
+					//e.row.children[0].height = 220;
+					//e.row.height = 220;
+					this.children[e.source.index].children[0].height = 220;
+					this.children[e.source.index].height = 220;
+					
+				}else{			
+					e.source.closed = true;		
+					//e.row.children[0].height = 89;
+					//e.row.height = 89;					
+					this.children[e.source.index].children[0].height = 89;
+					this.children[e.source.index].height = 89;
+				}
 			}
-		}
 		}
 	});
 }
