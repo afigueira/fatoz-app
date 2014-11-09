@@ -101,9 +101,9 @@ function Controller() {
         role: "leftWindow",
         id: "sidebar"
     });
-    $.__views.__alloyId147 = Ti.UI.createView({
+    $.__views.__alloyId132 = require("xp.ui").createWindow({
         role: "centerWindow",
-        id: "__alloyId147"
+        id: "__alloyId132"
     });
     $.__views.trophy = Ti.UI.createImageView({
         visible: "false",
@@ -112,26 +112,26 @@ function Controller() {
         top: "195",
         zIndex: "100"
     });
-    $.__views.__alloyId147.add($.__views.trophy);
-    $.__views.__alloyId148 = Ti.UI.createView({
+    $.__views.__alloyId132.add($.__views.trophy);
+    $.__views.__alloyId133 = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.SIZE,
-        id: "__alloyId148"
+        id: "__alloyId133"
     });
-    $.__views.__alloyId147.add($.__views.__alloyId148);
+    $.__views.__alloyId132.add($.__views.__alloyId133);
     $.__views.coverA = Ti.UI.createView({
         layout: "absolute",
         width: Titanium.UI.FILL,
         height: 231,
         id: "coverA"
     });
-    $.__views.__alloyId148.add($.__views.coverA);
-    $.__views.__alloyId149 = Ti.UI.createView({
+    $.__views.__alloyId133.add($.__views.coverA);
+    $.__views.__alloyId134 = Ti.UI.createView({
         width: 250,
         height: Titanium.UI.SIZE,
-        id: "__alloyId149"
+        id: "__alloyId134"
     });
-    $.__views.coverA.add($.__views.__alloyId149);
+    $.__views.coverA.add($.__views.__alloyId134);
     $.__views.imageProfileA = Ti.UI.createImageView({
         width: 64,
         height: 64,
@@ -141,7 +141,7 @@ function Controller() {
         left: 0,
         id: "imageProfileA"
     });
-    $.__views.__alloyId149.add($.__views.imageProfileA);
+    $.__views.__alloyId134.add($.__views.imageProfileA);
     $.__views.profileTitleA = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -155,7 +155,7 @@ function Controller() {
         top: 20,
         id: "profileTitleA"
     });
-    $.__views.__alloyId149.add($.__views.profileTitleA);
+    $.__views.__alloyId134.add($.__views.profileTitleA);
     $.__views.searchPlayer = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.FILL,
@@ -163,20 +163,20 @@ function Controller() {
         backgroundColor: "#219fd2",
         id: "searchPlayer"
     });
-    $.__views.__alloyId148.add($.__views.searchPlayer);
-    $.__views.__alloyId150 = Ti.UI.createImageView({
+    $.__views.__alloyId133.add($.__views.searchPlayer);
+    $.__views.__alloyId135 = Ti.UI.createImageView({
         top: 20,
         image: "/images/img-queue.png",
-        id: "__alloyId150"
+        id: "__alloyId135"
     });
-    $.__views.searchPlayer.add($.__views.__alloyId150);
-    $.__views.__alloyId151 = Ti.UI.createLabel({
+    $.__views.searchPlayer.add($.__views.__alloyId135);
+    $.__views.__alloyId136 = Ti.UI.createLabel({
         top: 10,
         color: "#ffffff",
         text: "Procurando oponente ideal",
-        id: "__alloyId151"
+        id: "__alloyId136"
     });
-    $.__views.searchPlayer.add($.__views.__alloyId151);
+    $.__views.searchPlayer.add($.__views.__alloyId136);
     $.__views.cancelMatch = Ti.UI.createButton({
         backgroundImage: "/images/background-btn-more.png",
         height: 30,
@@ -202,20 +202,20 @@ function Controller() {
         id: "profileB",
         visible: "false"
     });
-    $.__views.__alloyId148.add($.__views.profileB);
-    $.__views.__alloyId152 = Ti.UI.createView({
+    $.__views.__alloyId133.add($.__views.profileB);
+    $.__views.__alloyId137 = Ti.UI.createView({
         height: "2",
         backgroundColor: "#ffffff",
         top: "0",
-        id: "__alloyId152"
+        id: "__alloyId137"
     });
-    $.__views.profileB.add($.__views.__alloyId152);
-    $.__views.__alloyId153 = Ti.UI.createView({
+    $.__views.profileB.add($.__views.__alloyId137);
+    $.__views.__alloyId138 = Ti.UI.createView({
         width: 250,
         height: Titanium.UI.SIZE,
-        id: "__alloyId153"
+        id: "__alloyId138"
     });
-    $.__views.profileB.add($.__views.__alloyId153);
+    $.__views.profileB.add($.__views.__alloyId138);
     $.__views.imageProfileB = Ti.UI.createImageView({
         width: 64,
         height: 64,
@@ -225,7 +225,7 @@ function Controller() {
         left: 0,
         id: "imageProfileB"
     });
-    $.__views.__alloyId153.add($.__views.imageProfileB);
+    $.__views.__alloyId138.add($.__views.imageProfileB);
     $.__views.profileTitleB = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -240,13 +240,13 @@ function Controller() {
         id: "profileTitleB",
         text: "Raul Claudino"
     });
-    $.__views.__alloyId153.add($.__views.profileTitleB);
+    $.__views.__alloyId138.add($.__views.profileTitleB);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_NONE",
         closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
         leftDrawerWidth: 250,
         id: "drawer",
-        children: [ $.__views.sidebar, $.__views.__alloyId147 ],
+        children: [ $.__views.sidebar, $.__views.__alloyId132 ],
         __parentSymbol: __parentSymbol
     });
     $.__views.drawer && $.addTopLevelView($.__views.drawer);

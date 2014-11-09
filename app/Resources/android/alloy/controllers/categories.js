@@ -15,42 +15,14 @@ function Controller() {
             page: 1,
             per_page: 10
         });
-        getCategories($.popularCategories, {
-            classname: "categories",
-            page: 1,
-            per_page: 10,
-            where: {
-                is_popular: 1
-            }
-        });
-        getCategories($.recentCategories, {
-            classname: "categories",
-            page: 1,
-            per_page: 10,
-            where: {
-                is_recent: 1
-            }
-        });
-        pagination();
-    }
-    function pagination() {
-        $.contentTabs.addEventListener("scrollend", function(e) {
-            for (var i = 0, j = $.tabs.children.length; j > i; i++) $.tabs.children[i].children[1].visible = false;
-            $.tabs.children[e.currentPage].children[1].visible = true;
-        });
-    }
-    function tabNavigation(e) {
-        var contentTabsIndex = e.source.contentTabsIndex;
-        $.contentTabs.scrollToView(Number(contentTabsIndex));
-        for (var i = 0, j = $.tabs.children.length; j > i; i++) $.tabs.children[i].children[1].visible = false;
-        $.tabs.children[contentTabsIndex].children[1].visible = true;
     }
     function getCategories(element, param) {
         Cloud.Objects.query(param, function(e) {
             if (e.success) {
                 var total = e.categories.length;
                 for (var i = 0; total > i; i++) {
-                    var row = Titanium.UI.createTableViewRow({
+                    var row = Titanium.UI.createView({
+                        height: Titanium.UI.SIZE,
                         title: e.categories[i].title,
                         categories_id: e.categories[i].id
                     });
@@ -59,7 +31,8 @@ function Controller() {
                     var backgroundCategory = Titanium.UI.createImageView({
                         width: Titanium.UI.FILL,
                         height: 220,
-                        background: e.categories[i].background
+                        background: e.categories[i].background,
+                        backgroundImage: "https://s3-us-west-1.amazonaws.com/storage.cloud.appcelerator.com/Sg2e4ptGlzUPVVvGfWUotUGeq72dkPeH/photos/da/61/5456cede7c874208ad0006b1/bg_entretenimento_square_75.jpg"
                     });
                     $.addClass(backgroundCategory, "backgroundCategory");
                     console.log("background", e.categories[i].background);
@@ -137,10 +110,10 @@ function Controller() {
                     $.addClass(toggle, "toggle");
                     row.add(category);
                     row.add(toggle);
-                    element.appendRow(row);
+                    element.add(row);
                 }
-                setBackgrounds(element.data[0].rows, element.data[0].rows.length, 0);
-                setIcons(element.data[0].rows, element.data[0].rows.length, 0);
+                setBackgrounds(element.children, element.children.length, 0);
+                setIcons(element.children, element.children.length, 0);
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });
         element.addEventListener("click", function(e) {
@@ -213,199 +186,32 @@ function Controller() {
     }
     var $ = this;
     var exports = {};
-    var __defers = {};
     $.__views.sidebar = require("xp.ui").createWindow({
         role: "leftWindow",
         id: "sidebar"
     });
-    $.__views.__alloyId0 = Ti.UI.createView({
+    $.__views.__alloyId0 = require("xp.ui").createWindow({
         role: "centerWindow",
         id: "__alloyId0"
     });
-    $.__views.__alloyId1 = Ti.UI.createScrollView({
+    $.__views.__alloyId1 = Ti.UI.createView({
         layout: "vertical",
         backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
         id: "__alloyId1"
     });
     $.__views.__alloyId0.add($.__views.__alloyId1);
-    $.__views.containerTabs = Ti.UI.createView({
-        backgroundColor: "white",
-        height: 46,
-        left: 0,
-        top: 0,
-        width: Titanium.UI.FILL,
-        id: "containerTabs"
-    });
-    $.__views.__alloyId1.add($.__views.containerTabs);
-    $.__views.tabs = Ti.UI.createView({
-        top: 0,
-        left: 15,
-        height: 46,
-        width: Titanium.UI.FILL,
-        layout: "horizontal",
-        id: "tabs"
-    });
-    $.__views.containerTabs.add($.__views.tabs);
     $.__views.__alloyId2 = Ti.UI.createView({
-        height: 46,
-        width: 72,
-        touchEnabled: true,
-        contentTabsIndex: "0",
+        layout: "vertical",
+        width: Titanium.UI.SIZE,
         id: "__alloyId2"
     });
-    $.__views.tabs.add($.__views.__alloyId2);
-    tabNavigation ? $.__views.__alloyId2.addEventListener("click", tabNavigation) : __defers["$.__views.__alloyId2!click!tabNavigation"] = true;
-    $.__views.__alloyId3 = Ti.UI.createLabel({
-        color: "#ff7026",
-        tintColor: "#ff7026",
-        font: {
-            fontFamily: "ProximaNova-Regular",
-            fontSize: 10,
-            fontWeight: "bold"
-        },
-        touchEnabled: false,
-        textid: "all",
-        id: "__alloyId3"
-    });
-    $.__views.__alloyId2.add($.__views.__alloyId3);
-    $.__views.__alloyId4 = Ti.UI.createView({
-        backgroundColor: "#ff7026",
-        left: 10,
-        right: 10,
-        bottom: 0,
-        height: 3,
-        width: Titanium.UI.FILL,
-        touchEnabled: false,
-        id: "__alloyId4"
-    });
-    $.__views.__alloyId2.add($.__views.__alloyId4);
-    $.__views.__alloyId5 = Ti.UI.createView({
-        height: 46,
-        width: 72,
-        touchEnabled: true,
-        contentTabsIndex: "1",
-        id: "__alloyId5"
-    });
-    $.__views.tabs.add($.__views.__alloyId5);
-    tabNavigation ? $.__views.__alloyId5.addEventListener("click", tabNavigation) : __defers["$.__views.__alloyId5!click!tabNavigation"] = true;
-    $.__views.__alloyId6 = Ti.UI.createLabel({
-        color: "#ff7026",
-        tintColor: "#ff7026",
-        font: {
-            fontFamily: "ProximaNova-Regular",
-            fontSize: 10,
-            fontWeight: "bold"
-        },
-        touchEnabled: false,
-        textid: "popular",
-        id: "__alloyId6"
-    });
-    $.__views.__alloyId5.add($.__views.__alloyId6);
-    $.__views.__alloyId7 = Ti.UI.createView({
-        backgroundColor: "#ff7026",
-        left: 10,
-        right: 10,
-        bottom: 0,
-        height: 3,
-        width: Titanium.UI.FILL,
-        touchEnabled: false,
-        visible: "false",
-        id: "__alloyId7"
-    });
-    $.__views.__alloyId5.add($.__views.__alloyId7);
-    $.__views.__alloyId8 = Ti.UI.createView({
-        height: 46,
-        width: 72,
-        touchEnabled: true,
-        contentTabsIndex: "2",
-        id: "__alloyId8"
-    });
-    $.__views.tabs.add($.__views.__alloyId8);
-    tabNavigation ? $.__views.__alloyId8.addEventListener("click", tabNavigation) : __defers["$.__views.__alloyId8!click!tabNavigation"] = true;
-    $.__views.__alloyId9 = Ti.UI.createLabel({
-        color: "#ff7026",
-        tintColor: "#ff7026",
-        font: {
-            fontFamily: "ProximaNova-Regular",
-            fontSize: 10,
-            fontWeight: "bold"
-        },
-        touchEnabled: false,
-        textid: "text_new",
-        id: "__alloyId9"
-    });
-    $.__views.__alloyId8.add($.__views.__alloyId9);
-    $.__views.__alloyId10 = Ti.UI.createView({
-        backgroundColor: "#ff7026",
-        left: 10,
-        right: 10,
-        bottom: 0,
-        height: 3,
-        width: Titanium.UI.FILL,
-        touchEnabled: false,
-        visible: "false",
-        id: "__alloyId10"
-    });
-    $.__views.__alloyId8.add($.__views.__alloyId10);
-    var __alloyId11 = [];
-    $.__views.__alloyId12 = Ti.UI.createView({
+    $.__views.__alloyId1.add($.__views.__alloyId2);
+    $.__views.allCategories = Ti.UI.createScrollView({
         layout: "vertical",
         width: Titanium.UI.SIZE,
-        id: "__alloyId12"
-    });
-    __alloyId11.push($.__views.__alloyId12);
-    $.__views.__alloyId13 = Ti.UI.Android.createSearchView({
-        backgroundColor: "#ffffff",
-        id: "__alloyId13"
-    });
-    $.__views.allCategories = Ti.UI.createTableView({
-        search: $.__views.__alloyId13,
         id: "allCategories"
     });
-    $.__views.__alloyId12.add($.__views.allCategories);
-    $.__views.__alloyId14 = Ti.UI.createView({
-        layout: "vertical",
-        width: Titanium.UI.SIZE,
-        id: "__alloyId14"
-    });
-    __alloyId11.push($.__views.__alloyId14);
-    $.__views.__alloyId15 = Ti.UI.Android.createSearchView({
-        backgroundColor: "#ffffff",
-        id: "__alloyId15"
-    });
-    $.__views.popularCategories = Ti.UI.createTableView({
-        search: $.__views.__alloyId15,
-        id: "popularCategories"
-    });
-    $.__views.__alloyId14.add($.__views.popularCategories);
-    $.__views.__alloyId16 = Ti.UI.createView({
-        layout: "vertical",
-        width: Titanium.UI.SIZE,
-        id: "__alloyId16"
-    });
-    __alloyId11.push($.__views.__alloyId16);
-    $.__views.__alloyId17 = Ti.UI.Android.createSearchView({
-        backgroundColor: "#ffffff",
-        id: "__alloyId17"
-    });
-    $.__views.recentCategories = Ti.UI.createTableView({
-        search: $.__views.__alloyId17,
-        id: "recentCategories"
-    });
-    $.__views.__alloyId16.add($.__views.recentCategories);
-    $.__views.contentTabs = Ti.UI.createScrollableView({
-        width: Titanium.UI.FILL,
-        height: Titanium.UI.FILL,
-        top: 0,
-        left: 0,
-        showPagingControl: true,
-        pagingControlColor: "transparent",
-        pagingControlHeight: 40,
-        overlayEnabled: true,
-        views: __alloyId11,
-        id: "contentTabs"
-    });
-    $.__views.__alloyId1.add($.__views.contentTabs);
+    $.__views.__alloyId2.add($.__views.allCategories);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_NONE",
         closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
@@ -418,9 +224,6 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     require("alloy").Globals.drawer($.sidebar, $.drawer, "Categorias", init());
-    __defers["$.__views.__alloyId2!click!tabNavigation"] && $.__views.__alloyId2.addEventListener("click", tabNavigation);
-    __defers["$.__views.__alloyId5!click!tabNavigation"] && $.__views.__alloyId5.addEventListener("click", tabNavigation);
-    __defers["$.__views.__alloyId8!click!tabNavigation"] && $.__views.__alloyId8.addEventListener("click", tabNavigation);
     _.extend($, exports);
 }
 

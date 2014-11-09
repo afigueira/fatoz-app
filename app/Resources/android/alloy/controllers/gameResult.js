@@ -86,38 +86,37 @@ function Controller() {
         role: "leftWindow",
         id: "sidebar"
     });
-    $.__views.__alloyId52 = Ti.UI.createView({
-        height: Titanium.UI.SIZE,
+    $.__views.__alloyId37 = require("xp.ui").createWindow({
         role: "centerWindow",
-        id: "__alloyId52"
+        id: "__alloyId37"
     });
     $.__views.scrollView = Ti.UI.createScrollView({
         backgroundColor: "#383738",
         layout: "vertical",
         id: "scrollView"
     });
-    $.__views.__alloyId52.add($.__views.scrollView);
-    $.__views.__alloyId53 = Ti.UI.createView({
+    $.__views.__alloyId37.add($.__views.scrollView);
+    $.__views.__alloyId38 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         width: 280,
         top: 45,
         layout: "vertical",
-        id: "__alloyId53"
+        id: "__alloyId38"
     });
-    $.__views.scrollView.add($.__views.__alloyId53);
-    $.__views.__alloyId54 = Ti.UI.createView({
+    $.__views.scrollView.add($.__views.__alloyId38);
+    $.__views.__alloyId39 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         layout: "horizontal",
-        id: "__alloyId54"
+        id: "__alloyId39"
     });
-    $.__views.__alloyId53.add($.__views.__alloyId54);
-    $.__views.__alloyId55 = Ti.UI.createView({
+    $.__views.__alloyId38.add($.__views.__alloyId39);
+    $.__views.__alloyId40 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         width: Titanium.UI.SIZE,
         layout: "absolute",
-        id: "__alloyId55"
+        id: "__alloyId40"
     });
-    $.__views.__alloyId54.add($.__views.__alloyId55);
+    $.__views.__alloyId39.add($.__views.__alloyId40);
     $.__views.imageProfileA = Ti.UI.createImageView({
         width: 64,
         height: 64,
@@ -125,7 +124,7 @@ function Controller() {
         id: "imageProfileA",
         backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg"
     });
-    $.__views.__alloyId55.add($.__views.imageProfileA);
+    $.__views.__alloyId40.add($.__views.imageProfileA);
     $.__views.trophyA = Ti.UI.createView({
         height: 28,
         backgroundImage: "/images/trophy.png",
@@ -137,14 +136,14 @@ function Controller() {
         id: "trophyA",
         visible: "false"
     });
-    $.__views.__alloyId55.add($.__views.trophyA);
-    $.__views.__alloyId56 = Ti.UI.createView({
+    $.__views.__alloyId40.add($.__views.trophyA);
+    $.__views.__alloyId41 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         width: 119,
         layout: "vertical",
-        id: "__alloyId56"
+        id: "__alloyId41"
     });
-    $.__views.__alloyId54.add($.__views.__alloyId56);
+    $.__views.__alloyId39.add($.__views.__alloyId41);
     $.__views.nameUserA = Ti.UI.createLabel({
         font: {
             fontFamily: "ProximaNova-Regular",
@@ -154,17 +153,17 @@ function Controller() {
         color: "#ffffff",
         id: "nameUserA"
     });
-    $.__views.__alloyId56.add($.__views.nameUserA);
-    $.__views.__alloyId57 = Ti.UI.createLabel({
+    $.__views.__alloyId41.add($.__views.nameUserA);
+    $.__views.__alloyId42 = Ti.UI.createLabel({
         font: {
             fontFamily: "ProximaNova-Regular",
             fontSize: 12,
             fontWeight: "bold"
         },
         text: "vs",
-        id: "__alloyId57"
+        id: "__alloyId42"
     });
-    $.__views.__alloyId56.add($.__views.__alloyId57);
+    $.__views.__alloyId41.add($.__views.__alloyId42);
     $.__views.nameUserB = Ti.UI.createLabel({
         font: {
             fontFamily: "ProximaNova-Regular",
@@ -174,14 +173,14 @@ function Controller() {
         color: "#ffffff",
         id: "nameUserB"
     });
-    $.__views.__alloyId56.add($.__views.nameUserB);
-    $.__views.__alloyId58 = Ti.UI.createView({
+    $.__views.__alloyId41.add($.__views.nameUserB);
+    $.__views.__alloyId43 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         width: Titanium.UI.SIZE,
         layout: "absolute",
-        id: "__alloyId58"
+        id: "__alloyId43"
     });
-    $.__views.__alloyId54.add($.__views.__alloyId58);
+    $.__views.__alloyId39.add($.__views.__alloyId43);
     $.__views.imageProfileB = Ti.UI.createImageView({
         width: 64,
         height: 64,
@@ -189,7 +188,7 @@ function Controller() {
         id: "imageProfileB",
         backgroundImage: "http://i252.photobucket.com/albums/hh23/GSMFans_Brasil/Papeis_de_Parede/128x128/Paisagem/GSMFans_Paisagem-009.jpg"
     });
-    $.__views.__alloyId58.add($.__views.imageProfileB);
+    $.__views.__alloyId43.add($.__views.imageProfileB);
     $.__views.trophyB = Ti.UI.createView({
         height: 28,
         backgroundImage: "/images/trophy.png",
@@ -201,23 +200,23 @@ function Controller() {
         id: "trophyB",
         visible: "false"
     });
-    $.__views.__alloyId58.add($.__views.trophyB);
-    $.__views.__alloyId59 = Ti.UI.createView({
+    $.__views.__alloyId43.add($.__views.trophyB);
+    $.__views.__alloyId44 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         top: 25,
         layout: "absolute",
         width: Titanium.UI.FILL,
-        id: "__alloyId59"
+        id: "__alloyId44"
     });
-    $.__views.__alloyId53.add($.__views.__alloyId59);
-    $.__views.__alloyId60 = Ti.UI.createView({
+    $.__views.__alloyId38.add($.__views.__alloyId44);
+    $.__views.__alloyId45 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         width: 65,
         layout: "vertical",
         left: 0,
-        id: "__alloyId60"
+        id: "__alloyId45"
     });
-    $.__views.__alloyId59.add($.__views.__alloyId60);
+    $.__views.__alloyId44.add($.__views.__alloyId45);
     $.__views.pointsA = Ti.UI.createLabel({
         font: {
             fontFamily: "ProximaNova-Regular",
@@ -227,8 +226,8 @@ function Controller() {
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
         id: "pointsA"
     });
-    $.__views.__alloyId60.add($.__views.pointsA);
-    $.__views.__alloyId61 = Ti.UI.createLabel({
+    $.__views.__alloyId45.add($.__views.pointsA);
+    $.__views.__alloyId46 = Ti.UI.createLabel({
         font: {
             fontFamily: "ProximaNova-Regular",
             fontSize: 12
@@ -236,17 +235,17 @@ function Controller() {
         color: "#ffffff",
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
         textid: "points",
-        id: "__alloyId61"
+        id: "__alloyId46"
     });
-    $.__views.__alloyId60.add($.__views.__alloyId61);
-    $.__views.__alloyId62 = Ti.UI.createView({
+    $.__views.__alloyId45.add($.__views.__alloyId46);
+    $.__views.__alloyId47 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         width: 65,
         layout: "vertical",
         right: 10,
-        id: "__alloyId62"
+        id: "__alloyId47"
     });
-    $.__views.__alloyId59.add($.__views.__alloyId62);
+    $.__views.__alloyId44.add($.__views.__alloyId47);
     $.__views.pointsB = Ti.UI.createLabel({
         font: {
             fontFamily: "ProximaNova-Regular",
@@ -256,8 +255,8 @@ function Controller() {
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
         id: "pointsB"
     });
-    $.__views.__alloyId62.add($.__views.pointsB);
-    $.__views.__alloyId63 = Ti.UI.createLabel({
+    $.__views.__alloyId47.add($.__views.pointsB);
+    $.__views.__alloyId48 = Ti.UI.createLabel({
         font: {
             fontFamily: "ProximaNova-Regular",
             fontSize: 12
@@ -265,22 +264,22 @@ function Controller() {
         color: "#ffffff",
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
         textid: "points",
-        id: "__alloyId63"
+        id: "__alloyId48"
     });
-    $.__views.__alloyId62.add($.__views.__alloyId63);
-    $.__views.__alloyId64 = Ti.UI.createView({
+    $.__views.__alloyId47.add($.__views.__alloyId48);
+    $.__views.__alloyId49 = Ti.UI.createView({
         height: 77,
         width: Titanium.UI.FILL,
-        id: "__alloyId64"
+        id: "__alloyId49"
     });
-    $.__views.__alloyId53.add($.__views.__alloyId64);
-    $.__views.__alloyId65 = Ti.UI.createView({
+    $.__views.__alloyId38.add($.__views.__alloyId49);
+    $.__views.__alloyId50 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         layout: "vertical",
-        id: "__alloyId65"
+        id: "__alloyId50"
     });
-    $.__views.__alloyId53.add($.__views.__alloyId65);
-    $.__views.__alloyId66 = Ti.UI.createButton({
+    $.__views.__alloyId38.add($.__views.__alloyId50);
+    $.__views.__alloyId51 = Ti.UI.createButton({
         height: 30,
         borderRadius: 15,
         backgroundGradient: {
@@ -303,16 +302,16 @@ function Controller() {
         width: Titanium.UI.FILL,
         bottom: 15,
         title: "Compartilhar Resultado",
-        id: "__alloyId66"
+        id: "__alloyId51"
     });
-    $.__views.__alloyId65.add($.__views.__alloyId66);
-    $.__views.__alloyId67 = Ti.UI.createView({
+    $.__views.__alloyId50.add($.__views.__alloyId51);
+    $.__views.__alloyId52 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         layout: "horizontal",
         width: Titanium.UI.SIZE,
-        id: "__alloyId67"
+        id: "__alloyId52"
     });
-    $.__views.__alloyId65.add($.__views.__alloyId67);
+    $.__views.__alloyId50.add($.__views.__alloyId52);
     $.__views.buttonRanking = Ti.UI.createButton({
         backgroundImage: "/images/background-btn-more.png",
         height: 30,
@@ -330,7 +329,7 @@ function Controller() {
         titleid: "button_ranking",
         id: "buttonRanking"
     });
-    $.__views.__alloyId67.add($.__views.buttonRanking);
+    $.__views.__alloyId52.add($.__views.buttonRanking);
     $.__views.buttonPlayAgain = Ti.UI.createButton({
         backgroundImage: "/images/background-btn-more.png",
         height: 30,
@@ -347,13 +346,13 @@ function Controller() {
         titleid: "button_play_again",
         id: "buttonPlayAgain"
     });
-    $.__views.__alloyId67.add($.__views.buttonPlayAgain);
+    $.__views.__alloyId52.add($.__views.buttonPlayAgain);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_NONE",
         closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
         leftDrawerWidth: 250,
         id: "drawer",
-        children: [ $.__views.sidebar, $.__views.__alloyId52 ],
+        children: [ $.__views.sidebar, $.__views.__alloyId37 ],
         __parentSymbol: __parentSymbol
     });
     $.__views.drawer && $.addTopLevelView($.__views.drawer);
