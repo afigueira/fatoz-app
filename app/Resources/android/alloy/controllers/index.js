@@ -45,13 +45,7 @@ function Controller() {
     _.extend($, $.__views);
     Alloy.Globals.Cloud.sessionId = Titanium.App.Properties.getString("sessionId");
     Alloy.Globals.Cloud.Users.showMe(function(e) {
-        if (e.success) {
-            Alloy.createController("home");
-            $.destroy();
-        } else {
-            Alloy.createController("login");
-            $.destroy();
-        }
+        e.success ? Alloy.createController("home") : Alloy.createController("login");
     });
     _.extend($, exports);
 }

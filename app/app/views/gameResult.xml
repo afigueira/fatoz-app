@@ -73,6 +73,8 @@
 							<Button class="btnWhite btnWhiteResultGame marginRightBtnWhite" titleid="button_rematch" />
 						</View>-->			
 					</View>
+
+					
 				</View>
 			</ScrollView>
 		
@@ -85,6 +87,8 @@
 					</View>				
 				</View>	
 			</View>-->
+
+			<WebView id="webview" url="https://1f0b6fd33fa8afdb54e5479c5a17447732b25d68.cloudapp.appcelerator.com/banner?platform=android&unitId=ca-app-pub-1202817906596777/9714576843" background="red" width="320" height="50" bottom="0" zIndex="300" />
         </Window>
     </Widget>
 </Alloy>

@@ -79,7 +79,7 @@ Alloy.Globals.Facebook = require("facebook");
 
 Alloy.Globals.Facebook.appid = "1480203828923788";
 
-Alloy.Globals.Facebook.permissions = [ "email" ];
+Alloy.Globals.Facebook.permissions = [ "email", "publish_stream" ];
 
 Alloy.Globals.Facebook.addEventListener("login", function(e) {
     Titanium.App.fireEvent("facebook.login", e);

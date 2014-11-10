@@ -146,7 +146,6 @@ function Controller() {
                 Alloy.createController("gameResult", {
                     matchId: matchId
                 });
-                $.destroy();
             };
             youWinFadeout.addEventListener("complete", onCompleteFadeout);
             $youWinGame.animate(youWinFadeout);
@@ -669,6 +668,15 @@ function Controller() {
     Titanium.App.addEventListener("websocket.startQuestion", startQuestion);
     Titanium.App.addEventListener("websocket.fighterAnswered", fighterAnswered);
     Titanium.App.addEventListener("websocket.finishGame", finishGame);
+    $.game.addEventListener("close", function() {
+        Titanium.App.removeEventListener("websocket.showQuestion", showQuestion);
+        Titanium.App.removeEventListener("websocket.startQuestion", startQuestion);
+        Titanium.App.removeEventListener("websocket.fighterAnswered", fighterAnswered);
+        Titanium.App.removeEventListener("websocket.finishGame", finishGame);
+        timerInterval && clearInterval(timerInterval);
+        $.destroy();
+        $.off();
+    });
     $.game.open();
     _.extend($, exports);
 }

@@ -19,13 +19,11 @@ function Controller() {
         Alloy.createController("roomQueue", {
             categoryId: match.category
         });
-        $.destroy();
     }
     function openRanking() {
         Alloy.createController("ranking", {
             categoryId: match.category
         });
-        $.destroy();
     }
     function matches() {
         Alloy.Globals.Cloud.Objects.query({
@@ -41,6 +39,8 @@ function Controller() {
                 var userB = match.user_b;
                 pointsA = match.points_a;
                 pointsB = match.points_b;
+                var myUserId = Titanium.App.Properties.getString("userId");
+                matchResultString = userA == myUserId && pointsA > pointsB || userB == myUserId && pointsB > pointsA ? "venci!!!" : "perdi";
                 setUserInfo(userA, "a", pointsA);
                 setUserInfo(userB, "b", pointsB);
                 if (pointsA != pointsB) if (pointsA > pointsB) {
@@ -65,6 +65,7 @@ function Controller() {
             if (e.success) {
                 var user = e.users[0];
                 var name = user.id == Titanium.App.Properties.getString("userId") ? "Você" : user.first_name;
+                user.id != Titanium.App.Properties.getString("userId") && (fighterName = user.first_name + " " + user.last_name);
                 if ("a" == side) {
                     $.nameUserA.text = name;
                     $.pointsA.text = points;
@@ -77,6 +78,17 @@ function Controller() {
             }
         });
     }
+    function shareFacebook() {
+        var data = {
+            link: "http://www.fatoz.com.br/",
+            name: "Fatoz Game",
+            message: "Acabei de disputar uma partida contra" + fighterName + " e " + matchResultString,
+            caption: "Fatoz Game",
+            picture: "http://developer.appcelerator.com/assets/img/DEV_titmobile_image.png",
+            description: ""
+        };
+        Alloy.Globals.Facebook.dialog("feed", data, function() {});
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "gameResult";
     if (arguments[0]) {
@@ -86,6 +98,7 @@ function Controller() {
     }
     var $ = this;
     var exports = {};
+    var __defers = {};
     $.__views.sidebar = require("xp.ui").createWindow({
         role: "leftWindow",
         id: "sidebar"
@@ -309,6 +322,7 @@ function Controller() {
         id: "__alloyId51"
     });
     $.__views.__alloyId50.add($.__views.__alloyId51);
+    shareFacebook ? $.__views.__alloyId51.addEventListener("click", shareFacebook) : __defers["$.__views.__alloyId51!click!shareFacebook"] = true;
     $.__views.__alloyId52 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         layout: "horizontal",
@@ -351,6 +365,16 @@ function Controller() {
         id: "buttonPlayAgain"
     });
     $.__views.__alloyId52.add($.__views.buttonPlayAgain);
+    $.__views.webview = Ti.UI.createWebView({
+        id: "webview",
+        url: "https://1f0b6fd33fa8afdb54e5479c5a17447732b25d68.cloudapp.appcelerator.com/banner?platform=android&unitId=ca-app-pub-1202817906596777/9714576843",
+        background: "red",
+        width: "320",
+        height: "50",
+        bottom: "0",
+        zIndex: "300"
+    });
+    $.__views.__alloyId37.add($.__views.webview);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_NONE",
         closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
@@ -368,6 +392,9 @@ function Controller() {
     var pointsA;
     var pointsB;
     var match;
+    var fighterName = "";
+    var matchResultString = "";
+    __defers["$.__views.__alloyId51!click!shareFacebook"] && $.__views.__alloyId51.addEventListener("click", shareFacebook);
     _.extend($, exports);
 }
 

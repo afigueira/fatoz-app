@@ -2,6 +2,7 @@ Alloy.Globals.drawer($.sidebar, $.drawer, 'Categorias', init);
 
 var canSearch = false;
 
+
 function init(){
 
 	getCategories($.allCategories, {
@@ -40,7 +41,9 @@ function getCategories(element, param){
 		
 	    if (e.success) {    	
 	    	var total = e.categories.length;
-	              
+				
+			var rows = [];	           
+
 	        for (var i = 0; i < total; i++){
 	        	var row = Titanium.UI.createView({
 	        		height: Titanium.UI.SIZE,
@@ -183,8 +186,15 @@ function getCategories(element, param){
 				row.add(category);
 				row.add(toggle);
 
-				element.add(row);
+				rows.push(row);
+				//element.add(row);
 			}
+
+			rows = arrayRand(rows);
+
+			for (var i=0; i < total; i++) {
+				element.add(rows[i]);
+			};
 	        
 	        //setBackgrounds(element.children, element.children.length, 0);
 	        //setIcons(element.children, element.children.length, 0);
@@ -225,6 +235,22 @@ function getCategories(element, param){
 			}
 		}
 	});
+}
+
+function arrayRand(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+
+  while (0 !== currentIndex) {
+
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
 }
 
 function setBackgrounds(element, length, a){

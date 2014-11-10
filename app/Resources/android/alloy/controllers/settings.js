@@ -42,24 +42,24 @@ function Controller() {
         role: "leftWindow",
         id: "sidebar"
     });
-    $.__views.__alloyId89 = require("xp.ui").createWindow({
+    $.__views.__alloyId88 = require("xp.ui").createWindow({
         role: "centerWindow",
         title: "Definições",
-        id: "__alloyId89"
+        id: "__alloyId88"
     });
-    $.__views.__alloyId90 = Ti.UI.createScrollView({
+    $.__views.__alloyId89 = Ti.UI.createScrollView({
         backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
         top: Alloy.Globals.marginTopWindow,
-        id: "__alloyId90"
+        id: "__alloyId89"
     });
-    $.__views.__alloyId89.add($.__views.__alloyId90);
-    $.__views.__alloyId91 = Ti.UI.createView({
+    $.__views.__alloyId88.add($.__views.__alloyId89);
+    $.__views.__alloyId90 = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.SIZE,
         bottom: "30",
-        id: "__alloyId91"
+        id: "__alloyId90"
     });
-    $.__views.__alloyId90.add($.__views.__alloyId91);
+    $.__views.__alloyId89.add($.__views.__alloyId90);
     $.__views.btnFacebook = Ti.UI.createView({
         borderRadius: 4,
         backgroundColor: Alloy.Globals.constants.FACEBOOK_BUTTON_COLOR,
@@ -68,7 +68,7 @@ function Controller() {
         id: "btnFacebook",
         top: "20"
     });
-    $.__views.__alloyId91.add($.__views.btnFacebook);
+    $.__views.__alloyId90.add($.__views.btnFacebook);
     $.__views.logoBtnFacebook = Ti.UI.createImageView({
         top: 0,
         left: 0,
@@ -100,7 +100,7 @@ function Controller() {
         id: "firstName",
         hintText: L("first_name")
     });
-    $.__views.__alloyId91.add($.__views.firstName);
+    $.__views.__alloyId90.add($.__views.firstName);
     $.__views.lastName = Ti.UI.createTextField({
         width: 265,
         height: 40,
@@ -112,7 +112,7 @@ function Controller() {
         id: "lastName",
         hintText: L("last_name")
     });
-    $.__views.__alloyId91.add($.__views.lastName);
+    $.__views.__alloyId90.add($.__views.lastName);
     $.__views.email = Ti.UI.createTextField({
         width: 265,
         height: 40,
@@ -124,7 +124,7 @@ function Controller() {
         id: "email",
         hintText: L("email")
     });
-    $.__views.__alloyId91.add($.__views.email);
+    $.__views.__alloyId90.add($.__views.email);
     $.__views.password = Ti.UI.createTextField({
         width: 265,
         height: 40,
@@ -137,7 +137,7 @@ function Controller() {
         passwordMask: "true",
         hintText: L("password")
     });
-    $.__views.__alloyId91.add($.__views.password);
+    $.__views.__alloyId90.add($.__views.password);
     $.__views.submit = Ti.UI.createButton({
         borderRadius: 4,
         color: "red",
@@ -148,13 +148,13 @@ function Controller() {
         id: "submit",
         title: "Salvar"
     });
-    $.__views.__alloyId91.add($.__views.submit);
+    $.__views.__alloyId90.add($.__views.submit);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_NONE",
         closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
         leftDrawerWidth: 250,
         id: "drawer",
-        children: [ $.__views.sidebar, $.__views.__alloyId89 ],
+        children: [ $.__views.sidebar, $.__views.__alloyId88 ],
         __parentSymbol: __parentSymbol
     });
     $.__views.drawer && $.addTopLevelView($.__views.drawer);
