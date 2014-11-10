@@ -18,12 +18,10 @@ function events() {
 
 function openQueue() {
 	Alloy.createController('roomQueue', {categoryId: match.category});
-	$.destroy();
 }
 
 function openRanking() {
 	Alloy.createController('ranking', {categoryId: match.category});
-	$.destroy();
 }
 
 function matches(){

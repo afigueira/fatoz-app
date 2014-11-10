@@ -197,13 +197,11 @@ function getCategories(element, param){
 		if (e.source.classes){
 			if (e.source.classes.indexOf('btnNewMatch') > -1){
 				Alloy.createController('roomQueue', {categoryId: e.source.id});
-				 $.destroy();
 			}
 
 			
 			if (e.source.classes.indexOf('btnRanking') > -1){
 				Alloy.createController('ranking', {categoryId: e.source.categories_id});
-				 $.destroy();
 			}
 			
 

@@ -1,32 +1,26 @@
 $.home.addEventListener('click', function(){
 	Alloy.createController('home');
-	$.destroy();
 });
 
 $.profile.addEventListener('click', function(){
 	Alloy.createController('profile');
-	$.destroy();
 });
 
 /*
 $.statistics.addEventListener('click', function(){
 	Alloy.createController('profile', {scrollToView: 0});
-	$.destroy();
 });*/
 
 $.achievements.addEventListener('click', function(){
 	Alloy.createController('profile', {scrollToView: 3});
-	$.destroy();
 });
 
 $.categories.addEventListener('click', function(){
 	Alloy.createController('categories');
-	$.destroy();
 });
 
 $.settings.addEventListener('click', function(){
 	Alloy.createController('settings');
-	$.destroy();
 });
 
 $.exit.addEventListener('click', function(){
@@ -48,8 +42,6 @@ $.exit.addEventListener('click', function(){
 			        Ti.App.Properties.removeProperty('sessionId');
 	    			Ti.App.Properties.removeProperty('userId');
 	    			Ti.App.Properties.removeProperty('userName');
-
-	    			$.destroy();
 			    }
 			});
 	      break;	        

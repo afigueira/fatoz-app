@@ -90,7 +90,6 @@ $.submit.addEventListener('click', function(event){
 	        Alloy.Globals.updateFacebookInfos();
 
 	        Alloy.createController('home');
-	        $.destroy();
 	    } else {	    	
 	        alert('Error:\n' +
 	            ((e.error && e.message) || JSON.stringify(e)));

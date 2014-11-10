@@ -1,40 +1,30 @@
 <Alloy>
-    <Widget id="drawer" src="nl.fokkezb.drawer">
-        <Window module="xp.ui" role="leftWindow" id="sidebar"></Window>
+    <Window class="container">			
+    	<ImageView visible="false" id="trophy" image="/images/icon-queue-trophy.png" top="195" zIndex="100" />
 
-        <Window module="xp.ui" role="centerWindow" title="Procurando jogador...">
-        	
-        	<View id="titleBar" platform="ios">
-        		<Label text="Procurando jogador..." class="fontWhite proximaNovaRegular" id="labelTitleBar"/>
-        		<ImageView image="/images/icon-menu.png" id="leftMenu" class="leftItemMenu" onClick="$.drawer.toggleLeftWindow"/>
-    		</View>
-    					
-        	<ImageView visible="false" id="trophy" image="/images/icon-queue-trophy.png" top="195" zIndex="100" />
-
-			<View class="layoutVertical">
-				<View class="topProfile layoutAbsolute" id="coverA">				
-					<View class="profile">
-						<ImageView class="imageProfile" id="imageProfileA" />
-						<Label class="proximaNovaRegular fontWhite profileTitle" id="profileTitleA" />								
-					</View>				
-				</View>
-				
-				<View id="searchPlayer" class="layoutVertical searchPlayer">
-					<ImageView image="/images/img-queue.png" class="star" />
-					<Label text="Procurando oponente ideal" class="labelSearchPlayer" />
-					
-					<Button id="cancelMatch" class="btnWhite cancelSearchPlayer" title="Cancelar" />
-				</View>
-				
-				<View id="profileB" visible="false" class="topProfile layoutAbsolute">				
-					<View height="2" backgroundColor="#ffffff" top="0"></View>
-
-					<View class="profile">
-						<ImageView class="imageProfile" id="imageProfileB" />
-						<Label id="profileTitleB" class="proximaNovaRegular fontWhite profileTitle" text="Raul Claudino" />								
-					</View>				
-				</View>
+		<View class="layoutVertical">
+			<View class="topProfile layoutAbsolute" id="coverA">				
+				<View class="profile">
+					<ImageView class="imageProfile" id="imageProfileA" />
+					<Label class="proximaNovaRegular fontWhite profileTitle" id="profileTitleA" />								
+				</View>				
 			</View>
-    	</Window>
-    </Widget>
+			
+			<View id="searchPlayer" class="layoutVertical searchPlayer">
+				<ImageView image="/images/img-queue.png" class="star" />
+				<Label text="Procurando oponente ideal" class="labelSearchPlayer" />
+				
+				<Button id="cancelMatch" class="btnWhite cancelSearchPlayer" title="Cancelar" />
+			</View>
+			
+			<View id="profileB" visible="false" class="topProfile layoutAbsolute">				
+				<View height="2" backgroundColor="#ffffff" top="0"></View>
+
+				<View class="profile">
+					<ImageView class="imageProfile" id="imageProfileB" />
+					<Label id="profileTitleB" class="proximaNovaRegular fontWhite profileTitle" text="Raul Claudino" />								
+				</View>				
+			</View>
+		</View>
+	</Window>
 </Alloy>
