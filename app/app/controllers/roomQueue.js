@@ -100,14 +100,10 @@ $.roomQueue.addEventListener('close', function(e) {
 	Titanium.App.removeEventListener('websocket.mountMatch', socketMountMatch);
 
 	$.destroy();
-<<<<<<< HEAD
-});
-
-=======
 	$.off();
 });
 
 init();
 
 $.roomQueue.open();
->>>>>>> bbb2a9f10e52cef64eb45ade930c6f2683b5d495
+
