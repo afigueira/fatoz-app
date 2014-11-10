@@ -26,6 +26,7 @@ function Controller() {
             }
         }, false);
         navigation();
+        ranking();
     }
     function tabNavigation(e) {
         for (var i = 0, j = $.tabs.children.length; j > i; i++) $.tabs.children[i].children[1].visible = false;
@@ -82,6 +83,13 @@ function Controller() {
             e.success ? createRowCategories(e.categories, element) : alert("Houve um erro para carregar as categorias");
         });
     }
+    function ranking() {
+        Alloy.Globals.loadPhoto($.btnRanking, "image", "54600aaf7c874208ad001177");
+        $.btnRanking.addEventListener("click", function() {
+            Alloy.createController("ranking");
+            $.destroy();
+        });
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "home";
     if (arguments[0]) {
@@ -114,20 +122,20 @@ function Controller() {
         id: "__alloyId55"
     });
     $.__views.__alloyId54.add($.__views.__alloyId55);
-    $.__views.goToCategories = Ti.UI.createView({
+    $.__views.__alloyId56 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         layout: "absolute",
         width: "280",
-        id: "goToCategories"
+        id: "__alloyId56"
     });
-    $.__views.__alloyId55.add($.__views.goToCategories);
-    $.__views.__alloyId56 = Ti.UI.createView({
+    $.__views.__alloyId55.add($.__views.__alloyId56);
+    $.__views.__alloyId57 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         layout: "vertical",
         width: Titanium.UI.SIZE,
-        id: "__alloyId56"
+        id: "__alloyId57"
     });
-    $.__views.goToCategories.add($.__views.__alloyId56);
+    $.__views.__alloyId56.add($.__views.__alloyId57);
     $.__views.containerLabelHighlight = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         top: 30,
@@ -135,48 +143,12 @@ function Controller() {
         width: Titanium.UI.SIZE,
         id: "containerLabelHighlight"
     });
-    $.__views.__alloyId56.add($.__views.containerLabelHighlight);
-    $.__views.__alloyId57 = Ti.UI.createImageView({
-        image: "/images/icon-highlights.png",
-        id: "__alloyId57"
+    $.__views.__alloyId57.add($.__views.containerLabelHighlight);
+    $.__views.btnRanking = Ti.UI.createImageView({
+        image: "",
+        id: "btnRanking"
     });
-    $.__views.containerLabelHighlight.add($.__views.__alloyId57);
-    $.__views.labelHighlight = Ti.UI.createLabel({
-        color: "white",
-        tintColor: "white",
-        font: {
-            fontFamily: "ProximaNova-Regular",
-            fontSize: 18,
-            fontWeight: "bold"
-        },
-        left: 0,
-        textid: "highlights",
-        id: "labelHighlight"
-    });
-    $.__views.containerLabelHighlight.add($.__views.labelHighlight);
-    $.__views.labelSeeCategories = Ti.UI.createLabel({
-        color: "white",
-        tintColor: "white",
-        font: {
-            fontFamily: "ProximaNova-Regular",
-            fontSize: 12,
-            fontWeight: "bold"
-        },
-        top: 15,
-        width: Titanium.UI.FILL,
-        textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-        textid: "see_categories",
-        id: "labelSeeCategories"
-    });
-    $.__views.__alloyId56.add($.__views.labelSeeCategories);
-    $.__views.arrowSeeCategories = Ti.UI.createImageView({
-        top: 30,
-        right: 0,
-        layout: "absolute",
-        image: "/images/arrow-see-more-categories-home.png",
-        id: "arrowSeeCategories"
-    });
-    $.__views.goToCategories.add($.__views.arrowSeeCategories);
+    $.__views.containerLabelHighlight.add($.__views.btnRanking);
     $.__views.categories = Ti.UI.createView({
         height: 390,
         borderRadius: 4,
@@ -321,10 +293,6 @@ function Controller() {
                 $.destroy();
             }
         }
-    });
-    $.goToCategories.addEventListener("click", function() {
-        Alloy.createController("categories");
-        $.destroy();
     });
     __defers["$.__views.popularTab!click!tabNavigation"] && $.__views.popularTab.addEventListener("click", tabNavigation);
     __defers["$.__views.recentTab!click!tabNavigation"] && $.__views.recentTab.addEventListener("click", tabNavigation);

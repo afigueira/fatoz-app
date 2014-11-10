@@ -237,7 +237,6 @@ function Controller() {
     $.signup.addEventListener("click", function() {
         console.log("signup");
         Alloy.createController("signup");
-        $.destroy();
     });
     $.forgotPassword.addEventListener("click", function() {
         Alloy.createController("forgotPassword");

@@ -96,3 +96,4 @@ $.cancelMatch.addEventListener('click', function(e){
 	Alloy.createController('home');
 	$.destroy();
 });
+

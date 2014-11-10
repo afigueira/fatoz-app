@@ -60,59 +60,38 @@ function Controller() {
         id: "__alloyId91"
     });
     $.__views.__alloyId90.add($.__views.__alloyId91);
-    $.__views.__alloyId92 = Ti.UI.createView({
-        height: 231,
-        backgroundImage: "/images/background-categories-soccer.jpg",
-        id: "__alloyId92"
+    $.__views.btnFacebook = Ti.UI.createView({
+        borderRadius: 4,
+        backgroundColor: Alloy.Globals.constants.FACEBOOK_BUTTON_COLOR,
+        height: 35,
+        width: 265,
+        id: "btnFacebook",
+        top: "20"
     });
-    $.__views.__alloyId91.add($.__views.__alloyId92);
-    $.__views.editImageProfile = Ti.UI.createView({
-        width: 64,
-        height: 64,
-        borderRadius: 32,
-        id: "editImageProfile"
+    $.__views.__alloyId91.add($.__views.btnFacebook);
+    $.__views.logoBtnFacebook = Ti.UI.createImageView({
+        top: 0,
+        left: 0,
+        image: "/images/logo-button-facebook.jpg",
+        id: "logoBtnFacebook"
     });
-    $.__views.__alloyId92.add($.__views.editImageProfile);
-    $.__views.__alloyId93 = Ti.UI.createImageView({
-        width: 64,
-        height: 64,
-        backgroundImage: "/images/icon-user.png",
-        id: "__alloyId93"
-    });
-    $.__views.editImageProfile.add($.__views.__alloyId93);
-    $.__views.__alloyId94 = Ti.UI.createLabel({
+    $.__views.btnFacebook.add($.__views.logoBtnFacebook);
+    $.__views.labelBtnFacebook = Ti.UI.createLabel({
+        color: "white",
+        tintColor: "white",
         font: {
-            fontSize: 10
+            fontFamily: "ProximaNova-Regular"
         },
-        textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-        color: "#ffffff",
-        height: 20,
-        backgroundImage: "/images/background-black-transparent.png",
         width: Titanium.UI.FILL,
-        bottom: 2,
-        text: "EDITAR",
-        id: "__alloyId94"
+        textAlign: "center",
+        left: 35,
+        textid: "button_facebook_integrate",
+        id: "labelBtnFacebook"
     });
-    $.__views.editImageProfile.add($.__views.__alloyId94);
-    $.__views.__alloyId95 = Ti.UI.createLabel({
-        font: {
-            fontSize: 14
-        },
-        textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-        color: "#ffffff",
-        height: 30,
-        backgroundImage: "/images/background-black-transparent.png",
-        width: Titanium.UI.FILL,
-        bottom: 0,
-        text: "EDITAR PAPEL DE PAREDE",
-        id: "__alloyId95"
-    });
-    $.__views.__alloyId92.add($.__views.__alloyId95);
+    $.__views.btnFacebook.add($.__views.labelBtnFacebook);
     $.__views.firstName = Ti.UI.createTextField({
-        width: Titanium.UI.FILL,
+        width: 265,
         height: 40,
-        left: 28,
-        right: 28,
         top: 20,
         borderRadius: 4,
         backgroundColor: "white",
@@ -123,10 +102,8 @@ function Controller() {
     });
     $.__views.__alloyId91.add($.__views.firstName);
     $.__views.lastName = Ti.UI.createTextField({
-        width: Titanium.UI.FILL,
+        width: 265,
         height: 40,
-        left: 28,
-        right: 28,
         top: 20,
         borderRadius: 4,
         backgroundColor: "white",
@@ -137,10 +114,8 @@ function Controller() {
     });
     $.__views.__alloyId91.add($.__views.lastName);
     $.__views.email = Ti.UI.createTextField({
-        width: Titanium.UI.FILL,
+        width: 265,
         height: 40,
-        left: 28,
-        right: 28,
         top: 20,
         borderRadius: 4,
         backgroundColor: "white",
@@ -151,10 +126,8 @@ function Controller() {
     });
     $.__views.__alloyId91.add($.__views.email);
     $.__views.password = Ti.UI.createTextField({
-        width: Titanium.UI.FILL,
+        width: 265,
         height: 40,
-        left: 28,
-        right: 28,
         top: 20,
         borderRadius: 4,
         backgroundColor: "white",
@@ -165,24 +138,13 @@ function Controller() {
         hintText: L("password")
     });
     $.__views.__alloyId91.add($.__views.password);
-    $.__views.facebook = Ti.UI.createButton({
-        borderRadius: 4,
-        color: "red",
-        tintColor: "red",
-        backgroundColor: "white",
-        id: "facebook",
-        title: "facebook"
-    });
-    $.__views.__alloyId91.add($.__views.facebook);
     $.__views.submit = Ti.UI.createButton({
         borderRadius: 4,
         color: "red",
         tintColor: "red",
         backgroundColor: "white",
-        width: Titanium.UI.FILL,
+        width: 265,
         top: 30,
-        left: 28,
-        right: 28,
         id: "submit",
         title: "Salvar"
     });
@@ -213,24 +175,21 @@ function Controller() {
             updateUser(obj);
         } else alert("Preencha os campos vazios.");
     });
-    $.facebook.addEventListener("click", function() {
+    $.btnFacebook.addEventListener("click", function() {
         console.log("btn facebook clicked");
         console.log(Alloy.Globals.Facebook);
         Alloy.Globals.Facebook.authorize();
     });
+    Titanium.App.addEventListener("facebook.updated", function() {
+        alert("Conta linkada com sucesso.");
+    });
     Titanium.App.addEventListener("facebook.login", function(e) {
-        e.success ? Alloy.Globals.Cloud.SocialIntegrations.externalAccountLogin({
+        e.success ? Alloy.Globals.Cloud.SocialIntegrations.externalAccountLink({
             type: "facebook",
             token: Alloy.Globals.Facebook.accessToken
         }, function(e) {
-            login(e);
-            Cloud.SocialIntegrations.externalAccountLink({
-                type: "facebook",
-                token: Alloy.Globals.Facebook.accessToken
-            }, function(e) {
-                e.success ? Alloy.Globals.updateFacebookInfos() : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
-            });
-        }) : alert("Houve um erro para efetuar seu login");
+            e.success && Alloy.Globals.updateFacebookInfos();
+        }) : alert("Houve um erro para linkar sua conta do Facebook");
     });
     _.extend($, exports);
 }

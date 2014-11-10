@@ -21,6 +21,8 @@ function init(){
 	}, false);
 
 	navigation();
+
+	ranking();
 }
 
 
@@ -123,6 +125,15 @@ function getCategories(element, obj, isFirst){
 	});
 }
 
+function ranking(){
+	Alloy.Globals.loadPhoto($.btnRanking, 'image', '54600aaf7c874208ad001177');
+
+	$.btnRanking.addEventListener('click', function(){
+		Alloy.createController('ranking');
+		$.destroy();
+	});
+}
+
 $.categories.addEventListener('click', function(e){
 	if (e.source.classes){		
 		if (e.source.classes.indexOf('btnNewMatch') > -1){			
@@ -135,9 +146,4 @@ $.categories.addEventListener('click', function(e){
 			$.destroy();	
 		}
 	}	
-});
-
-$.goToCategories.addEventListener('click', function(e){
-	Alloy.createController('categories');
-	$.destroy();
 });

@@ -18,7 +18,6 @@ $.btnFacebook.addEventListener('click', function(event){
 $.signup.addEventListener('click', function(event){
 	console.log('signup');
 	Alloy.createController('signup');
-	$.destroy();	
 });
 
 $.forgotPassword.addEventListener('click', function(e){

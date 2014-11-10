@@ -1,22 +1,77 @@
 var args = arguments[0] || {};
 
+categoryId = args.categoryId || '';
+
 Alloy.Globals.drawer($.sidebar, $.drawer, 'Ranking', init);
 
 function init(){
-	categoryId = args.categoryId || '';
+	if(categoryId){
+		setRanking({
+		    classname: 'achievements',
+		    where: {
+			     categories_id: categoryId,
+			     points: { '$gte': 0 }
+			},
+			order: '-points'
+		});
+	}else{
+		var date = new Date();
+		var m = date.getMonth()+1;
+		var y = date.getFullYear();
+		
+		setRanking({
+		    classname: 'ranking',
+		    where: {
+		    	points: { '$gte': 0 },
+		    	month_reference: m+''+''+y
+		    },	   
+			order: '-points'
+		});
+	}
+}
 
-	Alloy.Globals.Cloud.Objects.query({
-	    classname: 'achievements',
+function setUserName(element, length, a){	
+	var usersId;	
+	var row;		
+			
+	row = element[a];
+	usersId = row.users_id;
+
+	Alloy.Globals.Cloud.Users.query({		    
 	    where: {
-		     categories_id: categoryId,
-		     points: { '$gte': 0 }
-		},
-		order: '-points'
+	        id: usersId
+	    }
 	}, function (e) {
-	    if (e.success) {   	        
-			for(var i=0,j=e.achievements.length; i<j; i++){								
+	    if (e.success) {
+	        var user = e.users[0];
+
+	        row.children[2].text =  user.first_name;
+	        
+		    Alloy.Globals.loadPhoto(row.children[1], 'image', user.custom_fields.profile_image);
+
+	        if(a < length - 1){
+	        	setUserName(element, length, ++a);
+	        }
+	    }
+	});
+}
+
+
+function setRanking(obj){
+	var classname = obj.classname;
+	Alloy.Globals.Cloud.Objects.query(obj, function (e) {
+	    if (e.success) {  
+	    	var table;
+
+	    	if(categoryId){
+	    		table = e.achievements; 	        
+	    	}else{
+	    		table = e.ranking; 	        
+	    	}
+
+			for(var i=0,j=table.length; i<j; i++){								
 				var rowRank = Titanium.UI.createTableViewRow({
-					users_id: e.achievements[i].users_id
+					users_id: table[i].users_id
 				});
 
 			    $.addClass(rowRank, "rowRank");
@@ -30,7 +85,7 @@ function init(){
 			    $.addClass(imageProfile, "imageProfile imageProfileRank");
 			    
 			    var rankName = Titanium.UI.createLabel({
-					id: 'user_' + e.achievements[i].users_id
+					id: 'user_' + table[i].users_id
 			    });
 			    $.addClass(rankName, "rankName proximaNovaRegular");
 
@@ -43,7 +98,7 @@ function init(){
 			    $.addClass(rankPt, "rankPt proximaNovaRegular");
 			    
 			    var rankTotal = Titanium.UI.createLabel({
-			    	text: e.achievements[i].points
+			    	text: table[i].points
 			    });
 			    $.addClass(rankTotal, "rankTotal proximaNovaRegular");
 			    
@@ -72,32 +127,6 @@ function init(){
 	        alert('Houve um erro para carregar o usuário');
 	    }
 	});	
-}
-
-function setUserName(element, length, a){	
-	var usersId;	
-	var row;		
-			
-	row = element[a];
-	usersId = row.users_id;
-
-	Alloy.Globals.Cloud.Users.query({		    
-	    where: {
-	        id: usersId
-	    }
-	}, function (e) {
-	    if (e.success) {
-	        var user = e.users[0];
-
-	        row.children[2].text =  user.first_name;
-	        
-		    Alloy.Globals.loadPhoto(row.children[1], 'image', user.custom_fields.profile_image);
-
-	        if(a < length - 1){
-	        	setUserName(element, length, ++a);
-	        }
-	    }
-	});
 }
 
 /*function getUserLabel(userId){

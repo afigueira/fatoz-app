@@ -11,17 +11,12 @@
         	
 			<ScrollView class="inside">		
 				<View class="layoutVertical">
-					<View class="layoutAbsolute heightUiSize" width="280" id="goToCategories">
+					<View class="layoutAbsolute heightUiSize" width="280">
 						<View class="layoutVertical heightUiSize" height="Titanium.UI.SIZE">																
 							<View id="containerLabelHighlight">
-								<ImageView image="/images/icon-highlights.png" />
-								<Label textid="highlights" class="fontWhite proximaNovaRegular" id="labelHighlight"/>
-							</View>
-							
-							<Label textid="see_categories" class="fontWhite proximaNovaRegular" id="labelSeeCategories"/>								
+								<ImageView image="" id="btnRanking" />
+							</View>							
 						</View>						
-						
-						<ImageView image="/images/arrow-see-more-categories-home.png" id="arrowSeeCategories"/>														
 					</View>
 										
 					<View id="categories" class="radius layoutAbsolute">	
