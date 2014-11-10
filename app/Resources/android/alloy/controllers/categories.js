@@ -19,6 +19,7 @@ function Controller() {
         Alloy.Globals.Cloud.Objects.query(param, function(e) {
             if (e.success) {
                 var total = e.categories.length;
+                var rows = [];
                 for (var i = 0; total > i; i++) {
                     var row = Titanium.UI.createView({
                         height: Titanium.UI.SIZE,
@@ -110,24 +111,20 @@ function Controller() {
                     $.addClass(toggle, "toggle");
                     row.add(category);
                     row.add(toggle);
-                    element.add(row);
+                    rows.push(row);
                 }
+                rows = arrayRand(rows);
+                for (var i = 0; total > i; i++) element.add(rows[i]);
             } else alert("Houve um erro para carregar as categorias");
         });
         element.addEventListener("click", function(e) {
             if (e.source.classes) {
-                if (e.source.classes.indexOf("btnNewMatch") > -1) {
-                    Alloy.createController("roomQueue", {
-                        categoryId: e.source.id
-                    });
-                    $.destroy();
-                }
-                if (e.source.classes.indexOf("btnRanking") > -1) {
-                    Alloy.createController("ranking", {
-                        categoryId: e.source.categories_id
-                    });
-                    $.destroy();
-                }
+                e.source.classes.indexOf("btnNewMatch") > -1 && Alloy.createController("roomQueue", {
+                    categoryId: e.source.id
+                });
+                e.source.classes.indexOf("btnRanking") > -1 && Alloy.createController("ranking", {
+                    categoryId: e.source.categories_id
+                });
                 if (e.source.classes.indexOf("toggle") > -1) if (e.source.closed) {
                     e.source.closed = false;
                     this.children[e.source.index].children[0].height = 220;
@@ -141,6 +138,17 @@ function Controller() {
                 }
             }
         });
+    }
+    function arrayRand(array) {
+        var temporaryValue, randomIndex, currentIndex = array.length;
+        while (0 !== currentIndex) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+        return array;
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "categories";

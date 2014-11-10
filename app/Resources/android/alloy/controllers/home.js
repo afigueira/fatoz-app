@@ -280,18 +280,12 @@ function Controller() {
     Alloy.Globals.drawer($.sidebar, $.drawer, "Início", init);
     $.categories.addEventListener("click", function(e) {
         if (e.source.classes) {
-            if (e.source.classes.indexOf("btnNewMatch") > -1) {
-                Alloy.createController("roomQueue", {
-                    categoryId: e.source.id
-                });
-                $.destroy();
-            }
-            if (e.source.classes.indexOf("btnRanking") > -1) {
-                Alloy.createController("ranking", {
-                    categoryId: e.source.id
-                });
-                $.destroy();
-            }
+            e.source.classes.indexOf("btnNewMatch") > -1 && Alloy.createController("roomQueue", {
+                categoryId: e.source.id
+            });
+            e.source.classes.indexOf("btnRanking") > -1 && Alloy.createController("ranking", {
+                categoryId: e.source.id
+            });
         }
     });
     __defers["$.__views.popularTab!click!tabNavigation"] && $.__views.popularTab.addEventListener("click", tabNavigation);

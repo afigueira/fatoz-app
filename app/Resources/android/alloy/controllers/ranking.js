@@ -9,7 +9,7 @@ function __processArg(obj, key) {
 
 function Controller() {
     function init() {
-        categoryId ? setRanking({
+        if (categoryId) setRanking({
             classname: "achievements",
             where: {
                 categories_id: categoryId,
@@ -18,10 +18,21 @@ function Controller() {
                 }
             },
             order: "-points"
-        }) : setRanking({
-            classname: "ranking",
-            order: "-points"
-        });
+        }); else {
+            var date = new Date();
+            var m = date.getMonth() + 1;
+            var y = date.getFullYear();
+            setRanking({
+                classname: "ranking",
+                where: {
+                    points: {
+                        $gte: 0
+                    },
+                    month_reference: m + "" + y
+                },
+                order: "-points"
+            });
+        }
     }
     function setUserName(element, length, a) {
         var usersId;
