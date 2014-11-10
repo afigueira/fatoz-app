@@ -5,11 +5,51 @@ var matchId;
 var mountReceived = false;
 var fighterReceived = false;
 
-Alloy.Globals.drawer($.sidebar, $.drawer, 'Procurando...' , init);
-
-
 function init(){
 	joinRoom();
+}
+
+function socketCreatingMatch(e){
+			
+	Alloy.Globals.Cloud.Users.query({
+	    page: 1,
+	    per_page: 1,
+	    where: {
+	        id:e.fighterId 
+	    }
+	}, function (e) {
+	    if (e.success) {		    					
+			// $.searchPlayer.visible = false;
+			$.addClass($.searchPlayer, 'visibleFalse');					
+			$.profileB.visible = true;
+			$.trophy.visible = true;
+			$.profileTitleB.text = e.users[0].first_name + " " + e.users[0].last_name;
+			
+			Alloy.Globals.loadPhoto($.imageProfileB, 'image', e.users[0].custom_fields.profile_image);
+
+			Alloy.Globals.loadPhoto($.profileB, 'backgroundImage', e.users[0].custom_fields.cover_image);
+
+			fighterReceived = true;
+
+			if(mountReceived){
+				mountMatch();
+			}
+
+			
+	    } else {
+	        alert('Error:\n' +
+	            ((e.error && e.message) || JSON.stringify(e)));
+	    }
+	});
+}
+
+function socketMountMatch(e){
+	mountReceived = true;
+	matchId = e.matchId;
+	if(fighterReceived){
+		mountMatch();
+	}		
+	
 }
 
 function joinRoom(){
@@ -19,57 +59,13 @@ function joinRoom(){
 		Titanium.App.fireEvent('websocket.dispatchEvent', { 
 			event:'joinRoom', 
 			roomId: categoryId
-		});	
-		
-		Titanium.App.addEventListener('websocket.creatingMatch', function(e){
-			
-			Alloy.Globals.Cloud.Users.query({
-			    page: 1,
-			    per_page: 1,
-			    where: {
-			        id:e.fighterId 
-			    }
-			}, function (e) {
-			    if (e.success) {		    					
-					// $.searchPlayer.visible = false;
-					$.addClass($.searchPlayer, 'visibleFalse');					
-					$.profileB.visible = true;
-					$.trophy.visible = true;
-					$.profileTitleB.text = e.users[0].first_name + " " + e.users[0].last_name;
-					
-					Alloy.Globals.loadPhoto($.imageProfileB, 'image', e.users[0].custom_fields.profile_image);
-
-					Alloy.Globals.loadPhoto($.profileB, 'backgroundImage', e.users[0].custom_fields.cover_image);
-
-					fighterReceived = true;
-
-					if(mountReceived){
-						mountMatch();
-					}
-
-					
-			    } else {
-			        alert('Error:\n' +
-			            ((e.error && e.message) || JSON.stringify(e)));
-			    }
-			});
 		});
-		
-		Titanium.App.addEventListener('websocket.mountMatch', function(e){
-			mountReceived = true;
-			matchId = e.matchId;
-			if(fighterReceived){
-				mountMatch();
-			}		
-			
-		});
-
 	}
 }
 
 function mountMatch(){
+	$.roomQueue.close();
 	Alloy.createController('game', {matchId: matchId});
-	$.destroy();
 }
 
 function showMe(){
@@ -86,14 +82,32 @@ function showMe(){
 	});
 }
 
-
 $.cancelMatch.addEventListener('click', function(e){
 	Titanium.App.fireEvent('websocket.dispatchEvent', { 
-		event:'leaveRoom', 
+		event:'leaveRoom',
 		roomId: categoryId
 	});
 	
+	$.roomQueue.close();
 	Alloy.createController('home');
-	$.destroy();
 });
 
+Titanium.App.addEventListener('websocket.creatingMatch', socketCreatingMatch);		
+Titanium.App.addEventListener('websocket.mountMatch', socketMountMatch);
+
+$.roomQueue.addEventListener('close', function(e) {
+	Titanium.App.removeEventListener('websocket.creatingMatch', socketCreatingMatch);		
+	Titanium.App.removeEventListener('websocket.mountMatch', socketMountMatch);
+
+	$.destroy();
+<<<<<<< HEAD
+});
+
+=======
+	$.off();
+});
+
+init();
+
+$.roomQueue.open();
+>>>>>>> bbb2a9f10e52cef64eb45ade930c6f2683b5d495

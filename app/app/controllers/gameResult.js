@@ -6,6 +6,8 @@ var matchId = args.matchId;
 var pointsA;
 var pointsB;
 var match;
+var fighterName = '';
+var matchResultString = '';
  
 function init(){
     matches();
@@ -18,12 +20,10 @@ function events() {
 
 function openQueue() {
 	Alloy.createController('roomQueue', {categoryId: match.category});
-	$.destroy();
 }
 
 function openRanking() {
 	Alloy.createController('ranking', {categoryId: match.category});
-	$.destroy();
 }
 
 function matches(){
@@ -42,6 +42,14 @@ function matches(){
             var userB = match.user_b;
             pointsA = match.points_a;
             pointsB = match.points_b;
+            
+            var myUserId = Titanium.App.Properties.getString('userId');
+            
+            if (userA == myUserId && pointsA > pointsB || userB == myUserId && pointsB > pointsA) {
+            	matchResultString = 'venci!!!';
+            } else {
+            	matchResultString = 'perdi';
+            }
 
             setUserInfo(userA, 'a', pointsA);
             setUserInfo(userB, 'b', pointsB);
@@ -78,6 +86,7 @@ function setUserInfo(userId, side, points){
 			var user = e.users[0];						
 			
 			var name = user.id == Titanium.App.Properties.getString('userId') ? 'Você' : user.first_name;
+			if (user.id != Titanium.App.Properties.getString('userId')) fighterName = user.first_name + ' ' + user.last_name;
 						
 			if(side == 'a'){				
 				$.nameUserA.text = name;
@@ -90,4 +99,17 @@ function setUserInfo(userId, side, points){
 			}
 		}
 	});
+}
+
+function shareFacebook() {
+	var data = {
+	    link : "http://www.fatoz.com.br/",
+	    name : "Fatoz Game",
+	    message : "Acabei de disputar uma partida contra" + fighterName + " e " + matchResultString,
+	    caption : "Fatoz Game",
+	    picture : "http://developer.appcelerator.com/assets/img/DEV_titmobile_image.png",
+	    description: ""
+	};
+
+	Alloy.Globals.Facebook.dialog('feed', data, function(e) {});
 }

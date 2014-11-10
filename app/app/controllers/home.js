@@ -138,12 +138,10 @@ $.categories.addEventListener('click', function(e){
 	if (e.source.classes){		
 		if (e.source.classes.indexOf('btnNewMatch') > -1){			
 			Alloy.createController('roomQueue', {categoryId: e.source.id});
-			$.destroy();
 		}
 		
 		if (e.source.classes.indexOf('btnRanking') > -1){			
-			Alloy.createController('ranking', {categoryId: e.source.id});
-			$.destroy();	
+			Alloy.createController('ranking', {categoryId: e.source.id});	
 		}
 	}	
 });

@@ -61,7 +61,7 @@
 					</View>
 					
 					<View class="buttonsResultGame">
-						<Button class="btnBlue btnFacebook btnFacebookResultGame" title="Compartilhar Resultado" />
+						<Button class="btnBlue btnFacebook btnFacebookResultGame" title="Compartilhar Resultado" onClick="shareFacebook" />
 						
 						<View class="layoutHorizontal">
 							<Button class="btnWhite btnWhiteResultGame marginRightBtnWhite" titleid="button_ranking" id="buttonRanking" />
