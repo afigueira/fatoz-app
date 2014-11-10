@@ -6,6 +6,7 @@
         	
         	<View id="titleBar" platform="ios">
         		<Label text="Procurando jogador..." class="fontWhite proximaNovaRegular" id="labelTitleBar"/>
+        		<ImageView image="/images/icon-menu.png" id="leftMenu" class="leftItemMenu" onClick="$.drawer.toggleLeftWindow"/>
     		</View>
     					
         	<ImageView visible="false" id="trophy" image="/images/icon-queue-trophy.png" top="195" zIndex="100" />

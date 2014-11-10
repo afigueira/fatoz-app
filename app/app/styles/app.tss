@@ -14,7 +14,8 @@
 },
 "#labelTitleBar": {
 	font: {fontSize: 20},
-	bottom: 15
+	bottom: 10,
+	zIndex: 10
 },
 ".container": {
 	backgroundColor: Alloy.Globals.constants.BASE_COLOR,
@@ -30,9 +31,14 @@
 	backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
 	top: Alloy.Globals.marginTopWindow
 },
-"#drawer": {
+"#drawer[platform=android]": {
     openDrawerGestureMode: "OPEN_MODE_NONE",
     closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
+    leftDrawerWidth: 250
+}
+"#drawer[platform=ios]": {
+    openDrawerGestureMode: "OPEN_MODE_ALL",
+    closeDrawerGestureMode: "CLOSE_MODE_ALL",
     leftDrawerWidth: 250
 },
 "#btnFacebook": {
@@ -277,4 +283,9 @@
 },
 ".selectedBall": {
 	image: "/images/background-selected-item-dot.png"	
+},
+".leftItemMenu": {
+	left: 20,
+	bottom: 10,
+	zIndex: 20
 }
