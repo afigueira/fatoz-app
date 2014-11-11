@@ -113,8 +113,11 @@ function Controller() {
                     row.add(toggle);
                     rows.push(row);
                 }
-                rows = arrayRand(rows);
-                for (var i = 0; total > i; i++) element.add(rows[i]);
+                rows = Alloy.Globals.arrayRand(rows);
+                for (var i = 0; total > i; i++) {
+                    rows[i].children[1].index = i;
+                    element.add(rows[i]);
+                }
             } else alert("Houve um erro para carregar as categorias");
         });
         element.addEventListener("click", function(e) {
@@ -138,17 +141,6 @@ function Controller() {
                 }
             }
         });
-    }
-    function arrayRand(array) {
-        var temporaryValue, randomIndex, currentIndex = array.length;
-        while (0 !== currentIndex) {
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex -= 1;
-            temporaryValue = array[currentIndex];
-            array[currentIndex] = array[randomIndex];
-            array[randomIndex] = temporaryValue;
-        }
-        return array;
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "categories";

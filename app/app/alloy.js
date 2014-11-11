@@ -128,6 +128,21 @@ Alloy.Globals.loadPhoto = function(container, field, value) {
 	}
 };
 
+Alloy.Globals.arrayRand = function(array){
+	var currentIndex = array.length, temporaryValue, randomIndex ;
+
+	while (0 !== currentIndex) {
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
+	}
+
+	return array;
+};
+
 var io = require('socket.io');
 var socket = io.connect('https://1f0b6fd33fa8afdb54e5479c5a17447732b25d68.cloudapp.appcelerator.com');
 

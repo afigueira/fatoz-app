@@ -1,47 +1,40 @@
 <Alloy>
-	<TabGroup>
-		<Tab titleid="signup">
-			<Window class="container">
-				<LeftNavButton>
-					<Button image="/images/button-back.png" id="back"/>
-				</LeftNavButton>				
-				<ScrollView>
-					<ImageView image="/images/logo-signup.png" id="logo"></ImageView>
-					
-					<View class="layoutAbsolute heightUiSize">
-						<TextField id="firstName" hintText="L('first_name')" class="radius input fontGray" />					
-						<ImageView image="/images/icon-user.png" right="40" top="30" />
-					</View>
+	<Window class="container">					
+		<ScrollView>
+			<ImageView image="/images/logo-signup.png" id="logo"></ImageView>
+			
+			<View class="layoutAbsolute heightUiSize">
+				<TextField id="firstName" hintText="L('first_name')" class="radius input fontGray" />					
+				<ImageView image="/images/icon-user.png" right="40" top="30" />
+			</View>
 
-					<View class="layoutAbsolute heightUiSize">
-						<TextField id="email" hintText="L('email')" class="radius input fontGray" />
-						<ImageView image="/images/icon-email.png" right="40" top="30" />
-					</View>
+			<View class="layoutAbsolute heightUiSize">
+				<TextField id="email" hintText="L('email')" class="radius input fontGray" />
+				<ImageView image="/images/icon-email.png" right="40" top="30" />
+			</View>
 
-					<View class="layoutAbsolute heightUiSize">
-						<TextField id="password" passwordMask="true" hintText="L('password')" class="radius input fontGray" />
-						<ImageView image="/images/icon-key.png" right="40" top="30" />
-					</View>
-					
-					<!--<Picker id="states" width="Titanium.UI.FILL">
-						<PickerRow title="Selecione seu Estado"></PickerRow>
-					</Picker>
-					
-					<Picker id="cities" width="Titanium.UI.FILL">
-						<PickerRow title="Selecione sua Cidade"></PickerRow>
-					</Picker>-->
-					
-					<!--<Label id="terms" textid="terms_signup" class="fontWhite proximaNovaRegular"/>-->
-					<Button id="submit" titleid="finish_signup" class="radius white fontRed"/>
-					
-					<View id="footer">
-						<View id="btnFacebook" class="radius">
-							<ImageView image="/images/logo-button-facebook.jpg" id="logoBtnFacebook"/>
-							<Label textid="button_facebook_signup" id="labelBtnFacebook" class="fontWhite proximaNovaRegular"/>
-						</View>
-					</View>
-				</ScrollView>
-			</Window>
-		</Tab>		
-	</TabGroup>
+			<View class="layoutAbsolute heightUiSize">
+				<TextField id="password" passwordMask="true" hintText="L('password')" class="radius input fontGray" />
+				<ImageView image="/images/icon-key.png" right="40" top="30" />
+			</View>
+			
+			<!--<Picker id="states" width="Titanium.UI.FILL">
+				<PickerRow title="Selecione seu Estado"></PickerRow>
+			</Picker>
+			
+			<Picker id="cities" width="Titanium.UI.FILL">
+				<PickerRow title="Selecione sua Cidade"></PickerRow>
+			</Picker>-->
+			
+			<!--<Label id="terms" textid="terms_signup" class="fontWhite proximaNovaRegular"/>-->
+			<Button id="submit" titleid="finish_signup" class="radius white fontRed"/>
+			
+			<View id="footer">
+				<View id="btnFacebook" class="radius">
+					<ImageView image="/images/logo-button-facebook.jpg" id="logoBtnFacebook"/>
+					<Label textid="button_facebook_signup" id="labelBtnFacebook" class="fontWhite proximaNovaRegular"/>
+				</View>
+			</View>
+		</ScrollView>
+	</Window>	
 </Alloy>

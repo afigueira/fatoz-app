@@ -235,8 +235,8 @@ function Controller() {
         Alloy.Globals.Facebook.authorize();
     });
     $.signup.addEventListener("click", function() {
-        $.login.close();
         Alloy.createController("signup");
+        $.login.close();
     });
     $.forgotPassword.addEventListener("click", function() {
         $.login.close();
@@ -253,6 +253,7 @@ function Controller() {
     $.login.addEventListener("close", function() {
         $.destroy();
         $.off();
+        console.log("foooooooooooooooooooooooooi");
     });
     $.login.open();
     _.extend($, exports);

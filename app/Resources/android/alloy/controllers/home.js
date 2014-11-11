@@ -42,6 +42,7 @@ function Controller() {
         $.tabs.children[0].children[1].visible = true;
     }
     function createRowCategories(obj, container) {
+        var rows = [];
         for (var i = 0, j = obj.length; j > i; i++) {
             var category = Titanium.UI.createView();
             $.addClass(category, "category");
@@ -73,10 +74,12 @@ function Controller() {
             category.add(descriptionCategory);
             category.add(btnNewMatch);
             category.add(btnRanking);
-            container.addView(category);
             Alloy.Globals.loadPhoto(iconCategory, "image", obj[i].icon);
             Alloy.Globals.loadPhoto(category, "backgroundImage", obj[i].background);
+            rows.push(category);
         }
+        rows = Alloy.Globals.arrayRand(rows);
+        container.views = rows;
     }
     function getCategories(element, obj) {
         Alloy.Globals.Cloud.Objects.query(obj, function(e) {

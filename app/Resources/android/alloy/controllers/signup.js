@@ -17,38 +17,33 @@ function Controller() {
     }
     var $ = this;
     var exports = {};
-    var __alloyId109 = [];
-    $.__views.__alloyId111 = Ti.UI.createWindow({
+    $.__views.signup = Ti.UI.createWindow({
         backgroundColor: Alloy.Globals.constants.BASE_COLOR,
         barColor: Alloy.Globals.constants.NAV_BAR_COLOR,
         navTintColor: "white",
         tabBarHidden: true,
         translucent: false,
-        id: "__alloyId111"
+        id: "signup"
     });
-    $.__views.back = Ti.UI.createButton({
-        image: "/images/button-back.png",
-        id: "back"
-    });
-    $.__views.__alloyId111.leftNavButton = $.__views.back;
-    $.__views.__alloyId113 = Ti.UI.createScrollView({
+    $.__views.signup && $.addTopLevelView($.__views.signup);
+    $.__views.__alloyId110 = Ti.UI.createScrollView({
         layout: "vertical",
-        id: "__alloyId113"
+        id: "__alloyId110"
     });
-    $.__views.__alloyId111.add($.__views.__alloyId113);
+    $.__views.signup.add($.__views.__alloyId110);
     $.__views.logo = Ti.UI.createImageView({
         top: 33,
         image: "/images/logo-signup.png",
         id: "logo"
     });
-    $.__views.__alloyId113.add($.__views.logo);
-    $.__views.__alloyId114 = Ti.UI.createView({
+    $.__views.__alloyId110.add($.__views.logo);
+    $.__views.__alloyId111 = Ti.UI.createView({
         layout: "absolute",
         width: Titanium.UI.FILL,
         height: Titanium.UI.SIZE,
-        id: "__alloyId114"
+        id: "__alloyId111"
     });
-    $.__views.__alloyId113.add($.__views.__alloyId114);
+    $.__views.__alloyId110.add($.__views.__alloyId111);
     $.__views.firstName = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -62,21 +57,21 @@ function Controller() {
         id: "firstName",
         hintText: L("first_name")
     });
-    $.__views.__alloyId114.add($.__views.firstName);
-    $.__views.__alloyId115 = Ti.UI.createImageView({
+    $.__views.__alloyId111.add($.__views.firstName);
+    $.__views.__alloyId112 = Ti.UI.createImageView({
         image: "/images/icon-user.png",
         right: "40",
         top: "30",
-        id: "__alloyId115"
+        id: "__alloyId112"
     });
-    $.__views.__alloyId114.add($.__views.__alloyId115);
-    $.__views.__alloyId116 = Ti.UI.createView({
+    $.__views.__alloyId111.add($.__views.__alloyId112);
+    $.__views.__alloyId113 = Ti.UI.createView({
         layout: "absolute",
         width: Titanium.UI.FILL,
         height: Titanium.UI.SIZE,
-        id: "__alloyId116"
+        id: "__alloyId113"
     });
-    $.__views.__alloyId113.add($.__views.__alloyId116);
+    $.__views.__alloyId110.add($.__views.__alloyId113);
     $.__views.email = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -90,21 +85,21 @@ function Controller() {
         id: "email",
         hintText: L("email")
     });
-    $.__views.__alloyId116.add($.__views.email);
-    $.__views.__alloyId117 = Ti.UI.createImageView({
+    $.__views.__alloyId113.add($.__views.email);
+    $.__views.__alloyId114 = Ti.UI.createImageView({
         image: "/images/icon-email.png",
         right: "40",
         top: "30",
-        id: "__alloyId117"
+        id: "__alloyId114"
     });
-    $.__views.__alloyId116.add($.__views.__alloyId117);
-    $.__views.__alloyId118 = Ti.UI.createView({
+    $.__views.__alloyId113.add($.__views.__alloyId114);
+    $.__views.__alloyId115 = Ti.UI.createView({
         layout: "absolute",
         width: Titanium.UI.FILL,
         height: Titanium.UI.SIZE,
-        id: "__alloyId118"
+        id: "__alloyId115"
     });
-    $.__views.__alloyId113.add($.__views.__alloyId118);
+    $.__views.__alloyId110.add($.__views.__alloyId115);
     $.__views.password = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -119,14 +114,14 @@ function Controller() {
         passwordMask: "true",
         hintText: L("password")
     });
-    $.__views.__alloyId118.add($.__views.password);
-    $.__views.__alloyId119 = Ti.UI.createImageView({
+    $.__views.__alloyId115.add($.__views.password);
+    $.__views.__alloyId116 = Ti.UI.createImageView({
         image: "/images/icon-key.png",
         right: "40",
         top: "30",
-        id: "__alloyId119"
+        id: "__alloyId116"
     });
-    $.__views.__alloyId118.add($.__views.__alloyId119);
+    $.__views.__alloyId115.add($.__views.__alloyId116);
     $.__views.submit = Ti.UI.createButton({
         borderRadius: 4,
         color: "red",
@@ -140,7 +135,7 @@ function Controller() {
         id: "submit",
         titleid: "finish_signup"
     });
-    $.__views.__alloyId113.add($.__views.submit);
+    $.__views.__alloyId110.add($.__views.submit);
     $.__views.footer = Ti.UI.createView({
         backgroundColor: Alloy.Globals.constants.NAV_BAR_COLOR,
         height: 75,
@@ -148,7 +143,7 @@ function Controller() {
         width: Titanium.UI.FILL,
         id: "footer"
     });
-    $.__views.__alloyId113.add($.__views.footer);
+    $.__views.__alloyId110.add($.__views.footer);
     $.__views.btnFacebook = Ti.UI.createView({
         borderRadius: 4,
         backgroundColor: Alloy.Globals.constants.FACEBOOK_BUTTON_COLOR,
@@ -178,17 +173,6 @@ function Controller() {
         id: "labelBtnFacebook"
     });
     $.__views.btnFacebook.add($.__views.labelBtnFacebook);
-    $.__views.__alloyId110 = Ti.UI.createTab({
-        window: $.__views.__alloyId111,
-        titleid: "signup",
-        id: "__alloyId110"
-    });
-    __alloyId109.push($.__views.__alloyId110);
-    $.__views.signup = Ti.UI.createTabGroup({
-        tabs: __alloyId109,
-        id: "signup"
-    });
-    $.__views.signup && $.addTopLevelView($.__views.signup);
     exports.destroy = function() {};
     _.extend($, $.__views);
     $.submit.addEventListener("click", function() {
@@ -208,12 +192,12 @@ function Controller() {
             }
         }, function(e) {
             if (e.success) {
+                Alloy.createController("home");
                 alert("Cadastro realizado com sucesso.");
                 Ti.App.Properties.setString("sessionId", Alloy.Globals.Cloud.sessionId);
                 Ti.App.Properties.setString("userId", e.users[0].id);
                 Ti.App.Properties.setString("userName", e.users[0].first_name + " " + e.users[0].last_name);
                 Alloy.Globals.updateFacebookInfos();
-                Alloy.createController("home");
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });
     });
