@@ -12,6 +12,12 @@ function init(){
 	});
 
 	//pagination();
+	
+	banner();
+}
+
+function banner(){
+	Alloy.Globals.showBanner($.window, 'categories', 'bottom');
 }
 
 /*function pagination(){

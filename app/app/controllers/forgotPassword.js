@@ -15,3 +15,9 @@ $.submit.addEventListener('click', function(e){
 		});
 	}
 });
+
+function banner(){
+	Alloy.Globals.showBanner($.window, 'forgotPassword', 'bottom');
+}
+
+banner();

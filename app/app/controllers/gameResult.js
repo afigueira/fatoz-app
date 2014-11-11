@@ -11,6 +11,12 @@ var matchResultString = '';
  
 function init(){
     matches();
+    
+    banner();
+}
+
+function banner(){
+	Alloy.Globals.showBanner($.window, 'gameResult', 'bottom');
 }
 
 function events() {

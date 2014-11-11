@@ -23,6 +23,12 @@ function init(){
 	navigation();
 
 	ranking();
+	
+	banner();
+}
+
+function banner(){
+	Alloy.Globals.showBanner($.window, 'home', 'bottom');
 }
 
 

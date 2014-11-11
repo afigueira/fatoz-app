@@ -5,6 +5,8 @@ Alloy.Globals.drawer($.sidebar, $.drawer, 'Perfil', init);
 function init(){
 	myInfos();
 	achievements();
+	
+	banner();
 
 	/*if (typeof args.scrollToView != 'undefined') {
 		tabNavigation({source: {contentTabsIndex: args.scrollToView}});
@@ -13,6 +15,10 @@ function init(){
 	/*$.settings.addEventListener('click', function(){
 		Alloy.createController('settings');
 	});*/
+}
+
+function banner(){
+	Alloy.Globals.showBanner($.window, 'profile', 'bottom');
 }
 
 

@@ -1,11 +1,4 @@
-/*Android footer: ca-app-pub-1202817906596777/9714576843
-Android header: ca-app-pub-1202817906596777/5284377248
-iOS footer: ca-app-pub-1202817906596777/6621509640
-iOS header: ca-app-pub-1202817906596777/3528442443
-
-https://github.com/appcelerator/titanium_modules
-Precisa instalar o módulo do admob */
-
+Alloy.Globals.Admob = require("ti.admob");
 Alloy.Globals.Cloud = require("ti.cloud");
 
 Alloy.Globals.constants = {
@@ -176,3 +169,42 @@ Titanium.App.addEventListener('websocket.dispatchEvent', function(data) {
 		socket.emit(data.event, data);	
 	}	
 });
+
+Alloy.Globals.banners = {
+	ios: {
+		header: 'ca-app-pub-1202817906596777/3528442443',
+		footer: 'ca-app-pub-1202817906596777/6621509640'
+	}, android: {
+		header: 'ca-app-pub-1202817906596777/5284377248',
+		footer: 'ca-app-pub-1202817906596777/9714576843'
+	}
+};
+
+// banner logic
+Alloy.Globals.showBanner = function(container, page, position) {
+	console.log('trying to show banner to page', page);
+	Alloy.Globals.Cloud.Objects.query({
+		classname: 'banners_pages',
+		where: {
+			page: page,
+			banner: true
+		}
+	}, function(e){
+		if (e.success && e.banners_pages.length > 0) {
+			
+			var platform = Titanium.Platform.osname == 'android' ? 'android' : 'ios';
+			var unitId = Alloy.Globals.banners[platform]['header'];
+			
+			var admobView = Alloy.Globals.Admob.createView({
+				left: 0,
+				width: 320, height: 50,
+				adUnitId: unitId,
+				backgroundColor: 'red',
+				testing: false
+			});
+			admobView[position] = 0;
+			
+			container.add(admobView);
+		}
+	});
+};

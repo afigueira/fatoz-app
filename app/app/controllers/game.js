@@ -30,6 +30,10 @@ Alloy.Globals.Cloud.Objects.query({
     }
 });
 
+function banner(){
+	Alloy.Globals.showBanner($.window, 'game', 'bottom');
+}
+
 function getUserInfo(userId, side){
 	Alloy.Globals.Cloud.Users.show({
 		user_id: userId
@@ -372,3 +376,5 @@ $.game.addEventListener('close', function(e) {
 });
 
 $.game.open();
+
+banner();

@@ -52,9 +52,15 @@ function login(e) {
 	    }
 }
 
+function banner(){
+	Alloy.Globals.showBanner($.window, 'login', 'bottom');
+}
+
 $.login.addEventListener('close', function(e) {
 	$.destroy();
 	$.off();
 });
 
 $.login.open();
+
+banner();

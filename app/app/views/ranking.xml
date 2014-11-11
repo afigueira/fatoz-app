@@ -2,7 +2,7 @@
     <Widget id="drawer" src="nl.fokkezb.drawer">
         <Window module="xp.ui" role="leftWindow" id="sidebar"></Window>
 
-        <Window module="xp.ui" role="centerWindow" title="Ranking">
+        <Window module="xp.ui" role="centerWindow" title="Ranking" id="window">
         	
         	<View id="titleBar" platform="ios">
         		<Label text="Ranking" class="fontWhite proximaNovaRegular" id="labelTitleBar"/>

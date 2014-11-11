@@ -28,6 +28,12 @@ function init(){
 			order: '-points'
 		});
 	}
+	
+	banner();
+}
+
+function banner(){
+	Alloy.Globals.showBanner($.window, 'ranking', 'bottom');
 }
 
 function setUserName(element, length, a){	

@@ -2,6 +2,11 @@ Alloy.Globals.drawer($.sidebar, $.drawer, 'Definições', init);
 
 function init(){
 	showUser();
+	banner();
+}
+
+function banner(){
+	Alloy.Globals.showBanner($.window, 'settings', 'bottom');
 }
 
 

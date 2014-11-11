@@ -97,4 +97,10 @@ $.submit.addEventListener('click', function(event){
 	});
 });
 
+function banner(){
+	Alloy.Globals.showBanner($.window, 'signup', 'bottom');
+}
+
 $.signup.open();
+
+banner();

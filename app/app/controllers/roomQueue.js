@@ -7,6 +7,11 @@ var fighterReceived = false;
 
 function init(){
 	joinRoom();
+	banner();
+}
+
+function banner(){
+	Alloy.Globals.showBanner($.window, 'roomQueue', 'bottom');
 }
 
 function socketCreatingMatch(e){

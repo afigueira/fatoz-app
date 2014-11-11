@@ -1,5 +1,5 @@
 <Alloy>	
-	<Window class="container">
+	<Window class="container" id="window">
 		<ScrollView class="inside">
 			<View class="profileFriends">
 					<View id="containerSearch" class="black">

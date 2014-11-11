@@ -1,5 +1,5 @@
 <Alloy>
-    <Window class="container">			
+    <Window class="container" id="window">			
     	<ImageView visible="false" id="trophy" image="/images/icon-queue-trophy.png" top="195" zIndex="100" />
 
 		<View class="layoutVertical">

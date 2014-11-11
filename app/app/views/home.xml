@@ -2,7 +2,7 @@
     <Widget id="drawer" src="nl.fokkezb.drawer">
         <Window module="xp.ui" role="leftWindow" id="sidebar"></Window>
 
-        <Window module="xp.ui" role="centerWindow" title="Início">
+        <Window module="xp.ui" role="centerWindow" title="Início" id="window">
         	
         	<View id="titleBar" platform="ios">
         		<Label text="Início" class="fontWhite proximaNovaRegular" id="labelTitleBar"/>
