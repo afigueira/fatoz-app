@@ -15,9 +15,9 @@ $.btnFacebook.addEventListener('click', function(event){
 	Alloy.Globals.Facebook.authorize();
 });
 
-$.signup.addEventListener('click', function(event){
-	$.login.close();
+$.signup.addEventListener('click', function(event){	
 	Alloy.createController('signup');
+	$.login.close();
 });
 
 $.forgotPassword.addEventListener('click', function(e){

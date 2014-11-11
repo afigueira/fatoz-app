@@ -190,9 +190,10 @@ function getCategories(element, param){
 				//element.add(row);
 			}
 
-			rows = arrayRand(rows);
+			rows = Alloy.Globals.arrayRand(rows);
 
 			for (var i=0; i < total; i++) {
+				rows[i].children[1].index = i;
 				element.add(rows[i]);
 			};
 	        
@@ -235,22 +236,6 @@ function getCategories(element, param){
 			}
 		}
 	});
-}
-
-function arrayRand(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex ;
-
-  while (0 !== currentIndex) {
-
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
 }
 
 function setBackgrounds(element, length, a){
