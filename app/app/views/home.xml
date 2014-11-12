@@ -14,7 +14,7 @@
 					<View class="layoutAbsolute heightUiSize" width="280">
 						<View class="layoutVertical heightUiSize" height="Titanium.UI.SIZE">																
 							<View id="containerLabelHighlight">
-								<ImageView image="" id="btnRanking" />
+								<ImageView image="" id="btnRanking" height="70" />
 							</View>							
 						</View>						
 					</View>

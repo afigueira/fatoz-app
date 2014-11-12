@@ -149,7 +149,8 @@ function Controller() {
     $.__views.__alloyId57.add($.__views.containerLabelHighlight);
     $.__views.btnRanking = Ti.UI.createImageView({
         image: "",
-        id: "btnRanking"
+        id: "btnRanking",
+        height: "70"
     });
     $.__views.containerLabelHighlight.add($.__views.btnRanking);
     $.__views.categories = Ti.UI.createView({
