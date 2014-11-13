@@ -31,7 +31,14 @@ Alloy.Globals.updateFacebookInfos = function() {
 					result = JSON.parse(response.result);
 				}
 				
-				var cover = result.cover.source;
+				var cover;
+
+				if(result && result.cover && result.cover.source){
+					cover = result.cover.source;
+				}else{
+					cover = "";
+				}
+
 				var profileImage = result.picture.data.url;
 				
 				Alloy.Globals.Cloud.Users.update({

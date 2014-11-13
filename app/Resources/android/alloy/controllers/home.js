@@ -29,11 +29,13 @@ function Controller() {
         ranking();
     }
     function tabNavigation(e) {
-        for (var i = 0, j = $.tabs.children.length; j > i; i++) $.tabs.children[i].children[1].visible = false;
-        for (var i = 0, j = $.contentTabs.children.length; j > i; i++) $.contentTabs.children[i].visible = false;
-        var contentTabsIndex = e.source.contentTabsIndex;
-        $.contentTabs.children[contentTabsIndex].visible = true;
-        $.tabs.children[contentTabsIndex].children[1].visible = true;
+        if (e && e.source) {
+            for (var i = 0, j = $.tabs.children.length; j > i; i++) $.tabs.children[i].children[1].visible = false;
+            for (var i = 0, j = $.contentTabs.children.length; j > i; i++) $.contentTabs.children[i].visible = false;
+            var contentTabsIndex = e.source.contentTabsIndex;
+            $.contentTabs.children[contentTabsIndex].visible = true;
+            $.tabs.children[contentTabsIndex].children[1].visible = true;
+        }
     }
     function navigation() {
         for (var i = 0, j = $.tabs.children.length; j > i; i++) $.tabs.children[i].children[1].visible = false;
@@ -208,7 +210,7 @@ function Controller() {
     $.__views.recentTab = Ti.UI.createView({
         height: 46,
         touchEnabled: true,
-        width: "50%",
+        width: "49%",
         id: "recentTab",
         contentTabsIndex: "1"
     });
@@ -283,7 +285,7 @@ function Controller() {
     _.extend($, $.__views);
     Alloy.Globals.drawer($.sidebar, $.drawer, "Início", init);
     $.categories.addEventListener("click", function(e) {
-        if (e.source.classes) {
+        if (e && e.source && e.source.classes) {
             e.source.classes.indexOf("btnNewMatch") > -1 && Alloy.createController("roomQueue", {
                 categoryId: e.source.id
             });

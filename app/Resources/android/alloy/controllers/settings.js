@@ -73,7 +73,8 @@ function Controller() {
         top: 0,
         left: 0,
         image: "/images/logo-button-facebook.jpg",
-        id: "logoBtnFacebook"
+        id: "logoBtnFacebook",
+        height: Titanium.UI.FILL
     });
     $.__views.btnFacebook.add($.__views.logoBtnFacebook);
     $.__views.labelBtnFacebook = Ti.UI.createLabel({

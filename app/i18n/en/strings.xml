@@ -62,6 +62,7 @@
     
     <!-- Buttons -->
     <string name="button_facebook_login">Ou entre com o Facebook</string>
+    <string name="button_facebook_integrate">Integrar com Facebook</string>
     <string name="button_signup">Cadastre-se</string>
     <string name="button_facebook_signup">Cadastre-se com Facebook</string>
     

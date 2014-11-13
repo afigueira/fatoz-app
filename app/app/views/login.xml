@@ -20,7 +20,7 @@
 				</View>
 				
 				<View id="btnFacebook" class="radius">
-					<ImageView image="/images/logo-button-facebook.jpg" id="logoBtnFacebook"/>
+					<ImageView image="/images/logo-button-facebook.jpg" id="logoBtnFacebook" height="Titanium.UI.FILL" />
 					<Label textid="button_facebook_login" id="labelBtnFacebook" class="fontWhite proximaNovaRegular"/>
 				</View>
 				
