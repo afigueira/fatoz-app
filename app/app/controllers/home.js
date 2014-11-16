@@ -33,18 +33,20 @@ function banner(){
 
 
 function tabNavigation(e){
-	for(var i=0,j=$.tabs.children.length; i<j; i++){
-		$.tabs.children[i].children[1].visible = false;
-	};
+	if(e && e.source){
+		for(var i=0,j=$.tabs.children.length; i<j; i++){
+			$.tabs.children[i].children[1].visible = false;
+		};
 
-	for(var i=0,j=$.contentTabs.children.length; i<j; i++){
-		$.contentTabs.children[i].visible = false;	
-	};
-	
-	var contentTabsIndex = e.source.contentTabsIndex;
-	
-	$.contentTabs.children[contentTabsIndex].visible = true;
-	$.tabs.children[contentTabsIndex].children[1].visible = true;
+		for(var i=0,j=$.contentTabs.children.length; i<j; i++){
+			$.contentTabs.children[i].visible = false;	
+		};
+		
+		var contentTabsIndex = e.source.contentTabsIndex;
+		
+		$.contentTabs.children[contentTabsIndex].visible = true;
+		$.tabs.children[contentTabsIndex].children[1].visible = true;
+	}
 }
 
 function navigation(){
@@ -144,7 +146,7 @@ function ranking(){
 }
 
 $.categories.addEventListener('click', function(e){
-	if (e.source.classes){		
+	if (e && e.source && e.source.classes){		
 		if (e.source.classes.indexOf('btnNewMatch') > -1){			
 			Alloy.createController('roomQueue', {categoryId: e.source.id});
 		}

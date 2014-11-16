@@ -10,12 +10,12 @@ function __processArg(obj, key) {
 function Controller() {
     function login(e) {
         if (e.success) {
+            Alloy.createController(createController);
             Ti.App.Properties.setString("sessionId", Alloy.Globals.Cloud.sessionId);
             Ti.App.Properties.setString("userId", e.users[0].id);
             Ti.App.Properties.setString("userName", e.users[0].first_name + " " + e.users[0].last_name);
             Alloy.Globals.updateFacebookInfos();
             $.login.close();
-            Alloy.createController(createController);
         } else alert("Houve um erro para efetuar seu login");
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -183,7 +183,8 @@ function Controller() {
         top: 0,
         left: 0,
         image: "/images/logo-button-facebook.jpg",
-        id: "logoBtnFacebook"
+        id: "logoBtnFacebook",
+        height: Titanium.UI.FILL
     });
     $.__views.btnFacebook.add($.__views.logoBtnFacebook);
     $.__views.labelBtnFacebook = Ti.UI.createLabel({
@@ -239,8 +240,8 @@ function Controller() {
         $.login.close();
     });
     $.forgotPassword.addEventListener("click", function() {
-        $.login.close();
         Alloy.createController("forgotPassword");
+        $.login.close();
     });
     Titanium.App.addEventListener("facebook.login", function(e) {
         e.success ? Alloy.Globals.Cloud.SocialIntegrations.externalAccountLogin({
@@ -253,7 +254,6 @@ function Controller() {
     $.login.addEventListener("close", function() {
         $.destroy();
         $.off();
-        console.log("foooooooooooooooooooooooooi");
     });
     $.login.open();
     _.extend($, exports);

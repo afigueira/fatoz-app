@@ -22,7 +22,8 @@ Alloy.Globals.updateFacebookInfos = function() {
         if (response.success) {
             var result = response.result;
             "string" == typeof response.result && (result = JSON.parse(response.result));
-            var cover = result.cover.source;
+            var cover;
+            cover = result && result.cover && result.cover.source ? result.cover.source : "";
             var profileImage = result.picture.data.url;
             Alloy.Globals.Cloud.Users.update({
                 custom_fields: {

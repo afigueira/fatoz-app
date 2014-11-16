@@ -12,7 +12,7 @@
 			<ScrollView class="inside">		
 				<View class="layoutVertical" bottom="30">
 					<View id="btnFacebook" class="radius" top="20">
-						<ImageView image="/images/logo-button-facebook.jpg" id="logoBtnFacebook"/>
+						<ImageView image="/images/logo-button-facebook.jpg" id="logoBtnFacebook" height="Titanium.UI.FILL" />
 						<Label textid="button_facebook_integrate" id="labelBtnFacebook" class="fontWhite proximaNovaRegular"/>
 					</View>
 					<!--<View class="topProfile" backgroundImage="/images/background-categories-soccer.jpg">				

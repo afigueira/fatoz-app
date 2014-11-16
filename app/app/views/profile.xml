@@ -9,7 +9,7 @@
         		<ImageView image="/images/icon-menu.png" id="leftMenu" class="leftItemMenu" onClick="$.drawer.toggleLeftWindow"/>
     		</View>
     		
-			<ScrollView class="inside">
+			<View class="inside">
 				<View class="topProfile" id="coverPhoto">				
 					<View class="profile">
 						<ImageView class="imageProfile" id="profilePhoto"/>
@@ -166,7 +166,7 @@
 						</TableView>				            
 					</View>
 				</ScrollableView>					
-			</ScrollView>
+			</View>
 		</Window>
     </Widget>
 </Alloy>

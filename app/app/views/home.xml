@@ -14,7 +14,7 @@
 					<View class="layoutAbsolute heightUiSize" width="280">
 						<View class="layoutVertical heightUiSize" height="Titanium.UI.SIZE">																
 							<View id="containerLabelHighlight">
-								<ImageView image="" id="btnRanking" />
+								<ImageView image="" id="btnRanking" height="70" />
 							</View>							
 						</View>						
 					</View>
@@ -26,7 +26,7 @@
 								<Label textid="popular" class="fontOrange proximaNovaRegular labelTab" />
 								<View class="tabSelected orange" />
 							</View>
-							<View class="tab" id="recentTab" onClick="tabNavigation" contentTabsIndex="1" width="50%">
+							<View class="tab" id="recentTab" onClick="tabNavigation" contentTabsIndex="1" width="49%">
 								<Label textid="text_new" class="fontOrange proximaNovaRegular labelTab"/>
 								<View class="tabSelected orange" />
 							</View>							

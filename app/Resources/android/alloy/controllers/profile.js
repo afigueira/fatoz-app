@@ -137,7 +137,8 @@ function Controller() {
         title: "Perfil",
         id: "__alloyId76"
     });
-    $.__views.__alloyId77 = Ti.UI.createScrollView({
+    $.__views.__alloyId77 = Ti.UI.createView({
+        height: Titanium.UI.SIZE,
         backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
         top: Alloy.Globals.marginTopWindow,
         layout: "vertical",
