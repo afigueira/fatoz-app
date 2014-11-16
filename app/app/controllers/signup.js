@@ -1,69 +1,3 @@
-/*Cloud.Objects.query({
-    classname: 'states',
-    page: 1,
-    per_page: 27
-}, function (e) {
-    if (e.success) {    	    	
-    	var states = Ti.UI.createPickerColumn();
-		
-    	for(var i=0,j=e.states.length; i<j; i++){
-    		var row = Ti.UI.createPickerRow({
-			    title: e.states[i].name,
-			    states_id: e.states[i].states_id
-			  });
-			  
-		  	states.addRow(row);			
-		};
-		    	    			
-		$.states.remove($.states.children[0]);
-
-		$.states.add([states]);	
-
-
-
-
-
-    } else {
-        alert('Error:\n' +
-            ((e.error && e.message) || JSON.stringify(e)));
-    }
-});*/
-
-/*$.states.addEventListener('change', function(e) {
-
-
-
-    var states_id = e.row.states_id;
- 
-    Cloud.Objects.query({
-	    classname: 'cities',
-	    page: 1,
-	    per_page: 100,
-	    where: {
-	    	states_id: states_id
-	    }
-	}, function (e) {
-	    if (e.success) {	    	
-	    	var cities = Ti.UI.createPickerColumn();
-			
-	    	for(var i=0,j=e.cities.length; i<j; i++){
-	    		var row = Ti.UI.createPickerRow({
-				    title: e.cities[i].name,
-				    id: e.cities[i].id
-				  });
-
-			};
-
-			$.cities.remove($.cities.children[0]);
-			    	    			 
-			$.cities.add(cities);	
-	    } else {
-	        alert('Error:\n' +
-	            ((e.error && e.message) || JSON.stringify(e)));
-	    }
-	});
-});*/
-
 $.submit.addEventListener('click', function(event){
 	var strName = $.firstName.value;
 	strName = strName.split(" ");
@@ -82,6 +16,8 @@ $.submit.addEventListener('click', function(event){
 	    }	    
 	}, function (e) {
 	    if (e.success) {	    		        
+	    	Alloy.createController('home');
+	    	
 	        alert('Cadastro realizado com sucesso.');
 
 	        Ti.App.Properties.setString('sessionId', Alloy.Globals.Cloud.sessionId);
@@ -89,7 +25,7 @@ $.submit.addEventListener('click', function(event){
 	    	Ti.App.Properties.setString('userName', e.users[0].first_name + " " + e.users[0].last_name);
 	        Alloy.Globals.updateFacebookInfos();
 
-	        Alloy.createController('home');
+	        
 	    } else {	    	
 	        alert('Error:\n' +
 	            ((e.error && e.message) || JSON.stringify(e)));

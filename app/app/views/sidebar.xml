@@ -1,5 +1,5 @@
 <Alloy>	
-	<View class="sidebar">
+	<ScrollView class="sidebar">
 		<View id="home" class="rowSidebar firstRowSidebar">
 			<View class="layoutHorizontal floatLeft">
 				<ImageView class="imageSidebar" image="/images/icon-home.png" />
@@ -55,5 +55,5 @@
 				<Label class="labelSidebar"  textid="button_exit" />
 			</View>
 		</View>		
-	</View>
+	</ScrollView>
 </Alloy>

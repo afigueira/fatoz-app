@@ -61,7 +61,7 @@ function navigation(){
 }
 
 function createRowCategories(obj, container){
-
+	var rows = [];
 	for(var i=0,j=obj.length; i<j; i++){
 		var category = Titanium.UI.createView();
 		$.addClass(category, "category");
@@ -107,13 +107,16 @@ function createRowCategories(obj, container){
 		// category.add(btnChallenge);
 		category.add(btnRanking);
 		
-		container.addView(category);
+		//container.addView(category);
 		
 		Alloy.Globals.loadPhoto(iconCategory, 'image', obj[i].icon);
 		Alloy.Globals.loadPhoto(category, 'backgroundImage', obj[i].background);
 		
-		//views[i] = category;
+		rows.push(category);
 	};
+
+	rows = Alloy.Globals.arrayRand(rows);
+	container.views = rows;	
 }
 
 function getCategories(element, obj, isFirst){
