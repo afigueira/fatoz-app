@@ -63,7 +63,11 @@
         <module platform="android">dk.napp.drawer</module>
         <module platform="iphone">net.iamyellow.tiws</module>
         <module platform="android">net.iamyellow.tiws</module>
+<<<<<<< HEAD
         <module platform="iphone">com.appcelerator.urlSession</module>        
+=======
+        <module platform="iphone">com.appcelerator.urlSession</module>
+>>>>>>> 1704dda9bcaccf085e32f1407e8a863fd3a82f9e
         <module platform="iphone">ti.admob</module>
     </modules>
     <deployment-targets>

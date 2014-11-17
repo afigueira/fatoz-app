@@ -74,11 +74,11 @@ function Controller() {
                 if ("a" == side) {
                     $.nameUserA.text = name;
                     $.pointsA.text = points;
-                    Alloy.Globals.loadPhoto($.imageProfileA, "image", user.custom_fields.profile_image);
+                    $.imageProfileA.image = user.custom_fields.profile_image;
                 } else {
                     $.nameUserB.text = name;
                     $.pointsB.text = points;
-                    Alloy.Globals.loadPhoto($.imageProfileB, "image", user.custom_fields.profile_image);
+                    $.imageProfileB.image = user.custom_fields.profile_image;
                 }
             }
         });
@@ -98,8 +98,12 @@ function Controller() {
     this.__controllerPath = "gameResult";
     if (arguments[0]) {
         var __parentSymbol = __processArg(arguments[0], "__parentSymbol");
-        __processArg(arguments[0], "$model");
-        __processArg(arguments[0], "__itemTemplate");
+        {
+            __processArg(arguments[0], "$model");
+        }
+        {
+            __processArg(arguments[0], "__itemTemplate");
+        }
     }
     var $ = this;
     var exports = {};

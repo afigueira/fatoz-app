@@ -52,7 +52,7 @@ function Controller() {
             if (e.success) {
                 var user = e.users[0];
                 row.children[2].text = user.first_name;
-                Alloy.Globals.loadPhoto(row.children[1], "image", user.custom_fields.profile_image);
+                row.children[1].image = user.custom_fields.profile_image;
                 length - 1 > a && setUserName(element, length, ++a);
             }
         });
@@ -108,8 +108,12 @@ function Controller() {
     this.__controllerPath = "ranking";
     if (arguments[0]) {
         var __parentSymbol = __processArg(arguments[0], "__parentSymbol");
-        __processArg(arguments[0], "$model");
-        __processArg(arguments[0], "__itemTemplate");
+        {
+            __processArg(arguments[0], "$model");
+        }
+        {
+            __processArg(arguments[0], "__itemTemplate");
+        }
     }
     var $ = this;
     var exports = {};

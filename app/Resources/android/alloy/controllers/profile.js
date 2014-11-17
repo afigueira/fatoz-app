@@ -23,8 +23,8 @@ function Controller() {
                 var user = e.users[0];
                 $.userName.text = user.first_name + " " + user.last_name;
                 console.log(user.custom_fields);
-                Alloy.Globals.loadPhoto($.profilePhoto, "image", user.custom_fields.profile_image);
-                Alloy.Globals.loadPhoto($.coverPhoto, "backgroundImage", user.custom_fields.cover_image);
+                $.profilePhoto.image = user.custom_fields.profile_image;
+                $.coverPhoto.image = user.custom_fields.cover_image;
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });
     }
@@ -38,7 +38,9 @@ function Controller() {
                 for (var i = 0, j = e.categories.length; j > i; i++) {
                     var rowConquer = Titanium.UI.createTableViewRow();
                     $.addClass(rowConquer, "rowConquer");
-                    var imageConquer = Titanium.UI.createImageView();
+                    var imageConquer = Titanium.UI.createImageView({
+                        image: categories[i].badge
+                    });
                     $.addClass(imageConquer, "imageConquer");
                     var rightContentConquer = Titanium.UI.createView();
                     $.addClass(rightContentConquer, "rightContentConquer");
@@ -85,7 +87,6 @@ function Controller() {
                     rowConquer.add(rightContentConquer);
                     rowConquer.add(borderGrayConquer);
                     $.conquer.appendRow(rowConquer);
-                    Alloy.Globals.loadPhoto(imageConquer, "image", categories[i].badge);
                 }
                 setPointsAchievements($.conquer.data[0].rows, $.conquer.data[0].rows.length, 0);
             }
@@ -128,8 +129,12 @@ function Controller() {
     this.__controllerPath = "profile";
     if (arguments[0]) {
         var __parentSymbol = __processArg(arguments[0], "__parentSymbol");
-        __processArg(arguments[0], "$model");
-        __processArg(arguments[0], "__itemTemplate");
+        {
+            __processArg(arguments[0], "$model");
+        }
+        {
+            __processArg(arguments[0], "__itemTemplate");
+        }
     }
     var $ = this;
     var exports = {};

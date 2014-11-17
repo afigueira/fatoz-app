@@ -14,9 +14,15 @@ function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "forgotPassword";
     if (arguments[0]) {
-        __processArg(arguments[0], "__parentSymbol");
-        __processArg(arguments[0], "$model");
-        __processArg(arguments[0], "__itemTemplate");
+        {
+            __processArg(arguments[0], "__parentSymbol");
+        }
+        {
+            __processArg(arguments[0], "$model");
+        }
+        {
+            __processArg(arguments[0], "__itemTemplate");
+        }
     }
     var $ = this;
     var exports = {};
@@ -99,7 +105,7 @@ function Controller() {
         email && Alloy.Globals.Cloud.Users.requestResetPassword({
             email: email
         }, function(e) {
-            e.success ? alert("Siga as instruções enviadas para o seu e-mail.") : alert("Houve um erro ou este e-mail não está cadastrado");
+            alert(e.success ? "Siga as instruções enviadas para o seu e-mail." : "Houve um erro ou este e-mail não está cadastrado");
         });
     });
     banner();

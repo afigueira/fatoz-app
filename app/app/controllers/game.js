@@ -48,10 +48,12 @@ function getUserInfo(userId, side){
 						
 			if(side == 'a'){				
 				$.nameScoreA.text = name;
-				Alloy.Globals.loadPhoto($.imageProfileProgessA, 'image', user.custom_fields.profile_image);
+				//Alloy.Globals.loadPhoto($.imageProfileProgessA, 'image', user.custom_fields.profile_image);
+				$.imageProfileProgessA.image = user.custom_fields.profile_image;
 			}else{
 				$.nameScoreB.text = name;
-				Alloy.Globals.loadPhoto($.imageProfileProgessB, 'image', user.custom_fields.profile_image);
+				//Alloy.Globals.loadPhoto($.imageProfileProgessB, 'image', user.custom_fields.profile_image);
+				$.imageProfileProgessB.image = user.custom_fields.profile_image;
 			}
 			
 			userReady++;

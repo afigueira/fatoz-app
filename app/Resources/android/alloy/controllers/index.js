@@ -11,9 +11,15 @@ function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "index";
     if (arguments[0]) {
-        __processArg(arguments[0], "__parentSymbol");
-        __processArg(arguments[0], "$model");
-        __processArg(arguments[0], "__itemTemplate");
+        {
+            __processArg(arguments[0], "__parentSymbol");
+        }
+        {
+            __processArg(arguments[0], "$model");
+        }
+        {
+            __processArg(arguments[0], "__itemTemplate");
+        }
     }
     var $ = this;
     var exports = {};
@@ -45,7 +51,7 @@ function Controller() {
     _.extend($, $.__views);
     Alloy.Globals.Cloud.sessionId = Titanium.App.Properties.getString("sessionId");
     Alloy.Globals.Cloud.Users.showMe(function(e) {
-        e.success ? Alloy.createController("home") : Alloy.createController("login");
+        Alloy.createController(e.success ? "home" : "login");
     });
     _.extend($, exports);
 }

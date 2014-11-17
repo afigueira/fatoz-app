@@ -21,10 +21,10 @@ function Controller() {
                 user.id == Titanium.App.Properties.getString("userId") && (myUserSide = side);
                 if ("a" == side) {
                     $.nameScoreA.text = name;
-                    Alloy.Globals.loadPhoto($.imageProfileProgessA, "image", user.custom_fields.profile_image);
+                    $.imageProfileProgessA.image = user.custom_fields.profile_image;
                 } else {
                     $.nameScoreB.text = name;
-                    Alloy.Globals.loadPhoto($.imageProfileProgessB, "image", user.custom_fields.profile_image);
+                    $.imageProfileProgessB.image = user.custom_fields.profile_image;
                 }
                 userReady++;
                 2 == userReady && Titanium.App.fireEvent("websocket.dispatchEvent", {
@@ -228,9 +228,15 @@ function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "game";
     if (arguments[0]) {
-        __processArg(arguments[0], "__parentSymbol");
-        __processArg(arguments[0], "$model");
-        __processArg(arguments[0], "__itemTemplate");
+        {
+            __processArg(arguments[0], "__parentSymbol");
+        }
+        {
+            __processArg(arguments[0], "$model");
+        }
+        {
+            __processArg(arguments[0], "__itemTemplate");
+        }
     }
     var $ = this;
     var exports = {};

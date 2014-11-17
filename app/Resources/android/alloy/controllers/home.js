@@ -51,9 +51,12 @@ function Controller() {
     function createRowCategories(obj, container) {
         var rows = [];
         for (var i = 0, j = obj.length; j > i; i++) {
-            var category = Titanium.UI.createView();
+            var category = Titanium.UI.createView({
+                backgroundImage: obj[i].background
+            });
             $.addClass(category, "category");
             var iconCategory = Titanium.UI.createImageView({
+                image: obj[i].icon,
                 width: 32,
                 height: 32
             });
@@ -81,8 +84,6 @@ function Controller() {
             category.add(descriptionCategory);
             category.add(btnNewMatch);
             category.add(btnRanking);
-            Alloy.Globals.loadPhoto(iconCategory, "image", obj[i].icon);
-            Alloy.Globals.loadPhoto(category, "backgroundImage", obj[i].background);
             rows.push(category);
         }
         rows = Alloy.Globals.arrayRand(rows);
@@ -94,7 +95,11 @@ function Controller() {
         });
     }
     function ranking() {
+<<<<<<< HEAD
         Alloy.Globals.loadPhoto($.btnRanking, "image", Alloy.CFG.banner_home);
+=======
+        $.btnRanking.image = Alloy.CFG.banner_home;
+>>>>>>> 1704dda9bcaccf085e32f1407e8a863fd3a82f9e
         $.btnRanking.addEventListener("click", function() {
             Alloy.createController("ranking");
             $.destroy();
@@ -104,8 +109,12 @@ function Controller() {
     this.__controllerPath = "home";
     if (arguments[0]) {
         var __parentSymbol = __processArg(arguments[0], "__parentSymbol");
-        __processArg(arguments[0], "$model");
-        __processArg(arguments[0], "__itemTemplate");
+        {
+            __processArg(arguments[0], "$model");
+        }
+        {
+            __processArg(arguments[0], "__itemTemplate");
+        }
     }
     var $ = this;
     var exports = {};

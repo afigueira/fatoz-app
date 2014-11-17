@@ -37,17 +37,17 @@ function Controller() {
                     $.addClass(category, "category");
                     var backgroundCategory = Titanium.UI.createImageView({
                         width: "100%",
-                        height: 350
+                        height: 350,
+                        image: e.categories[i].background
                     });
                     $.addClass(backgroundCategory, "backgroundCategory");
-                    Alloy.Globals.loadPhoto(backgroundCategory, "image", e.categories[i].background);
                     var containerTitleCategory = Titanium.UI.createView();
                     $.addClass(containerTitleCategory, "containerTitleCategory");
                     var iconCategory = Titanium.UI.createImageView({
                         width: 16,
-                        height: 16
+                        height: 16,
+                        image: e.categories[i].icon
                     });
-                    Alloy.Globals.loadPhoto(iconCategory, "image", e.categories[i].icon);
                     var titleCategory = Titanium.UI.createLabel();
                     $.addClass(titleCategory, "titleCategory fontWhite proximaNovaRegular");
                     var arrowDown = Titanium.UI.createImageView({
@@ -151,8 +151,12 @@ function Controller() {
     this.__controllerPath = "categories";
     if (arguments[0]) {
         var __parentSymbol = __processArg(arguments[0], "__parentSymbol");
-        __processArg(arguments[0], "$model");
-        __processArg(arguments[0], "__itemTemplate");
+        {
+            __processArg(arguments[0], "$model");
+        }
+        {
+            __processArg(arguments[0], "__itemTemplate");
+        }
     }
     var $ = this;
     var exports = {};
@@ -166,9 +170,15 @@ function Controller() {
         id: "window"
     });
     $.__views.__alloyId0 = Ti.UI.createScrollView({
+<<<<<<< HEAD
         backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
         top: Alloy.Globals.marginTopWindow,
         layout: "vertical",
+=======
+        layout: "vertical",
+        backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
+        top: Alloy.Globals.marginTopWindow,
+>>>>>>> 1704dda9bcaccf085e32f1407e8a863fd3a82f9e
         id: "__alloyId0"
     });
     $.__views.window.add($.__views.__alloyId0);

@@ -11,9 +11,15 @@ function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "friends";
     if (arguments[0]) {
-        __processArg(arguments[0], "__parentSymbol");
-        __processArg(arguments[0], "$model");
-        __processArg(arguments[0], "__itemTemplate");
+        {
+            __processArg(arguments[0], "__parentSymbol");
+        }
+        {
+            __processArg(arguments[0], "$model");
+        }
+        {
+            __processArg(arguments[0], "__itemTemplate");
+        }
     }
     var $ = this;
     var exports = {};
@@ -92,6 +98,10 @@ function Controller() {
     });
     $.__views.__alloyId9.add($.__views.__alloyId11);
     $.__views.__alloyId12 = Ti.UI.createButton({
+<<<<<<< HEAD
+=======
+        right: 15,
+>>>>>>> 1704dda9bcaccf085e32f1407e8a863fd3a82f9e
         height: 30,
         borderRadius: 15,
         backgroundGradient: {
@@ -149,6 +159,10 @@ function Controller() {
     });
     $.__views.__alloyId14.add($.__views.__alloyId16);
     $.__views.__alloyId17 = Ti.UI.createButton({
+<<<<<<< HEAD
+=======
+        right: 15,
+>>>>>>> 1704dda9bcaccf085e32f1407e8a863fd3a82f9e
         height: 30,
         borderRadius: 15,
         backgroundGradient: {

@@ -28,8 +28,8 @@ function Controller() {
                 $.profileB.visible = true;
                 $.trophy.visible = true;
                 $.profileTitleB.text = e.users[0].first_name + " " + e.users[0].last_name;
-                Alloy.Globals.loadPhoto($.imageProfileB, "image", e.users[0].custom_fields.profile_image);
-                Alloy.Globals.loadPhoto($.profileB, "backgroundImage", e.users[0].custom_fields.cover_image);
+                $.imageProfileB.image = e.users[0].custom_fields.profile_image;
+                $.profileB.backgroundImage = e.users[0].custom_fields.cover_image;
                 fighterReceived = true;
                 mountReceived && mountMatch();
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
@@ -58,17 +58,23 @@ function Controller() {
         Alloy.Globals.Cloud.Users.showMe(function(e) {
             if (e.success) {
                 var user = e.users[0];
-                Alloy.Globals.loadPhoto($.imageProfileA, "image", user.custom_fields.profile_image);
-                Alloy.Globals.loadPhoto($.coverA, "backgroundImage", user.custom_fields.cover_image);
+                $.imageProfileA.image = user.custom_fields.profile_image;
+                $.coverA.backgroundImage = user.custom_fields.cover_image;
             }
         });
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "roomQueue";
     if (arguments[0]) {
-        __processArg(arguments[0], "__parentSymbol");
-        __processArg(arguments[0], "$model");
-        __processArg(arguments[0], "__itemTemplate");
+        {
+            __processArg(arguments[0], "__parentSymbol");
+        }
+        {
+            __processArg(arguments[0], "$model");
+        }
+        {
+            __processArg(arguments[0], "__itemTemplate");
+        }
     }
     var $ = this;
     var exports = {};

@@ -183,6 +183,7 @@ Alloy.Globals.showBanner = function(container, page, position) {
         if (e.success && e.banners_pages.length > 0) {
             var platform = "android";
             var unitId = Alloy.Globals.banners[platform]["header"];
+<<<<<<< HEAD
             var admobView = Alloy.Globals.Admob.createView({
                 left: 0,
                 width: 320,
@@ -192,6 +193,20 @@ Alloy.Globals.showBanner = function(container, page, position) {
             });
             admobView[position] = 0;
             container.add(admobView);
+=======
+            if ("ios" == platform) {
+                Alloy.Globals.Admob = require("ti.admob");
+                var admobView = Alloy.Globals.Admob.createView({
+                    left: 0,
+                    width: 320,
+                    height: 50,
+                    adUnitId: unitId,
+                    testing: false
+                });
+                admobView[position] = 0;
+                container.add(admobView);
+            }
+>>>>>>> 1704dda9bcaccf085e32f1407e8a863fd3a82f9e
         }
     });
 };
