@@ -11,6 +11,11 @@ function Controller() {
     function init() {
         myInfos();
         achievements();
+        banner();
+        $.leftMenu.addEventListener("click", $.drawer.toggleLeftWindow);
+    }
+    function banner() {
+        Alloy.Globals.showBanner($.window, "profile", "bottom");
     }
     function myInfos() {
         Alloy.Globals.Cloud.Users.showMe(function(e) {
@@ -132,30 +137,30 @@ function Controller() {
         role: "leftWindow",
         id: "sidebar"
     });
-    $.__views.__alloyId76 = require("xp.ui").createWindow({
+    $.__views.window = require("xp.ui").createWindow({
         role: "centerWindow",
         title: "Perfil",
-        id: "__alloyId76"
+        id: "window"
     });
-    $.__views.__alloyId77 = Ti.UI.createView({
+    $.__views.__alloyId73 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
         top: Alloy.Globals.marginTopWindow,
         layout: "vertical",
-        id: "__alloyId77"
+        id: "__alloyId73"
     });
-    $.__views.__alloyId76.add($.__views.__alloyId77);
+    $.__views.window.add($.__views.__alloyId73);
     $.__views.coverPhoto = Ti.UI.createView({
         height: 231,
         id: "coverPhoto"
     });
-    $.__views.__alloyId77.add($.__views.coverPhoto);
-    $.__views.__alloyId78 = Ti.UI.createView({
+    $.__views.__alloyId73.add($.__views.coverPhoto);
+    $.__views.__alloyId74 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         width: 250,
-        id: "__alloyId78"
+        id: "__alloyId74"
     });
-    $.__views.coverPhoto.add($.__views.__alloyId78);
+    $.__views.coverPhoto.add($.__views.__alloyId74);
     $.__views.profilePhoto = Ti.UI.createImageView({
         width: 64,
         height: 64,
@@ -163,7 +168,7 @@ function Controller() {
         left: 0,
         id: "profilePhoto"
     });
-    $.__views.__alloyId78.add($.__views.profilePhoto);
+    $.__views.__alloyId74.add($.__views.profilePhoto);
     $.__views.userName = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -177,31 +182,31 @@ function Controller() {
         top: 10,
         id: "userName"
     });
-    $.__views.__alloyId78.add($.__views.userName);
-    var __alloyId79 = [];
-    $.__views.__alloyId80 = Ti.UI.createView({
+    $.__views.__alloyId74.add($.__views.userName);
+    var __alloyId75 = [];
+    $.__views.__alloyId76 = Ti.UI.createView({
         height: Titanium.UI.FILL,
         width: Titanium.UI.FILL,
         layout: "vertical",
         backgroundColor: "#f0f0f0",
-        id: "__alloyId80"
+        id: "__alloyId76"
     });
-    __alloyId79.push($.__views.__alloyId80);
+    __alloyId75.push($.__views.__alloyId76);
     $.__views.conquer = Ti.UI.createTableView({
         id: "conquer"
     });
-    $.__views.__alloyId80.add($.__views.conquer);
+    $.__views.__alloyId76.add($.__views.conquer);
     $.__views.contentTabs = Ti.UI.createScrollableView({
-        views: __alloyId79,
+        views: __alloyId75,
         id: "contentTabs"
     });
-    $.__views.__alloyId77.add($.__views.contentTabs);
+    $.__views.__alloyId73.add($.__views.contentTabs);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_NONE",
         closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
         leftDrawerWidth: 250,
         id: "drawer",
-        children: [ $.__views.sidebar, $.__views.__alloyId76 ],
+        children: [ $.__views.sidebar, $.__views.window ],
         __parentSymbol: __parentSymbol
     });
     $.__views.drawer && $.addTopLevelView($.__views.drawer);

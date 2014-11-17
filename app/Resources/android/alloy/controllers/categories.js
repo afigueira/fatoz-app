@@ -14,6 +14,11 @@ function Controller() {
             page: 1,
             per_page: 10
         });
+        banner();
+        $.leftMenu.addEventListener("click", $.drawer.toggleLeftWindow);
+    }
+    function banner() {
+        Alloy.Globals.showBanner($.window, "categories", "bottom");
     }
     function getCategories(element, param) {
         Alloy.Globals.Cloud.Objects.query(param, function(e) {
@@ -155,37 +160,37 @@ function Controller() {
         role: "leftWindow",
         id: "sidebar"
     });
-    $.__views.__alloyId0 = require("xp.ui").createWindow({
+    $.__views.window = require("xp.ui").createWindow({
         role: "centerWindow",
         title: "Categorias",
-        id: "__alloyId0"
+        id: "window"
     });
-    $.__views.__alloyId1 = Ti.UI.createView({
-        layout: "vertical",
+    $.__views.__alloyId0 = Ti.UI.createScrollView({
         backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
         top: Alloy.Globals.marginTopWindow,
+        layout: "vertical",
+        id: "__alloyId0"
+    });
+    $.__views.window.add($.__views.__alloyId0);
+    $.__views.__alloyId1 = Ti.UI.createView({
+        layout: "vertical",
+        width: Titanium.UI.SIZE,
         id: "__alloyId1"
     });
     $.__views.__alloyId0.add($.__views.__alloyId1);
-    $.__views.__alloyId2 = Ti.UI.createView({
-        layout: "vertical",
-        width: Titanium.UI.SIZE,
-        id: "__alloyId2"
-    });
-    $.__views.__alloyId1.add($.__views.__alloyId2);
     $.__views.allCategories = Ti.UI.createScrollView({
         layout: "vertical",
-        width: Titanium.UI.SIZE,
+        width: Titanium.UI.FILL,
         height: Titanium.UI.FILL,
         id: "allCategories"
     });
-    $.__views.__alloyId2.add($.__views.allCategories);
+    $.__views.__alloyId1.add($.__views.allCategories);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_NONE",
         closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
         leftDrawerWidth: 250,
         id: "drawer",
-        children: [ $.__views.sidebar, $.__views.__alloyId0 ],
+        children: [ $.__views.sidebar, $.__views.window ],
         __parentSymbol: __parentSymbol
     });
     $.__views.drawer && $.addTopLevelView($.__views.drawer);

@@ -8,6 +8,9 @@ function __processArg(obj, key) {
 }
 
 function Controller() {
+    function banner() {
+        Alloy.Globals.showBanner($.window, "signup", "bottom");
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "signup";
     if (arguments[0]) {
@@ -17,33 +20,33 @@ function Controller() {
     }
     var $ = this;
     var exports = {};
-    $.__views.signup = Ti.UI.createWindow({
+    $.__views.window = Ti.UI.createWindow({
         backgroundColor: Alloy.Globals.constants.BASE_COLOR,
         barColor: Alloy.Globals.constants.NAV_BAR_COLOR,
         navTintColor: "white",
         tabBarHidden: true,
         translucent: false,
-        id: "signup"
+        id: "window"
     });
-    $.__views.signup && $.addTopLevelView($.__views.signup);
-    $.__views.__alloyId110 = Ti.UI.createScrollView({
+    $.__views.window && $.addTopLevelView($.__views.window);
+    $.__views.__alloyId104 = Ti.UI.createScrollView({
         layout: "vertical",
-        id: "__alloyId110"
+        id: "__alloyId104"
     });
-    $.__views.signup.add($.__views.__alloyId110);
+    $.__views.window.add($.__views.__alloyId104);
     $.__views.logo = Ti.UI.createImageView({
         top: 33,
         image: "/images/logo-signup.png",
         id: "logo"
     });
-    $.__views.__alloyId110.add($.__views.logo);
-    $.__views.__alloyId111 = Ti.UI.createView({
+    $.__views.__alloyId104.add($.__views.logo);
+    $.__views.__alloyId105 = Ti.UI.createView({
         layout: "absolute",
         width: Titanium.UI.FILL,
         height: Titanium.UI.SIZE,
-        id: "__alloyId111"
+        id: "__alloyId105"
     });
-    $.__views.__alloyId110.add($.__views.__alloyId111);
+    $.__views.__alloyId104.add($.__views.__alloyId105);
     $.__views.firstName = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -57,21 +60,21 @@ function Controller() {
         id: "firstName",
         hintText: L("first_name")
     });
-    $.__views.__alloyId111.add($.__views.firstName);
-    $.__views.__alloyId112 = Ti.UI.createImageView({
+    $.__views.__alloyId105.add($.__views.firstName);
+    $.__views.__alloyId106 = Ti.UI.createImageView({
         image: "/images/icon-user.png",
         right: "40",
         top: "30",
-        id: "__alloyId112"
+        id: "__alloyId106"
     });
-    $.__views.__alloyId111.add($.__views.__alloyId112);
-    $.__views.__alloyId113 = Ti.UI.createView({
+    $.__views.__alloyId105.add($.__views.__alloyId106);
+    $.__views.__alloyId107 = Ti.UI.createView({
         layout: "absolute",
         width: Titanium.UI.FILL,
         height: Titanium.UI.SIZE,
-        id: "__alloyId113"
+        id: "__alloyId107"
     });
-    $.__views.__alloyId110.add($.__views.__alloyId113);
+    $.__views.__alloyId104.add($.__views.__alloyId107);
     $.__views.email = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -85,21 +88,21 @@ function Controller() {
         id: "email",
         hintText: L("email")
     });
-    $.__views.__alloyId113.add($.__views.email);
-    $.__views.__alloyId114 = Ti.UI.createImageView({
+    $.__views.__alloyId107.add($.__views.email);
+    $.__views.__alloyId108 = Ti.UI.createImageView({
         image: "/images/icon-email.png",
         right: "40",
         top: "30",
-        id: "__alloyId114"
+        id: "__alloyId108"
     });
-    $.__views.__alloyId113.add($.__views.__alloyId114);
-    $.__views.__alloyId115 = Ti.UI.createView({
+    $.__views.__alloyId107.add($.__views.__alloyId108);
+    $.__views.__alloyId109 = Ti.UI.createView({
         layout: "absolute",
         width: Titanium.UI.FILL,
         height: Titanium.UI.SIZE,
-        id: "__alloyId115"
+        id: "__alloyId109"
     });
-    $.__views.__alloyId110.add($.__views.__alloyId115);
+    $.__views.__alloyId104.add($.__views.__alloyId109);
     $.__views.password = Ti.UI.createTextField({
         width: Titanium.UI.FILL,
         height: 40,
@@ -114,14 +117,14 @@ function Controller() {
         passwordMask: "true",
         hintText: L("password")
     });
-    $.__views.__alloyId115.add($.__views.password);
-    $.__views.__alloyId116 = Ti.UI.createImageView({
+    $.__views.__alloyId109.add($.__views.password);
+    $.__views.__alloyId110 = Ti.UI.createImageView({
         image: "/images/icon-key.png",
         right: "40",
         top: "30",
-        id: "__alloyId116"
+        id: "__alloyId110"
     });
-    $.__views.__alloyId115.add($.__views.__alloyId116);
+    $.__views.__alloyId109.add($.__views.__alloyId110);
     $.__views.submit = Ti.UI.createButton({
         borderRadius: 4,
         color: "red",
@@ -135,7 +138,7 @@ function Controller() {
         id: "submit",
         titleid: "finish_signup"
     });
-    $.__views.__alloyId110.add($.__views.submit);
+    $.__views.__alloyId104.add($.__views.submit);
     $.__views.footer = Ti.UI.createView({
         backgroundColor: Alloy.Globals.constants.NAV_BAR_COLOR,
         height: 75,
@@ -143,7 +146,7 @@ function Controller() {
         width: Titanium.UI.FILL,
         id: "footer"
     });
-    $.__views.__alloyId110.add($.__views.footer);
+    $.__views.__alloyId104.add($.__views.footer);
     $.__views.btnFacebook = Ti.UI.createView({
         borderRadius: 4,
         backgroundColor: Alloy.Globals.constants.FACEBOOK_BUTTON_COLOR,
@@ -187,8 +190,8 @@ function Controller() {
             password: $.password.value,
             password_confirmation: $.password.value,
             custom_fields: {
-                profile_image: "545f827444f2450e5e045905",
-                cover_image: "545f82f57c874208b50014b0"
+                profile_image: Alloy.CFG.default_image_avatar,
+                cover_image: Alloy.CFG.default_image_cover
             }
         }, function(e) {
             if (e.success) {
@@ -201,7 +204,8 @@ function Controller() {
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });
     });
-    $.signup.open();
+    $.window.open();
+    banner();
     _.extend($, exports);
 }
 

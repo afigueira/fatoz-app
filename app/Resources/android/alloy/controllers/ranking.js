@@ -33,6 +33,11 @@ function Controller() {
                 order: "-points"
             });
         }
+        banner();
+        $.leftMenu.addEventListener("click", $.drawer.toggleLeftWindow);
+    }
+    function banner() {
+        Alloy.Globals.showBanner($.window, "ranking", "bottom");
     }
     function setUserName(element, length, a) {
         var usersId;
@@ -112,23 +117,23 @@ function Controller() {
         role: "leftWindow",
         id: "sidebar"
     });
-    $.__views.__alloyId81 = require("xp.ui").createWindow({
+    $.__views.window = require("xp.ui").createWindow({
         role: "centerWindow",
         title: "Ranking",
-        id: "__alloyId81"
+        id: "window"
     });
     $.__views.listRank = Ti.UI.createTableView({
         backgroundColor: "#ffffff",
         top: Alloy.Globals.marginTopWindow,
         id: "listRank"
     });
-    $.__views.__alloyId81.add($.__views.listRank);
+    $.__views.window.add($.__views.listRank);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_NONE",
         closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
         leftDrawerWidth: 250,
         id: "drawer",
-        children: [ $.__views.sidebar, $.__views.__alloyId81 ],
+        children: [ $.__views.sidebar, $.__views.window ],
         __parentSymbol: __parentSymbol
     });
     $.__views.drawer && $.addTopLevelView($.__views.drawer);

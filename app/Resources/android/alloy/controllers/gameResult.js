@@ -10,6 +10,11 @@ function __processArg(obj, key) {
 function Controller() {
     function init() {
         matches();
+        banner();
+        $.leftMenu.addEventListener("click", $.drawer.toggleLeftWindow);
+    }
+    function banner() {
+        Alloy.Globals.showBanner($.window, "gameResult", "bottom");
     }
     function events() {
         $.buttonPlayAgain.addEventListener("click", openQueue);
@@ -84,7 +89,7 @@ function Controller() {
             name: "Fatoz Game",
             message: "Acabei de disputar uma partida contra" + fighterName + " e " + matchResultString,
             caption: "Fatoz Game",
-            picture: "http://developer.appcelerator.com/assets/img/DEV_titmobile_image.png",
+            picture: "https://s3-us-west-1.amazonaws.com/storage.cloud.appcelerator.com/Za5D1IiTHPF1KPaqJmPc0L3Uq2Q6hQu7/photos/01/27/5469774944f2450e5608b0f7/logo_fb_original.jpg",
             description: ""
         };
         Alloy.Globals.Facebook.dialog("feed", data, function() {});
@@ -103,10 +108,10 @@ function Controller() {
         role: "leftWindow",
         id: "sidebar"
     });
-    $.__views.__alloyId37 = require("xp.ui").createWindow({
+    $.__views.window = require("xp.ui").createWindow({
         role: "centerWindow",
         title: "Resultado final",
-        id: "__alloyId37"
+        id: "window"
     });
     $.__views.scrollView = Ti.UI.createScrollView({
         backgroundColor: "#383738",
@@ -114,35 +119,35 @@ function Controller() {
         layout: "vertical",
         id: "scrollView"
     });
-    $.__views.__alloyId37.add($.__views.scrollView);
-    $.__views.__alloyId38 = Ti.UI.createView({
+    $.__views.window.add($.__views.scrollView);
+    $.__views.__alloyId36 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         width: 280,
         top: 45,
         layout: "vertical",
-        id: "__alloyId38"
+        id: "__alloyId36"
     });
-    $.__views.scrollView.add($.__views.__alloyId38);
-    $.__views.__alloyId39 = Ti.UI.createView({
+    $.__views.scrollView.add($.__views.__alloyId36);
+    $.__views.__alloyId37 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         layout: "horizontal",
-        id: "__alloyId39"
+        id: "__alloyId37"
     });
-    $.__views.__alloyId38.add($.__views.__alloyId39);
-    $.__views.__alloyId40 = Ti.UI.createView({
+    $.__views.__alloyId36.add($.__views.__alloyId37);
+    $.__views.__alloyId38 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         width: Titanium.UI.SIZE,
         layout: "absolute",
-        id: "__alloyId40"
+        id: "__alloyId38"
     });
-    $.__views.__alloyId39.add($.__views.__alloyId40);
+    $.__views.__alloyId37.add($.__views.__alloyId38);
     $.__views.imageProfileA = Ti.UI.createImageView({
         width: 64,
         height: 64,
         borderRadius: 32,
         id: "imageProfileA"
     });
-    $.__views.__alloyId40.add($.__views.imageProfileA);
+    $.__views.__alloyId38.add($.__views.imageProfileA);
     $.__views.trophyA = Ti.UI.createView({
         height: 28,
         backgroundImage: "/images/trophy.png",
@@ -154,14 +159,14 @@ function Controller() {
         id: "trophyA",
         visible: "false"
     });
-    $.__views.__alloyId40.add($.__views.trophyA);
-    $.__views.__alloyId41 = Ti.UI.createView({
+    $.__views.__alloyId38.add($.__views.trophyA);
+    $.__views.__alloyId39 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         width: 119,
         layout: "vertical",
-        id: "__alloyId41"
+        id: "__alloyId39"
     });
-    $.__views.__alloyId39.add($.__views.__alloyId41);
+    $.__views.__alloyId37.add($.__views.__alloyId39);
     $.__views.nameUserA = Ti.UI.createLabel({
         font: {
             fontFamily: "ProximaNova-Regular",
@@ -171,17 +176,17 @@ function Controller() {
         color: "#ffffff",
         id: "nameUserA"
     });
-    $.__views.__alloyId41.add($.__views.nameUserA);
-    $.__views.__alloyId42 = Ti.UI.createLabel({
+    $.__views.__alloyId39.add($.__views.nameUserA);
+    $.__views.__alloyId40 = Ti.UI.createLabel({
         font: {
             fontFamily: "ProximaNova-Regular",
             fontSize: 12,
             fontWeight: "bold"
         },
         text: "vs",
-        id: "__alloyId42"
+        id: "__alloyId40"
     });
-    $.__views.__alloyId41.add($.__views.__alloyId42);
+    $.__views.__alloyId39.add($.__views.__alloyId40);
     $.__views.nameUserB = Ti.UI.createLabel({
         font: {
             fontFamily: "ProximaNova-Regular",
@@ -191,21 +196,21 @@ function Controller() {
         color: "#ffffff",
         id: "nameUserB"
     });
-    $.__views.__alloyId41.add($.__views.nameUserB);
-    $.__views.__alloyId43 = Ti.UI.createView({
+    $.__views.__alloyId39.add($.__views.nameUserB);
+    $.__views.__alloyId41 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         width: Titanium.UI.SIZE,
         layout: "absolute",
-        id: "__alloyId43"
+        id: "__alloyId41"
     });
-    $.__views.__alloyId39.add($.__views.__alloyId43);
+    $.__views.__alloyId37.add($.__views.__alloyId41);
     $.__views.imageProfileB = Ti.UI.createImageView({
         width: 64,
         height: 64,
         borderRadius: 32,
         id: "imageProfileB"
     });
-    $.__views.__alloyId43.add($.__views.imageProfileB);
+    $.__views.__alloyId41.add($.__views.imageProfileB);
     $.__views.trophyB = Ti.UI.createView({
         height: 28,
         backgroundImage: "/images/trophy.png",
@@ -217,23 +222,23 @@ function Controller() {
         id: "trophyB",
         visible: "false"
     });
-    $.__views.__alloyId43.add($.__views.trophyB);
-    $.__views.__alloyId44 = Ti.UI.createView({
+    $.__views.__alloyId41.add($.__views.trophyB);
+    $.__views.__alloyId42 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         top: 25,
         layout: "absolute",
         width: Titanium.UI.FILL,
-        id: "__alloyId44"
+        id: "__alloyId42"
     });
-    $.__views.__alloyId38.add($.__views.__alloyId44);
-    $.__views.__alloyId45 = Ti.UI.createView({
+    $.__views.__alloyId36.add($.__views.__alloyId42);
+    $.__views.__alloyId43 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         width: 65,
         layout: "vertical",
         left: 0,
-        id: "__alloyId45"
+        id: "__alloyId43"
     });
-    $.__views.__alloyId44.add($.__views.__alloyId45);
+    $.__views.__alloyId42.add($.__views.__alloyId43);
     $.__views.pointsA = Ti.UI.createLabel({
         font: {
             fontFamily: "ProximaNova-Regular",
@@ -243,7 +248,36 @@ function Controller() {
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
         id: "pointsA"
     });
-    $.__views.__alloyId45.add($.__views.pointsA);
+    $.__views.__alloyId43.add($.__views.pointsA);
+    $.__views.__alloyId44 = Ti.UI.createLabel({
+        font: {
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 12
+        },
+        color: "#ffffff",
+        textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+        textid: "points",
+        id: "__alloyId44"
+    });
+    $.__views.__alloyId43.add($.__views.__alloyId44);
+    $.__views.__alloyId45 = Ti.UI.createView({
+        height: Titanium.UI.SIZE,
+        width: 65,
+        layout: "vertical",
+        right: 10,
+        id: "__alloyId45"
+    });
+    $.__views.__alloyId42.add($.__views.__alloyId45);
+    $.__views.pointsB = Ti.UI.createLabel({
+        font: {
+            fontFamily: "ProximaNova-Regular",
+            fontSize: 24
+        },
+        color: "#ffffff",
+        textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
+        id: "pointsB"
+    });
+    $.__views.__alloyId45.add($.__views.pointsB);
     $.__views.__alloyId46 = Ti.UI.createLabel({
         font: {
             fontFamily: "ProximaNova-Regular",
@@ -256,47 +290,18 @@ function Controller() {
     });
     $.__views.__alloyId45.add($.__views.__alloyId46);
     $.__views.__alloyId47 = Ti.UI.createView({
-        height: Titanium.UI.SIZE,
-        width: 65,
-        layout: "vertical",
-        right: 10,
-        id: "__alloyId47"
-    });
-    $.__views.__alloyId44.add($.__views.__alloyId47);
-    $.__views.pointsB = Ti.UI.createLabel({
-        font: {
-            fontFamily: "ProximaNova-Regular",
-            fontSize: 24
-        },
-        color: "#ffffff",
-        textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-        id: "pointsB"
-    });
-    $.__views.__alloyId47.add($.__views.pointsB);
-    $.__views.__alloyId48 = Ti.UI.createLabel({
-        font: {
-            fontFamily: "ProximaNova-Regular",
-            fontSize: 12
-        },
-        color: "#ffffff",
-        textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-        textid: "points",
-        id: "__alloyId48"
-    });
-    $.__views.__alloyId47.add($.__views.__alloyId48);
-    $.__views.__alloyId49 = Ti.UI.createView({
         height: 77,
         width: Titanium.UI.FILL,
-        id: "__alloyId49"
+        id: "__alloyId47"
     });
-    $.__views.__alloyId38.add($.__views.__alloyId49);
-    $.__views.__alloyId50 = Ti.UI.createView({
+    $.__views.__alloyId36.add($.__views.__alloyId47);
+    $.__views.__alloyId48 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         layout: "vertical",
-        id: "__alloyId50"
+        id: "__alloyId48"
     });
-    $.__views.__alloyId38.add($.__views.__alloyId50);
-    $.__views.__alloyId51 = Ti.UI.createButton({
+    $.__views.__alloyId36.add($.__views.__alloyId48);
+    $.__views.__alloyId49 = Ti.UI.createButton({
         height: 30,
         borderRadius: 15,
         backgroundGradient: {
@@ -319,17 +324,17 @@ function Controller() {
         width: Titanium.UI.FILL,
         bottom: 15,
         title: "Compartilhar Resultado",
-        id: "__alloyId51"
+        id: "__alloyId49"
     });
-    $.__views.__alloyId50.add($.__views.__alloyId51);
-    shareFacebook ? $.__views.__alloyId51.addEventListener("click", shareFacebook) : __defers["$.__views.__alloyId51!click!shareFacebook"] = true;
-    $.__views.__alloyId52 = Ti.UI.createView({
+    $.__views.__alloyId48.add($.__views.__alloyId49);
+    shareFacebook ? $.__views.__alloyId49.addEventListener("click", shareFacebook) : __defers["$.__views.__alloyId49!click!shareFacebook"] = true;
+    $.__views.__alloyId50 = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         layout: "horizontal",
         width: Titanium.UI.SIZE,
-        id: "__alloyId52"
+        id: "__alloyId50"
     });
-    $.__views.__alloyId50.add($.__views.__alloyId52);
+    $.__views.__alloyId48.add($.__views.__alloyId50);
     $.__views.buttonRanking = Ti.UI.createButton({
         backgroundImage: "/images/background-btn-more.png",
         height: 30,
@@ -347,7 +352,7 @@ function Controller() {
         titleid: "button_ranking",
         id: "buttonRanking"
     });
-    $.__views.__alloyId52.add($.__views.buttonRanking);
+    $.__views.__alloyId50.add($.__views.buttonRanking);
     $.__views.buttonPlayAgain = Ti.UI.createButton({
         backgroundImage: "/images/background-btn-more.png",
         height: 30,
@@ -364,23 +369,13 @@ function Controller() {
         titleid: "button_play_again",
         id: "buttonPlayAgain"
     });
-    $.__views.__alloyId52.add($.__views.buttonPlayAgain);
-    $.__views.webview = Ti.UI.createWebView({
-        id: "webview",
-        url: "https://1f0b6fd33fa8afdb54e5479c5a17447732b25d68.cloudapp.appcelerator.com/banner?platform=android&unitId=ca-app-pub-1202817906596777/9714576843",
-        background: "red",
-        width: "320",
-        height: "50",
-        bottom: "0",
-        zIndex: "300"
-    });
-    $.__views.__alloyId37.add($.__views.webview);
+    $.__views.__alloyId50.add($.__views.buttonPlayAgain);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_NONE",
         closeDrawerGestureMode: "CLOSE_MODE_MARGIN",
         leftDrawerWidth: 250,
         id: "drawer",
-        children: [ $.__views.sidebar, $.__views.__alloyId37 ],
+        children: [ $.__views.sidebar, $.__views.window ],
         __parentSymbol: __parentSymbol
     });
     $.__views.drawer && $.addTopLevelView($.__views.drawer);
@@ -394,7 +389,7 @@ function Controller() {
     var match;
     var fighterName = "";
     var matchResultString = "";
-    __defers["$.__views.__alloyId51!click!shareFacebook"] && $.__views.__alloyId51.addEventListener("click", shareFacebook);
+    __defers["$.__views.__alloyId49!click!shareFacebook"] && $.__views.__alloyId49.addEventListener("click", shareFacebook);
     _.extend($, exports);
 }
 
