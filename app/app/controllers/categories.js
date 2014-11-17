@@ -68,11 +68,12 @@ function getCategories(element, param){
 				  /*width: 320,
 				  height: 220,*/					  
 				  width: "100%",
-				  height: 350
+				  height: 350,
+				  image: e.categories[i].background
 				  //background: e.categories[i].background
 				});
 				$.addClass(backgroundCategory, "backgroundCategory");
-				Alloy.Globals.loadPhoto(backgroundCategory, 'image', e.categories[i].background);
+				//Alloy.Globals.loadPhoto(backgroundCategory, 'image', e.categories[i].background);
 									
 				var containerTitleCategory = Titanium.UI.createView();
 				$.addClass(containerTitleCategory, "containerTitleCategory");
@@ -80,10 +81,11 @@ function getCategories(element, param){
 				var iconCategory = Titanium.UI.createImageView({
 					//icon: e.categories[i].icon,
 					width: 16,
-					height: 16					
+					height: 16,
+					image: e.categories[i].icon					
 				});
 				
-				Alloy.Globals.loadPhoto(iconCategory, 'image', e.categories[i].icon);
+				//Alloy.Globals.loadPhoto(iconCategory, 'image', e.categories[i].icon);
 				
 				var titleCategory = Titanium.UI.createLabel();
 				$.addClass(titleCategory, "titleCategory fontWhite proximaNovaRegular");

@@ -45,9 +45,11 @@ function myInfos(){
 			
 			console.log(user.custom_fields);
 			
-			Alloy.Globals.loadPhoto($.profilePhoto, 'image', user.custom_fields.profile_image);
+			//Alloy.Globals.loadPhoto($.profilePhoto, 'image', user.custom_fields.profile_image);
+			$.profilePhoto.image = user.custom_fields.profile_image;
+			$.coverPhoto.image = user.custom_fields.cover_image;
 			
-			Alloy.Globals.loadPhoto($.coverPhoto, 'backgroundImage', user.custom_fields.cover_image);
+			//Alloy.Globals.loadPhoto($.coverPhoto, 'backgroundImage', user.custom_fields.cover_image);
 					
 			/*Alloy.Globals.Cloud.Objects.query({
 			    classname: 'cities',
@@ -100,7 +102,9 @@ function achievements(){
 				var rowConquer = Titanium.UI.createTableViewRow();
 			    $.addClass(rowConquer, 'rowConquer');
 
-			    var imageConquer = Titanium.UI.createImageView();
+			    var imageConquer = Titanium.UI.createImageView({
+			    	image: categories[i].badge
+			    });
 			    $.addClass(imageConquer, 'imageConquer');
 
 			    var rightContentConquer = Titanium.UI.createView();
@@ -170,7 +174,7 @@ function achievements(){
 
 			    $.conquer.appendRow(rowConquer);
 			    
-			    Alloy.Globals.loadPhoto(imageConquer, 'image', categories[i].badge);
+			    //Alloy.Globals.loadPhoto(imageConquer, 'image', categories[i].badge);
 			};
 		
 			setPointsAchievements($.conquer.data[0].rows, $.conquer.data[0].rows.length, 0);

@@ -99,11 +99,13 @@ function setUserInfo(userId, side, points){
 			if(side == 'a'){				
 				$.nameUserA.text = name;
 				$.pointsA.text = points;
-				Alloy.Globals.loadPhoto($.imageProfileA, 'image', user.custom_fields.profile_image);
+				//Alloy.Globals.loadPhoto($.imageProfileA, 'image', user.custom_fields.profile_image);
+				$.imageProfileA.image = user.custom_fields.profile_image;
 			}else{
 				$.nameUserB.text = name;
 				$.pointsB.text = points;
-				Alloy.Globals.loadPhoto($.imageProfileB, 'image', user.custom_fields.profile_image);
+				//Alloy.Globals.loadPhoto($.imageProfileB, 'image', user.custom_fields.profile_image);
+				$.imageProfileB.image = user.custom_fields.profile_image;
 			}
 		}
 	});

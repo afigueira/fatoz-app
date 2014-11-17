@@ -30,9 +30,10 @@ function socketCreatingMatch(e){
 			$.trophy.visible = true;
 			$.profileTitleB.text = e.users[0].first_name + " " + e.users[0].last_name;
 			
-			Alloy.Globals.loadPhoto($.imageProfileB, 'image', e.users[0].custom_fields.profile_image);
-
-			Alloy.Globals.loadPhoto($.profileB, 'backgroundImage', e.users[0].custom_fields.cover_image);
+			//Alloy.Globals.loadPhoto($.imageProfileB, 'image', e.users[0].custom_fields.profile_image);
+			$.imageProfileB.image = e.users[0].custom_fields.profile_image;
+			//Alloy.Globals.loadPhoto($.profileB, 'backgroundImage', e.users[0].custom_fields.cover_image);
+			$.profileB.backgroundImage = e.users[0].custom_fields.cover_image;
 
 			fighterReceived = true;
 
@@ -80,9 +81,10 @@ function showMe(){
 	    if (e.success) {
 	        var user = e.users[0];
 	        
-	        Alloy.Globals.loadPhoto($.imageProfileA, 'image', user.custom_fields.profile_image);
-	        
-	        Alloy.Globals.loadPhoto($.coverA, 'backgroundImage', user.custom_fields.cover_image);
+	        //Alloy.Globals.loadPhoto($.imageProfileA, 'image', user.custom_fields.profile_image);
+	        $.imageProfileA.image = user.custom_fields.profile_image;
+	        //Alloy.Globals.loadPhoto($.coverA, 'backgroundImage', user.custom_fields.cover_image);
+	        $.coverA.backgroundImage = user.custom_fields.cover_image;
 	    }
 	});
 }

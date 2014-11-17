@@ -4,6 +4,8 @@
     <string name="email">E-mail</string>
     <string name="password">Senha</string>
     <string name="username">Username</string>
+    <string name="first_name">Nome</string>
+    <string name="last_name">Sobrenome</string>
     <string name="forgotpassword">Esqueceu sua senha ?</string>
     <string name="signup">Cadastro</string>
     <string name="terms_signup">Ao concluir estará aceitando os Termos de Uso</string>
@@ -26,8 +28,55 @@
     <string name="category_description">Aqui vai entrar a descrição da categoria</string>
     
     
+    <string name="statistics">Estatísticas</string>
+    <string name="friends">Amigos</string>
+    <string name="rank">Rank</string>
+    <string name="conquer">Conquistas</string>
+    <string name="user_name">René Stalder</string>
+    <string name="city_state">São Paulo, Brasil</string>
+    <string name="opponents">Oponentes</string>
+    <string name="average_score">Pontuação\n Média</string>
+    <string name="average_response_time">Tempo Médio \nde Resposta</string>
+    <string name="total_play_time">Tempo Total \nde Jogo</string>
+	
+	<string name="abbreviation_points"> Pts. </string>
+	<string name="abbreviation_monday"> Seg.</string>
+	<string name="abbreviation_hour">h </string>
+	<string name="abbreviation_minute">m</string>
+	
+	<string name="btn_follow">SEGUIR</string>
+	
+	<string name="you">Você</string>
+	
+	<string name="last_round">ÚLTIMO ROUND:</string>
+	<string name="round">ROUND</string>
+	
+	<string name="match_points">Pts. da \nPartida</string>
+	<string name="final_bonus">Bônus \nFinal</string>
+	<string name="bonus_victory">Bônus de \nVitória</string>
+	<string name="total_points">Pts. \nTotal</string>
+	<string name="points">Pontos</string>	
+	
+	
+            
+    
     <!-- Buttons -->
     <string name="button_facebook_login">Ou entre com o Facebook</string>
+    <string name="button_facebook_integrate">Integrar com o Facebook</string>
     <string name="button_signup">Cadastre-se</string>
     <string name="button_facebook_signup">Cadastre-se com Facebook</string>
+    
+    <string name="button_rematch">Revanche</string>
+    <string name="button_play_again">Jogar Novamente</string>
+    <string name="button_challenge">Desafiar</string>
+    <string name="button_ranking">Ranking</string>  
+    
+    <string name="button_home">Home</string>
+    <string name="button_profile">Perfil</string>
+    <string name="button_categories">Categorias</string>
+    <string name="button_challenges">Desafios</string>
+    <string name="button_statistics">Estatísticas</string>
+    <string name="button_achievements">Conquistas</string>
+    <string name="button_settings">Definições</string>
+    <string name="button_exit">Sair</string>    
 </resources>

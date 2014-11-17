@@ -55,7 +55,8 @@ function setUserName(element, length, a){
 
 	        row.children[2].text =  user.first_name;
 	        
-		    Alloy.Globals.loadPhoto(row.children[1], 'image', user.custom_fields.profile_image);
+		    //Alloy.Globals.loadPhoto(row.children[1], 'image', user.custom_fields.profile_image);
+		    row.children[1].image = user.custom_fields.profile_image;
 
 	        if(a < length - 1){
 	        	setUserName(element, length, ++a);
