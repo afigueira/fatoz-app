@@ -56,10 +56,10 @@ Alloy.Globals.updateFacebookInfos = function() {
 Alloy.Globals.resetUserPhotos = function() {
 	Alloy.Globals.Cloud.Users.update({
 		custom_fields: {
-			profile_image:  '545f827444f2450e5e045905',
-			cover_image: '545f82f57c874208b50014b0'
+			profile_image:  Alloy.CFG.default_image_avatar,
+			cover_image: Alloy.CFG.default_image_cover
 		}
-	});
+	}, function(e) {});
 };
 
 Alloy.Globals.drawer = function(sidebar, element, titleActionBar, func) {	
@@ -221,7 +221,6 @@ Alloy.Globals.showBanner = function(container, page, position) {
 				left: 0,
 				width: 320, height: 50,
 				adUnitId: unitId,
-				backgroundColor: 'red',
 				testing: false
 			});
 			admobView[position] = 0;

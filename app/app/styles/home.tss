@@ -22,12 +22,18 @@
 	right: 0,
 	layout: "absolute"
 },
+"#contentTabs": {
+	top: 46
+},
 "#categories": {
 	top: 20,
 	bottom: 20,
 	width: 280,
 	height: 390,
 	backgroundColor: "white"
+},
+".category": {
+	height: 344
 },
 "#tabs": {
 	top: 0,

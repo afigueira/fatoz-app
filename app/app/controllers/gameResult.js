@@ -13,6 +13,8 @@ function init(){
     matches();
     
     banner();
+    
+    $.leftMenu.addEventListener('click', $.drawer.toggleLeftWindow);
 }
 
 function banner(){
@@ -113,7 +115,7 @@ function shareFacebook() {
 	    name : "Fatoz Game",
 	    message : "Acabei de disputar uma partida contra" + fighterName + " e " + matchResultString,
 	    caption : "Fatoz Game",
-	    picture : "http://developer.appcelerator.com/assets/img/DEV_titmobile_image.png",
+	    picture : "https://s3-us-west-1.amazonaws.com/storage.cloud.appcelerator.com/Za5D1IiTHPF1KPaqJmPc0L3Uq2Q6hQu7/photos/01/27/5469774944f2450e5608b0f7/logo_fb_original.jpg",
 	    description: ""
 	};
 

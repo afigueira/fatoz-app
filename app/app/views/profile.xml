@@ -6,7 +6,7 @@
         	
         	<View id="titleBar" platform="ios">
         		<Label text="Perfil" class="fontWhite proximaNovaRegular" id="labelTitleBar"/>
-        		<ImageView image="/images/icon-menu.png" id="leftMenu" class="leftItemMenu" onClick="$.drawer.toggleLeftWindow"/>
+        		<ImageView image="/images/icon-menu.png" id="leftMenu" class="leftItemMenu"/>
     		</View>
     		
 			<View class="inside">

@@ -1,4 +1,4 @@
-$.forgotPassword.open();
+$.window.open();
 
 $.submit.addEventListener('click', function(e){
 	var email = $.email.value;

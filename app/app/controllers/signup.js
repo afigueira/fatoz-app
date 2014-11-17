@@ -11,8 +11,8 @@ $.submit.addEventListener('click', function(event){
 	    password: $.password.value,
 	    password_confirmation: $.password.value,
 	    custom_fields: {
-	    	profile_image: '545f827444f2450e5e045905',
-	    	cover_image: '545f82f57c874208b50014b0'	
+	    	profile_image: Alloy.CFG.default_image_avatar,
+	    	cover_image: Alloy.CFG.default_image_cover	
 	    }	    
 	}, function (e) {
 	    if (e.success) {	    		        
@@ -37,6 +37,6 @@ function banner(){
 	Alloy.Globals.showBanner($.window, 'signup', 'bottom');
 }
 
-$.signup.open();
+$.window.open();
 
 banner();

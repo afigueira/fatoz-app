@@ -69,7 +69,7 @@ function joinRoom(){
 }
 
 function mountMatch(){
-	$.roomQueue.close();
+	$.window.close();
 	Alloy.createController('game', {matchId: matchId});
 }
 
@@ -93,14 +93,14 @@ $.cancelMatch.addEventListener('click', function(e){
 		roomId: categoryId
 	});
 	
-	$.roomQueue.close();
+	$.window.close();
 	Alloy.createController('home');
 });
 
 Titanium.App.addEventListener('websocket.creatingMatch', socketCreatingMatch);		
 Titanium.App.addEventListener('websocket.mountMatch', socketMountMatch);
 
-$.roomQueue.addEventListener('close', function(e) {
+$.window.addEventListener('close', function(e) {
 	Titanium.App.removeEventListener('websocket.creatingMatch', socketCreatingMatch);		
 	Titanium.App.removeEventListener('websocket.mountMatch', socketMountMatch);
 
@@ -110,5 +110,4 @@ $.roomQueue.addEventListener('close', function(e) {
 
 init();
 
-$.roomQueue.open();
-
+$.window.open();

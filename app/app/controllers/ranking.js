@@ -30,6 +30,8 @@ function init(){
 	}
 	
 	banner();
+	
+	$.leftMenu.addEventListener('click', $.drawer.toggleLeftWindow);
 }
 
 function banner(){

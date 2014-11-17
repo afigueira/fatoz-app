@@ -6,7 +6,7 @@
         	
         	<View id="titleBar" platform="ios">
         		<Label text="Início" class="fontWhite proximaNovaRegular" id="labelTitleBar"/>
-        		<ImageView image="/images/icon-menu.png" id="leftMenu" class="leftItemMenu" onClick="$.drawer.toggleLeftWindow"/>
+        		<ImageView image="/images/icon-menu.png" id="leftMenu" class="leftItemMenu"/>
     		</View>
         	
 			<ScrollView class="inside">		
@@ -32,7 +32,7 @@
 							</View>							
 						</View>
 						
-						<View id="contentTabs" top="46">
+						<View id="contentTabs">
 							<ScrollableView id="popular" class="scrollable">
 							</ScrollableView>
 							

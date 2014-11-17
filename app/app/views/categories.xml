@@ -6,10 +6,10 @@
         	
         	<View id="titleBar" platform="ios">
         		<Label text="Categorias" class="fontWhite proximaNovaRegular" id="labelTitleBar"/>
-        		<ImageView image="/images/icon-menu.png" id="leftMenu" class="leftItemMenu" onClick="$.drawer.toggleLeftWindow"/>
+        		<ImageView image="/images/icon-menu.png" id="leftMenu" class="leftItemMenu"/>
     		</View>	
     			
-			<View class="inside">
+			<ScrollView class="inside">
 				<!--<View id="containerTabs" class="white">
 					<View id="tabs">
 						<View class="tab" onClick="tabNavigation" contentTabsIndex="0">
@@ -85,7 +85,7 @@
 					</TableView>
 				</View>
 				</ScrollableView>-->
-			</View>
+			</ScrollView>
     	</Window>
     </Widget>
 </Alloy>

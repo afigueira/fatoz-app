@@ -360,7 +360,7 @@ Titanium.App.addEventListener('websocket.startQuestion', startQuestion);
 Titanium.App.addEventListener('websocket.fighterAnswered', fighterAnswered);
 Titanium.App.addEventListener('websocket.finishGame', finishGame);
 
-$.game.addEventListener('close', function(e) {
+$.window.addEventListener('close', function(e) {
 	
 	Titanium.App.removeEventListener('websocket.showQuestion', showQuestion);
 	Titanium.App.removeEventListener('websocket.startQuestion', startQuestion);
@@ -375,6 +375,6 @@ $.game.addEventListener('close', function(e) {
 	$.off();
 });
 
-$.game.open();
+$.window.open();
 
 banner();

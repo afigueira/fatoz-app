@@ -14,6 +14,8 @@ function init(){
 	//pagination();
 	
 	banner();
+	
+	$.leftMenu.addEventListener('click', $.drawer.toggleLeftWindow);
 }
 
 function banner(){

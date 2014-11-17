@@ -15,6 +15,8 @@ function init(){
 	/*$.settings.addEventListener('click', function(){
 		Alloy.createController('settings');
 	});*/
+	
+	$.leftMenu.addEventListener('click', $.drawer.toggleLeftWindow);
 }
 
 function banner(){

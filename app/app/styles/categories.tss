@@ -31,7 +31,8 @@
 ".category": {
 	/*height: 90*/
 	/*height: 220*/
-	height: 89
+	height: 89,
+	width: 320
 },
 ".backgroundCategory": {
 	left: 0,
@@ -91,5 +92,6 @@
 	font: {fontSize: 12, fontWeight: 'bold'}
 },
 "#allCategories": {
+	width: Titanium.UI.FILL,
 	height: Titanium.UI.FILL
 }

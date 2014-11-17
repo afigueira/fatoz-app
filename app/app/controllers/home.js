@@ -25,6 +25,8 @@ function init(){
 	ranking();
 	
 	banner();
+	
+	$.leftMenu.addEventListener('click', $.drawer.toggleLeftWindow);
 }
 
 function banner(){
@@ -137,7 +139,7 @@ function getCategories(element, obj, isFirst){
 }
 
 function ranking(){
-	Alloy.Globals.loadPhoto($.btnRanking, 'image', '54600aaf7c874208ad001177');
+	Alloy.Globals.loadPhoto($.btnRanking, 'image', Alloy.CFG.banner_home);
 
 	$.btnRanking.addEventListener('click', function(){
 		Alloy.createController('ranking');
