@@ -40,10 +40,10 @@ Alloy.Globals.updateFacebookInfos = function() {
 Alloy.Globals.resetUserPhotos = function() {
     Alloy.Globals.Cloud.Users.update({
         custom_fields: {
-            profile_image: "545f827444f2450e5e045905",
-            cover_image: "545f82f57c874208b50014b0"
+            profile_image: Alloy.CFG.default_image_avatar,
+            cover_image: Alloy.CFG.default_image_cover
         }
-    });
+    }, function() {});
 };
 
 Alloy.Globals.drawer = function(sidebar, element, titleActionBar, func) {
@@ -157,5 +157,44 @@ Titanium.App.addEventListener("websocket.dispatchEvent", function(data) {
         socket.emit(data.event, data);
     }
 });
+
+Alloy.Globals.banners = {
+    ios: {
+        header: "ca-app-pub-1202817906596777/3528442443",
+        footer: "ca-app-pub-1202817906596777/6621509640"
+    },
+    android: {
+        header: "ca-app-pub-1202817906596777/5284377248",
+        footer: "ca-app-pub-1202817906596777/9714576843"
+    }
+};
+
+Alloy.Globals.showBanner = function(container, page, position) {
+    console.log("trying to show banner to page", page);
+    Alloy.Globals.Cloud.Objects.query({
+        classname: "banners_pages",
+        where: {
+            page: page,
+            banner: true
+        }
+    }, function(e) {
+        if (e.success && e.banners_pages.length > 0) {
+            var platform = "android";
+            var unitId = Alloy.Globals.banners[platform]["header"];
+            if ("ios" == platform) {
+                Alloy.Globals.Admob = require("ti.admob");
+                var admobView = Alloy.Globals.Admob.createView({
+                    left: 0,
+                    width: 320,
+                    height: 50,
+                    adUnitId: unitId,
+                    testing: false
+                });
+                admobView[position] = 0;
+                container.add(admobView);
+            }
+        }
+    });
+};
 
 Alloy.createController("index");

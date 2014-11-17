@@ -8,16 +8,25 @@ function __processArg(obj, key) {
 }
 
 function Controller() {
+    function banner() {
+        Alloy.Globals.showBanner($.window, "forgotPassword", "bottom");
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "forgotPassword";
     if (arguments[0]) {
-        __processArg(arguments[0], "__parentSymbol");
-        __processArg(arguments[0], "$model");
-        __processArg(arguments[0], "__itemTemplate");
+        {
+            __processArg(arguments[0], "__parentSymbol");
+        }
+        {
+            __processArg(arguments[0], "$model");
+        }
+        {
+            __processArg(arguments[0], "__itemTemplate");
+        }
     }
     var $ = this;
     var exports = {};
-    $.__views.forgotPassword = Ti.UI.createWindow({
+    $.__views.window = Ti.UI.createWindow({
         backgroundColor: Alloy.Globals.constants.BASE_COLOR,
         barColor: Alloy.Globals.constants.NAV_BAR_COLOR,
         navTintColor: "white",
@@ -25,17 +34,15 @@ function Controller() {
         translucent: false,
         width: Titanium.UI.FILL,
         height: Titanium.UI.FILL,
-        left: 0,
-        top: 115,
-        id: "forgotPassword"
+        id: "window"
     });
-    $.__views.forgotPassword && $.addTopLevelView($.__views.forgotPassword);
+    $.__views.window && $.addTopLevelView($.__views.window);
     $.__views.logo = Ti.UI.createImageView({
         top: 55,
         image: "/images/logo-login.png",
         id: "logo"
     });
-    $.__views.forgotPassword.add($.__views.logo);
+    $.__views.window.add($.__views.logo);
     $.__views.form = Ti.UI.createView({
         height: Titanium.UI.SIZE,
         top: 237,
@@ -43,21 +50,21 @@ function Controller() {
         right: 28,
         id: "form"
     });
-    $.__views.forgotPassword.add($.__views.form);
-    $.__views.__alloyId3 = Ti.UI.createView({
+    $.__views.window.add($.__views.form);
+    $.__views.__alloyId2 = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.SIZE,
         height: Titanium.UI.SIZE,
-        id: "__alloyId3"
+        id: "__alloyId2"
     });
-    $.__views.form.add($.__views.__alloyId3);
-    $.__views.__alloyId4 = Ti.UI.createView({
+    $.__views.form.add($.__views.__alloyId2);
+    $.__views.__alloyId3 = Ti.UI.createView({
         layout: "absolute",
         width: Titanium.UI.FILL,
         height: Titanium.UI.SIZE,
-        id: "__alloyId4"
+        id: "__alloyId3"
     });
-    $.__views.__alloyId3.add($.__views.__alloyId4);
+    $.__views.__alloyId2.add($.__views.__alloyId3);
     $.__views.email = Ti.UI.createTextField({
         borderRadius: 4,
         backgroundColor: "white",
@@ -71,14 +78,14 @@ function Controller() {
         id: "email",
         hintText: L("email")
     });
-    $.__views.__alloyId4.add($.__views.email);
-    $.__views.__alloyId5 = Ti.UI.createImageView({
+    $.__views.__alloyId3.add($.__views.email);
+    $.__views.__alloyId4 = Ti.UI.createImageView({
         image: "/images/icon-user.png",
         right: "52",
         top: "15",
-        id: "__alloyId5"
+        id: "__alloyId4"
     });
-    $.__views.__alloyId4.add($.__views.__alloyId5);
+    $.__views.__alloyId3.add($.__views.__alloyId4);
     $.__views.submit = Ti.UI.createButton({
         borderRadius: 4,
         backgroundColor: "white",
@@ -92,15 +99,16 @@ function Controller() {
     $.__views.form.add($.__views.submit);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    $.forgotPassword.open();
+    $.window.open();
     $.submit.addEventListener("click", function() {
         var email = $.email.value;
         email && Alloy.Globals.Cloud.Users.requestResetPassword({
             email: email
         }, function(e) {
-            e.success ? alert("Siga as instruções enviadas para o seu e-mail.") : alert("Houve um erro ou este e-mail não está cadastrado");
+            alert(e.success ? "Siga as instruções enviadas para o seu e-mail." : "Houve um erro ou este e-mail não está cadastrado");
         });
     });
+    banner();
     _.extend($, exports);
 }
 
