@@ -1,16 +1,2 @@
-<Alloy>
-	<Window>
-		<TableView>
-			<!-- search, shorthand with Ti.UI.SearchBar -->
-			<SearchBar platform="ios"/>
-			<!-- search, shorthand with Ti.UI.Android.SearchView -->
-			<SearchView ns="Ti.UI.Android" platform="android"/>
-
-			<TableViewRow title="1">
-			</TableViewRow>
-
-			<TableViewRow title="2">
-			</TableViewRow>
-		</TableView>
-	</Window>
+<Alloy>	
 </Alloy>

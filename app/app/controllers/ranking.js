@@ -2,7 +2,7 @@ var args = arguments[0] || {};
 
 categoryId = args.categoryId || '';
 
-Alloy.Globals.drawer($.sidebar, $.drawer, 'Ranking', init);
+Alloy.Globals.drawer($.sidebar, $.leftMenu, $.drawer, 'Ranking', init);
 
 function init(){
 	if(categoryId){
@@ -31,7 +31,7 @@ function init(){
 	
 	banner();
 	
-	$.leftMenu.addEventListener('click', $.drawer.toggleLeftWindow);
+	
 }
 
 function banner(){

@@ -1,7 +1,7 @@
 var io = "undefined" == typeof module ? {} : module.exports;
 
-!function() {
-    !function(exports, global) {
+(function() {
+    (function(exports, global) {
         var io = exports;
         io.version = "0.9.6";
         io.protocol = 1;
@@ -28,8 +28,8 @@ var io = "undefined" == typeof module ? {} : module.exports;
             socket = socket || io.sockets[uuri];
             return socket.of(uri.path.length > 1 ? uri.path : "");
         };
-    }("object" == typeof module ? module.exports : this.io = {}, this);
-    !function(exports, global) {
+    })("object" == typeof module ? module.exports : this.io = {}, this);
+    (function(exports, global) {
         var util = exports.util = {};
         var re = /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/;
         var parts = [ "source", "protocol", "authority", "userInfo", "user", "password", "host", "port", "relative", "path", "directory", "file", "query", "anchor" ];
@@ -90,7 +90,7 @@ var io = "undefined" == typeof module ? {} : module.exports;
         };
         util.merge = function(target, additional, deep, lastseen) {
             var prop, seen = lastseen || [], depth = "undefined" == typeof deep ? 2 : deep;
-            for (prop in additional) if (additional.hasOwnProperty(prop) && util.indexOf(seen, prop) < 0) if ("object" == typeof target[prop] && depth) util.merge(target[prop], additional[prop], depth - 1, seen); else {
+            for (prop in additional) if (additional.hasOwnProperty(prop) && 0 > util.indexOf(seen, prop)) if ("object" == typeof target[prop] && depth) util.merge(target[prop], additional[prop], depth - 1, seen); else {
                 target[prop] = additional[prop];
                 seen.push(additional[prop]);
             }
@@ -132,8 +132,8 @@ var io = "undefined" == typeof module ? {} : module.exports;
         }();
         util.ua.webkit = "undefined" != typeof navigator && /webkit/i.test(navigator.userAgent);
         util.ua.iDevice = "undefined" != typeof navigator && /iPad|iPhone|iPod/i.test(navigator.userAgent);
-    }("undefined" != typeof io ? io : module.exports, this);
-    !function(exports, io) {
+    })("undefined" != typeof io ? io : module.exports, this);
+    (function(exports, io) {
         function EventEmitter() {}
         exports.EventEmitter = EventEmitter;
         EventEmitter.prototype.on = function(name, fn) {
@@ -190,15 +190,15 @@ var io = "undefined" == typeof module ? {} : module.exports;
             }
             return true;
         };
-    }("undefined" != typeof io ? io : module.exports, "undefined" != typeof io ? io : module.parent.exports);
-    !function(exports, nativeJSON) {
+    })("undefined" != typeof io ? io : module.exports, "undefined" != typeof io ? io : module.parent.exports);
+    (function(exports, nativeJSON) {
         "use strict";
         return exports.JSON = {
             parse: nativeJSON.parse,
             stringify: nativeJSON.stringify
         };
-    }("undefined" != typeof io ? io : module.exports, "undefined" != typeof JSON ? JSON : void 0);
-    !function(exports, io) {
+    })("undefined" != typeof io ? io : module.exports, "undefined" != typeof JSON ? JSON : void 0);
+    (function(exports, io) {
         var parser = exports.parser = {};
         var packets = parser.packets = [ "disconnect", "connect", "heartbeat", "message", "json", "event", "ack", "error", "noop" ];
         var reasons = parser.reasons = [ "transport not supported", "client not handshaken", "unauthorized" ];
@@ -308,7 +308,7 @@ var io = "undefined" == typeof module ? {} : module.exports;
         parser.decodePayload = function(data) {
             if ("�" == data.charAt(0)) {
                 var ret = [];
-                for (var i = 1, length = ""; i < data.length; i++) if ("�" == data.charAt(i)) {
+                for (var i = 1, length = ""; data.length > i; i++) if ("�" == data.charAt(i)) {
                     ret.push(parser.decodePacket(data.substr(i + 1).substr(0, length)));
                     i += Number(length) + 1;
                     length = "";
@@ -317,8 +317,8 @@ var io = "undefined" == typeof module ? {} : module.exports;
             }
             return [ parser.decodePacket(data) ];
         };
-    }("undefined" != typeof io ? io : module.exports, "undefined" != typeof io ? io : module.parent.exports);
-    !function(exports, io) {
+    })("undefined" != typeof io ? io : module.exports, "undefined" != typeof io ? io : module.parent.exports);
+    (function(exports, io) {
         function Transport(socket, sessid) {
             this.socket = socket;
             this.sessid = sessid;
@@ -395,8 +395,8 @@ var io = "undefined" == typeof module ? {} : module.exports;
         Transport.prototype.ready = function(socket, fn) {
             fn.call(this);
         };
-    }("undefined" != typeof io ? io : module.exports, "undefined" != typeof io ? io : module.parent.exports);
-    !function(exports, io, global) {
+    })("undefined" != typeof io ? io : module.exports, "undefined" != typeof io ? io : module.parent.exports);
+    (function(exports, io, global) {
         function Socket(options) {
             this.options = {
                 port: 80,
@@ -635,7 +635,7 @@ var io = "undefined" == typeof module ? {} : module.exports;
                     self.redoTransports = true;
                     self.connect();
                 } else {
-                    self.reconnectionDelay < limit && (self.reconnectionDelay *= 2);
+                    limit > self.reconnectionDelay && (self.reconnectionDelay *= 2);
                     self.connect();
                     self.publish("reconnecting", self.reconnectionDelay, self.reconnectionAttempts);
                     self.reconnectionTimer = setTimeout(maybeReconnect, self.reconnectionDelay);
@@ -649,8 +649,8 @@ var io = "undefined" == typeof module ? {} : module.exports;
             this.reconnectionTimer = setTimeout(maybeReconnect, this.reconnectionDelay);
             this.on("connect", maybeReconnect);
         };
-    }("undefined" != typeof io ? io : module.exports, "undefined" != typeof io ? io : module.parent.exports, this);
-    !function(exports, io) {
+    })("undefined" != typeof io ? io : module.exports, "undefined" != typeof io ? io : module.parent.exports, this);
+    (function(exports, io) {
         function SocketNamespace(socket, name) {
             this.socket = socket;
             this.name = name || "";
@@ -763,8 +763,8 @@ var io = "undefined" == typeof module ? {} : module.exports;
             this.namespace.flags[this.name] = true;
             this.namespace.emit.apply(this.namespace, arguments);
         };
-    }("undefined" != typeof io ? io : module.exports, "undefined" != typeof io ? io : module.parent.exports);
-    !function(exports, io) {
+    })("undefined" != typeof io ? io : module.exports, "undefined" != typeof io ? io : module.parent.exports);
+    (function(exports, io) {
         function WS() {
             io.Transport.apply(this, arguments);
         }
@@ -822,5 +822,5 @@ var io = "undefined" == typeof module ? {} : module.exports;
             return true;
         };
         io.transports.push("websocket");
-    }("undefined" != typeof io ? io.Transport : module.exports, "undefined" != typeof io ? io : module.parent.exports, this);
-}();
+    })("undefined" != typeof io ? io.Transport : module.exports, "undefined" != typeof io ? io : module.parent.exports, this);
+})();

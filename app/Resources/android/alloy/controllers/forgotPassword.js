@@ -14,15 +14,9 @@ function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "forgotPassword";
     if (arguments[0]) {
-        {
-            __processArg(arguments[0], "__parentSymbol");
-        }
-        {
-            __processArg(arguments[0], "$model");
-        }
-        {
-            __processArg(arguments[0], "__itemTemplate");
-        }
+        __processArg(arguments[0], "__parentSymbol");
+        __processArg(arguments[0], "$model");
+        __processArg(arguments[0], "__itemTemplate");
     }
     var $ = this;
     var exports = {};
@@ -51,20 +45,20 @@ function Controller() {
         id: "form"
     });
     $.__views.window.add($.__views.form);
-    $.__views.__alloyId2 = Ti.UI.createView({
+    $.__views.__alloyId4 = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.SIZE,
         height: Titanium.UI.SIZE,
-        id: "__alloyId2"
+        id: "__alloyId4"
     });
-    $.__views.form.add($.__views.__alloyId2);
-    $.__views.__alloyId3 = Ti.UI.createView({
+    $.__views.form.add($.__views.__alloyId4);
+    $.__views.__alloyId5 = Ti.UI.createView({
         layout: "absolute",
         width: Titanium.UI.FILL,
         height: Titanium.UI.SIZE,
-        id: "__alloyId3"
+        id: "__alloyId5"
     });
-    $.__views.__alloyId2.add($.__views.__alloyId3);
+    $.__views.__alloyId4.add($.__views.__alloyId5);
     $.__views.email = Ti.UI.createTextField({
         borderRadius: 4,
         backgroundColor: "white",
@@ -78,14 +72,14 @@ function Controller() {
         id: "email",
         hintText: L("email")
     });
-    $.__views.__alloyId3.add($.__views.email);
-    $.__views.__alloyId4 = Ti.UI.createImageView({
+    $.__views.__alloyId5.add($.__views.email);
+    $.__views.__alloyId6 = Ti.UI.createImageView({
         image: "/images/icon-user.png",
         right: "52",
         top: "15",
-        id: "__alloyId4"
+        id: "__alloyId6"
     });
-    $.__views.__alloyId3.add($.__views.__alloyId4);
+    $.__views.__alloyId5.add($.__views.__alloyId6);
     $.__views.submit = Ti.UI.createButton({
         borderRadius: 4,
         backgroundColor: "white",
@@ -105,7 +99,7 @@ function Controller() {
         email && Alloy.Globals.Cloud.Users.requestResetPassword({
             email: email
         }, function(e) {
-            alert(e.success ? "Siga as instruções enviadas para o seu e-mail." : "Houve um erro ou este e-mail não está cadastrado");
+            e.success ? alert("Siga as instruções enviadas para o seu e-mail.") : alert("Houve um erro ou este e-mail não está cadastrado");
         });
     });
     banner();

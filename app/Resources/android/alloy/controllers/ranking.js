@@ -34,7 +34,6 @@ function Controller() {
             });
         }
         banner();
-        $.leftMenu.addEventListener("click", $.drawer.toggleLeftWindow);
     }
     function banner() {
         Alloy.Globals.showBanner($.window, "ranking", "bottom");
@@ -108,12 +107,8 @@ function Controller() {
     this.__controllerPath = "ranking";
     if (arguments[0]) {
         var __parentSymbol = __processArg(arguments[0], "__parentSymbol");
-        {
-            __processArg(arguments[0], "$model");
-        }
-        {
-            __processArg(arguments[0], "__itemTemplate");
-        }
+        __processArg(arguments[0], "$model");
+        __processArg(arguments[0], "__itemTemplate");
     }
     var $ = this;
     var exports = {};
@@ -145,7 +140,7 @@ function Controller() {
     _.extend($, $.__views);
     var args = arguments[0] || {};
     categoryId = args.categoryId || "";
-    Alloy.Globals.drawer($.sidebar, $.drawer, "Ranking", init);
+    Alloy.Globals.drawer($.sidebar, $.leftMenu, $.drawer, "Ranking", init);
     _.extend($, exports);
 }
 

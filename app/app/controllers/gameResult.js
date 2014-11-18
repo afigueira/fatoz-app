@@ -1,6 +1,6 @@
 var args = arguments[0] || {};
 
-Alloy.Globals.drawer($.sidebar, $.drawer, 'Resultado final', init);
+Alloy.Globals.drawer($.sidebar, $.leftMenu, $.drawer, 'Resultado final', init);
 
 var matchId = args.matchId;
 var pointsA;
@@ -14,7 +14,7 @@ function init(){
     
     banner();
     
-    $.leftMenu.addEventListener('click', $.drawer.toggleLeftWindow);
+    
 }
 
 function banner(){

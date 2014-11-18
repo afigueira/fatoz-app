@@ -1,0 +1,46 @@
+"View": {
+	height: Titanium.UI.SIZE
+},
+".containerPopup": {
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL,
+	backgroundImage: "/images/background-black-transparent.png",
+	layout: "absolute"	
+},
+".contentPopup": {
+	layout: "vertical",
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL,
+	backgroundColor: "#fafafa",
+	borderRadius: 5,
+	left: 10,
+	right: 10,
+	top: 10,
+	bottom: 10
+},
+".labelPopup": {
+	top: 15,	
+	width: Titanium.UI.FILL,
+	font: {fontSize: 12, fontWeight: 'bold'},
+	color: "#666666",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+},
+".btnYes": {
+	top: 15,
+	left: 15,
+	right: 15,
+	bottom: 15,
+	width: 100
+},
+".btnNo": {
+	top: 15,
+	right: 15,
+	bottom: 15,
+	width: 100
+},
+".pullLeft": {
+	left: 0
+},
+".pullRight": {
+	right: 10
+}

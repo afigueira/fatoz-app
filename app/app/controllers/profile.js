@@ -1,6 +1,6 @@
 var args = arguments[0] || {};
 
-Alloy.Globals.drawer($.sidebar, $.drawer, 'Perfil', init);
+Alloy.Globals.drawer($.sidebar, $.leftMenu, $.drawer, 'Perfil', init);
 
 function init(){
 	myInfos();
@@ -16,7 +16,7 @@ function init(){
 		Alloy.createController('settings');
 	});*/
 	
-	$.leftMenu.addEventListener('click', $.drawer.toggleLeftWindow);
+	
 }
 
 function banner(){

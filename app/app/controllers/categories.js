@@ -1,4 +1,4 @@
-Alloy.Globals.drawer($.sidebar, $.drawer, 'Categorias', init);
+Alloy.Globals.drawer($.sidebar, $.leftMenu, $.drawer, 'Categorias', init);
 
 var canSearch = false;
 
@@ -15,7 +15,7 @@ function init(){
 	
 	banner();
 	
-	$.leftMenu.addEventListener('click', $.drawer.toggleLeftWindow);
+	
 }
 
 function banner(){

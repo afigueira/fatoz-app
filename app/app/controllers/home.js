@@ -1,4 +1,4 @@
-Alloy.Globals.drawer($.sidebar, $.drawer, 'Início', init);
+Alloy.Globals.drawer($.sidebar, $.leftMenu, $.drawer, 'Início', init);
 
 function init(){
 	
@@ -26,7 +26,7 @@ function init(){
 	
 	banner();
 	
-	$.leftMenu.addEventListener('click', $.drawer.toggleLeftWindow);
+	
 }
 
 function banner(){

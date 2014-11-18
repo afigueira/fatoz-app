@@ -61,7 +61,11 @@ Alloy.Globals.resetUserPhotos = function() {
 	}, function(e) {});
 };
 
-Alloy.Globals.drawer = function(sidebar, element, titleActionBar, func) {	
+Alloy.Globals.drawer = function(sidebar, clickLeftMenu, element, titleActionBar, func) {
+	if(Titanium.Platform.osname == 'iphone'){
+		clickLeftMenu.addEventListener('click', element.toggleLeftWindow);
+	}
+
 	sidebar.add(Alloy.createController('sidebar').getView());
 
 	element.addEventListener('open', onNavDrawerWinOpen);

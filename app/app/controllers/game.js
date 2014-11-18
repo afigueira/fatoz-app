@@ -236,7 +236,7 @@ function createYouWin(pointsA, pointsB) {
 	var onCompleteFadeIn = function() {
 		var youWinFadeout = Titanium.UI.createAnimation({opacity: 0, duration: 500, delay: 1500});
 		var onCompleteFadeout = function() {
-			Alloy.createController('gameResult', {matchId: matchId});
+			Alloy.createController('advertisement', {matchId: matchId});
 		};
 		youWinFadeout.addEventListener('complete', onCompleteFadeout);
 		$youWinGame.animate(youWinFadeout);
