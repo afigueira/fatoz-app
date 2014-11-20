@@ -46,8 +46,9 @@ function myInfos(){
 			console.log(user.custom_fields);
 			
 			//Alloy.Globals.loadPhoto($.profilePhoto, 'image', user.custom_fields.profile_image);
+			console.log('user.custom_fields.cover_image', user.custom_fields.cover_image);
 			$.profilePhoto.image = user.custom_fields.profile_image;
-			$.coverPhoto.image = user.custom_fields.cover_image;
+			$.coverPhoto.backgroundImage = user.custom_fields.cover_image;
 			
 			//Alloy.Globals.loadPhoto($.coverPhoto, 'backgroundImage', user.custom_fields.cover_image);
 					

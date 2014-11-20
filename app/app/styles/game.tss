@@ -81,7 +81,10 @@
 	width: Titanium.UI.FILL,
 	backgroundColor: "#41b6da",
 	height: 0,
-	bottom: 0
+	bottom: 0,
+	left: 0,
+	right: 0,
+	height: 100
 },
 ".greenPercentBar": {
 	backgroundColor: "#78a800"
