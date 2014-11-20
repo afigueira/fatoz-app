@@ -2,7 +2,8 @@
 	<Window class="container">
 		<View class="containerPopup">
 			<View class="contentPopup">
-					<Button id="close" class="btnRed btnNo proximaNovaRegular" title="X" width="50" borderRadius="5" top="3" right="3" />				
+					<Button id="close" class="btnRed btnNo proximaNovaRegular" title="X" width="50" borderRadius="5" top="3" right="3" />
+					<View id="containerBanner"></View>
 			</View>	
 		</View>
 	</Window>

@@ -1,6 +1,6 @@
 <Alloy>	
 	<Window class="container" id="window">
-		<ScrollView class="inside" id="scrollView">
+		<ScrollView id="scrollView">
 			<View class="layoutVertical" id="playing">
 				<View class="score">
 					<View class="layoutAbsolute">
