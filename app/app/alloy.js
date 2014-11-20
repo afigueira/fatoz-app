@@ -198,10 +198,12 @@ Titanium.App.addEventListener('websocket.dispatchEvent', function(data) {
 Alloy.Globals.banners = {
 	ios: {
 		header: 'ca-app-pub-1202817906596777/3528442443',
-		footer: 'ca-app-pub-1202817906596777/6621509640'
+		footer: 'ca-app-pub-1202817906596777/6621509640',
+		game: 	'ca-app-pub-1202817906596777/3845742842'
 	}, android: {
 		header: 'ca-app-pub-1202817906596777/5284377248',
-		footer: 'ca-app-pub-1202817906596777/9714576843'
+		footer: 'ca-app-pub-1202817906596777/9714576843',
+		game:	'ca-app-pub-1202817906596777/8275942442'
 	}
 };
 
@@ -218,7 +220,7 @@ Alloy.Globals.showBanner = function(container, page, position) {
 		if (e.success && e.banners_pages.length > 0) {
 			
 			var platform = Titanium.Platform.osname == 'android' ? 'android' : 'ios';
-			var unitId = Alloy.Globals.banners[platform]['header'];
+			var unitId = Alloy.Globals.banners[platform][position];
 			
 			if (platform == 'ios') {
 				Alloy.Globals.Admob = require("ti.admob");

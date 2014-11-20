@@ -69,7 +69,10 @@
 },
 ".descriptionCategory": {
 	top: 139,
-	font: {fontSize: 12, fontWeight: 'bold'}
+	font: {fontSize: 12, fontWeight: 'bold'},
+	left: 20,
+	right: 20,
+	textAlign: 'center'
 },
 ".btnNewMatch": {
 	top: 213,

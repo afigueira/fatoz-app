@@ -55,7 +55,10 @@
 },
 ".descriptionCategory": {
 	font: {fontSize: 12},
-	top: 50
+	top: 50,
+	left: 20,
+	right: 20,
+	textAlign: 'center'
 },
 ".actionsCategory": {
 	backgroundImage: "/images/background-black-transparent.png",

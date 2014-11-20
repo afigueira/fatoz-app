@@ -1,7 +1,7 @@
 ".container": {
 	top: Alloy.Globals.marginTopiOS7
 },
-".inside": {
+"#scrollView": {
 	layout: "vertical",
 	backgroundColor: "#383738"
 },
