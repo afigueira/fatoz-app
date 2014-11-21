@@ -262,21 +262,24 @@ function questionAnswered(clickedOption) {
 		option: clickedOption
 	});
 	
-	var option = $['option' + clickedOption];
+	/*var option = $['option' + clickedOption];
 	
 	var backgroundColor = isCorrect ? '#78a800' : '#e42e24';
 	var color  = '#000000';
 	
-	var animationOption = Titanium.UI.createAnimation({backgroundColor:backgroundColor, color: color, duration: 600});
+	option.color = color;
+	
+	var animationOption = Titanium.UI.createAnimation({backgroundColor:backgroundColor, duration: 600});
 	
 	var onCompleteAnimation = function(){
 		animationOption.removeEventListener('complete', onCompleteAnimation);
-		option.animate(Titanium.UI.createAnimation({backgroundColor:'#FFFFFF', color: '#383838', duration: 600, delay: 400}));
+		option.animate(Titanium.UI.createAnimation({backgroundColor:'#FFFFFF', duration: 600, delay: 400}));
+		option.color = '#383838';
 	};
 	
 	animationOption.addEventListener('complete', onCompleteAnimation);
 	
-	option.animate(animationOption);
+	option.animate(animationOption);*/
 	
 	setQuestionResult(myUserSide, clickedOption, isCorrect);
 
@@ -285,11 +288,11 @@ function questionAnswered(clickedOption) {
 
 function setQuestionResult(userSide, clickedOption, isCorrect) {
 	// aplicar se tá correto ou não
-	/*var optionClassColor = userSide == myUserSide ? (isCorrect ? 'chosenOptionGame fillChosenOptionGame optionGreenGame' : 'chosenOptionGame fillChosenOptionGame optionRedGame') : 'chosenOptionGame fillChosenOptionGame optionBlueGame';
+	var optionClassColor = userSide == myUserSide ? (isCorrect ? 'chosenOptionGame fillChosenOptionGame optionGreenGame' : 'chosenOptionGame fillChosenOptionGame optionRedGame') : 'chosenOptionGame fillChosenOptionGame optionBlueGame';
 		
 	var option = $['option' + clickedOption];
 	
-	$.addClass(option, optionClassColor);*/
+	$.addClass(option, optionClassColor);
 	 	
 	/*if (!isCorrect && userSide == myUserSide) {
 		setQuestionResult(myUserSide, currentQuestion.correct_option, true);	
@@ -327,9 +330,9 @@ function updateProgressBar(userSide, points, isCorrect) {
 	var backgroundColor = isCorrect ? '#78a800' : '#e42e24';
 	
 	//progressBar.height = height;
-	progressBar.animate(Titanium.UI.createAnimation({height: height, duration: 600}));
+	//progressBar.animate(Titanium.UI.createAnimation({height: height, duration: 600}));
 	
-	var animationProgressBar = Titanium.UI.createAnimation({backgroundColor:backgroundColor, duration: 600});
+	var animationProgressBar = Titanium.UI.createAnimation({backgroundColor:backgroundColor, top: 325 - height, duration: 600});
 	var animationImageProfile = Titanium.UI.createAnimation({bottom: imageBottom, duration: 600});
 	
 	var onCompleteAnimation = function(){

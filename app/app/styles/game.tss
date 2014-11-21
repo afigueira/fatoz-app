@@ -82,8 +82,8 @@
 ".percentBar": {
 	width: Titanium.UI.FILL,
 	backgroundColor: "#41b6da",
-	height: 0,
-	bottom: 0,
+	height: 325,
+	top: 325,
 	left: 0,
 	right: 0
 },
