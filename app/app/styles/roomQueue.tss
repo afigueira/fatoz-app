@@ -7,7 +7,7 @@
 	borderRadius: 32,
 	left: 0,
 	borderColor: 'white',
-	borderWidth: 4
+	borderWidth: 2
 },
 ".profileTitle": {
 	height: Titanium.UI.SIZE,	
