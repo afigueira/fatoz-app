@@ -8,6 +8,9 @@ function __processArg(obj, key) {
 }
 
 function Controller() {
+    function openGameResult() {
+        Alloy.createController("gameResult", args);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "advertisement";
     if (arguments[0]) {
@@ -71,12 +74,20 @@ function Controller() {
         title: "X"
     });
     $.__views.__alloyId1.add($.__views.close);
+    $.__views.containerBanner = Ti.UI.createView({
+        height: Titanium.UI.FILL,
+        width: Titanium.UI.FILL,
+        id: "containerBanner"
+    });
+    $.__views.__alloyId1.add($.__views.containerBanner);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
     $.advertisement.open();
-    $.close.addEventListener("click", function() {
-        Alloy.createController("gameResult", args);
+    Alloy.Globals.showBanner($.containerBanner, "advertisement", "game");
+    $.close.addEventListener("click", openGameResult);
+    $.advertisement.addEventListener("close", function() {
+        $.close.removeEventListener("click", openGameResult);
     });
     _.extend($, exports);
 }

@@ -151,7 +151,7 @@ function Controller() {
     $.__views.__alloyId78 = Ti.UI.createLabel({
         top: 10,
         color: "#ffffff",
-        text: "Procurando oponente ideal",
+        text: "Procurando o oponente ideal...",
         id: "__alloyId78"
     });
     $.__views.searchPlayer.add($.__views.__alloyId78);

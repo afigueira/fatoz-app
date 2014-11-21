@@ -92,6 +92,7 @@ function showQuestion(e) {
 	
 	// pegar a questão
 	var questionId = match['question_' + questionIndex];
+	console.log('questionId', questionId);
 	
 	Alloy.Globals.Cloud.Objects.query({
 		classname: 'questions',

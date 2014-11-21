@@ -161,11 +161,13 @@ Titanium.App.addEventListener("websocket.dispatchEvent", function(data) {
 Alloy.Globals.banners = {
     ios: {
         header: "ca-app-pub-1202817906596777/3528442443",
-        footer: "ca-app-pub-1202817906596777/6621509640"
+        footer: "ca-app-pub-1202817906596777/6621509640",
+        game: "ca-app-pub-1202817906596777/3845742842"
     },
     android: {
         header: "ca-app-pub-1202817906596777/5284377248",
-        footer: "ca-app-pub-1202817906596777/9714576843"
+        footer: "ca-app-pub-1202817906596777/9714576843",
+        game: "ca-app-pub-1202817906596777/8275942442"
     }
 };
 
@@ -180,7 +182,7 @@ Alloy.Globals.showBanner = function(container, page, position) {
     }, function(e) {
         if (e.success && e.banners_pages.length > 0) {
             var platform = "android";
-            var unitId = Alloy.Globals.banners[platform]["header"];
+            var unitId = Alloy.Globals.banners[platform][position];
             if ("ios" == platform) {
                 Alloy.Globals.Admob = require("ti.admob");
                 var admobView = Alloy.Globals.Admob.createView({
@@ -190,7 +192,7 @@ Alloy.Globals.showBanner = function(container, page, position) {
                     adUnitId: unitId,
                     testing: false
                 });
-                admobView[position] = 0;
+                "game" == position ? admobView.top = 0 : admobView[position] = 0;
                 container.add(admobView);
             }
         }
