@@ -237,6 +237,7 @@ function createYouWin(pointsA, pointsB) {
 		var youWinFadeout = Titanium.UI.createAnimation({opacity: 0, duration: 500, delay: 1500});
 		var onCompleteFadeout = function() {
 			Alloy.createController('advertisement', {matchId: matchId});
+			clear();
 		};
 		youWinFadeout.addEventListener('complete', onCompleteFadeout);
 		$youWinGame.animate(youWinFadeout);
@@ -362,8 +363,7 @@ Titanium.App.addEventListener('websocket.startQuestion', startQuestion);
 Titanium.App.addEventListener('websocket.fighterAnswered', fighterAnswered);
 Titanium.App.addEventListener('websocket.finishGame', finishGame);
 
-$.window.addEventListener('close', function(e) {
-	
+function clear() {
 	Titanium.App.removeEventListener('websocket.showQuestion', showQuestion);
 	Titanium.App.removeEventListener('websocket.startQuestion', startQuestion);
 	Titanium.App.removeEventListener('websocket.fighterAnswered', fighterAnswered);
@@ -375,7 +375,7 @@ $.window.addEventListener('close', function(e) {
 
 	$.destroy();
 	$.off();
-});
+}
 
 $.window.open();
 

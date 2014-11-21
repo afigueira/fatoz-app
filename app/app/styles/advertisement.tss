@@ -46,6 +46,5 @@
 },
 "#containerBanner": {
 	width: Titanium.UI.FILL,
-	height: Titanium.UI.FILL,
-	backgroundColor: "yellow"
+	height: Titanium.UI.FILL
 }
