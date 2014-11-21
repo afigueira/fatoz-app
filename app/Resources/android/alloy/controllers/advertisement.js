@@ -71,10 +71,17 @@ function Controller() {
         title: "X"
     });
     $.__views.__alloyId1.add($.__views.close);
+    $.__views.containerBanner = Ti.UI.createView({
+        height: Titanium.UI.FILL,
+        width: Titanium.UI.FILL,
+        id: "containerBanner"
+    });
+    $.__views.__alloyId1.add($.__views.containerBanner);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
     $.advertisement.open();
+    Alloy.Globals.showBanner($.containerBanner, "advertisement", "game");
     $.close.addEventListener("click", function() {
         Alloy.createController("gameResult", args);
     });

@@ -49,37 +49,31 @@ function Controller() {
     }
     function createRowCategories(obj, container) {
         var rows = [];
-        var category;
-        var iconCategory;
-        var titleCategory;
-        var descriptionCategory;
-        var btnNewMatch;
-        var btnRanking;
         for (var i = 0, j = obj.length; j > i; i++) {
-            category = Titanium.UI.createView({
+            var category = Titanium.UI.createView({
                 backgroundImage: obj[i].background
             });
             $.addClass(category, "category");
-            iconCategory = Titanium.UI.createImageView({
+            var iconCategory = Titanium.UI.createImageView({
                 image: obj[i].icon,
                 width: 32,
                 height: 32
             });
             $.addClass(iconCategory, "iconCategory");
-            titleCategory = Titanium.UI.createLabel({
+            var titleCategory = Titanium.UI.createLabel({
                 text: obj[i].title
             });
             $.addClass(titleCategory, "fontWhite proximaNovaRegular titleCategory");
-            descriptionCategory = Titanium.UI.createLabel({
+            var descriptionCategory = Titanium.UI.createLabel({
                 text: obj[i].description
             });
             $.addClass(descriptionCategory, "fontWhite proximaNovaRegular descriptionCategory");
-            btnNewMatch = Titanium.UI.createButton({
+            var btnNewMatch = Titanium.UI.createButton({
                 titleid: "new_match",
                 id: obj[i].id
             });
             $.addClass(btnNewMatch, "radiusLarge green fontWhite proximaNovaRegular btnNewMatch");
-            btnRanking = Titanium.UI.createButton({
+            var btnRanking = Titanium.UI.createButton({
                 titleid: "ranking",
                 id: obj[i].id
             });
@@ -90,16 +84,9 @@ function Controller() {
             category.add(btnNewMatch);
             category.add(btnRanking);
             rows.push(category);
-            category = null;
-            iconCategory = null;
-            titleCategory = null;
-            descriptionCategory = null;
-            btnNewMatch = null;
-            btnRanking = null;
         }
         rows = Alloy.Globals.arrayRand(rows);
         container.views = rows;
-        rows = null;
     }
     function getCategories(element, obj) {
         Alloy.Globals.Cloud.Objects.query(obj, function(e) {

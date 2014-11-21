@@ -45,6 +45,7 @@ function Controller() {
         $.roundNumber.text = " " + questionIndex;
         $.removeClass($.currentRound, "visibleFalse");
         var questionId = match["question_" + questionIndex];
+        console.log("questionId", questionId);
         Alloy.Globals.Cloud.Objects.query({
             classname: "questions",
             where: {
@@ -149,6 +150,7 @@ function Controller() {
                 Alloy.createController("advertisement", {
                     matchId: matchId
                 });
+                clear();
             };
             youWinFadeout.addEventListener("complete", onCompleteFadeout);
             $youWinGame.animate(youWinFadeout);
@@ -225,6 +227,15 @@ function Controller() {
             });
         }
     }
+    function clear() {
+        Titanium.App.removeEventListener("websocket.showQuestion", showQuestion);
+        Titanium.App.removeEventListener("websocket.startQuestion", startQuestion);
+        Titanium.App.removeEventListener("websocket.fighterAnswered", fighterAnswered);
+        Titanium.App.removeEventListener("websocket.finishGame", finishGame);
+        timerInterval && clearInterval(timerInterval);
+        $.destroy();
+        $.off();
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "game";
     if (arguments[0]) {
@@ -245,9 +256,8 @@ function Controller() {
     });
     $.__views.window && $.addTopLevelView($.__views.window);
     $.__views.scrollView = Ti.UI.createScrollView({
-        backgroundColor: "#383738",
-        top: Alloy.Globals.marginTopWindow,
         layout: "vertical",
+        backgroundColor: "#383738",
         id: "scrollView"
     });
     $.__views.window.add($.__views.scrollView);
@@ -456,6 +466,8 @@ function Controller() {
         width: Titanium.UI.FILL,
         backgroundColor: "#41b6da",
         bottom: 0,
+        left: 0,
+        right: 0,
         id: "percentBarA"
     });
     $.__views.__alloyId31.add($.__views.percentBarA);
@@ -629,6 +641,8 @@ function Controller() {
         width: Titanium.UI.FILL,
         backgroundColor: "#41b6da",
         bottom: 0,
+        left: 0,
+        right: 0,
         id: "percentBarB"
     });
     $.__views.__alloyId37.add($.__views.percentBarB);
@@ -671,15 +685,6 @@ function Controller() {
     Titanium.App.addEventListener("websocket.startQuestion", startQuestion);
     Titanium.App.addEventListener("websocket.fighterAnswered", fighterAnswered);
     Titanium.App.addEventListener("websocket.finishGame", finishGame);
-    $.window.addEventListener("close", function() {
-        Titanium.App.removeEventListener("websocket.showQuestion", showQuestion);
-        Titanium.App.removeEventListener("websocket.startQuestion", startQuestion);
-        Titanium.App.removeEventListener("websocket.fighterAnswered", fighterAnswered);
-        Titanium.App.removeEventListener("websocket.finishGame", finishGame);
-        timerInterval && clearInterval(timerInterval);
-        $.destroy();
-        $.off();
-    });
     $.window.open();
     banner();
     _.extend($, exports);
