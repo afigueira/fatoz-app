@@ -12,7 +12,7 @@
 				
 				<View id="searchPlayer" class="layoutVertical searchPlayer">
 					<ImageView image="/images/img-queue.png" class="star" />
-					<Label text="Procurando oponente ideal" class="labelSearchPlayer" />
+					<Label text="Procurando o oponente ideal..." class="labelSearchPlayer" />
 					
 					<Button id="cancelMatch" class="btnWhite cancelSearchPlayer" title="Cancelar" />
 				</View>

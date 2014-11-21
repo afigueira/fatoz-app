@@ -230,7 +230,11 @@ Alloy.Globals.showBanner = function(container, page, position) {
 					adUnitId: unitId,
 					testing: false
 				});
-				admobView[position] = 0;
+				if (position == 'game') {
+					admobView.top = 0;
+				} else {
+					admobView[position] = 0;	
+				}
 			
 				container.add(admobView);
 			}
