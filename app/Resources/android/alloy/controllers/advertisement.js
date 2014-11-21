@@ -8,6 +8,9 @@ function __processArg(obj, key) {
 }
 
 function Controller() {
+    function openGameResult() {
+        Alloy.createController("gameResult", args);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "advertisement";
     if (arguments[0]) {
@@ -82,8 +85,9 @@ function Controller() {
     var args = arguments[0] || {};
     $.advertisement.open();
     Alloy.Globals.showBanner($.containerBanner, "advertisement", "game");
-    $.close.addEventListener("click", function() {
-        Alloy.createController("gameResult", args);
+    $.close.addEventListener("click", openGameResult);
+    $.advertisement.addEventListener("close", function() {
+        $.close.removeEventListener("click", openGameResult);
     });
     _.extend($, exports);
 }

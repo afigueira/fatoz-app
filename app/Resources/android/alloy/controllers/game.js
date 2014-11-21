@@ -174,7 +174,11 @@ function Controller() {
         setQuestionResult(myUserSide, clickedOption, isCorrect);
         setQuestionPoints(myUserSide, time, isCorrect);
     }
-    function setQuestionResult() {}
+    function setQuestionResult(userSide, clickedOption, isCorrect) {
+        var optionClassColor = userSide == myUserSide ? isCorrect ? "chosenOptionGame fillChosenOptionGame optionGreenGame" : "chosenOptionGame fillChosenOptionGame optionRedGame" : "chosenOptionGame fillChosenOptionGame optionBlueGame";
+        var option = $["option" + clickedOption];
+        $.addClass(option, optionClassColor);
+    }
     function setQuestionPoints(userSide, time, isCorrect) {
         var points = Alloy.Globals.calculateQuestionPoints(time, isCorrect);
         updateUserPoints(userSide, points, isCorrect);
@@ -194,7 +198,7 @@ function Controller() {
         var backgroundColor = isCorrect ? "#78a800" : "#e42e24";
         var animationProgressBar = Titanium.UI.createAnimation({
             backgroundColor: backgroundColor,
-            height: height,
+            top: 325 - height,
             duration: 600
         });
         var animationImageProfile = Titanium.UI.createAnimation({
@@ -397,16 +401,17 @@ function Controller() {
         visible: false,
         width: Titanium.UI.FILL,
         height: Titanium.UI.SIZE,
-        top: 42,
-        left: 0,
+        top: 15,
+        left: 15,
         font: {
             fontFamily: "ProximaNova-Regular",
-            fontSize: 24,
+            fontSize: 21,
             fontWeight: "bold"
         },
         textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER,
-        bottom: 42,
+        bottom: 20,
         color: "#ffffff",
+        right: 15,
         id: "titleQuestion"
     });
     $.__views.playing.add($.__views.titleQuestion);
@@ -462,10 +467,10 @@ function Controller() {
     });
     $.__views.__alloyId30.add($.__views.__alloyId31);
     $.__views.percentBarA = Ti.UI.createView({
-        height: 0,
+        height: 325,
         width: Titanium.UI.FILL,
         backgroundColor: "#41b6da",
-        bottom: 0,
+        top: 325,
         left: 0,
         right: 0,
         id: "percentBarA"
@@ -637,10 +642,10 @@ function Controller() {
     });
     $.__views.__alloyId36.add($.__views.__alloyId37);
     $.__views.percentBarB = Ti.UI.createView({
-        height: 0,
+        height: 325,
         width: Titanium.UI.FILL,
         backgroundColor: "#41b6da",
-        bottom: 0,
+        top: 325,
         left: 0,
         right: 0,
         id: "percentBarB"

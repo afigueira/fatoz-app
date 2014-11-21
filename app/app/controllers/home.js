@@ -67,10 +67,17 @@ function navigation(){
 function createRowCategories(obj, container){
 	var rows = [];
 	for(var i=0,j=obj.length; i<j; i++){
-		var category = Titanium.UI.createView({
-			backgroundImage: obj[i].background
-		});
+		var category = Titanium.UI.createView();
 		$.addClass(category, "category");
+
+		var backgroundCategory = Titanium.UI.createImageView({
+			image: obj[i].background,
+			width: Titanium.UI.FILL,
+			height: Titanium.UI.FILL,
+			layout: "absolute",
+			top: 0,
+			left: 0
+		});
 		
 		var iconCategory = Titanium.UI.createImageView({
 			image: obj[i].icon,
@@ -106,6 +113,7 @@ function createRowCategories(obj, container){
 		});
 		$.addClass(btnRanking, "btnWhite btnRanking");
 		
+		category.add(backgroundCategory);
 		category.add(iconCategory);
 		category.add(titleCategory);
 		category.add(descriptionCategory);
