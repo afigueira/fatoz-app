@@ -35,10 +35,12 @@
 	left: 50
 },
 ".borderGreenGame": {
-	borderColor: "#8dc400"
+	borderColor: "#8dc400",
+	borderWidth: 4
 },
 ".borderRedGame": {
-	borderColor: "#bf2527"
+	borderColor: "#bf2527",
+	borderWidth: 4
 },
 ".vsResult": {
 	width: 119,

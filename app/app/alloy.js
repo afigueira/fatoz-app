@@ -155,7 +155,7 @@ socket.on('connect', function() {
 });
 
 socket.on('onJoinedRoom', function(data) {
-	alert('joined!');
+	//alert('joined!');
 });
 
 socket.on('startMatch', function(data) {
@@ -199,11 +199,11 @@ Alloy.Globals.banners = {
 	ios: {
 		header: 'ca-app-pub-1202817906596777/3528442443',
 		footer: 'ca-app-pub-1202817906596777/6621509640',
-		game: 	'ca-app-pub-1202817906596777/3845742842'
+		game: 	'ca-app-pub-1202817906596777/9522016445'
 	}, android: {
 		header: 'ca-app-pub-1202817906596777/5284377248',
 		footer: 'ca-app-pub-1202817906596777/9714576843',
-		game:	'ca-app-pub-1202817906596777/8275942442'
+		game:	'ca-app-pub-1202817906596777/1998749640'
 	}
 };
 
@@ -226,12 +226,13 @@ Alloy.Globals.showBanner = function(container, page, position) {
 				Alloy.Globals.Admob = require("ti.admob");
 				var admobView = Alloy.Globals.Admob.createView({
 					left: 0,
-					width: 320, height: 50,
+					right: 0,
+					width: 320, height: position == 'game' ? 250 : 50,
 					adUnitId: unitId,
 					testing: false
 				});
 				if (position == 'game') {
-					admobView.top = 0;
+					//admobView.top = 0;
 				} else {
 					admobView[position] = 0;	
 				}
