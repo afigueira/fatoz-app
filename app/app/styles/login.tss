@@ -18,6 +18,10 @@
 	width: Titanium.UI.FILL,
 	right: 40
 },
+".input[platform=ios]":{
+	paddingLeft: 10,
+	paddingRight: 20
+},
 "#password": {
 	top: 8
 },

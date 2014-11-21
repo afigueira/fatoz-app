@@ -10,6 +10,10 @@
 	left: 28,
 	right: 28
 },
+".input[platform=ios]":{
+	paddingLeft: 10,
+	paddingRight: 20
+},
 "#firstName": {
 	top: 15
 },
