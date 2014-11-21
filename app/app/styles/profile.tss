@@ -261,13 +261,12 @@
 	width: Titanium.UI.FILL,
 	height: 1,
 	bottom: 0 
+},
+"#coverPhoto": {		
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL,
+	layout: "absolute",
+	top: 0,
+	left: 0,
+	zIndex: 0
 }
-
-
-
-
-
-
-
-
-

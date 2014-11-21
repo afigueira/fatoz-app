@@ -21,10 +21,8 @@ function Controller() {
             if (e.success) {
                 var user = e.users[0];
                 $.userName.text = user.first_name + " " + user.last_name;
-                console.log(user.custom_fields);
-                console.log("user.custom_fields.cover_image", user.custom_fields.cover_image);
                 $.profilePhoto.image = user.custom_fields.profile_image;
-                $.coverPhoto.backgroundImage = user.custom_fields.cover_image;
+                $.coverPhoto.image = user.custom_fields.cover_image;
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
         });
     }
@@ -151,17 +149,27 @@ function Controller() {
         id: "__alloyId70"
     });
     $.__views.window.add($.__views.__alloyId70);
-    $.__views.coverPhoto = Ti.UI.createView({
-        height: 231,
-        id: "coverPhoto"
-    });
-    $.__views.__alloyId70.add($.__views.coverPhoto);
     $.__views.__alloyId71 = Ti.UI.createView({
-        height: Titanium.UI.SIZE,
-        width: 250,
+        height: 231,
         id: "__alloyId71"
     });
-    $.__views.coverPhoto.add($.__views.__alloyId71);
+    $.__views.__alloyId70.add($.__views.__alloyId71);
+    $.__views.coverPhoto = Ti.UI.createImageView({
+        width: Titanium.UI.FILL,
+        height: Titanium.UI.FILL,
+        layout: "absolute",
+        top: 0,
+        left: 0,
+        zIndex: 0,
+        id: "coverPhoto"
+    });
+    $.__views.__alloyId71.add($.__views.coverPhoto);
+    $.__views.__alloyId72 = Ti.UI.createView({
+        height: Titanium.UI.SIZE,
+        width: 250,
+        id: "__alloyId72"
+    });
+    $.__views.__alloyId71.add($.__views.__alloyId72);
     $.__views.profilePhoto = Ti.UI.createImageView({
         width: 64,
         height: 64,
@@ -169,7 +177,7 @@ function Controller() {
         left: 0,
         id: "profilePhoto"
     });
-    $.__views.__alloyId71.add($.__views.profilePhoto);
+    $.__views.__alloyId72.add($.__views.profilePhoto);
     $.__views.userName = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -183,22 +191,22 @@ function Controller() {
         top: 10,
         id: "userName"
     });
-    $.__views.__alloyId71.add($.__views.userName);
-    var __alloyId72 = [];
-    $.__views.__alloyId73 = Ti.UI.createView({
+    $.__views.__alloyId72.add($.__views.userName);
+    var __alloyId73 = [];
+    $.__views.__alloyId74 = Ti.UI.createView({
         height: Titanium.UI.FILL,
         width: Titanium.UI.FILL,
         layout: "vertical",
         backgroundColor: "#f0f0f0",
-        id: "__alloyId73"
+        id: "__alloyId74"
     });
-    __alloyId72.push($.__views.__alloyId73);
+    __alloyId73.push($.__views.__alloyId74);
     $.__views.conquer = Ti.UI.createTableView({
         id: "conquer"
     });
-    $.__views.__alloyId73.add($.__views.conquer);
+    $.__views.__alloyId74.add($.__views.conquer);
     $.__views.contentTabs = Ti.UI.createScrollableView({
-        views: __alloyId72,
+        views: __alloyId73,
         id: "contentTabs"
     });
     $.__views.__alloyId70.add($.__views.contentTabs);

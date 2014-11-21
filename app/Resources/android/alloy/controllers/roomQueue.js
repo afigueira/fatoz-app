@@ -29,7 +29,7 @@ function Controller() {
                 $.trophy.visible = true;
                 $.profileTitleB.text = e.users[0].first_name + " " + e.users[0].last_name;
                 $.imageProfileB.image = e.users[0].custom_fields.profile_image;
-                $.profileB.backgroundImage = e.users[0].custom_fields.cover_image;
+                $.profileB.image = e.users[0].custom_fields.cover_image;
                 fighterReceived = true;
                 mountReceived && mountMatch();
             } else alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
@@ -59,7 +59,7 @@ function Controller() {
             if (e.success) {
                 var user = e.users[0];
                 $.imageProfileA.image = user.custom_fields.profile_image;
-                $.coverA.backgroundImage = user.custom_fields.cover_image;
+                $.coverA.image = user.custom_fields.cover_image;
             }
         });
     }
@@ -81,10 +81,10 @@ function Controller() {
         id: "window"
     });
     $.__views.window && $.addTopLevelView($.__views.window);
-    $.__views.__alloyId74 = Ti.UI.createScrollView({
-        id: "__alloyId74"
+    $.__views.__alloyId75 = Ti.UI.createScrollView({
+        id: "__alloyId75"
     });
-    $.__views.window.add($.__views.__alloyId74);
+    $.__views.window.add($.__views.__alloyId75);
     $.__views.trophy = Ti.UI.createImageView({
         visible: "false",
         id: "trophy",
@@ -92,26 +92,36 @@ function Controller() {
         top: "195",
         zIndex: "100"
     });
-    $.__views.__alloyId74.add($.__views.trophy);
-    $.__views.__alloyId75 = Ti.UI.createView({
+    $.__views.__alloyId75.add($.__views.trophy);
+    $.__views.__alloyId76 = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.SIZE,
-        id: "__alloyId75"
+        id: "__alloyId76"
     });
-    $.__views.__alloyId74.add($.__views.__alloyId75);
-    $.__views.coverA = Ti.UI.createView({
+    $.__views.__alloyId75.add($.__views.__alloyId76);
+    $.__views.__alloyId77 = Ti.UI.createView({
         layout: "absolute",
         width: Titanium.UI.FILL,
         height: 231,
+        id: "__alloyId77"
+    });
+    $.__views.__alloyId76.add($.__views.__alloyId77);
+    $.__views.coverA = Ti.UI.createImageView({
+        width: Titanium.UI.FILL,
+        height: Titanium.UI.FILL,
+        layout: "absolute",
+        top: 0,
+        left: 0,
+        zIndex: 0,
         id: "coverA"
     });
-    $.__views.__alloyId75.add($.__views.coverA);
-    $.__views.__alloyId76 = Ti.UI.createView({
+    $.__views.__alloyId77.add($.__views.coverA);
+    $.__views.__alloyId78 = Ti.UI.createView({
         width: 250,
         height: Titanium.UI.SIZE,
-        id: "__alloyId76"
+        id: "__alloyId78"
     });
-    $.__views.coverA.add($.__views.__alloyId76);
+    $.__views.__alloyId77.add($.__views.__alloyId78);
     $.__views.imageProfileA = Ti.UI.createImageView({
         width: 64,
         height: 64,
@@ -119,7 +129,7 @@ function Controller() {
         left: 0,
         id: "imageProfileA"
     });
-    $.__views.__alloyId76.add($.__views.imageProfileA);
+    $.__views.__alloyId78.add($.__views.imageProfileA);
     $.__views.profileTitleA = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -133,7 +143,7 @@ function Controller() {
         top: 20,
         id: "profileTitleA"
     });
-    $.__views.__alloyId76.add($.__views.profileTitleA);
+    $.__views.__alloyId78.add($.__views.profileTitleA);
     $.__views.searchPlayer = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.FILL,
@@ -141,20 +151,20 @@ function Controller() {
         backgroundColor: "#219fd2",
         id: "searchPlayer"
     });
-    $.__views.__alloyId75.add($.__views.searchPlayer);
-    $.__views.__alloyId77 = Ti.UI.createImageView({
+    $.__views.__alloyId76.add($.__views.searchPlayer);
+    $.__views.__alloyId79 = Ti.UI.createImageView({
         top: 20,
         image: "/images/img-queue.png",
-        id: "__alloyId77"
+        id: "__alloyId79"
     });
-    $.__views.searchPlayer.add($.__views.__alloyId77);
-    $.__views.__alloyId78 = Ti.UI.createLabel({
+    $.__views.searchPlayer.add($.__views.__alloyId79);
+    $.__views.__alloyId80 = Ti.UI.createLabel({
         top: 10,
         color: "#ffffff",
         text: "Procurando o oponente ideal...",
-        id: "__alloyId78"
+        id: "__alloyId80"
     });
-    $.__views.searchPlayer.add($.__views.__alloyId78);
+    $.__views.searchPlayer.add($.__views.__alloyId80);
     $.__views.cancelMatch = Ti.UI.createButton({
         backgroundImage: "/images/background-btn-more.png",
         height: 30,
@@ -173,27 +183,37 @@ function Controller() {
         title: "Cancelar"
     });
     $.__views.searchPlayer.add($.__views.cancelMatch);
-    $.__views.profileB = Ti.UI.createView({
+    $.__views.__alloyId81 = Ti.UI.createView({
         layout: "absolute",
         width: Titanium.UI.FILL,
         height: 231,
-        id: "profileB",
-        visible: "false"
+        visible: "false",
+        id: "__alloyId81"
     });
-    $.__views.__alloyId75.add($.__views.profileB);
-    $.__views.__alloyId79 = Ti.UI.createView({
+    $.__views.__alloyId76.add($.__views.__alloyId81);
+    $.__views.profileB = Ti.UI.createImageView({
+        width: Titanium.UI.FILL,
+        height: Titanium.UI.FILL,
+        layout: "absolute",
+        top: 0,
+        left: 0,
+        zIndex: 0,
+        id: "profileB"
+    });
+    $.__views.__alloyId81.add($.__views.profileB);
+    $.__views.__alloyId82 = Ti.UI.createView({
         height: "2",
         backgroundColor: "#ffffff",
         top: "0",
-        id: "__alloyId79"
+        id: "__alloyId82"
     });
-    $.__views.profileB.add($.__views.__alloyId79);
-    $.__views.__alloyId80 = Ti.UI.createView({
+    $.__views.__alloyId81.add($.__views.__alloyId82);
+    $.__views.__alloyId83 = Ti.UI.createView({
         width: 250,
         height: Titanium.UI.SIZE,
-        id: "__alloyId80"
+        id: "__alloyId83"
     });
-    $.__views.profileB.add($.__views.__alloyId80);
+    $.__views.__alloyId81.add($.__views.__alloyId83);
     $.__views.imageProfileB = Ti.UI.createImageView({
         width: 64,
         height: 64,
@@ -201,7 +221,7 @@ function Controller() {
         left: 0,
         id: "imageProfileB"
     });
-    $.__views.__alloyId80.add($.__views.imageProfileB);
+    $.__views.__alloyId83.add($.__views.imageProfileB);
     $.__views.profileTitleB = Ti.UI.createLabel({
         color: "white",
         tintColor: "white",
@@ -216,7 +236,7 @@ function Controller() {
         id: "profileTitleB",
         text: "Raul Claudino"
     });
-    $.__views.__alloyId80.add($.__views.profileTitleB);
+    $.__views.__alloyId83.add($.__views.profileTitleB);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};

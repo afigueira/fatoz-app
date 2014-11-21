@@ -33,7 +33,7 @@ function socketCreatingMatch(e){
 			//Alloy.Globals.loadPhoto($.imageProfileB, 'image', e.users[0].custom_fields.profile_image);
 			$.imageProfileB.image = e.users[0].custom_fields.profile_image;
 			//Alloy.Globals.loadPhoto($.profileB, 'backgroundImage', e.users[0].custom_fields.cover_image);
-			$.profileB.backgroundImage = e.users[0].custom_fields.cover_image;
+			$.profileB.image = e.users[0].custom_fields.cover_image;
 
 			fighterReceived = true;
 
@@ -84,7 +84,7 @@ function showMe(){
 	        //Alloy.Globals.loadPhoto($.imageProfileA, 'image', user.custom_fields.profile_image);
 	        $.imageProfileA.image = user.custom_fields.profile_image;
 	        //Alloy.Globals.loadPhoto($.coverA, 'backgroundImage', user.custom_fields.cover_image);
-	        $.coverA.backgroundImage = user.custom_fields.cover_image;
+	        $.coverA.image = user.custom_fields.cover_image;
 	    }
 	});
 }

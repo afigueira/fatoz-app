@@ -3,7 +3,8 @@
     	<ScrollView>
 	    	<ImageView visible="false" id="trophy" image="/images/icon-queue-trophy.png" top="195" zIndex="100" />
 			<View class="layoutVertical">
-				<View class="topProfile layoutAbsolute" id="coverA">				
+				<View class="topProfile layoutAbsolute">
+					<ImageView  id="coverA" class="coverImage" />
 					<View class="profile">
 						<ImageView class="imageProfile" id="imageProfileA" />
 						<Label class="proximaNovaRegular fontWhite profileTitle" id="profileTitleA" />								
@@ -17,7 +18,9 @@
 					<Button id="cancelMatch" class="btnWhite cancelSearchPlayer" title="Cancelar" />
 				</View>
 				
-				<View id="profileB" visible="false" class="topProfile layoutAbsolute">				
+				<View visible="false" class="topProfile layoutAbsolute">				
+					<ImageView  id="profileB" class="coverImage" />
+
 					<View height="2" backgroundColor="#ffffff" top="0"></View>
 
 					<View class="profile">

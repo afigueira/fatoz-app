@@ -58,7 +58,8 @@ function Controller() {
                 height: Titanium.UI.FILL,
                 layout: "absolute",
                 top: 0,
-                left: 0
+                left: 0,
+                zIndex: 0
             });
             var iconCategory = Titanium.UI.createImageView({
                 image: obj[i].icon,

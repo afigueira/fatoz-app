@@ -10,7 +10,8 @@
     		</View>
     		
 			<View class="inside">
-				<View class="topProfile" id="coverPhoto">				
+				<View class="topProfile">
+					<ImageView id="coverPhoto" />
 					<View class="profile">
 						<ImageView class="imageProfile" id="profilePhoto"/>
 						<Label class="proximaNovaRegular fontWhite profileTitle" id="userName"/>
