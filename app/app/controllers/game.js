@@ -263,6 +263,22 @@ function questionAnswered(clickedOption) {
 		option: clickedOption
 	});
 	
+	var option = $['option' + clickedOption];
+	
+	var backgroundColor = isCorrect ? '#78a800' : '#e42e24';
+	var color  = '#000000';
+	
+	var animationOption = Titanium.UI.createAnimation({backgroundColor:backgroundColor, color: color, duration: 600});
+	
+	var onCompleteAnimation = function(){
+		animationOption.removeEventListener('complete', onCompleteAnimation);
+		option.animate(Titanium.UI.createAnimation({backgroundColor:'#FFFFFF', color: '#383838', duration: 600, delay: 400}));
+	};
+	
+	animationOption.addEventListener('complete', onCompleteAnimation);
+	
+	option.animate(animationOption);
+	
 	setQuestionResult(myUserSide, clickedOption, isCorrect);
 
 	setQuestionPoints(myUserSide, time, isCorrect);
@@ -311,7 +327,10 @@ function updateProgressBar(userSide, points, isCorrect) {
 	
 	var backgroundColor = isCorrect ? '#78a800' : '#e42e24';
 	
-	var animationProgressBar = Titanium.UI.createAnimation({backgroundColor:backgroundColor, height: height, duration: 600});
+	//progressBar.height = height;
+	progressBar.animate(Titanium.UI.createAnimation({height: height, duration: 600}));
+	
+	var animationProgressBar = Titanium.UI.createAnimation({backgroundColor:backgroundColor, duration: 600});
 	var animationImageProfile = Titanium.UI.createAnimation({bottom: imageBottom, duration: 600});
 	
 	var onCompleteAnimation = function(){

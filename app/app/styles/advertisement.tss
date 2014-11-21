@@ -1,6 +1,9 @@
 "View": {
 	height: Titanium.UI.SIZE
 },
+"Window[platform=ios]":{
+	top: Alloy.Globals.marginTopiOS7
+},
 ".containerPopup": {
 	width: Titanium.UI.FILL,
 	height: Titanium.UI.FILL,
