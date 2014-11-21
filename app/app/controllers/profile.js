@@ -101,7 +101,7 @@ function achievements(){
 	    	console.log('categories ----->', e.categories);
 
 	    	for(var i=0, j=e.categories.length; i<j; i++){
-				var rowConquer = Titanium.UI.createTableViewRow();
+				var rowConquer = Titanium.UI.createView();
 			    $.addClass(rowConquer, 'rowConquer');
 
 			    var imageConquer = Titanium.UI.createImageView({
@@ -174,7 +174,7 @@ function achievements(){
 
 			    rowConquer.add(borderGrayConquer);
 
-			    $.conquer.appendRow(rowConquer);
+			    $.conquer.add(rowConquer);
 			    
 			    //Alloy.Globals.loadPhoto(imageConquer, 'image', categories[i].badge);
 			};

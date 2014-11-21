@@ -205,8 +205,8 @@
 	font: {fontSize: 15, fontWeight: 'bold'}
 },
 ".profileConquer": {
-	width: Titanium.UI.FILL,
-	height: Titanium.UI.FILL,
+	/*width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL,*/
 	layout: "vertical",
 	backgroundColor: "#f0f0f0"
 },

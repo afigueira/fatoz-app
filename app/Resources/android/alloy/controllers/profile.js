@@ -34,7 +34,7 @@ function Controller() {
                 var categories = e.categories;
                 console.log("categories ----->", e.categories);
                 for (var i = 0, j = e.categories.length; j > i; i++) {
-                    var rowConquer = Titanium.UI.createTableViewRow();
+                    var rowConquer = Titanium.UI.createView();
                     $.addClass(rowConquer, "rowConquer");
                     var imageConquer = Titanium.UI.createImageView({
                         image: categories[i].badge
@@ -84,7 +84,7 @@ function Controller() {
                     rightContentConquer.add(percentConquer);
                     rowConquer.add(rightContentConquer);
                     rowConquer.add(borderGrayConquer);
-                    $.conquer.appendRow(rowConquer);
+                    $.conquer.add(rowConquer);
                 }
                 setPointsAchievements($.conquer.data[0].rows, $.conquer.data[0].rows.length, 0);
             }
@@ -141,8 +141,7 @@ function Controller() {
         title: "Perfil",
         id: "window"
     });
-    $.__views.__alloyId70 = Ti.UI.createView({
-        height: Titanium.UI.SIZE,
+    $.__views.__alloyId70 = Ti.UI.createScrollView({
         backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
         top: Alloy.Globals.marginTopWindow,
         layout: "vertical",
@@ -192,24 +191,25 @@ function Controller() {
         id: "userName"
     });
     $.__views.__alloyId72.add($.__views.userName);
-    var __alloyId73 = [];
-    $.__views.__alloyId74 = Ti.UI.createView({
-        height: Titanium.UI.FILL,
-        width: Titanium.UI.FILL,
-        layout: "vertical",
-        backgroundColor: "#f0f0f0",
-        id: "__alloyId74"
-    });
-    __alloyId73.push($.__views.__alloyId74);
-    $.__views.conquer = Ti.UI.createTableView({
-        id: "conquer"
-    });
-    $.__views.__alloyId74.add($.__views.conquer);
-    $.__views.contentTabs = Ti.UI.createScrollableView({
-        views: __alloyId73,
+    $.__views.contentTabs = Ti.UI.createView({
+        height: Titanium.UI.SIZE,
         id: "contentTabs"
     });
     $.__views.__alloyId70.add($.__views.contentTabs);
+    $.__views.__alloyId73 = Ti.UI.createView({
+        height: Titanium.UI.SIZE,
+        layout: "vertical",
+        backgroundColor: "#f0f0f0",
+        id: "__alloyId73"
+    });
+    $.__views.contentTabs.add($.__views.__alloyId73);
+    $.__views.conquer = Ti.UI.createView({
+        height: Titanium.UI.SIZE,
+        layout: "vertical",
+        width: Titanium.UI.SIZE,
+        id: "conquer"
+    });
+    $.__views.__alloyId73.add($.__views.conquer);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_NONE",
         closeDrawerGestureMode: "CLOSE_MODE_MARGIN",

@@ -152,18 +152,6 @@ function Controller() {
         id: "submit"
     });
     $.__views.form.add($.__views.submit);
-    $.__views.forgotPassword = Ti.UI.createLabel({
-        color: "white",
-        tintColor: "white",
-        font: {
-            fontFamily: "ProximaNova-Regular"
-        },
-        left: 0,
-        top: 130,
-        id: "forgotPassword",
-        textid: "forgotpassword"
-    });
-    $.__views.form.add($.__views.forgotPassword);
     $.__views.btnFacebook = Ti.UI.createView({
         borderRadius: 4,
         backgroundColor: Alloy.Globals.constants.FACEBOOK_BUTTON_COLOR,

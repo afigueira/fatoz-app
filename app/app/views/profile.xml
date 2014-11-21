@@ -9,7 +9,7 @@
         		<ImageView image="/images/icon-menu.png" id="leftMenu" class="leftItemMenu"/>
     		</View>
     		
-			<View class="inside">
+			<ScrollView class="inside">
 				<View class="topProfile">
 					<ImageView id="coverPhoto" />
 					<View class="profile">
@@ -45,7 +45,7 @@
 					</View>
 				</View> -->
 				
-				<ScrollableView id="contentTabs">
+				<View id="contentTabs">
 					<!--<View class="profileStatistics">
 						<View class="graphic1">
 							<WebView url="https://1f0b6fd33fa8afdb54e5479c5a17447732b25d68.cloudapp.appcelerator.com/piechart" scalesPageToFit="true"/>
@@ -142,7 +142,7 @@
 					</View>-->
 					
 					<View class="profileConquer">							
-		               <TableView id="conquer">
+		               <View id="conquer" class="layoutVertical">
 							<!--<TableViewRow>						
 								<ImageView class="imageConquer" image="/images/conquer-master-of-chemistry.png" />
 								
@@ -164,10 +164,10 @@
 								
 								<View class="borderGray borderGrayConquer" />
 						    </TableViewRow>-->
-						</TableView>				            
+						</View>				            
 					</View>
-				</ScrollableView>					
-			</View>
+				</View>					
+			</ScrollView>
 		</Window>
     </Widget>
 </Alloy>
