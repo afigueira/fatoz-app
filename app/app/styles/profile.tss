@@ -29,7 +29,9 @@
 	width: 64,
 	height: 64,
 	borderRadius: 32,
-	left: 0
+	left: 0,
+	borderColor: 'white',
+	borderWidth: 2
 },
 ".profileTitle": {
 	height: Titanium.UI.SIZE,	
