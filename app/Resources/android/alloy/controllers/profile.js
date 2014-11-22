@@ -86,7 +86,7 @@ function Controller() {
                     rowConquer.add(borderGrayConquer);
                     $.conquer.add(rowConquer);
                 }
-                setPointsAchievements($.conquer.data[0].rows, $.conquer.data[0].rows.length, 0);
+                setPointsAchievements($.conquer.children, $.conquer.children.length, 0);
             }
         });
     }
@@ -174,6 +174,8 @@ function Controller() {
         height: 64,
         borderRadius: 32,
         left: 0,
+        borderColor: "white",
+        borderWidth: 2,
         id: "profilePhoto"
     });
     $.__views.__alloyId72.add($.__views.profilePhoto);

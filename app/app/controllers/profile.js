@@ -179,7 +179,7 @@ function achievements(){
 			    //Alloy.Globals.loadPhoto(imageConquer, 'image', categories[i].badge);
 			};
 		
-			setPointsAchievements($.conquer.data[0].rows, $.conquer.data[0].rows.length, 0);
+			setPointsAchievements($.conquer.children, $.conquer.children.length, 0);
 	    }
 	});
 }
