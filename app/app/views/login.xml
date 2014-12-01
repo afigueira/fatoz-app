@@ -16,7 +16,7 @@
 						</View>
 					</View>
 					<Button id="submit" class="radius" />			
-					<!-- <Label id="forgotPassword" textid="forgotpassword" class="fontWhite proximaNovaRegular"/> -->
+					<Label id="forgotPassword" class="fontWhite proximaNovaRegular"/>
 				</View>
 				
 				<View id="btnFacebook" class="radius">

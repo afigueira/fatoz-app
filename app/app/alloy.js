@@ -227,7 +227,8 @@ Alloy.Globals.showBanner = function(container, page, position) {
 				var admobView = Alloy.Globals.Admob.createView({
 					left: 0,
 					right: 0,
-					width: 320, height: position == 'game' ? 250 : 50,
+					width: 320,
+					height: (position == 'game' ? 250 : 50),
 					adUnitId: unitId,
 					testing: false
 				});

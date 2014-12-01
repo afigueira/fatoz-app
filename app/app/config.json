@@ -1,21 +1,12 @@
 {
-	"global": {}, 
-	"env:development": {
-		"default_image_avatar": "https://s3-us-west-1.amazonaws.com/storage.cloud.appcelerator.com/Sg2e4ptGlzUPVVvGfWUotUGeq72dkPeH/photos/d2/f5/545f827444f2450e5e045906/avatar_original.png",
-		"default_image_cover": "https://s3-us-west-1.amazonaws.com/storage.cloud.appcelerator.com/Sg2e4ptGlzUPVVvGfWUotUGeq72dkPeH/photos/90/38/545f82f67c874208b50014b1/bg_default_original.png",
-		"banner_home": "https://s3-us-west-1.amazonaws.com/storage.cloud.appcelerator.com/Sg2e4ptGlzUPVVvGfWUotUGeq72dkPeH/photos/f9/40/54600aaf7c874208ad001178/banner_ranking_original.png"
+	"global": {
+		"default_image_avatar": "http://www.macacovelho.com.br/fatoz/images/default_avatar.png",
+		"default_image_cover": "http://www.macacovelho.com.br/fatoz/images/default_cover.png",
+		"banner_home": "http://www.macacovelho.com.br/fatoz/images/banner_home.png"
 	}, 
-	"env:test": {
-		"default_image_avatar": "https://s3-us-west-1.amazonaws.com/storage.cloud.appcelerator.com/Za5D1IiTHPF1KPaqJmPc0L3Uq2Q6hQu7/photos/d2/f5/5469764940f2edfe1808adee/avatar_default_original.png",
-		"default_image_cover": "https://s3-us-west-1.amazonaws.com/storage.cloud.appcelerator.com/Za5D1IiTHPF1KPaqJmPc0L3Uq2Q6hQu7/photos/90/38/546976348fd017089b00219d/cover_default_original.png",
-		"banner_home": "https://s3-us-west-1.amazonaws.com/storage.cloud.appcelerator.com/Za5D1IiTHPF1KPaqJmPc0L3Uq2Q6hQu7/photos/f9/40/546976167c874208b5002385/banner_home_original.png"
-	
-	}, 
-	"env:production": {
-		"default_image_avatar": "https://s3-us-west-1.amazonaws.com/storage.cloud.appcelerator.com/Za5D1IiTHPF1KPaqJmPc0L3Uq2Q6hQu7/photos/d2/f5/5469764940f2edfe1808adee/avatar_default_original.png",
-		"default_image_cover": "https://s3-us-west-1.amazonaws.com/storage.cloud.appcelerator.com/Za5D1IiTHPF1KPaqJmPc0L3Uq2Q6hQu7/photos/90/38/546976348fd017089b00219d/cover_default_original.png",
-		"banner_home": "https://s3-us-west-1.amazonaws.com/storage.cloud.appcelerator.com/Za5D1IiTHPF1KPaqJmPc0L3Uq2Q6hQu7/photos/f9/40/546976167c874208b5002385/banner_home_original.png"
-	}, 
+	"env:development": {}, 
+	"env:test": {}, 
+	"env:production": {}, 
 	"os:android": {},
 	"os:blackberry": {},
 	"os:ios": {},

@@ -20,7 +20,7 @@
 },
 ".input[platform=ios]":{
 	paddingLeft: 10,
-	paddingRight: 20
+	paddingRight: 25
 },
 "#password": {
 	top: 8

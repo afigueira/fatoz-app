@@ -12,7 +12,7 @@
 },
 ".input[platform=ios]":{
 	paddingLeft: 10,
-	paddingRight: 20
+	paddingRight: 25
 },
 "#firstName": {
 	top: 15
