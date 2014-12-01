@@ -40,7 +40,10 @@ function Controller() {
                         image: categories[i].badge
                     });
                     $.addClass(imageConquer, "imageConquer");
-                    var rightContentConquer = Titanium.UI.createView();
+                    var rightContentConquer = Titanium.UI.createView({
+                        width: 200,
+                        backgroundColor: "red"
+                    });
                     $.addClass(rightContentConquer, "rightContentConquer");
                     var conquerTitle = Titanium.UI.createLabel({
                         text: categories[i].title
