@@ -23,31 +23,6 @@ function Controller() {
     }
     var $ = this;
     var exports = {};
-    $.__views.index = Ti.UI.createWindow({
-        statusBarStyle: Titanium.UI.iPhone.StatusBar.LIGHT_CONTENT,
-        id: "index"
-    });
-    $.__views.index && $.addTopLevelView($.__views.index);
-    $.__views.__alloyId62 = Ti.UI.createSearchBar({
-        id: "__alloyId62"
-    });
-    var __alloyId63 = [];
-    $.__views.__alloyId64 = Ti.UI.createTableViewRow({
-        title: "1",
-        id: "__alloyId64"
-    });
-    __alloyId63.push($.__views.__alloyId64);
-    $.__views.__alloyId65 = Ti.UI.createTableViewRow({
-        title: "2",
-        id: "__alloyId65"
-    });
-    __alloyId63.push($.__views.__alloyId65);
-    $.__views.__alloyId61 = Ti.UI.createTableView({
-        data: __alloyId63,
-        search: $.__views.__alloyId62,
-        id: "__alloyId61"
-    });
-    $.__views.index.add($.__views.__alloyId61);
     exports.destroy = function() {};
     _.extend($, $.__views);
     Alloy.Globals.Cloud.sessionId = Titanium.App.Properties.getString("sessionId");

@@ -19,12 +19,12 @@ $.signup.addEventListener('click', function(event){
 	Alloy.createController('signup');
 	$.window.close();
 });
-
+/*
 $.forgotPassword.addEventListener('click', function(e){	
 	Alloy.createController('forgotPassword');
 	$.window.close();
 });
-
+*/
 Titanium.App.addEventListener('facebook.login', function(e) {
 	if (e.success) {
 		Alloy.Globals.Cloud.SocialIntegrations.externalAccountLogin({

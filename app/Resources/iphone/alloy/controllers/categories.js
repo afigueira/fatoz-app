@@ -15,7 +15,6 @@ function Controller() {
             per_page: 10
         });
         banner();
-        $.leftMenu.addEventListener("click", $.drawer.toggleLeftWindow);
     }
     function banner() {
         Alloy.Globals.showBanner($.window, "categories", "bottom");
@@ -201,26 +200,26 @@ function Controller() {
         id: "leftMenu"
     });
     $.__views.titleBar.add($.__views.leftMenu);
-    $.__views.__alloyId0 = Ti.UI.createScrollView({
-        layout: "vertical",
+    $.__views.__alloyId2 = Ti.UI.createScrollView({
         backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
         top: Alloy.Globals.marginTopWindow,
-        id: "__alloyId0"
+        layout: "vertical",
+        id: "__alloyId2"
     });
-    $.__views.window.add($.__views.__alloyId0);
-    $.__views.__alloyId1 = Ti.UI.createView({
+    $.__views.window.add($.__views.__alloyId2);
+    $.__views.__alloyId3 = Ti.UI.createView({
         layout: "vertical",
         width: Titanium.UI.SIZE,
-        id: "__alloyId1"
+        id: "__alloyId3"
     });
-    $.__views.__alloyId0.add($.__views.__alloyId1);
+    $.__views.__alloyId2.add($.__views.__alloyId3);
     $.__views.allCategories = Ti.UI.createScrollView({
         layout: "vertical",
         width: Titanium.UI.FILL,
         height: Titanium.UI.FILL,
         id: "allCategories"
     });
-    $.__views.__alloyId1.add($.__views.allCategories);
+    $.__views.__alloyId3.add($.__views.allCategories);
     $.__views.drawer = Alloy.createWidget("nl.fokkezb.drawer", "widget", {
         openDrawerGestureMode: "OPEN_MODE_ALL",
         closeDrawerGestureMode: "CLOSE_MODE_ALL",
@@ -232,7 +231,7 @@ function Controller() {
     $.__views.drawer && $.addTopLevelView($.__views.drawer);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    Alloy.Globals.drawer($.sidebar, $.drawer, "Categorias", init);
+    Alloy.Globals.drawer($.sidebar, $.leftMenu, $.drawer, "Categorias", init);
     _.extend($, exports);
 }
 

@@ -8,11 +8,11 @@
     <property name="acs-api-key-development" type="string">dqOaDoAlKXrBGNnRRehHewwcc7qmH44J</property>
     <property name="ti.facebook.appid">1480203828923788</property>
     <id>br.com.fatoz</id>
-    <name>Fatoz Game</name>
+    <name>FatoZ Game</name>
     <version>1.0</version>
     <publisher>rafaelcosta</publisher>
     <url>http://www.fatoz.com.br</url>
-    <description/>
+    <description>undefined</description>
     <copyright>2014 by fatoz</copyright>
     <icon>appicon.png</icon>
     <fullscreen>false</fullscreen>

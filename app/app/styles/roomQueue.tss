@@ -43,7 +43,7 @@
 	top: 20
 },
 ".coverImage": {		
-	width: Titanium.UI.FILL,
+	width: Titanium.Platform.displayCaps.platformWidth,
 	height: Titanium.UI.FILL,
 	layout: "absolute",
 	top: 0,
