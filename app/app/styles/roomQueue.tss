@@ -49,4 +49,11 @@
 	top: 0,
 	left: 0,
 	zIndex: 0
+},
+".coverImage[platform=android]": {		
+	width: Titanium.UI.FILL,	
+	layout: "absolute",
+	top: 0,
+	left: 0,
+	zIndex: 0
 }

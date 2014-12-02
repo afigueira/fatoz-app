@@ -107,7 +107,7 @@ function Controller() {
     });
     $.__views.__alloyId75.add($.__views.__alloyId76);
     $.__views.coverA = Ti.UI.createImageView({
-        width: Titanium.Platform.displayCaps.platformWidth,
+        width: Titanium.UI.FILL,
         height: Titanium.UI.FILL,
         layout: "absolute",
         top: 0,
@@ -194,7 +194,7 @@ function Controller() {
     });
     $.__views.__alloyId75.add($.__views.__alloyId80);
     $.__views.profileB = Ti.UI.createImageView({
-        width: Titanium.Platform.displayCaps.platformWidth,
+        width: Titanium.UI.FILL,
         height: Titanium.UI.FILL,
         layout: "absolute",
         top: 0,
