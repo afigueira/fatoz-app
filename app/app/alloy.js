@@ -222,26 +222,23 @@ Alloy.Globals.showBanner = function(container, page, position) {
 			var platform = Titanium.Platform.osname == 'android' ? 'android' : 'ios';
 			var unitId = Alloy.Globals.banners[platform][position];
 			
-			if (platform == 'ios') {
-				Alloy.Globals.Admob = require("ti.admob");
-				var admobView = Alloy.Globals.Admob.createView({
-					left: 0,
-					right: 0,
-					width: 320,
-					height: (position == 'game' ? 250 : 50),
-					adUnitId: unitId,
-					testing: false
-				});
-				if (position == 'game') {
-					//admobView.top = 0;
-				} else {
-					admobView[position] = 0;	
-				}
 			
-				container.add(admobView);
-			}else{
-
+			Alloy.Globals.Admob = require("ti.admob");
+			var admobView = Alloy.Globals.Admob.createView({
+				left: 0,
+				right: 0,
+				width: 320,
+				height: (position == 'game' ? 250 : 50),
+				adUnitId: unitId,
+				publisherId: unitId,
+				testing: false
+			});
+			
+			if (position != 'game') {
+				admobView[position] = 0;	
 			}
+
+			container.add(admobView);			
 		}
 	});
 };

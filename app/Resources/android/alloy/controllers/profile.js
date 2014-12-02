@@ -41,8 +41,7 @@ function Controller() {
                     });
                     $.addClass(imageConquer, "imageConquer");
                     var rightContentConquer = Titanium.UI.createView({
-                        width: 200,
-                        backgroundColor: "red"
+                        width: 200
                     });
                     $.addClass(rightContentConquer, "rightContentConquer");
                     var conquerTitle = Titanium.UI.createLabel({
@@ -148,6 +147,7 @@ function Controller() {
         backgroundColor: Alloy.Globals.constants.BACKGROUND_INSIDE_COLOR,
         top: Alloy.Globals.marginTopWindow,
         layout: "vertical",
+        width: 320,
         id: "__alloyId70"
     });
     $.__views.window.add($.__views.__alloyId70);
@@ -157,7 +157,7 @@ function Controller() {
     });
     $.__views.__alloyId70.add($.__views.__alloyId71);
     $.__views.coverPhoto = Ti.UI.createImageView({
-        width: Titanium.UI.FILL,
+        width: Titanium.Platform.displayCaps.platformWidth,
         height: Titanium.UI.FILL,
         layout: "absolute",
         top: 0,
